@@ -1,0 +1,86 @@
+header {
+    font-size: 50px;
+    text-align: center;
+    margin: 20px;
+}
+
+body {
+    text-align: left;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: normal;
+    /* font-family: "Estrangelo Edessa"; "Trebuchet MS"; "Arial"; "Helvetica"; */
+    padding-bottom: 3px;
+}
+
+h2 {
+    margin: 10px 30px 10px 0px;
+    padding: 5px 5px 5px 10px;
+    font-size: 25px;
+    font-weight: normal;
+    /* font-family: "Estrangelo Edessa"; "Trebuchet MS"; "Arial"; "Helvetica"; */
+    border-bottom: 2px solid #000;
+    border-left: 10px solid #000;
+}
+
+table#menu {
+    width: 90%;
+    font-size: 30px;
+    border-spacing: 30px 10px;
+    border-top: 5px solid gray;
+    border-bottom: 5px solid gray;
+}
+
+table#menu td{
+    text-align: center;
+    width: 20%;
+    background-color: #EEE;
+}
+
+#menu td[show="true"]{
+    background-color: #CCC;
+}
+
+#menu a {
+    color: black;
+    text-decoration: none;
+}
+
+#menu a[show="true"]{
+    color: red;
+}
+
+div.area {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 800px;
+    height: 500px;
+    /* border: 5px solid blue; */
+}
+
+table#cv{
+    border-spacing: 10px 0px;
+}
+
+table#cv th{
+    text-align: right;
+}
+
+table#cv td{
+    text-align: left;
+}
+
+h3.list-header{
+    /* padding: 0px; */
+    margin: 0px;
+    font-size: 12pt;
+}
+
+ul.list-with-header{
+    margin: 0px;
+}
