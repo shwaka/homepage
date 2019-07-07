@@ -1,3 +1,7 @@
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
 {{ include.data.title }},
 {% if include.data.url %}
   <a target="_blank" href="{{ include.data.url }}"> {{ include.data.conference-title }}</a>,

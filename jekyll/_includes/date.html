@@ -1,3 +1,7 @@
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
 {% if page.lang == "en" %}
   {{ include.date | date: "%Y-%m-%d"}}
 {% elsif page.lang == "ja" %}
