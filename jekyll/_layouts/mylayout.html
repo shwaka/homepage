@@ -13,18 +13,37 @@
   <header>
     Shun Wakatsuki
   </header>
+  <div class="lang_selector">
+    {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
+    {% for page in pages %}
+    <a href="{{ page.url }}" class="{{ page.lang }}">
+      {{ page.lang }}
+    </a>
+    {% endfor %}
+  </div>
   <div id="menu">
     {% assign pages=site.pages | where:"lang", page.lang %}
     {% for ref in site.data.pages %}
-    {% for pg in pages %}
-    {% if pg.ref == ref %}
-    {% if pg.ref == page.ref %}
-    <a href="{{ pg.url }}" current="true"> {{ pg.title }}</a>
-    {% else %}
-    <a href="{{ pg.url }}" current="false"> {{ pg.title }}</a>
-    {% endif %}
-    {% endif %}
-    {% endfor %}
+      {% for pg in pages %}
+        {% if pg.ref == ref %}
+
+          {% if pg.title_short %}
+            {% assign title = pg.title_short %}
+          {% else %}
+            {% assign title = pg.title %}
+          {% endif %}
+
+          {% if pg.ref == page.ref %}
+            <span current="true">
+              <a href="{{ pg.url }}"> {{ title }}</a>
+            </span>
+          {% else %}
+            <span current="false">
+              <a href="{{ pg.url }}"> {{ title }}</a>
+            </span>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
     {% endfor %}
   </div>
 
@@ -33,15 +52,16 @@
   </h1>
   {{ content }}
 
-  <h1>list of pages</h1>
-  <ul>
-    {% for page in site.pages %}
-    <li>
-      <a href="{{ page.url }}">{{page.title}}</a>
-      {% if page.lang %}
-      ({{page.lang}})
-      {% endif %}
-    </li>
-    {% endfor %}
-  </ul>
+  <div id="list-of-pages">
+    <ul>
+      {% for page in site.pages %}
+      <li>
+        <a href="{{ page.url }}">{{page.title}}</a>
+        {% if page.lang %}
+        ({{page.lang}})
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 </body>

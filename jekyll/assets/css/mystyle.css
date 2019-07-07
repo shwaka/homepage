@@ -27,34 +27,42 @@ h2 {
 }
 
 div#menu {
-  width: 90%;
+  /* width: 90%; */
   font-size: 30px;
   border-spacing: 30px 10px;
   border-top: 5px solid gray;
   border-bottom: 5px solid gray;
+  padding: 5px;
 }
 
-div#menu a{
+div#menu span{
   text-align: center;
   width: 20%;
   background-color: #EEE;
+  color: black;
+  margin: 10px;
 }
 
-div#menu a[current="true"]{
+div#menu span a{
+  text-decoration: none;
+  color: black;
+}
+
+div#menu span[current="true"]{
   background-color: #CCC;
 }
 
-div#menu a {
-  color: black;
-  text-decoration: none;
-}
-
-div#menu a[current="true"]{
+div#menu span[current="true"] a{
   color: red;
 }
-
 
 .warning {
   background-color: #f00;
   color: #fff;
+}
+
+div#list-of-pages{
+  margin-top: 60px;
+  border: 1px solid black;
+  background-color: #eee;
 }
