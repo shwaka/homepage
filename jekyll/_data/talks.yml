@@ -35,6 +35,11 @@
     conference: 日本数学会 秋季総合分科会
     url: http://mathsoc.jp/meeting/kansai16sept/
     venue: 関西大学
+  en:
+    title: String topology on rational Gorenstein spaces
+    conference: MSJ Autumn Meeting 2016
+    url: http://mathsoc.jp/en/meeting/kansai16sept/
+    venue: Kansai University
 - base:
     date: 2016-10-30
     lang: ja
@@ -59,6 +64,11 @@
     conference: 日本数学会 2017年度年会
     url: https://mathsoc.jp/meeting/tmu17mar/
     venue: 首都大学東京
+  en:
+    title: Sullivan 代数の semi-pure 性について
+    conference: MSJ Spring Meeting 2017
+    url: https://mathsoc.jp/en/meeting/tmu17mar/
+    venue: Tokyo Metropolitan University
 - base:
     date: 2017-05-22
     lang: ja
