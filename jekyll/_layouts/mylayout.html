@@ -1,3 +1,7 @@
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
 <!DOCTYPE html>
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
@@ -68,6 +72,11 @@
 
   <div id="main">
     {{ content }}
+  </div>
+
+  <div id="last-modified">
+    Last modified at
+    {{ page.last_modified_at | date: "%Y-%m-%d %H:%M" }}
   </div>
 
   <div id="list-of-pages">
