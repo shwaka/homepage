@@ -1,0 +1,10 @@
+- key: en
+  names:
+    short: En
+    en: English
+    ja: 英語
+- key: ja
+  names:
+    short: Ja
+    en: Japanese
+    ja: 日本語

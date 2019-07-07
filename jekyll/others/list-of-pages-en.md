@@ -1,8 +1,7 @@
 ---
 layout: mylayout
-lang: ja
+lang: en
 ref: list-of-pages
 ---
-
-# ページ一覧
+# List of pages
 {% include_relative list-of-pages.html %}

@@ -24,6 +24,32 @@
     </div>
     <!-- language selector -->
     <div id="lang_selector">
+      {% for lang_data in site.data.languages %}
+        {% assign pages=site.pages | where: "ref", page.ref | where: "lang", lang_data.key %}
+        {% assign page_found = false %}
+        {% for pg in pages %}
+          {% comment %} length(pages) <= 1 {% endcomment %}
+          {% if page_found %}
+            <span class="warning">ERROR!!!</span>
+            {% break %}
+          {% endif %}
+          {% if pg.lang == page.lang %}
+            {% assign current = "true" %}
+          {% else %}
+            {% assign current = "false" %}
+          {% endif %}
+          {% assign url = pg.url %}
+          {% assign page_found = true %}
+        {% endfor %}
+        {% unless page_found %}
+          {% assign url = "/index.html" %}
+          {% assign current = "false" %}
+        {% endunless %}
+        <a href="{{ url }}" class="{{ lang_data.key }}" current="{{ current }}">
+          {{ lang_data.names.short }}
+        </a>
+      {% endfor %}
+      {% comment %}
       {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
       {% for pg in pages %}
         {% if pg.lang == page.lang %}
@@ -35,6 +61,7 @@
           {{ pg.lang }}
         </a>
       {% endfor %}
+      {% endcomment %}
     </div>
 
     <!-- menu -->

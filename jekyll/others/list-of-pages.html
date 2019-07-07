@@ -4,16 +4,16 @@
 
 <div id="list-of-pages">
   <ul>
-    {% for page in site.pages %}
+    {% for pg in site.pages %}
       <li>
-        {% if page.title %}
-          {% assign name = page.title %}
+        {% if pg.title %}
+          {% assign name = pg.title %}
         {% else %}
-          {% assign name = page.url %}
+          {% assign name = pg.url %}
         {% endif %}
-        <a href="{{ page.url }}">{{ name }}</a>
-        {% if page.lang %}
-          ({{page.lang}})
+        <a href="{{ pg.url }}">{{ name }}</a>
+        {% if pg.lang %}
+          ({% include get-lang-name.html lang=pg.lang as=page.lang %})
         {% endif %}
       </li>
     {% endfor %}
