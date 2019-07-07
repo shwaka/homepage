@@ -1,6 +1,14 @@
 ---
 ---
-header {
+header{
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 1000px;
+  width: 90%;
+}
+
+div#myname {
   font-size: 50px;
   text-align: center;
   margin: 20px;
@@ -51,6 +59,7 @@ div#lang_selector{
 
 table#menu {
   /* width: 90%; */
+  width: 100%;
   font-size: 30px;
   border-spacing: 30px 10px;
   border-top: 5px solid gray;

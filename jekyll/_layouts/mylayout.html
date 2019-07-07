@@ -11,55 +11,56 @@
 </head>
 <body>
   <header>
-    {% if page.lang == "ja" %}
-      若月駿
-    {% else %}
-      Shun Wakatsuki
-    {% endif %}
-  </header>
-
-  <!-- language selector -->
-  <div id="lang_selector">
-    {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
-    {% for pg in pages %}
-    {% if pg.lang == page.lang %}
-      {% assign current = "true" %}
-    {% else %}
-      {% assign current = "false" %}
-    {% endif %}
-    <a href="{{ pg.url }}" class="{{ pg.lang }}" current="{{ current }}">
-      {{ pg.lang }}
-    </a>
-    {% endfor %}
-  </div>
-
-  <!-- menu -->
-  <table id="menu">
-    <tr>
-    {% assign pages=site.pages | where:"lang", page.lang %}
-    {% for ref in site.data.pages %}
+    <div id="myname">
+      {% if page.lang == "ja" %}
+        若月駿
+      {% else %}
+        Shun Wakatsuki
+      {% endif %}
+    </div>
+    <!-- language selector -->
+    <div id="lang_selector">
+      {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
       {% for pg in pages %}
-        {% if pg.ref == ref %}
-
-          {% if pg.title_short %}
-            {% assign title = pg.title_short %}
-          {% else %}
-            {% assign title = pg.title %}
-          {% endif %}
-
-          {% if pg.ref == page.ref %}
-            {% assign current = "true" %}
-          {% else %}
-            {% assign current = "false" %}
-          {% endif %}
-          <td current="{{ current }}">
-            <a href="{{ pg.url }}"> {{ title }}</a>
-          </td>
-        {% endif %}
+      {% if pg.lang == page.lang %}
+        {% assign current = "true" %}
+      {% else %}
+        {% assign current = "false" %}
+      {% endif %}
+      <a href="{{ pg.url }}" class="{{ pg.lang }}" current="{{ current }}">
+        {{ pg.lang }}
+      </a>
       {% endfor %}
-    {% endfor %}
-    </tr>
-  </table>
+    </div>
+
+    <!-- menu -->
+    <table id="menu">
+      <tr>
+      {% assign pages=site.pages | where:"lang", page.lang %}
+      {% for ref in site.data.pages %}
+        {% for pg in pages %}
+          {% if pg.ref == ref %}
+
+            {% if pg.title_short %}
+              {% assign title = pg.title_short %}
+            {% else %}
+              {% assign title = pg.title %}
+            {% endif %}
+
+            {% if pg.ref == page.ref %}
+              {% assign current = "true" %}
+            {% else %}
+              {% assign current = "false" %}
+            {% endif %}
+            <td current="{{ current }}">
+              <a href="{{ pg.url }}"> {{ title }}</a>
+            </td>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+      </tr>
+    </table>
+  </header>
 
   <h1>
     {{ page.title }}
