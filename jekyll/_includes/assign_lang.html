@@ -1,0 +1,31 @@
+{% comment %}
+Usage:
+{% for person in site.data.mydata %}
+  {% include assign_lang.html from=person %}
+  {% if ldata %}
+  <li>
+    {{ ldata.name }}
+    ({{ ldata.affiliation }})
+  </li>
+  {% endif %}
+{% endfor %}
+{% endcomment %}
+
+{% if include.lang %}
+{% assign lang_local = include.lang %}
+{% elsif page.lang %}
+{% assign lang_local = page.lang %}
+{% else %}
+{% assign lang_local = "invalid_lang" %}
+{% endif %}
+
+{% if include.from[lang_local] %}
+{% assign ldata = include.from[lang_local] %}
+{% elsif include.from["en"] %}
+{% assign ldata = include.from["en"] %}
+{% elsif include.from["ja"] %}
+  {% assign ldata = include.from["ja"] %}
+{% else %}
+  {% assign ldata = nil %}
+  <span class="warning">ERROR!!!</span>
+{% endif %}

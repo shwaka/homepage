@@ -5,6 +5,25 @@ lang: en
 ref: research
 ---
 
+## Talks from data
+<ul>
+{% for talk in site.data.talks %}
+  {% include assign_lang.html from=talk %}
+  {% if ldata %}
+    <li>
+      {{ ldata.title }},
+      {% if ldata.url %}
+        <a target="_blank" href="{{ ldata.url }}"> {{ ldata.conference-title }}</a>,
+      {% else %}
+        {{ ldata.conference-title }},
+      {% endif %}
+      {{ ldata.venue }},
+      {% include date.html date=ldata.date %}
+    </li>
+  {% endif %}
+{% endfor %}
+</ul>
+
 ## Publications
 ### Papers and Preprints
 - Description and triviality of the loop products and coproducts for rational Gorenstein spaces,
