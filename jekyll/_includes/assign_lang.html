@@ -12,6 +12,13 @@ Usage:
 {% endfor %}
 {% endcomment %}
 
+{% if include.from["base"] %}
+  {% assign bdata = include.from["base"] %}
+{% else %}
+  {% assign bdata = nil %}
+  <span class="warning">ERROR!!!</span>
+{% endif %}
+
 {% if include.lang %}
   {% assign lang_local = include.lang %}
 {% elsif page.lang %}

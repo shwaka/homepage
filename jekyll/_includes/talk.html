@@ -2,11 +2,11 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
-{{ include.data.title }},
-{% if include.data.url %}
-  <a target="_blank" href="{{ include.data.url }}"> {{ include.data.conference-title }}</a>,
+{{ include.ldata.title }},
+{% if include.ldata.url %}
+  <a target="_blank" href="{{ include.ldata.url }}"> {{ include.ldata.conference-title }}</a>,
 {% else %}
-  {{ include.data.conference-title }},
+  {{ include.ldata.conference-title }},
 {% endif %}
-{{ include.data.venue }},
-{% include date.html date=include.data.date %}
+{{ include.ldata.venue }},
+{% include date.html date=include.bdata.date %}
