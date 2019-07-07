@@ -5,7 +5,12 @@ lang: ja
 ref: research
 ---
 
-工事中
+## Publications
+### 論文・プレプリント
+{% include_relative research-includes/papers-preprints.html %}
+
+### その他
+{% include_relative research-includes/non-refereed-articles.html %}
 
 ## 講演一覧
 ### 講演一覧(国際研究集会)

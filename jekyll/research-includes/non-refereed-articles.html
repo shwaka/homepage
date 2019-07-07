@@ -1,0 +1,12 @@
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
+<ul>
+  {% assign articles = site.data.articles | where: "type", "proceedings" | reverse %}
+  {% for article in articles %}
+    <li>
+      {% include format-article.html article=article %}
+    </li>
+  {% endfor %}
+</ul>

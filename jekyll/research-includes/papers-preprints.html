@@ -1,0 +1,19 @@
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
+<ul>
+  {% assign articles = site.data.articles | reverse %}
+  {% for article in articles %}
+    {% if article.type == "toappear" %}
+      <li>
+        {% include format-article.html article=article %}
+      </li>
+    {% endif %}
+    {% if article.type == "preprint" %}
+      <li>
+        {% include format-article.html article=article %}
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

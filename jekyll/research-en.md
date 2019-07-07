@@ -7,28 +7,15 @@ ref: research
 
 ## Publications
 ### Papers and Preprints
-- Description and triviality of the loop products and coproducts for rational Gorenstein spaces,
-  <a target="_blank" href="https://arxiv.org/abs/1612.03563">arXiv:1612.03563</a>
-- Coproducts in brane topology,
-  to appear in
-  <a target="_blank" href="https://msp.org/agt/about/journal/about.html">
-    Algebraic and Geometric Topology
-  </a>,
-  also available at <a href="https://arxiv.org/abs/1802.04973" target="_blank">arXiv:1802.04973</a>
-- Nontrivial example of the composition of the brane product and coproduct on Gorenstein spaces,
-  <a target="_blank" href="https://arxiv.org/abs/1902.10936">arXiv:1902.10936</a>
+{% include_relative research-includes/papers-preprints.html %}
 
 ### Non refereed articles
-- String topology on rational Gorenstein spaces,
-  京都大学数理解析研究所講究録 No.~2060 「変換群を核とする代数的位相幾何学」, 2017
-
+{% include_relative research-includes/non-refereed-articles.html %}
 
 
 ## Talks
 ### Talks in English
-
 {% include_relative research-includes/talks-en.html %}
 
 ### Talks in Japanese
-
 {% include_relative research-includes/talks-ja.html %}

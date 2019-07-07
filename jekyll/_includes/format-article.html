@@ -1,0 +1,28 @@
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
+{% if include.article.type == "preprint" %}
+  {{ include.article.title }},
+  <a target="_blank" href="https://arxiv.org/abs/{{ include.article.arxiv }}">
+    arXiv:{{ include.article.arxiv }}
+  </a>
+{% elsif include.article.type == "toappear" %}
+  {{ include.article.title }},
+  to appear in
+  <a target="_blank" href="{{ include.article.journal-url }}">
+    {{ include.article.journal }}
+  </a>,
+  also available at
+  <a target="_blank" href="https://arxiv.org/abs/{{ include.article.arxiv }}">
+    arXiv:{{ include.article.arxiv }}
+  </a>
+{% elsif include.article.type == "proceedings" %}
+  {{ include.article.title }},
+  <a target="_blank" href="{{ include.article.journal-url }}">
+    {{ include.article.journal }}
+  </a>,
+  {{ include.article.year }}
+{% else %}
+  <span class="warning">ERROR!!!</span>
+{% endif %}
