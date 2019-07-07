@@ -1,0 +1,15 @@
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
+<ul>
+{% assign talks = site.data.talks | where: "base.lang", "ja" | reverse %}
+{% for talk in talks %}
+  {% include assign_lang.html from=talk %}
+  {% if ldata %}
+    <li>
+      {% include talk.html ldata=ldata bdata=bdata %}
+    </li>
+  {% endif %}
+{% endfor %}
+</ul>

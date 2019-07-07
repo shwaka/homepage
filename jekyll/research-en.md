@@ -20,33 +20,15 @@ ref: research
 
 ### Non refereed articles
 - String topology on rational Gorenstein spaces,
-          京都大学数理解析研究所講究録 No.~2060 「変換群を核とする代数的位相幾何学」, 2017
+  京都大学数理解析研究所講究録 No.~2060 「変換群を核とする代数的位相幾何学」, 2017
+
+
 
 ## Talks
 ### Talks in English
 
-<ul>
-{% assign talks = site.data.talks | where: "base.lang", "en" | reverse %}
-{% for talk in talks %}
-  {% include assign_lang.html from=talk %}
-  {% if ldata %}
-    <li>
-      {% include talk.html ldata=ldata bdata=bdata %}
-    </li>
-  {% endif %}
-{% endfor %}
-</ul>
+{% include_relative research-includes/talks-en.html %}
 
 ### Talks in Japanese
 
-<ul>
-{% assign talks = site.data.talks | where: "base.lang", "ja" | reverse %}
-{% for talk in talks %}
-  {% include assign_lang.html from=talk %}
-  {% if ldata %}
-    <li>
-      {% include talk.html ldata=ldata bdata=bdata %}
-    </li>
-  {% endif %}
-{% endfor %}
-</ul>
+{% include_relative research-includes/talks-ja.html %}
