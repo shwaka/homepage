@@ -46,30 +46,26 @@ table#menu {
   border-bottom: 5px solid gray;
   margin-left: auto;
   margin-right: auto;
-}
-
-table#menu td{
-  text-align: center;
-  width: 20%;
-  background-color: #EEE;
-  color: black;
-  margin: 10px;
-}
-
-table#menu td a{
-  text-decoration: none;
-  color: black;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-table#menu td[current="true"]{
-  background-color: #CCC;
-}
-
-table#menu td[current="true"] a{
-  color: red;
+  td{
+    text-align: center;
+    width: 20%;
+    background-color: #EEE;
+    color: black;
+    margin: 10px;
+    a{
+      text-decoration: none;
+      color: black;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  td[current="true"]{
+    background-color: #CCC;
+    a{
+      color: red;
+    }
+  }
 }
 
 .warning {
