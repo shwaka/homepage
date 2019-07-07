@@ -1,3 +1,96 @@
+- ja:
+    title: Thompson群とループ空間のコホモロジー
+    conference-title: 無限離散群と量子トポロジー
+    venue: 文部科学省共済組合箱根宿泊所
+    date: 2014-12-01
+    lang: ja
+- ja:
+    title: 有理Gorenstein空間上のストリングトポロジーについて
+    conference-title: ホモトピー論シンポジウム
+    venue: 姫路・西はりま地場産業センター(じばさんびる)
+    date: 2015-11-01
+    lang: ja
+- ja:
+    title: 有理Gorenstein空間上のストリングトポロジーについて
+    conference-title: リーマン面の幾何の展開
+    venue: KKR伊豆長岡 千歳荘
+    date: 2015-12-01
+    lang: ja
+- ja:
+    title: Description and triviality of the loop products and coproducts for rational Gorenstein spaces
+    conference-title: リーマン面に関連する位相幾何学
+    venue: 東京大学
+    date: 2016-09-01
+    lang: ja
+- ja:
+    title: String topology on rational Gorenstein spaces
+    conference-title: 日本数学会 秋季総合分科会
+    venue: 関西大学
+    date: 2016-09-01
+    lang: ja
+- ja:
+    title: Computation of string operations using rational homotopy theory
+    conference-title: トポロジーとコンピュータ 2016
+    venue: 秋田市 カレッジプラザ
+    date: 2016-10-01
+    lang: ja
+- ja:
+    title: Description and triviality of the loop products and coproducts for rational Gorenstein spaces
+    conference-title: 信州トポロジーセミナー
+    venue: 信州大学
+    date: 2016-11-01
+    lang: ja
+- ja:
+    title: Sullivan 代数の semi-pure 性について
+    conference-title: 日本数学会 2017年度年会
+    venue: 首都大学東京
+    date: 2017-03-01
+    lang: ja
+- ja:
+    title: String topology on rational Gorenstein spaces
+    conference-title: 変換群を核とする代数的位相幾何学
+    venue: 京都大学数理解析研究所
+    date: 2017-05-01
+    lang: ja
+- en:
+    title: String topology on rational Gorenstein spaces
+    conference-title: Young Topologists Meeting
+    venue: KTH Royal Institute of Technology in Stockholm, Sweden
+    date: 2017-07-01
+    lang: en
+- ja:
+    title: Brane topology on rational Gorenstein spaces
+    conference-title: ホモトピー論シンポジウム
+    venue: 高松市生涯学習センター(まなびCAN)
+    date: 2017-11-01
+    lang: ja
+- ja:
+    title: Coproducts in brane topology
+    conference-title: ストリングトポロジーとその周辺
+    venue: 四季の湯強羅静雲荘
+    date: 2017-12-01
+    lang: ja
+- en:
+    title: Coproducts in brane topology on rational Gorenstein spaces
+    conference-title: Mapping Spaces in Algebraic Topology
+    url: https://www.math.kyoto-u.ac.jp/~kishi/conference/kyoto2018/top
+    venue: Kyoto University
+    date: 2018-08-01
+    lang: en
+- en:
+    title: Coproducts in brane topology on rational Gorenstein spaces
+    conference-title: Topological Activities
+    url: "https://www.math-stockholm.se/en/kalender/shun-wakatsuki-coproducts-in-brane-topology-on-rational-gorenstein-spaces-1.845240?date=2018-09-25&orgdate=2018-09-01&length=1&orglength=30"
+    venue: Stockholm University
+    date: 2018-09-01
+    lang: en
+- ja:
+    title: Properties of brane operations
+    conference-title: ホモトピー論シンポジウム2018
+    url: https://www.math.kyoto-u.ac.jp/~kishi/conference/tokyo2018.html
+    venue: 東京工業大学
+    date: 2018-11-01
+    lang: ja
 - en:
     title: Gorenstein spaces and string topology
     conference-title: Building-up Differential Homotopy Theory
