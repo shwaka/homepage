@@ -2,7 +2,7 @@
 #     title: Thompson群とループ空間のコホモロジー
 #     conference: 無限離散群と量子トポロジー
 #     venue: 文部科学省共済組合箱根宿泊所
-#     date: 2014-12-01
+#     date: 2014-12-13
 #     lang: ja
 - base:
     date: 2015-11-23
@@ -84,7 +84,7 @@
     url: http://bach.kinwu.ac.jp/homotopy2017/
     venue: 高松市生涯学習センター(まなびCAN)
 - base:
-    date: 2017-12-01
+    date: 2017-12-09
     lang: ja
   ja:
     title: Coproducts in brane topology
