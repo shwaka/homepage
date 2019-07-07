@@ -12,17 +12,17 @@ Usage:
 {% endcomment %}
 
 {% if include.lang %}
-{% assign lang_local = include.lang %}
+  {% assign lang_local = include.lang %}
 {% elsif page.lang %}
-{% assign lang_local = page.lang %}
+  {% assign lang_local = page.lang %}
 {% else %}
-{% assign lang_local = "invalid_lang" %}
+  {% assign lang_local = "invalid_lang" %}
 {% endif %}
 
 {% if include.from[lang_local] %}
-{% assign ldata = include.from[lang_local] %}
+  {% assign ldata = include.from[lang_local] %}
 {% elsif include.from["en"] %}
-{% assign ldata = include.from["en"] %}
+  {% assign ldata = include.from["en"] %}
 {% elsif include.from["ja"] %}
   {% assign ldata = include.from["ja"] %}
 {% else %}
