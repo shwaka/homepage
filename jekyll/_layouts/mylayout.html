@@ -10,12 +10,19 @@
        </script> -->
 </head>
 <body>
-  <div>
+  <header>
+    Shun Wakatsuki
+  </header>
+  <div id="menu">
     {% assign pages=site.pages | where:"lang", page.lang %}
     {% for ref in site.data.pages %}
-    {% for page in pages %}
-    {% if page.ref == ref %}
-    <a href="{{ page.url }}"> {{ page.title }}</a>
+    {% for pg in pages %}
+    {% if pg.ref == ref %}
+    {% if pg.ref == page.ref %}
+    <a href="{{ pg.url }}" current="true"> {{ pg.title }}</a>
+    {% else %}
+    <a href="{{ pg.url }}" current="false"> {{ pg.title }}</a>
+    {% endif %}
     {% endif %}
     {% endfor %}
     {% endfor %}
