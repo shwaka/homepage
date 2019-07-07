@@ -9,7 +9,5 @@ ref: others
 <!-- <a href="KS/KS.html">計算数学</a> -->
 
 ## Notes
-<a href="notes/HomotopyAssociativeAlgebras.pdf">
-HomotopyAssociativeAlgebras.pdf
-</a>
+[HomotopyAssociativeAlgebras.pdf](notes/HomotopyAssociativeAlgebras.pdf)
 (信州春の学校 第4回 勉強会)

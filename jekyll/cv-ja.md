@@ -15,11 +15,12 @@ ref: cv
 
 {:.list-header}
 ### Current position:
-- <a href="http://www.ms.u-tokyo.ac.jp/index.html" target="_blank">
-      東京大学大学院 数理科学研究科
-  </a> 博士課程
-- <a href="https://www.jsps.go.jp/english/index.html" target="_blank">日本学術振興会</a> 特別研究員 (DC1)
-- <a href="http://fmsp.ms.u-tokyo.ac.jp/index_e.html" target="_blank">FMSP</a> コース生
+- [東京大学大学院 数理科学研究科](http://www.ms.u-tokyo.ac.jp/index-j.html){:target="_blank"}
+  博士課程
+- [日本学術振興会](https://www.jsps.go.jp/index.html){:target="_blank"}
+  特別研究員 (DC1)
+- [FMSP](http://fmsp.ms.u-tokyo.ac.jp/index.html){:target="_blank"}
+  コース生
 {:#current-position}
 
 ## Education
@@ -29,6 +30,8 @@ ref: cv
 
 ## Fellowships
 - 2014年10月--現在
-  <a href="http://fmsp.ms.u-tokyo.ac.jp/index_e.html" target="_blank">FMSP</a> コース生
+  [FMSP](http://fmsp.ms.u-tokyo.ac.jp/index.html){:target="_blank"}
+  コース生
 - 2016年4月--2019年3月
-  <a href="https://www.jsps.go.jp/english/index.html" target="_blank">日本学術振興会</a> 特別研究員 (DC1)
+  [日本学術振興会](https://www.jsps.go.jp/index.html){:target="_blank"}
+  特別研究員 (DC1)

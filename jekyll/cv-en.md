@@ -17,17 +17,11 @@ ref: cv
 {:.list-header}
 ### Current position:
 - Doctoral student,
-  <a href="http://www.ms.u-tokyo.ac.jp/index.html" target="_blank">
-      Graduate School of Mathematical Sciences, the University of Tokyo
-  </a>
+  [Graduate School of Mathematical Sciences, the University of Tokyo](http://www.ms.u-tokyo.ac.jp/index.html){:target="_blank"}
 - Research Fellow (DC1),
-  <a href="https://www.jsps.go.jp/english/index.html" target="_blank">
-      Japan Society for the Promotion of Science
-  </a>
+  [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html){:target="_blank"}
 - Course student,
-  <a href="http://fmsp.ms.u-tokyo.ac.jp/index_e.html" target="_blank">
-      Leading Graduate Course for Frontiers of Mathematical Sciences and Physics
-  </a>
+  [Leading Graduate Course for Frontiers of Mathematical Sciences and Physics](http://fmsp.ms.u-tokyo.ac.jp/index_e.html){:target="_blank"}
 {:#current-position}
 
 ## Education
