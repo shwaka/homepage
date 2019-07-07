@@ -10,6 +10,23 @@
        </script> -->
 </head>
 <body>
+  <div>
+    {% assign pages=site.pages | where:"lang", page.lang %}
+    {% for ref in site.data.pages %}
+    {% for page in pages %}
+    {% if page.ref == ref %}
+    <a href="{{ page.url }}"> {{ page.title }}</a>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+  </div>
+
+  <h1>
+    {{ page.title }}
+  </h1>
+  {{ content }}
+
+  <h1>list of pages</h1>
   <ul>
     {% for page in site.pages %}
     <li>
@@ -20,9 +37,4 @@
     </li>
     {% endfor %}
   </ul>
-
-  <h1>
-    {{ page.title }}
-  </h1>
-  {{ content }}
 </body>
