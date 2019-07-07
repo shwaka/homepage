@@ -15,6 +15,8 @@
 - [Making Jekyll multilingual – Sylvain Durand](https://www.sylvaindurand.org/making-jekyll-multilingual/)
 
 # TODO
+- 色々な言葉遣いを他人のページを参考にして直す
+- 論文・講演一覧が見辛いので，斜体にしたりする？
 - 日付表示
     - 英語のときに Jan. とかにする？
     - 「2019年08月08日」みたいに一桁の数字に 0 がついてるのはダサい
