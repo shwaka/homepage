@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+  <meta name="keywords" content="Shun Wakatsuki, 若月駿">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/assets/css/mystyle.css" type="text/css"></link>
+  <!-- <link rel="stylesheet" href="/assets/css/syntax.css" type="text/css"></link>
+       <script type="text/javascript"
+       src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+       </script> -->
+</head>
+<body>
+  <ul>
+    {% for page in site.pages %}
+    <li>
+      <a href="{{ page.url }}">{{page.title}}</a>
+      {% if page.lang %}
+      ({{page.lang}})
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+
+  <h1>
+    {{ page.title }}
+  </h1>
+  {{ content }}
+</body>
