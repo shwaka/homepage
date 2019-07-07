@@ -144,6 +144,19 @@
     url: http://math.shinshu-u.ac.jp/~topology/seminar/
     venue: 信州大学
 - base:
+    date: 2019-07-02
+    lang: ja
+  ja:
+    title: Brane coproducts and their applications
+    conference: トポロジー火曜セミナー
+    url: http://www.ms.u-tokyo.ac.jp/seminar/topology/index.html
+    venue: 東京大学
+  en:
+    title: Brane coproducts and their applications
+    conference: Tuesday Seminar on Topology
+    url: http://www.ms.u-tokyo.ac.jp/seminar/topology_e/index_e.html
+    venue: University of Tokyo
+- base:
     date: 2019-08-08
     lang: ja
   ja:
