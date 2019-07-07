@@ -4,9 +4,9 @@
 
 {{ include.ldata.title }},
 {% if include.ldata.url %}
-  <a target="_blank" href="{{ include.ldata.url }}"> {{ include.ldata.conference-title }}</a>,
+  <a target="_blank" href="{{ include.ldata.url }}"> {{ include.ldata.conference }}</a>,
 {% else %}
-  {{ include.ldata.conference-title }},
+  {{ include.ldata.conference }},
 {% endif %}
 {{ include.ldata.venue }},
 {% include date.html date=include.bdata.date %}
