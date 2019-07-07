@@ -26,42 +26,42 @@
     <div id="lang_selector">
       {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
       {% for pg in pages %}
-      {% if pg.lang == page.lang %}
-        {% assign current = "true" %}
-      {% else %}
-        {% assign current = "false" %}
-      {% endif %}
-      <a href="{{ pg.url }}" class="{{ pg.lang }}" current="{{ current }}">
-        {{ pg.lang }}
-      </a>
+        {% if pg.lang == page.lang %}
+          {% assign current = "true" %}
+        {% else %}
+          {% assign current = "false" %}
+        {% endif %}
+        <a href="{{ pg.url }}" class="{{ pg.lang }}" current="{{ current }}">
+          {{ pg.lang }}
+        </a>
       {% endfor %}
     </div>
 
     <!-- menu -->
     <table id="menu">
       <tr>
-      {% assign pages=site.pages | where:"lang", page.lang %}
-      {% for ref in site.data.pages %}
-        {% for pg in pages %}
-          {% if pg.ref == ref %}
+        {% assign pages=site.pages | where:"lang", page.lang %}
+        {% for ref in site.data.pages %}
+          {% for pg in pages %}
+            {% if pg.ref == ref %}
 
-            {% if pg.title_short %}
-              {% assign title = pg.title_short %}
-            {% else %}
-              {% assign title = pg.title %}
-            {% endif %}
+              {% if pg.title_short %}
+                {% assign title = pg.title_short %}
+              {% else %}
+                {% assign title = pg.title %}
+              {% endif %}
 
-            {% if pg.ref == page.ref %}
-              {% assign current = "true" %}
-            {% else %}
-              {% assign current = "false" %}
+              {% if pg.ref == page.ref %}
+                {% assign current = "true" %}
+              {% else %}
+                {% assign current = "false" %}
+              {% endif %}
+              <td current="{{ current }}">
+                <a href="{{ pg.url }}"> {{ title }}</a>
+              </td>
             {% endif %}
-            <td current="{{ current }}">
-              <a href="{{ pg.url }}"> {{ title }}</a>
-            </td>
-          {% endif %}
+          {% endfor %}
         {% endfor %}
-      {% endfor %}
       </tr>
     </table>
   </header>
