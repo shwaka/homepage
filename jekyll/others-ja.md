@@ -15,4 +15,5 @@ ref: others
   (2015年7月，身内でのセミナー)
 
 ## Others
-{% include link-to-ref.html ref="list-of-pages" text="ページ一覧" %}
+- {% include link-to-ref.html ref="list-of-pages" text="ページ一覧" %}
+- [GitHub](https://github.com/shwaka/homepage)
