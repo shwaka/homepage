@@ -1,22 +1,23 @@
 body {
-  background-color: #dee;
+  text-align: left;
 }
 
 h1 {
-  color: #11d;
+  text-align: center;
+  font-size: 30px;
+  font-weight: normal;
+  /* font-family: "Estrangelo Edessa"; "Trebuchet MS"; "Arial"; "Helvetica"; */
+  padding-bottom: 3px;
 }
 
 h2 {
-  color: #161;
-}
-
-header {
-  border-bottom: 10px solid #a33;
-}
-
-footer {
-  background-color: #a33;
-  color: #fff;
+  margin: 10px 30px 10px 0px;
+  padding: 5px 5px 5px 10px;
+  font-size: 25px;
+  font-weight: normal;
+  /* font-family: "Estrangelo Edessa"; "Trebuchet MS"; "Arial"; "Helvetica"; */
+  border-bottom: 2px solid #000;
+  border-left: 10px solid #000;
 }
 
 .warning {
