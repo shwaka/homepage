@@ -17,14 +17,23 @@
       Shun Wakatsuki
     {% endif %}
   </header>
-  <div class="lang_selector">
+
+  <!-- language selector -->
+  <div id="lang_selector">
     {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
-    {% for page in pages %}
-    <a href="{{ page.url }}" class="{{ page.lang }}">
-      {{ page.lang }}
+    {% for pg in pages %}
+    {% if pg.lang == page.lang %}
+      {% assign current = "true" %}
+    {% else %}
+      {% assign current = "false" %}
+    {% endif %}
+    <a href="{{ pg.url }}" class="{{ pg.lang }}" current="{{ current }}">
+      {{ pg.lang }}
     </a>
     {% endfor %}
   </div>
+
+  <!-- menu -->
   <table id="menu">
     <tr>
     {% assign pages=site.pages | where:"lang", page.lang %}

@@ -38,6 +38,17 @@ div#main{
   /* border: 5px solid blue; */
 }
 
+div#lang_selector{
+  text-align: right;
+  a{
+    text-decoration: none;
+    color: gray;
+  }
+  a[current="true"]{
+    color: black;
+  }
+}
+
 table#menu {
   /* width: 90%; */
   font-size: 30px;
