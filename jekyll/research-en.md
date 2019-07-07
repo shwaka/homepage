@@ -24,6 +24,19 @@ ref: research
 {% endfor %}
 </ul>
 
+<ul>
+{% for talk in site.data.talks %}
+  {% include assign_lang.html from=talk %}
+  {% if ldata %}
+    {% if ldata.lang == "en" %}
+    <li>
+      {% include talk.html data=ldata %}
+    </li>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+</ul>
+
 ## Publications
 ### Papers and Preprints
 - Description and triviality of the loop products and coproducts for rational Gorenstein spaces,
