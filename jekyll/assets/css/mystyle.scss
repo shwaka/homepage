@@ -88,6 +88,29 @@ table#menu {
   }
 }
 
+table#cv{
+    border-spacing: 10px 0px;
+}
+
+table#cv th{
+    text-align: right;
+}
+
+table#cv td{
+    text-align: left;
+}
+
+h3.list-header{
+    // padding: 0px;
+    margin: 0px;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+ul#current-position{
+  margin: 0px;
+}
+
 .warning {
   background-color: #f00;
   color: #fff;

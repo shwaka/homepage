@@ -6,6 +6,7 @@ lang: en
 ref: cv
 ---
 
+{:#cv}
 | Given Name:  | Shun                      |
 | Family Name: | Wakatsuki                 |
 | Japanese:    | 若月 駿                   |
@@ -13,6 +14,7 @@ ref: cv
 | Birthplace:  | Kanagawa, Japan           |
 | Nationality: | Japan                     |
 
+{:.list-header}
 ### Current position:
 - Doctoral student,
   <a href="http://www.ms.u-tokyo.ac.jp/index.html" target="_blank">
@@ -26,6 +28,7 @@ ref: cv
   <a href="http://fmsp.ms.u-tokyo.ac.jp/index_e.html" target="_blank">
       Leading Graduate Course for Frontiers of Mathematical Sciences and Physics
   </a>
+{:#current-position}
 
 ## Education
 - Mar. 2010: Kaisei Senior High School, Tokyo, Japan
