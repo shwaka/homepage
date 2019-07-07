@@ -11,7 +11,11 @@
 </head>
 <body>
   <header>
-    Shun Wakatsuki
+    {% if page.lang == "ja" %}
+      若月駿
+    {% else %}
+      Shun Wakatsuki
+    {% endif %}
   </header>
   <div class="lang_selector">
     {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
