@@ -79,21 +79,4 @@
     {{ page.last_modified_at | date: "%Y-%m-%d %H:%M" }}
   </div>
 
-  <div id="list-of-pages">
-    <ul>
-      {% for page in site.pages %}
-      <li>
-        {% if page.title %}
-          {% assign name = page.title %}
-        {% else %}
-          {% assign name = page.url %}
-        {% endif %}
-        <a href="{{ page.url }}">{{ name }}</a>
-        {% if page.lang %}
-        ({{page.lang}})
-        {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
 </body>
