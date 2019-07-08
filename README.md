@@ -5,6 +5,8 @@
 # build
 - `jekyll build`
 - 編集中なら `jekyll serve --watch` が良いかも
+- `hawkins` プラグインの `jekyll liveserve` の方が便利
+  (ブラウザでのリロードが不要)
 
 # References
 全部列挙はさすがにできないので，主なもののみ
