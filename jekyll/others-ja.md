@@ -16,4 +16,4 @@ ref: others
 
 ## Others
 - {% include link-to-ref.html ref="list-of-pages" text="ページ一覧" %}
-- [GitHub](https://github.com/shwaka/homepage)
+- [GitHub](https://github.com/shwaka/homepage){:target="_blank"}
