@@ -1,7 +1,6 @@
 ---
 layout: mylayout
-title: Curriculum Vitae
-title_short: CV
+title: 履歴書
 lang: ja
 ref: cv
 ---
@@ -21,12 +20,12 @@ ref: cv
   コース生
 {:#current-position}
 
-## Education
+## 学歴
 - 2010年3月 開成高等学校卒
 - 2014年3月 東京大学理学部数学科卒
 - 2016年3月 東京大学大学院数理科学研究科 修士課程修了
 
-## Fellowships
+## 職歴
 - 2014年10月--現在
   [FMSP](http://fmsp.ms.u-tokyo.ac.jp/index.html){:target="_blank"}
   コース生

@@ -13,8 +13,8 @@ ref: top
 - [FMSP](http://fmsp.ms.u-tokyo.ac.jp/index_e.html){:target="_blank"}
   コース生
 - **email**: swaka[AT]ms.u-tokyo.ac.jp
-- **address**: 〒153-8914　東京都目黒区駒場3-8-1
+- **address**: 〒153-8914 東京都目黒区駒場3-8-1
 
-## Research field
-- Rational homotopy theory
-- String topology, Brane topology
+## 研究分野
+- 有理ホモトピー論
+- ストリングトポロジー, ブレーントポロジー

@@ -1,6 +1,6 @@
 ---
 layout: mylayout
-title: Research
+title: 研究
 lang: ja
 ref: research
 ---
