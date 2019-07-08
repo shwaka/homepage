@@ -12,10 +12,14 @@ div#myname {
   font-size: 50px;
   text-align: center;
   margin: 20px;
+  body.ja &{
+    letter-spacing: 30px;
+  }
 }
 
 body {
   text-align: left;
+  overflow-y: scroll;
 }
 
 h1 {
