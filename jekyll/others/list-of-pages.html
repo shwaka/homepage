@@ -11,7 +11,7 @@
         {% else %}
           {% assign name = pg.url %}
         {% endif %}
-        <a href="{{ pg.url }}">{{ name }}</a>
+        <a href="{{ site.baseurl }}{{ pg.url }}">{{ name }}</a>
         {% if pg.lang %}
           ({% include get-lang-name.html lang=pg.lang as=page.lang %})
         {% endif %}

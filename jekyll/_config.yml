@@ -1,2 +1,4 @@
 plugins:
   - jekyll-last-modified-at
+baseurl: https://www.ms.u-tokyo.ac.jp/~swaka
+# url: https://www.ms.u-tokyo.ac.jp/~swaka

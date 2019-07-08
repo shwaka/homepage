@@ -4,7 +4,7 @@
 
 {%- assign pages_filtered = site.pages | where: "ref", include.ref | where: "lang", page.lang %}
 {%- for pg in pages_filtered %}
-  <a href="{{ pg.url }}">
+  <a href="{{ site.baseurl }}{{ pg.url }}">
     {%- if include.text %}
       {{ include.text }}
     {%- elsif pg.title %}
