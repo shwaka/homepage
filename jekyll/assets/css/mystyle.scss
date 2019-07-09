@@ -50,6 +50,12 @@ div#main{
   /* border: 5px solid blue; */
 }
 
+div#last-modified{
+  text-align: right;
+  margin-top: 6px;
+  color: #666;
+}
+
 $color-selected: red;
 $background-color-selected: #CCC;
 
@@ -70,6 +76,9 @@ div#lang_selector{
     a{
       text-decoration: none;
       color: $color-unselected;
+      display: block;
+      width: 100%;
+      height: 100%;
     }
   }
   span[current="true"]{

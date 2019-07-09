@@ -94,7 +94,12 @@
           {% endfor %}
         </tr>
       </table>
+    <div id="last-modified">
+      Last modified at
+      {{ page.last_modified_at | date: "%Y-%m-%d %H:%M" }}
+    </div>
     </header>
+
 
     <h1>
       {{ page.title }}
@@ -102,11 +107,6 @@
 
     <div id="main">
       {{ content }}
-    </div>
-
-    <div id="last-modified">
-      Last modified at
-      {{ page.last_modified_at | date: "%Y-%m-%d %H:%M" }}
     </div>
 
   </body>
