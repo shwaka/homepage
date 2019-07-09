@@ -14,8 +14,9 @@
 - `jekyll serve --watch` が良いかも
 - `hawkins` プラグインの `jekyll liveserve` の方が便利
   (ブラウザでのリロードが不要)
-- いずれにしても， `--baseurl ""` をつけないと localhost の url が変なことになる
-  (`_config.yml` の `baseurl:` のせい)
+- `(live)serve` する際は `--baseurl "/~swaka"` をつけた方が良い．
+    - 何もつけないと，`_config.yml` の `baseurl:` のせいで変な URL になる．
+    - `--baseurl ""` だと，`{{ site.baseurl }}` のつけ忘れに気付けない
 
 ## 注意点
 - (要調査) `jekyll liveserve` で生成したサイトをそのままアップロードしても平気？
