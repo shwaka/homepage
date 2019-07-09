@@ -1,0 +1,16 @@
+---
+layout: mylayout
+---
+
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
+<header>
+  <div>{{ page.date | date_to_string }}</div>
+  <h1>{{ page.title }}</h1>
+</header>
+
+<div class="blog_main">
+  {{ content }}
+</div>
