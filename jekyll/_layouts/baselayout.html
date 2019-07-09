@@ -32,7 +32,7 @@
             {% for pg in pages %}
               {% comment %} length(pages) <= 1 {% endcomment %}
               {% if page_found %}
-                {% include error.html %}
+                {% include error.html msg="duplicated ref" %}
                 {% break %}
               {% endif %}
               {% if pg.lang == page.lang %}

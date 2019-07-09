@@ -16,7 +16,7 @@ Usage:
   {% assign bdata = include.from["base"] %}
 {% else %}
   {% assign bdata = nil %}
-  {% include error.html %}
+  {% include error.html msg="base not found" %}
 {% endif %}
 
 {% if include.lang %}
@@ -35,5 +35,5 @@ Usage:
   {% assign ldata = include.from["ja"] %}
 {% else %}
   {% assign ldata = nil %}
-  {% include error.html %}
+  {% include error.html msg="invalid language" %}
 {% endif %}

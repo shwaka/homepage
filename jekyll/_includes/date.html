@@ -22,5 +22,5 @@
     {{ include.date | date: "%Y年%-m月%-d日"}}
   {% endif %}
 {% else %}
-  {% include error.html %}
+  {% include error.html msg="invalid lang" %}
 {% endif %}

@@ -2,4 +2,5 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
-<span class="error">ERROR!!!</span>
+{{ include.msg | raise_error }}
+<!-- <span class="error">ERROR!!!</span> -->

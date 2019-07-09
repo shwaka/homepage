@@ -35,6 +35,8 @@
   多言語対応などの，上の「30分のチュートリアル」よりも進んだ内容が書かれている．
 - [Jekyll Date Formatting Examples - Alan W. Smith](http://alanwsmith.com/jekyll-liquid-date-formatting-examples)
   日付のフォーマットの例がたくさん載ってる
+- [How to properly indicate an error during site generation?](https://talk.jekyllrb.com/t/how-to-properly-indicate-an-error-during-site-generation/447)
+  エラーをraiseする方法 (`error.html`で使用)
 
 # TODO
 - baseurl のあたりを整理する．
