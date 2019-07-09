@@ -36,6 +36,9 @@
   日付のフォーマットの例がたくさん載ってる
 
 # TODO
+- [jekyll-last-modified-at](https://github.com/gjtorikian/jekyll-last-modified-at) は include 先まで見てくれないっぽい．
+  更新時刻として間違った値が表示されるのはむしろ害悪．
+  どうしよう…？
 - baseurl のあたりを整理する．
   参考: [jekyllで構築したサイト、本番へアップしたらcssが適用されない場合に試しておきたいbaseurlの便利な変更の仕方。](https://qiita.com/woopsdez/items/cc2b64800a6de3112920)
 - デプロイ方法をどうにかしたい．
