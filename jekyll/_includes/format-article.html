@@ -3,12 +3,16 @@
 {% endcomment %}
 
 {% if include.article.type == "preprint" %}
-  {{ include.article.title }},
+  <span class="article-title">
+    {{ include.article.title }}
+  </span>,
   <a target="_blank" href="https://arxiv.org/abs/{{ include.article.arxiv }}">
     arXiv:{{ include.article.arxiv }}
   </a>
 {% elsif include.article.type == "toappear" %}
-  {{ include.article.title }},
+  <span class="article-title">
+    {{ include.article.title }}
+  </span>,
   to appear in
   <a target="_blank" href="{{ include.article.journal-url }}">
     {{ include.article.journal }}
@@ -18,7 +22,9 @@
     arXiv:{{ include.article.arxiv }}
   </a>
 {% elsif include.article.type == "proceedings" %}
-  {{ include.article.title }},
+  <span class="article-title">
+    {{ include.article.title }}
+  </span>,
   <a target="_blank" href="{{ include.article.journal-url }}">
     {{ include.article.journal }}
   </a>,

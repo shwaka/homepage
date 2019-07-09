@@ -2,7 +2,7 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
-<ul>
+<ol class="talks">
 {% assign talks = site.data.talks | where: "base.lang", "en" | reverse %}
 {% for talk in talks %}
   {% include assign_lang.html from=talk %}
@@ -12,4 +12,4 @@
     </li>
   {% endif %}
 {% endfor %}
-</ul>
+</ol>

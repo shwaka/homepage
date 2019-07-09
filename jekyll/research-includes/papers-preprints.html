@@ -2,7 +2,7 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
-<ul>
+<ol class="articles">
   {% assign articles = site.data.articles | reverse %}
   {% for article in articles %}
     {% if article.type == "toappear" %}
@@ -16,4 +16,4 @@
       </li>
     {% endif %}
   {% endfor %}
-</ul>
+</ol>
