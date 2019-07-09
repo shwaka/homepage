@@ -40,3 +40,4 @@
   参考: [jekyllで構築したサイト、本番へアップしたらcssが適用されない場合に試しておきたいbaseurlの便利な変更の仕方。](https://qiita.com/woopsdez/items/cc2b64800a6de3112920)
 - デプロイ方法をどうにかしたい．
   とくに，重いPDFをいちいち upload するのは無駄
+- emacs の `web-mode` が Jekyll(Liquid?) の `case`-`else`-`endcase` に対応してない

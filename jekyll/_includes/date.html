@@ -3,16 +3,24 @@
 {% endcomment %}
 
 {% if page.lang == "en" %}
-  {% assign year = include.date | date: "%Y" %}
-  {% assign month_raw = include.date | date: "%B" %}
-  {% case month_raw %}
-    {% when "May" or "June" or "July" %}{% assign month = month_raw %}
-    {% when "September" %}{% assign month = "Sept." %}
+  {% if include.type == "month" %}
+    {% assign year = include.date | date: "%Y" %}
+    {% assign month_raw = include.date | date: "%B" %}
+    {% case month_raw %}
+      {% when "May" or "June" or "July" %}{% assign month = month_raw %}
+      {% when "September" %}{% assign month = "Sept." %}
     {% else %}{% assign month = include.date | date: "%b." %}
-  {% endcase %}
-  {{ month }} {{ year }}
+    {% endcase %}
+    {{ month }} {{ year }}
+  {% else %}
+    {{ include.date | date: "%-d %B %Y" }}
+  {% endif %}
 {% elsif page.lang == "ja" %}
-  {{ include.date | date: "%Y年%-m月%-d日"}}
+  {% if include.type == "month" %}
+    {{ include.date | date: "%Y年%-m月" }}
+  {% else %}
+    {{ include.date | date: "%Y年%-m月%-d日"}}
+  {% endif %}
 {% else %}
   {% include error.html %}
 {% endif %}
