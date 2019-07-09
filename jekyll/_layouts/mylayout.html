@@ -44,7 +44,7 @@
               {% assign page_found = true %}
             {% endfor %}
           {% elsif page.lang == lang_data.key %}
-            {% assign url = {{ page.url}} %}
+            {% assign url = page.url %}
             {% assign current = "true" %}
             {% assign page_found = true %}
           {% endif %}
