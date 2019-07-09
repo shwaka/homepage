@@ -3,9 +3,16 @@
 {% endcomment %}
 
 {% if page.lang == "en" %}
-  {{ include.date | date: "%Y-%m-%d"}}
+  {% assign year = include.date | date: "%Y" %}
+  {% assign month_raw = include.date | date: "%B" %}
+  {% case month_raw %}
+    {% when "May" or "June" or "July" %}{% assign month = month_raw %}
+    {% when "September" %}{% assign month = "Sept." %}
+    {% else %}{% assign month = include.date | date: "%b." %}
+  {% endcase %}
+  {{ month }} {{ year }}
 {% elsif page.lang == "ja" %}
-  {{ include.date | date: "%Y年%m月%d日"}}
+  {{ include.date | date: "%Y年%-m月%-d日"}}
 {% else %}
   {% include error.html %}
 {% endif %}

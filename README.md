@@ -32,12 +32,11 @@
   初めて `jekyll` を使うならとりあえずこれを読めば良さそう．
 - [Making Jekyll multilingual – Sylvain Durand](https://www.sylvaindurand.org/making-jekyll-multilingual/)
   多言語対応などの，上の「30分のチュートリアル」よりも進んだ内容が書かれている．
+- [Jekyll Date Formatting Examples - Alan W. Smith](http://alanwsmith.com/jekyll-liquid-date-formatting-examples)
+  日付のフォーマットの例がたくさん載ってる
 
 # TODO
 - 論文・講演一覧が見辛いので，斜体にしたりする？
-- 日付表示
-    - 英語のときに Jan. とかにする？
-    - 「2019年08月08日」みたいに一桁の数字に 0 がついてるのはダサい
 - baseurl のあたりを整理する．
   参考: [jekyllで構築したサイト、本番へアップしたらcssが適用されない場合に試しておきたいbaseurlの便利な変更の仕方。](https://qiita.com/woopsdez/items/cc2b64800a6de3112920)
 - デプロイ方法をどうにかしたい．
