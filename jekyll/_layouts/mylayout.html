@@ -1,124 +1,15 @@
+---
+magic_comment: "-*- engine: liquid -*-"
+layout: baselayout
+---
 {% comment %}
 -*- engine: liquid -*-
 {% endcomment %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="Shun Wakatsuki, 若月駿">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/mystyle.css" type="text/css"></link>
-    <!-- <link rel="stylesheet" href="/assets/css/syntax.css" type="text/css"></link>
-         <script type="text/javascript"
-         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-         </script> -->
-  </head>
-  <body class="{{ page.lang }}">
-    <header>
-      <div id="myname">
-        {% if page.lang == "ja" %}
-          若月 駿
-        {% else %}
-          Shun Wakatsuki
-        {% endif %}
-      </div>
-      <!-- language selector -->
-      <div id="lang_selector">
-        {% for lang_data in site.data.languages %}
-          {% assign page_found = false %}
-          {% if page.ref %}
-            {% assign pages=site.pages | where: "ref", page.ref | where: "lang", lang_data.key %}
-            {% for pg in pages %}
-              {% comment %} length(pages) <= 1 {% endcomment %}
-              {% if page_found %}
-                {% include error.html %}
-                {% break %}
-              {% endif %}
-              {% if pg.lang == page.lang %}
-                {% assign current = "true" %}
-              {% else %}
-                {% assign current = "false" %}
-              {% endif %}
-              {% assign url = pg.url %}
-              {% assign page_found = true %}
-            {% endfor %}
-          {% elsif page.lang == lang_data.key %}
-            {% assign url = page.url %}
-            {% assign current = "true" %}
-            {% assign page_found = true %}
-          {% endif %}
-          {% unless page_found %}
-            {% assign url = "/index.html" %}
-            {% assign current = "false" %}
-          {% endunless %}
-          <span class="lang {{ lang_data.key }}" current="{{ current }}">
-            <a href="{{ site.baseurl }}{{ url }}" class="{{ lang_data.key }}" current="{{ current }}">
-              {{ lang_data.names.short }}
-            </a>
-          </span>
-        {% endfor %}
-        {% comment %}
-        {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
-        {% for pg in pages %}
-        {% if pg.lang == page.lang %}
-        {% assign current = "true" %}
-        {% else %}
-        {% assign current = "false" %}
-        {% endif %}
-        <a href="{{ pg.url }}" class="{{ pg.lang }}" current="{{ current }}">
-        {{ pg.lang }}
-        </a>
-        {% endfor %}
-        {% endcomment %}
-      </div>
+<h1>
+  {{ page.title }}
+</h1>
 
-      <!-- menu -->
-      <table id="menu">
-        <tr>
-          {% assign pages=site.pages | where:"lang", page.lang %}
-          {% for ref in site.data.pages %}
-            {% for pg in pages %}
-              {% if pg.ref == ref %}
-
-                {% if pg.title_short %}
-                  {% assign title = pg.title_short %}
-                {% else %}
-                  {% assign title = pg.title %}
-                {% endif %}
-
-                {% if pg.ref == page.ref %}
-                  {% assign current = "true" %}
-                {% else %}
-                  {% assign current = "false" %}
-                {% endif %}
-                <td current="{{ current }}">
-                  <a href="{{ site.baseurl }}{{ pg.url }}"> {{ title }}</a>
-                </td>
-              {% endif %}
-            {% endfor %}
-          {% endfor %}
-        </tr>
-      </table>
-    <div id="last-modified">
-      Updated on
-      {{ site.time | date: "%Y-%m-%d %H:%M" }}
-      {% comment %}
-      {{ page.last_modified_at | date: "%Y-%m-%d %H:%M" }}
-      インポート先を見に行ってくれないのでやめた．
-      とりあえず代わりに site.time を使ってサイト全体の変更日時を見る．
-      {% endcomment %}
-    </div>
-    </header>
-
-
-    <h1>
-      {{ page.title }}
-    </h1>
-
-    <div id="main">
-      {{ content }}
-    </div>
-
-  </body>
-</html>
+<div id="main">
+  {{ content }}
+</div>
