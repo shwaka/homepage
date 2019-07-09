@@ -50,14 +50,33 @@ div#main{
   /* border: 5px solid blue; */
 }
 
+$color-selected: red;
+$background-color-selected: #CCC;
+
+$color-unselected: #666;
+$background-color-unselected: #EEE;
+
+$height-lang-selector: 25px;
 div#lang_selector{
   text-align: right;
-  a{
-    text-decoration: none;
-    color: gray;
+  margin-top: -$height-lang-selector;
+  height: $height-lang-selector;
+  span {
+    text-align: center;
+    // border: 1px solid black;
+    display: inline-block;
+    width: 30px;
+    background-color: $background-color-unselected;
+    a{
+      text-decoration: none;
+      color: $color-unselected;
+    }
   }
-  a[current="true"]{
-    color: black;
+  span[current="true"]{
+    background-color: $background-color-selected;
+    a {
+      color: $color-selected;
+    }
   }
 }
 
@@ -73,21 +92,20 @@ table#menu {
   td{
     text-align: center;
     width: 20%;
-    background-color: #EEE;
-    color: black;
+    background-color: $background-color-unselected;
     margin: 10px;
     a{
       text-decoration: none;
-      color: black;
+      color: $color-unselected;
       display: block;
       width: 100%;
       height: 100%;
     }
   }
   td[current="true"]{
-    background-color: #CCC;
+    background-color: $background-color-selected;
     a{
-      color: red;
+      color: $color-selected;
     }
   }
 }

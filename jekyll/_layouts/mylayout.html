@@ -46,9 +46,11 @@
             {% assign url = "/index.html" %}
             {% assign current = "false" %}
           {% endunless %}
-          <a href="{{ site.baseurl }}{{ url }}" class="{{ lang_data.key }}" current="{{ current }}">
-            {{ lang_data.names.short }}
-          </a>
+          <span class="{{ lang_data.key }}" current="{{ current }}">
+            <a href="{{ site.baseurl }}{{ url }}" class="{{ lang_data.key }}" current="{{ current }}">
+              {{ lang_data.names.short }}
+            </a>
+          </span>
         {% endfor %}
         {% comment %}
         {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
