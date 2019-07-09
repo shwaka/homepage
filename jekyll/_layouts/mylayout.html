@@ -95,8 +95,13 @@
         </tr>
       </table>
     <div id="last-modified">
-      Last modified at
+      Updated on
+      {{ site.time | date: "%Y-%m-%d %H:%M" }}
+      {% comment %}
       {{ page.last_modified_at | date: "%Y-%m-%d %H:%M" }}
+      インポート先を見に行ってくれないのでやめた．
+      とりあえず代わりに site.time を使ってサイト全体の変更日時を見る．
+      {% endcomment %}
     </div>
     </header>
 
