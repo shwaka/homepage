@@ -7,5 +7,5 @@
 {% elsif page.lang == "ja" %}
   {{ include.date | date: "%Y年%m月%d日"}}
 {% else %}
-  <span class="warning">ERROR!!!</span>
+  {% include error.html %}
 {% endif %}

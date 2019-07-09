@@ -67,7 +67,7 @@ div#lang_selector{
   text-align: right;
   margin-top: -$height-lang-selector;
   height: $height-lang-selector;
-  span {
+  span.lang {
     text-align: center;
     // border: 1px solid black;
     display: inline-block;
@@ -81,7 +81,7 @@ div#lang_selector{
       height: 100%;
     }
   }
-  span[current="true"]{
+  span.lang[current="true"]{
     background-color: $background-color-selected;
     a {
       color: $color-selected;
@@ -142,9 +142,9 @@ ul#current-position{
   margin: 0px;
 }
 
-.warning {
-  background-color: #f00;
-  color: #fff;
+.error {
+  background-color: #f00 !important;
+  color: #fff !important;
 }
 
 div#list-of-pages{
