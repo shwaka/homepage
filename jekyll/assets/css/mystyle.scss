@@ -17,6 +17,8 @@ div#myname {
   }
 }
 
+
+
 body {
   text-align: left;
   overflow-y: scroll;
@@ -59,7 +61,7 @@ div#base_container{
   left: 0;
   right: 0;
   margin: auto;
-  width: 800px;
+  max-width: 800px;
   // height: 500px;
   /* border: 5px solid blue; */
 }
@@ -109,6 +111,9 @@ $menu-space-percent: 20%;
 #menu {
   display: flex;
   justify-content: space-around;
+  @media screen and (max-width: 480px){
+    flex-direction: column;
+  }
   width: 100%;
   border-spacing: 30px 10px;
   border-top: 5px solid gray;
@@ -118,8 +123,12 @@ $menu-space-percent: 20%;
   div.menu_item{
     text-align: center;
     width: (100% - $menu-space-percent) / $num-menu-item;
-    background-color: $background-color-unselected;
     margin: 10px;
+    @media screen and (max-width: 480px){
+      width: 100%;
+      margin: 3px;
+    }
+    background-color: $background-color-unselected;
     a{
       text-decoration: none;
       font-size: 30px;
