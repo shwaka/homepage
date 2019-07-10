@@ -103,32 +103,36 @@ div#lang_selector{
   }
 }
 
-table#menu {
-  /* width: 90%; */
+$num-menu-item: 4;
+$menu-space-percent: 20%;
+
+div#menu {
+  display: flex;
+  justify-content: space-around;
   width: 100%;
-  font-size: 30px;
   border-spacing: 30px 10px;
   border-top: 5px solid gray;
   border-bottom: 5px solid gray;
   margin-left: auto;
   margin-right: auto;
-  td{
+  div.menu_item{
     text-align: center;
-    width: 20%;
+    width: (100% - $menu-space-percent) / $num-menu-item;
     background-color: $background-color-unselected;
     margin: 10px;
     a{
       text-decoration: none;
+      font-size: 30px;
       color: $color-unselected;
       display: block;
       width: 100%;
       height: 100%;
     }
-  }
-  td[current="true"]{
-    background-color: $background-color-selected;
-    a{
-      color: $color-selected;
+    &[current="true"]{
+      background-color: $background-color-selected;
+      a{
+        color: $color-selected;
+      }
     }
   }
 }

@@ -74,32 +74,30 @@
       </div>
 
       <!-- menu -->
-      <table id="menu">
-        <tr>
-          {% assign pages=site.pages | where:"lang", page.lang %}
-          {% for ref in site.data.pages %}
-            {% for pg in pages %}
-              {% if pg.ref == ref %}
+      <div id="menu">
+        {% assign pages=site.pages | where:"lang", page.lang %}
+        {% for ref in site.data.pages %}
+          {% for pg in pages %}
+            {% if pg.ref == ref %}
 
-                {% if pg.title_short %}
-                  {% assign title = pg.title_short %}
-                {% else %}
-                  {% assign title = pg.title %}
-                {% endif %}
-
-                {% if pg.ref == page.ref %}
-                  {% assign current = "true" %}
-                {% else %}
-                  {% assign current = "false" %}
-                {% endif %}
-                <td current="{{ current }}">
-                  <a href="{{ site.baseurl }}{{ pg.url }}"> {{ title }}</a>
-                </td>
+              {% if pg.title_short %}
+                {% assign title = pg.title_short %}
+              {% else %}
+                {% assign title = pg.title %}
               {% endif %}
-            {% endfor %}
+
+              {% if pg.ref == page.ref %}
+                {% assign current = "true" %}
+              {% else %}
+                {% assign current = "false" %}
+              {% endif %}
+              <div class="menu_item" current="{{ current }}">
+                <a href="{{ site.baseurl }}{{ pg.url }}"> {{ title }}</a>
+              </div>
+            {% endif %}
           {% endfor %}
-        </tr>
-      </table>
+        {% endfor %}
+      </div>
     <div id="last-modified">
       Updated on
       {{ site.time | date: "%Y-%m-%d %H:%M" }}
