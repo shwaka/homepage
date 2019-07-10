@@ -41,9 +41,7 @@
   新しいタブで開くリンクにつけている画像([target_blank.png](/jekyll/img/target_blank.png))はここから取得
 
 # TODO
-- menu を CSS の flexbox を使って作る
 - スマホ対応
-- 「ページ一覧」は日本語と英語で分けてリストをつくる
 - baseurl のあたりを整理する．
   参考: [jekyllで構築したサイト、本番へアップしたらcssが適用されない場合に試しておきたいbaseurlの便利な変更の仕方。](https://qiita.com/woopsdez/items/cc2b64800a6de3112920)
 - デプロイ方法をどうにかしたい．
