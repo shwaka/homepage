@@ -40,6 +40,15 @@ h2 {
   border-left: 10px solid #000;
 }
 
+a[target="_blank"]{
+  // background-color: red;
+  padding-right: 15px;
+  background: url({{ site.baseurl }}/img/target_blank.png) right center/11px auto no-repeat;
+  // &:after{
+  //   content: "a";
+  // }
+}
+
 div#base_container{
   // position: absolute;
   left: 0;

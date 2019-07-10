@@ -37,6 +37,8 @@
   日付のフォーマットの例がたくさん載ってる
 - [How to properly indicate an error during site generation?](https://talk.jekyllrb.com/t/how-to-properly-indicate-an-error-during-site-generation/447)
   エラーをraiseする方法 (`error.html`で使用)
+- [icooon-mono](http://icooon-mono.com/)
+  新しいタブで開くリンクにつけている画像([target_blank.png](/jekyll/img/target_blank.png))はここから取得
 
 # TODO
 - menu を CSS の flexbox を使って作る
