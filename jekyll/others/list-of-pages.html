@@ -2,20 +2,23 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
-<div id="list-of-pages">
-  <ul>
-    {% for pg in site.pages %}
-      <li>
-        {% if pg.title %}
-          {% assign name = pg.title %}
-        {% else %}
-          {% assign name = pg.url %}
-        {% endif %}
-        <a href="{{ site.baseurl }}{{ pg.url }}">{{ name }}</a>
-        {% if pg.lang %}
+<!-- <div id="list-of-pages"> -->
+<ul>
+  {% assign page_list = site.pages | where: "lang", include.lang %}
+  {% for pg in page_list %}
+    <li>
+      {% if pg.title %}
+        {% assign name = pg.title %}
+      {% else %}
+        {% assign name = pg.url %}
+      {% endif %}
+      <a href="{{ site.baseurl }}{{ pg.url }}">{{ name }}</a>
+      {% if pg.lang %}
+        {% unless include.lang %}
           ({% include get-lang-name.html lang=pg.lang as=page.lang %})
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+        {% endunless %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+<!-- </div> -->
