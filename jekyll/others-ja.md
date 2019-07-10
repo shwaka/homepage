@@ -14,8 +14,14 @@ ref: others
 - [有理ホモトピー論入門](notes/RationalHomotopyTheory_seminar.pdf){:target="_blank"}
   (2015年7月，身内でのセミナー)
 
+## このサイトについて
+このサイトは [Jekyll](https://jekyllrb.com/){:target="_blank"} 製で，
+ソースコードは [GitHub](https://github.com/shwaka/homepage){:target="_blank"} で公開しています．
+(もちろん内容はご自身のものに置き換えるという前提で)
+再利用もご自由にしていただいて構いません．
+
+
 ## その他
 - {% include link-to-ref.html ref="list-of-pages" text="ページ一覧" -%}
-- [GitHub](https://github.com/shwaka/homepage){:target="_blank"}
 - {% include link-to-ref.html ref="blog" text="ブログ" -%}
 - {% include link-to-ref.html ref="counter" -%}
