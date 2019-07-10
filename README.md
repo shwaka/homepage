@@ -31,6 +31,9 @@
 - [Liquid公式](https://shopify.github.io/liquid/)
 - [30分のチュートリアルでJekyllを理解する](https://melborne.github.io/2012/05/13/first-step-of-jekyll/)
   初めて `jekyll` を使うならとりあえずこれを読めば良さそう．
+  2012年の記事なので割と古いけど，2019年時点ではチュートリアルとして概ね問題なく機能した．
+  たまにエラーは発生したけど，エラーメッセージが親切だったので特に問題はなかった．
+  (後から気付いたけど，2013年に改訂版[Jekyllいつやるの？ジキやルの？今でしょ！](http://melborne.github.io/2013/05/20/now-the-time-to-start-jekyll/)が書かれていたので，こちらを読んだ方が良さそう)
 - [Making Jekyll multilingual – Sylvain Durand](https://www.sylvaindurand.org/making-jekyll-multilingual/)
   多言語対応などの，上の「30分のチュートリアル」よりも進んだ内容が書かれている．
 - [Jekyll Date Formatting Examples - Alan W. Smith](http://alanwsmith.com/jekyll-liquid-date-formatting-examples)
