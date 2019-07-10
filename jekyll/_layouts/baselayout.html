@@ -74,7 +74,7 @@
       </div>
 
       <!-- menu -->
-      <div id="menu">
+      <nav id="menu">
         {% assign pages=site.pages | where:"lang", page.lang %}
         {% for ref in site.data.pages %}
           {% for pg in pages %}
@@ -97,7 +97,7 @@
             {% endif %}
           {% endfor %}
         {% endfor %}
-      </div>
+      </nav>
     <div id="last-modified">
       Updated on
       {{ site.time | date: "%Y-%m-%d %H:%M" }}
