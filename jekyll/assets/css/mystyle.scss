@@ -36,8 +36,8 @@ h2 {
   font-size: 25px;
   font-weight: normal;
   /* font-family: "Estrangelo Edessa"; "Trebuchet MS"; "Arial"; "Helvetica"; */
-  border-bottom: 2px solid #000;
-  border-left: 10px solid #000;
+  border-bottom: 2px solid black;
+  border-left: 10px solid black;
 }
 
 a[target="_blank"]{
@@ -67,14 +67,14 @@ div#base_container{
 div#last-modified{
   text-align: right;
   margin-top: 6px;
-  color: #666;
+  color: hsl(0, 0%, 40%);
 }
 
 $color-selected: white;
-$background-color-selected: #666;
+$background-color-selected: hsl(0, 0%, 40%);
 
-$color-unselected: #666;
-$background-color-unselected: #EEE;
+$color-unselected: hsl(0, 0%, 40%);
+$background-color-unselected: hsl(0, 0%, 92%);
 
 $height-lang-selector: 25px;
 div#lang_selector{
@@ -173,8 +173,8 @@ ol.talks li{
 }
 
 .error {
-  background-color: #f00 !important;
-  color: #fff !important;
+  background-color: red !important;
+  color: white !important;
 }
 
 div#access_counter{
@@ -187,5 +187,5 @@ div#access_counter{
 div#list-of-pages{
   margin-top: 60px;
   border: 1px solid black;
-  background-color: #eee;
+  background-color: hsl(0, 0%, 90%);
 }
