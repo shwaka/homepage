@@ -26,6 +26,12 @@
 3. `jekyll (live)serve`
 4. スマホから `192.168.1.10:4000` にアクセス (ポート番号は `jekyll serve` の出力を見て確認)
 
+## deploy
+- local は `_site/`
+- sftp 接続した remote は `public_html/`
+にそれぞれ移動した状態で， `put -r .` すれば上書きとかも上手くいく．
+ただし，「全てのファイル」をアップロードするので無駄が多い．
+
 ## 注意点
 - (要調査) `jekyll liveserve` で生成したサイトをそのままアップロードしても平気？
   駄目ならアップロード前に改めて `jekyll build` する
@@ -55,6 +61,8 @@
 - スマホ対応
 - baseurl のあたりを整理する．
   参考: [jekyllで構築したサイト、本番へアップしたらcssが適用されない場合に試しておきたいbaseurlの便利な変更の仕方。](https://qiita.com/woopsdez/items/cc2b64800a6de3112920)
+  baseurl って `https://www.ms.u-tokyo.ac.jp/~swaka` より `/~swaka` の方が良かったりする？
 - デプロイ方法をどうにかしたい．
-  とくに，重いPDFをいちいち upload するのは無駄
+    - 自動化したい
+    - 重いPDFをいちいち upload するのは無駄
 - emacs の `web-mode` が Jekyll(Liquid?) の `case`-`else`-`endcase` に対応してない
