@@ -42,12 +42,17 @@ h2 {
 
 a[target="_blank"]{
   // background-color: red;
-  padding-right: 15px;
+  padding-right: 13px;
   background: url({{ site.baseurl }}/img/target_blank.png) right center/11px auto no-repeat;
   // &:after{
   //   content: "a";
   // }
+  div#access_counter &{
+    padding-right: 0px;
+    background: none;
+  }
 }
+
 
 div#base_container{
   // position: absolute;
