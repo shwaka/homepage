@@ -18,3 +18,4 @@ ref: others
 - {% include link-to-ref.html ref="list-of-pages" text="ページ一覧" -%}
 - [GitHub](https://github.com/shwaka/homepage){:target="_blank"}
 - {% include link-to-ref.html ref="blog" text="ブログ" -%}
+- {% include link-to-ref.html ref="counter" -%}

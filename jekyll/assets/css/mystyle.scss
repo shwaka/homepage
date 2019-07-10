@@ -159,6 +159,13 @@ ol.talks li{
   color: #fff !important;
 }
 
+div#access_counter{
+  text-align: center;
+  &.access_counter_hidden{
+    display: none;
+  }
+}
+
 div#list-of-pages{
   margin-top: 60px;
   border: 1px solid black;
