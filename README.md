@@ -14,10 +14,6 @@
 - `jekyll serve`
     - 以前は `hawkins` プラグインの `jekyll liveserve` を使ってたけど，
       割と最近 `jekyll` 本体に `livereload` として組込まれたみたいなので，こっちを使うことにした．
-- `jekyll serve` する際は `--baseurl "/~swaka"` をつけた方が良い．
-    - 何もつけないと，`_config.yml` の `baseurl:` のせいで変な URL になる．
-    - `--baseurl ""` だと，`{{ site.baseurl }}` のつけ忘れに気付けない
-    - そもそも `_config.yml` でも `baseurl: /~swaka` で良いのでは？
 
 ## スマホでのテスト
 [Connect to a locally built Jekyll Server using mobile devices in the LAN](https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan)
@@ -62,10 +58,6 @@
 - [CSSだけで簡単！ハンバーガーメニューの作り方（スマホ対応）](https://saruwakakun.com/html-css/reference/nav-drawer)
 
 # TODO
-- スマホ対応
-- baseurl のあたりを整理する．
-  参考: [jekyllで構築したサイト、本番へアップしたらcssが適用されない場合に試しておきたいbaseurlの便利な変更の仕方。](https://qiita.com/woopsdez/items/cc2b64800a6de3112920)
-  baseurl って `https://www.ms.u-tokyo.ac.jp/~swaka` より `/~swaka` の方が良かったりする？
 - デプロイ方法をどうにかしたい．
     - 自動化したい
     - 重いPDFをいちいち upload するのは無駄
