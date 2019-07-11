@@ -76,28 +76,33 @@
 
       <!-- menu -->
       <nav id="menu">
-        {% assign pages=site.pages | where:"lang", page.lang %}
-        {% for ref in site.data.pages %}
-          {% for pg in pages %}
-            {% if pg.ref == ref %}
+        <input id="menu-input" type="checkbox" class="menu-unshown"/>
+        <label id="menu-open" for="menu-input"><span></span></label>
+        <label id="menu-close" class="menu-unshown" for="menu-input"></label>
+        <div id="menu-content">
+          {% assign pages=site.pages | where:"lang", page.lang %}
+          {% for ref in site.data.pages %}
+            {% for pg in pages %}
+              {% if pg.ref == ref %}
 
-              {% if pg.title_short %}
-                {% assign title = pg.title_short %}
-              {% else %}
-                {% assign title = pg.title %}
-              {% endif %}
+                {% if pg.title_short %}
+                  {% assign title = pg.title_short %}
+                {% else %}
+                  {% assign title = pg.title %}
+                {% endif %}
 
-              {% if pg.ref == page.ref %}
-                {% assign current = "true" %}
-              {% else %}
-                {% assign current = "false" %}
+                {% if pg.ref == page.ref %}
+                  {% assign current = "true" %}
+                {% else %}
+                  {% assign current = "false" %}
+                {% endif %}
+                <div class="menu_item" current="{{ current }}">
+                  <a href="{{ site.baseurl }}{{ pg.url }}"> {{ title }}</a>
+                </div>
               {% endif %}
-              <div class="menu_item" current="{{ current }}">
-                <a href="{{ site.baseurl }}{{ pg.url }}"> {{ title }}</a>
-              </div>
-            {% endif %}
+            {% endfor %}
           {% endfor %}
-        {% endfor %}
+        </div>
       </nav>
     <div id="last-modified">
       Updated on
