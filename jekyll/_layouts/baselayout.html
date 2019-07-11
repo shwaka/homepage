@@ -24,55 +24,6 @@
           Shun Wakatsuki
         {% endif %}
       </div>
-      <!-- language selector -->
-      <div id="lang_selector">
-        {% for lang_data in site.data.languages %}
-          {% assign page_found = false %}
-          {% if page.ref %}
-            {% assign pages=site.pages | where: "ref", page.ref | where: "lang", lang_data.key %}
-            {% for pg in pages %}
-              {% comment %} length(pages) <= 1 {% endcomment %}
-              {% if page_found %}
-                {% include error.html msg="duplicated ref" %}
-                {% break %}
-              {% endif %}
-              {% if pg.lang == page.lang %}
-                {% assign current = "true" %}
-              {% else %}
-                {% assign current = "false" %}
-              {% endif %}
-              {% assign url = pg.url %}
-              {% assign page_found = true %}
-            {% endfor %}
-          {% elsif page.lang == lang_data.key %}
-            {% assign url = page.url %}
-            {% assign current = "true" %}
-            {% assign page_found = true %}
-          {% endif %}
-          {% unless page_found %}
-            {% assign url = "/index.html" %}
-            {% assign current = "false" %}
-          {% endunless %}
-          <span class="lang {{ lang_data.key }}" current="{{ current }}">
-            <a href="{{ site.baseurl }}{{ url }}" class="{{ lang_data.key }}" current="{{ current }}">
-              {{ lang_data.names.short }}
-            </a>
-          </span>
-        {% endfor %}
-        {% comment %}
-        {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
-        {% for pg in pages %}
-        {% if pg.lang == page.lang %}
-        {% assign current = "true" %}
-        {% else %}
-        {% assign current = "false" %}
-        {% endif %}
-        <a href="{{ pg.url }}" class="{{ pg.lang }}" current="{{ current }}">
-        {{ pg.lang }}
-        </a>
-        {% endfor %}
-        {% endcomment %}
-      </div>
 
       <!-- menu -->
       <nav id="menu">
@@ -80,28 +31,80 @@
         <label id="menu-open" for="menu-input"><span></span></label>
         <label id="menu-close" class="menu-unshown" for="menu-input"></label>
         <div id="menu-content">
-          {% assign pages=site.pages | where:"lang", page.lang %}
-          {% for ref in site.data.pages %}
-            {% for pg in pages %}
-              {% if pg.ref == ref %}
-
-                {% if pg.title_short %}
-                  {% assign title = pg.title_short %}
-                {% else %}
-                  {% assign title = pg.title %}
-                {% endif %}
-
-                {% if pg.ref == page.ref %}
-                  {% assign current = "true" %}
-                {% else %}
-                  {% assign current = "false" %}
-                {% endif %}
-                <div class="menu_item" current="{{ current }}">
-                  <a href="{{ site.baseurl }}{{ pg.url }}"> {{ title }}</a>
-                </div>
+          <!-- language selector -->
+          <div id="lang_selector">
+            {% for lang_data in site.data.languages %}
+              {% assign page_found = false %}
+              {% if page.ref %}
+                {% assign pages=site.pages | where: "ref", page.ref | where: "lang", lang_data.key %}
+                {% for pg in pages %}
+                  {% comment %} length(pages) <= 1 {% endcomment %}
+                  {% if page_found %}
+                    {% include error.html msg="duplicated ref" %}
+                    {% break %}
+                  {% endif %}
+                  {% if pg.lang == page.lang %}
+                    {% assign current = "true" %}
+                  {% else %}
+                    {% assign current = "false" %}
+                  {% endif %}
+                  {% assign url = pg.url %}
+                  {% assign page_found = true %}
+                {% endfor %}
+              {% elsif page.lang == lang_data.key %}
+                {% assign url = page.url %}
+                {% assign current = "true" %}
+                {% assign page_found = true %}
               {% endif %}
+              {% unless page_found %}
+                {% assign url = "/index.html" %}
+                {% assign current = "false" %}
+              {% endunless %}
+              <span class="lang {{ lang_data.key }}" current="{{ current }}">
+                <a href="{{ site.baseurl }}{{ url }}" class="{{ lang_data.key }}" current="{{ current }}">
+                  {{ lang_data.names.short }}
+                </a>
+              </span>
             {% endfor %}
-          {% endfor %}
+            {% comment %}
+            {% assign pages=site.pages | where: "ref", page.ref | sort: "lang" %}
+            {% for pg in pages %}
+            {% if pg.lang == page.lang %}
+            {% assign current = "true" %}
+            {% else %}
+            {% assign current = "false" %}
+            {% endif %}
+            <a href="{{ pg.url }}" class="{{ pg.lang }}" current="{{ current }}">
+            {{ pg.lang }}
+            </a>
+            {% endfor %}
+            {% endcomment %}
+          </div>
+          <!-- main menu -->
+          <div id="main-menu">
+            {% assign pages=site.pages | where:"lang", page.lang %}
+            {% for ref in site.data.pages %}
+              {% for pg in pages %}
+                {% if pg.ref == ref %}
+
+                  {% if pg.title_short %}
+                    {% assign title = pg.title_short %}
+                  {% else %}
+                    {% assign title = pg.title %}
+                  {% endif %}
+
+                  {% if pg.ref == page.ref %}
+                    {% assign current = "true" %}
+                  {% else %}
+                    {% assign current = "false" %}
+                  {% endif %}
+                  <div class="menu_item" current="{{ current }}">
+                    <a href="{{ site.baseurl }}{{ pg.url }}"> {{ title }}</a>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </div>
         </div>
       </nav>
     <div id="last-modified">

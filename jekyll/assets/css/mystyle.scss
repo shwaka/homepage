@@ -24,6 +24,9 @@ header{
 
 div#myname {
   font-size: 50px;
+  @include mq(){
+    font-size: 30px;
+  }
   text-align: center;
   margin: 20px;
   body.ja &{
@@ -96,6 +99,9 @@ $height-lang-selector: 25px;
 div#lang_selector{
   text-align: right;
   margin-top: -$height-lang-selector;
+  @include mq(){
+    margin-top: 0px;
+  }
   height: $height-lang-selector;
   span.lang {
     text-align: center;
@@ -138,10 +144,11 @@ $menu-space-percent: 20%;
     position: fixed;
     top: 0;
     left: 0;
-    margin: 5px;
+    padding: 3px 0px 1px 3px;
     width: 30px;
     height: 22px;
     vertical-align: middle;
+    background: white;
   }
   #menu-open span, #menu-open span:before, #menu-open span:after{
     // ハンバーガーアイコンをCSSで書く
@@ -197,11 +204,12 @@ $menu-space-percent: 20%;
   }
 }
 
-#menu-content {
+#main-menu {
   display: flex;
   justify-content: space-around;
   @include mq(){
     flex-direction: column;
+    align-items: center;
   }
   width: 100%;
   border-spacing: 30px 10px;
@@ -214,7 +222,7 @@ $menu-space-percent: 20%;
     width: (100% - $menu-space-percent) / $num-menu-item;
     margin: 10px;
     @include mq(){
-      width: 100%;
+      width: 95%;
       margin: 3px;
     }
     background-color: $background-color-unselected;
