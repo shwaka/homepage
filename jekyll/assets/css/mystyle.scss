@@ -1,5 +1,18 @@
 ---
 ---
+
+
+$breakpoints: (
+  "small": "screen and (max-width: 480px)",
+  "middle": "screen and (max-width: 800px)"
+) !default;
+
+@mixin mq($breakpoint: small){
+  @media #{map-get($breakpoints, $breakpoint)}{
+    @content;
+  }
+}
+
 header{
   left: 0;
   right: 0;
@@ -111,7 +124,7 @@ $menu-space-percent: 20%;
 #menu {
   display: flex;
   justify-content: space-around;
-  @media screen and (max-width: 480px){
+  @include mq(){
     flex-direction: column;
   }
   width: 100%;
@@ -124,7 +137,7 @@ $menu-space-percent: 20%;
     text-align: center;
     width: (100% - $menu-space-percent) / $num-menu-item;
     margin: 10px;
-    @media screen and (max-width: 480px){
+    @include mq(){
       width: 100%;
       margin: 3px;
     }
@@ -147,22 +160,22 @@ $menu-space-percent: 20%;
 }
 
 table#cv{
-    border-spacing: 10px 0px;
+  border-spacing: 10px 0px;
 }
 
 table#cv th{
-    text-align: right;
+  text-align: right;
 }
 
 table#cv td{
-    text-align: left;
+  text-align: left;
 }
 
 h3.list-header{
-    // padding: 0px;
-    margin: 0px;
-    font-size: 12pt;
-    font-weight: normal;
+  // padding: 0px;
+  margin: 0px;
+  font-size: 12pt;
+  font-weight: normal;
 }
 
 ul#current-position{
