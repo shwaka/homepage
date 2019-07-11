@@ -34,8 +34,7 @@
 - (要調査) `jekyll serve` で生成したサイトをそのままアップロードしても平気？
   (`livereload` あたりが気になる)
   駄目ならアップロード前に改めて `jekyll build` する
-- アップロード前の build は `git commit` した後に行う．
-  そうしないと `last-modified-at` プラグインが更新時刻を検出できない．
+- サイト内のリンクを書く際は，必ず `{{ site.baseurl }}/hoge.html` みたいにする
 
 # References
 全部列挙はさすがにできないので，主なもののみ
