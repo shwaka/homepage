@@ -11,12 +11,13 @@
 `jekyll/` ディレクトリで `jekyll build`
 
 ## test
-- `jekyll serve --watch` が良いかも
-- `hawkins` プラグインの `jekyll liveserve` の方が便利
-  (ブラウザでのリロードが不要)
-- `(live)serve` する際は `--baseurl "/~swaka"` をつけた方が良い．
+- `jekyll serve`
+    - 以前は `hawkins` プラグインの `jekyll liveserve` を使ってたけど，
+      割と最近 `jekyll` 本体に `livereload` として組込まれたみたいなので，こっちを使うことにした．
+- `jekyll serve` する際は `--baseurl "/~swaka"` をつけた方が良い．
     - 何もつけないと，`_config.yml` の `baseurl:` のせいで変な URL になる．
     - `--baseurl ""` だと，`{{ site.baseurl }}` のつけ忘れに気付けない
+    - そもそも `_config.yml` でも `baseurl: /~swaka` で良いのでは？
 
 ## スマホでのテスト
 [Connect to a locally built Jekyll Server using mobile devices in the LAN](https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan)
@@ -34,7 +35,8 @@
 ただし，「全てのファイル」をアップロードするので無駄が多い．
 
 ## 注意点
-- (要調査) `jekyll liveserve` で生成したサイトをそのままアップロードしても平気？
+- (要調査) `jekyll serve` で生成したサイトをそのままアップロードしても平気？
+  (`livereload` あたりが気になる)
   駄目ならアップロード前に改めて `jekyll build` する
 - アップロード前の build は `git commit` した後に行う．
   そうしないと `last-modified-at` プラグインが更新時刻を検出できない．
