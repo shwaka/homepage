@@ -14,6 +14,8 @@ $breakpoints: (
   }
 }
 
+@import "menu.scss";
+
 header{
   left: 0;
   right: 0;
@@ -89,160 +91,6 @@ div#last-modified{
   color: hsl(0, 0%, 40%);
 }
 
-$color-selected: white;
-$background-color-selected: hsl(0, 0%, 40%);
-
-$color-unselected: hsl(0, 0%, 40%);
-$background-color-unselected: hsl(0, 0%, 92%);
-
-$height-lang-selector: 25px;
-div#lang_selector{
-  text-align: right;
-  margin-top: -$height-lang-selector;
-  @include mq(){
-    margin-top: 0px;
-  }
-  height: $height-lang-selector;
-  span.lang {
-    text-align: center;
-    // border: 1px solid black;
-    display: inline-block;
-    width: 30px;
-    background-color: $background-color-unselected;
-    a{
-      text-decoration: none;
-      color: $color-unselected;
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  }
-  span.lang[current="true"]{
-    background-color: $background-color-selected;
-    a {
-      color: $color-selected;
-    }
-  }
-}
-
-$num-menu-item: 4;
-$menu-space-percent: 20%;
-
-#menu-input, #menu-open, #menu-close{
-  display: none;
-}
-
-@include mq(){
-  #menu{
-    position: relative;
-  }
-  .menu-unshown{
-    display: none;
-  }
-  #menu-open{
-    display: inline-block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 3px 0px 1px 3px;
-    width: 30px;
-    height: 22px;
-    vertical-align: middle;
-    background: white;
-  }
-  #menu-open span, #menu-open span:before, #menu-open span:after{
-    // ハンバーガーアイコンをCSSで書く
-    position: absolute;
-    height: 3px;                // 線の太さ
-    width: 25px;                // 長さ
-    border-radius: 3px;
-    background: hsl(0, 0%, 30%);
-    display: block;
-    content: "";
-    cursor: pointer;
-  }
-  #menu-open span:before{
-    bottom: -8px;
-  }
-  #menu-open span:after{
-    bottom: -16px;
-  }
-  #menu-close{
-    display: none;
-    position: fixed;
-    z-index: 99;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    opacity: 0;
-    transition: .3s ease-in-out;
-  }
-  #menu-content{
-    overflow: auto;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    width: 90%;
-    max-width: 330px;
-    // height: 100%;
-    background: white;
-    transition: .3s ease-in-out;
-    -webkit-transform: translateX(-105%);
-    transform: translateX(-105%); // 左に隠しておく
-  }
-  #menu-input:checked ~ #menu-close{
-    display: block;             // カバーを表示
-    opacity: .5;
-  }
-  #menu-input:checked ~ #menu-content{
-    -webkit-transform: translateX(0%);
-    transform: translateX(0%);  // 中身を表示(右へスライド)
-    box-shadow: 6px 0 25px rgba(0,0,0,.15);
-  }
-}
-
-#main-menu {
-  display: flex;
-  justify-content: space-around;
-  @include mq(){
-    flex-direction: column;
-    align-items: center;
-  }
-  width: 100%;
-  border-spacing: 30px 10px;
-  border-top: 5px solid gray;
-  border-bottom: 5px solid gray;
-  margin-left: auto;
-  margin-right: auto;
-  div.menu_item{
-    text-align: center;
-    width: (100% - $menu-space-percent) / $num-menu-item;
-    margin: 10px;
-    @include mq(){
-      width: 95%;
-      margin: 3px;
-    }
-    background-color: $background-color-unselected;
-    a{
-      text-decoration: none;
-      font-size: 30px;
-      color: $color-unselected;
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-    &[current="true"]{
-      background-color: $background-color-selected;
-      a{
-        color: $color-selected;
-      }
-    }
-  }
-}
-
 table#cv{
   border-spacing: 10px 0px;
 }
@@ -288,10 +136,4 @@ div#access_counter{
   &.access_counter_hidden{
     display: none;
   }
-}
-
-div#list-of-pages{
-  margin-top: 60px;
-  border: 1px solid black;
-  background-color: hsl(0, 0%, 90%);
 }
