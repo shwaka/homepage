@@ -8,7 +8,7 @@
     {%- if include.text %}
       {{ include.text }}
     {%- elsif pg.title %}
-      {{ pg.title }}
+      {{ include.prefix }}{{ pg.title }}
     {%- else %}
       {{ pg.url }}
     {%- endif %}

@@ -91,11 +91,19 @@ div#base_container{
   /* border: 5px solid blue; */
 }
 
-div#last-modified{
-  text-align: right;
-  margin-top: 6px;
-  color: hsl(0, 0%, 40%);
+div#info{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  span{
+    margin-top: 6px;
+  }
+  #last-modified{
+    // text-align: right;
+    color: hsl(0, 0%, 40%);
+  }
 }
+
 
 table#cv{
   border-spacing: 10px 0px;

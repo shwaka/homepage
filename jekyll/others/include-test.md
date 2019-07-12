@@ -3,6 +3,7 @@ layout: mylayout
 title: てすと
 lang: ja
 ref: include-test
+backref: others
 ---
 
 他のページから読み込んでみるテスト

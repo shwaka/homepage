@@ -108,14 +108,26 @@
         </div>
       </nav>
 
-      <div id="last-modified">
-        Updated on
-        {{ site.time | date: "%Y-%m-%d %H:%M" }}
-        {% comment %}
-        {{ page.last_modified_at | date: "%Y-%m-%d %H:%M" }}
-        インポート先を見に行ってくれないのでやめた．
-        とりあえず代わりに site.time を使ってサイト全体の変更日時を見る．
-        {% endcomment %}
+      <div id="info">
+        <span id="back">
+          {% if page.backref %}
+            {% assign backref = page.backref %}
+          {% elsif layout.backref %}
+            {% assign backref = layout.backref %}
+          {% endif %}
+          {% if backref %}
+            {% include link-to-ref.html ref=backref prefix="<< "%}
+          {% endif %}
+        </span>
+        <span id="last-modified">
+          Updated on
+          {{ site.time | date: "%Y-%m-%d %H:%M" }}
+          {% comment %}
+          {{ page.last_modified_at | date: "%Y-%m-%d %H:%M" }}
+          インポート先を見に行ってくれないのでやめた．
+          とりあえず代わりに site.time を使ってサイト全体の変更日時を見る．
+          {% endcomment %}
+        </span>
       </div>
     </header>
 

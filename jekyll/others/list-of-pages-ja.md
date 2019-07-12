@@ -3,6 +3,7 @@ layout: mylayout
 lang: ja
 ref: list-of-pages
 title: ページ一覧
+backref: others
 ---
 
 このページの内容は機械的に生成されたもので，

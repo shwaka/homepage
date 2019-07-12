@@ -4,6 +4,7 @@ lang: ja
 ref: counter
 title: アクセスカウンター
 access_counter: true
+backref: others
 ---
 
 アクセスカウンターを試しに置いてみた．

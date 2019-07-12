@@ -3,6 +3,7 @@ layout: mylayout
 lang: ja
 ref: blog
 title: ブログ
+backref: others
 ---
 
 Jekyll にブログ機能があったからとりあえず作ってみたけど，
