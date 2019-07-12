@@ -9,7 +9,14 @@
     <meta name="keywords" content="Shun Wakatsuki, 若月駿">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/mystyle.css" type="text/css"></link>
+    <link rel="stylesheet"
+          href="{{ site.baseurl }}/assets/css/mystyle.css"
+          type="text/css"></link>
+    {% if page.syntax-highlighting %}
+      <link rel="stylesheet"
+            href="{{ site.baseurl }}/assets/css/syntax-highlighting.css"
+            type="text/css"></link>
+    {% endif %}
     <!-- <link rel="stylesheet" href="/assets/css/syntax.css" type="text/css"></link>
          <script type="text/javascript"
          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">

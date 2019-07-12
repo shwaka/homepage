@@ -56,6 +56,9 @@
   新しいタブで開くリンクにつけている画像([target_blank.png](/jekyll/img/target_blank.png))はここから取得
 - [CSSだけで簡単！ハンバーガーメニューの作り方（スマホ対応）](https://saruwakakun.com/html-css/reference/nav-drawer)
 - [Jekyll cheatsheet](https://devhints.io/jekyll)
+- [Syntax Highlighting in Jekyll](https://mycyberuniverse.com/syntax-highlighting-jekyll.html)
+    - [richleland/pygments-css](https://github.com/richleland/pygments-css) `rouge` は `pygments` のものを流用できる
+    - [themesのプレビュー](http://richleland.github.io/pygments-css/)
 
 # TODO
 - デプロイ方法をどうにかしたい．
