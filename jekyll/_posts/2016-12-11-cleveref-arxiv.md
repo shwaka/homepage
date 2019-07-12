@@ -53,6 +53,7 @@ arXivでは上記の方法でうまく行くと思いますが、他の状況で
 
 \end{document}
 ```
+{:filename="hoge.tex"}
 
 上記のように、cleverefにpoormanオプションを指定して読み込みます。
 これをコンパイルすると、同じディレクトリに`hoge.sed`なるファイル[^2]が生成されます。
@@ -84,6 +85,7 @@ sed -f hoge.sed hoge.tex > hogeforpoorman.tex
 
 \end{document}
 ```
+{:filename="hogeforpoorman.tex"}
 
 確かにcleverefに依存する部分が全て取り除かれた上で、元々はcleverefによって補われていた`Theorem`がソースコードに挿入されていますね。
 このファイルであれば、おそらくどんな環境のLaTeXでも正しくコンパイルできると思います。

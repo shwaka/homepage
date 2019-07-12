@@ -40,6 +40,7 @@ ref: post:company-dabbrev-japanese
 ;; (add-hook 'TeX-mode-hook 'edit-category-table-for-company-dabbrev) ; 下の追記参照
 (setq company-dabbrev-char-regexp "\\cs")
 ```
+{:filename="init.el"}
 
 (2017/10/30 追記)
 `edit-category-table-for-company-dabbrev` をEmacs起動時に実行してしまうと，ドル記号`$`にもcategory`s`が設定されてしまうようです．TeXモードで使用する場合にはこれでは色々と不都合があるので，`add-hook`を用いてTeXモード開始後に実行します．(当然ですが，モード名については各々の環境に合わせて修正して下さい)
