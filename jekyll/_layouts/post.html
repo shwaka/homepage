@@ -16,3 +16,20 @@ backref: blog
 <div class="blog_main">
   {{ content }}
 </div>
+
+<div id="blog_footer">
+  {% if page.next %}
+    <a href="{{ site.baseurl }}{{ page.next.url }}">
+      < {{ page.next.title }} (new)
+    </a>
+  {% else %}
+    <span></span>  <!-- for flexbox -->
+  {% endif %}
+  {% if page.previous %}
+    <a href="{{ site.baseurl }}{{ page.previous.url }}">
+      (old) {{ page.previous.title }} >
+    </a>
+  {% else %}
+    <span></span>  <!-- for flexbox -->
+  {% endif %}
+</div>
