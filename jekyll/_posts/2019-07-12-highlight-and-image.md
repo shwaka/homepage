@@ -42,6 +42,10 @@ class Hoge:
 {% endhighlight %}
 
 ## コードブロックにファイル名をつけたい
+ここで色々とテストして出来上がったものを
+{%- include link-to-ref.html ref="post:named-codeblock" type="post" -%}
+にまとめておいた．
+
 - [Showing file name in Jekyll with Pygments code highlight](https://stackoverflow.com/questions/25881134/showing-file-name-in-jekyll-with-pygments-code-highlight) こっちは微妙だった
 - [GitHub Pagesでコードブロックにファイル名を表示する](https://hachy.github.io/2018/11/14/add-file-name-to-code-block-in-jekyll-on-github-pages.html) これを自分好みに修正した
 
