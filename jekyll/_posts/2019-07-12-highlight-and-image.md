@@ -41,6 +41,30 @@ class Hoge:
         # This is a comment
 {% endhighlight %}
 
+## コードブロックにファイル名をつけたい
+- [Showing file name in Jekyll with Pygments code highlight](https://stackoverflow.com/questions/25881134/showing-file-name-in-jekyll-with-pygments-code-highlight) こっちは微妙だった
+- [GitHub Pagesでコードブロックにファイル名を表示する](https://hachy.github.io/2018/11/14/add-file-name-to-code-block-in-jekyll-on-github-pages.html) これを自分好みに修正した
+
+{% highlight ruby %}
+def print_hi(name)
+    puts "Hi, #{name}"
+end
+{% endhighlight -%}
+{:filename="hoge.rb" .named-block}
+
+{% highlight ruby linenos %}
+def print_hi(name)
+    puts "Hi, #{name}"
+end
+{% endhighlight -%}
+{:filename="hoge.rb" .named-block}
+
+### class test
+```python
+def hoge():
+    return True
+```
+{:filename="hoge.py" .named-block}
 
 ## 画像の読み込み
 
