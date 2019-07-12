@@ -2,8 +2,15 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
-{%- assign pages_filtered = site.pages | where: "ref", include.ref | where: "lang", page.lang %}
+{%- if include.type == "post" %}
+  {%- assign pages = site.posts %}
+{%- else %}
+  {%- assign pages = site.pages %}
+{%- endif %}
+{%- assign pages_filtered = pages | where: "ref", include.ref | where: "lang", page.lang %}
+{%- assign page_found = false %}
 {%- for pg in pages_filtered %}
+  {%- assign page_found = true %}
   <a href="{{ site.baseurl }}{{ pg.url }}">
     {%- if include.text %}
       {{ include.text }}
@@ -14,3 +21,9 @@
     {%- endif %}
   </a>
 {%- endfor %}
+{%- unless page_found %}
+  {% capture msg %}
+    page not found: ref={{ include.ref }}, lang={{ page.lang }}
+  {% endcapture %}
+  {%- include error.html msg=msg %}
+{%- endunless %}

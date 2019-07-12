@@ -2,3 +2,4 @@ baseurl: /~swaka
 # url: https://www.ms.u-tokyo.ac.jp/~swaka
 host: 0.0.0.0
 livereload: true
+timezone: Asia/Tokyo
