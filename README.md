@@ -65,3 +65,6 @@
     - 自動化したい
     - 重いPDFをいちいち upload するのは無駄
 - emacs の `web-mode` が Jekyll(Liquid?) の `case`-`else`-`endcase` に対応してない
+- ディレクトリ構造を整理
+    - `jekyll/img/` を `assets/img/` に統合
+    - `jekyll/research-includes/` は `_includes/` のサブディレクトリにする (できる？)
