@@ -1,13 +1,13 @@
 ---
 layout: post
 lang: ja
-title: ふが
+title: ハイライトと画像のテスト
 syntax-highlighting: true
 ---
 
 色々とテストしてみる．
 
-## コードブロック(with シンタックスハイライト)
+## シンタックスハイライト(コードブロック)
 2通りのやり方がある．
 - `highlight` タグを用いて `{% raw %}{% highlight tex %}{% endraw %}` と
   `{% raw %}{% endhighlight %}{% endraw %}` で囲う
@@ -15,7 +15,7 @@ syntax-highlighting: true
 
 見て分かるように，どっちを使うかによって出力が微妙に変わる
 
-参考: [Syntax Highlighting in Jekyll](http://sangsoonam.github.io/2019/01/20/syntax-highlighting-in-jekyll.html)
+参考: [Syntax Highlighting in Jekyll](http://sangsoonam.github.io/2019/01/20/syntax-highlighting-in-jekyll.html){:target="_blank"}
 
 ### `highlight` タグ
 {% highlight tex %}
