@@ -68,3 +68,4 @@
 - ディレクトリ構造を整理
     - `jekyll/img/` を `assets/img/` に統合
     - `jekyll/research-includes/` は `_includes/` のサブディレクトリにする (できる？)
+- コードブロックをスマホから表示すると，右にはみ出て悲惨なことになる
