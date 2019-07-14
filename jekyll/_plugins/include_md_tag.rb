@@ -28,7 +28,6 @@ module Jekyll
         # convert markdown to html
         # converter = site.converters[0]
         converter = site.converters.find{|conv| conv.matches(".md")}
-        puts converter
         return converter.convert(rendered_md)
       else
         raise "not found: page or post with ref=#{@ref}, lang=#{lang}"
