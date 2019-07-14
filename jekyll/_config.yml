@@ -5,4 +5,5 @@ livereload: true
 timezone: Asia/Tokyo
 refer:
   key: ref
-  default_value: top
+  default_to_page:
+    - lang

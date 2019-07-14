@@ -83,7 +83,7 @@ ref-list:
             {% assign backref = layout.backref %}
           {% endif %}
           {% if backref %}
-            {{ backref | refer: "lang", page.lang | refer_link: nil, "<< " }}
+            {{ backref | refer | refer_link: nil, "<< " }}
           {% endif %}
         </span>
         <span id="last-modified">

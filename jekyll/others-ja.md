@@ -22,7 +22,7 @@ ref: others
 
 
 ## その他
-- {{ "list-of-pages" | refer: "lang", "ja" | refer_link: "ページ一覧" }}
-- {{ "blog" | refer: "lang", "ja" | refer_link: "ブログ" }}
-- {{ "counter" | refer: "lang", "ja" | refer_link }}
-- {{ "single-page" | refer: "lang", "ja" | refer_link }}
+- {{ "list-of-pages" | refer | refer_link: "ページ一覧" }}
+- {{ "blog" | refer | refer_link: "ブログ" }}
+- {{ "counter" | refer | refer_link }}
+- {{ "single-page" | refer | refer_link }}

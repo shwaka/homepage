@@ -12,7 +12,7 @@ date: 2016-12-11 01:00:00 +09:00
 
 ## はじめに
 - cleverefについては
-{{ "post:cleveref" | refer: "lang", page.lang | refer_link}}
+{{ "post:cleveref" | refer | refer_link}}
 を参照してください。
 
 - このページの内容は[ここの回答](http://tex.stackexchange.com/questions/276801/how-does-one-use-cleveref-in-an-arxiv-submission)と[cleverefのマニュアル](http://tug.ctan.org/macros/latex/contrib/cleveref/cleveref.pdf)を参考にしました。

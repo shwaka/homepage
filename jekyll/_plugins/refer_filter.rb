@@ -1,14 +1,30 @@
 # coding: utf-8
 module Jekyll
   module ReferFilters
-    def refer(input, *args)
+    def refer(input, default_ref=nil, *args)
       site = @context.registers[:site]
-      refer_key = site.config["refer"]["key"]
-      default_value = site.config["refer"]["default_value"]
+      config_refer = site.config["refer"]
+      refer_key = config_refer["key"]
       options = alist_to_hash(args)
+      # options = alist_to_hash(["lang", "ja"])
+      current_page = @context.registers[:page]
+      if config_refer.key?("default_to_page") then
+        config_refer["default_to_page"].each do |key|
+          if current_page.key?(key) then
+            options[key] = current_page[key]
+          end
+        end
+      end
       pages = site.pages + site.posts.docs
-      page = find_page(pages, refer_key, input, options) ||
-             find_page(pages, refer_key, default_value, options)
+      if default_ref then
+        page = find_page(pages, refer_key, input, options) ||
+               find_page(pages, refer_key, default_ref, options)
+      else
+        page = find_page(pages, refer_key, input, options)
+      end
+      if page.nil? then
+        raise "no page found for #{refer_key}=#{input} with options #{options}"
+      end
       return page
     end
     def refer_url(input)
@@ -54,7 +70,10 @@ module Jekyll
       elsif pages_filtered.length == 1 then
         return pages_filtered[0]
       else
-        raise "too many pages matched"
+        page_urls = pages_filtered.map do |page|
+          page.url
+        end.to_a
+        raise "too many pages matched:\nref: #{ref}\npages: #{page_urls}"
       end
     end
   end

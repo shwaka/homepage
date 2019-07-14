@@ -5,4 +5,4 @@ lang: en
 ref: others
 ---
 
-{{ "list-of-pages" | refer: "lang", page.lang | refer_link }}
+{{ "list-of-pages" | refer | refer_link }}
