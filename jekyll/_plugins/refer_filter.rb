@@ -1,3 +1,4 @@
+# coding: utf-8
 module Jekyll
   module ReferFilters
     def refer(input, *args)
@@ -14,11 +15,21 @@ module Jekyll
       # input must be a page
       return input["url"]
     end
-    def refer_link(input)
+    def refer_link(input, text=nil, prefix="")
       # input must be a page
-      # url = Jekyll::Filters::URLFilters.absolute_url(refer_url(input))
-      url = refer_url(input)
-      return "hoge: #{url}"
+      page = input
+      url = refer_url(page)
+      # Jekyll::Filters::URLFilters.absolute_url ってそのまま呼び出せるの？extend?
+      url = absolute_url(refer_url(page)) # baseurl + refer_url(page) の方が良くない？
+      if text then
+        link_text = text
+      elsif page["title"]
+        link_text = prefix + page["title"]
+      else
+        url
+      end
+      # text = text || page["title"] || url
+      return "<a href=\"#{url}\">#{link_text}</a>"
     end
 
     private

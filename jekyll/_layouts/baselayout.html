@@ -124,7 +124,7 @@
             {% assign backref = layout.backref %}
           {% endif %}
           {% if backref %}
-            {% include link-to-ref.html ref=backref prefix="<< "%}
+            {{ backref | refer: "lang", page.lang | refer_link: nil, "<< " }}
           {% endif %}
         </span>
         <span id="last-modified">

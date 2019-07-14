@@ -43,7 +43,7 @@ class Hoge:
 
 ## コードブロックにファイル名をつけたい
 ここで色々とテストして出来上がったものを
-{%- include link-to-ref.html ref="post:named-codeblock" type="post" -%}
+{{ "post:named-codeblock" | refer: "lang", page.lang | refer_link }}
 にまとめておいた．
 
 - [Showing file name in Jekyll with Pygments code highlight](https://stackoverflow.com/questions/25881134/showing-file-name-in-jekyll-with-pygments-code-highlight) こっちは微妙だった
