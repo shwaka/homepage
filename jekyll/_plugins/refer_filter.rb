@@ -1,5 +1,28 @@
 module Jekyll
-  module MyModule
+  module ReferFilters
+    def refer(input, *args)
+      site = @context.registers[:site]
+      refer_key = site.config["refer"]["key"]
+      default_value = site.config["refer"]["default_value"]
+      options = alist_to_hash(args)
+      pages = site.pages + site.posts.docs
+      page = find_page(pages, refer_key, input, options) ||
+             find_page(pages, refer_key, default_value, options)
+      return page
+    end
+    def refer_url(input)
+      # input must be a page
+      return input["url"]
+    end
+    def refer_link(input)
+      # input must be a page
+      # url = Jekyll::Filters::URLFilters.absolute_url(refer_url(input))
+      url = refer_url(input)
+      return "hoge: #{url}"
+    end
+
+    private
+
     def alist_to_hash(alist)
       # alist = association list (from lisp)
       if alist.length % 2 != 0 then
@@ -23,30 +46,7 @@ module Jekyll
         raise "too many pages matched"
       end
     end
-    module_function :alist_to_hash, :find_page
-    module MyFilter
-      def refer(input, *args)
-        site = @context.registers[:site]
-        refer_key = site.config["refer"]["key"]
-        default_value = site.config["refer"]["default_value"]
-        options = MyModule.alist_to_hash(args)
-        pages = site.pages + site.posts.docs
-        page = MyModule.find_page(pages, refer_key, input, options) ||
-               MyModule.find_page(pages, refer_key, default_value, options)
-        return page
-      end
-      def refer_url(input)
-        # input must be a page
-        return input["url"]
-      end
-      def refer_link(input)
-        # input must be a page
-        # url = Jekyll::Filters::URLFilters.absolute_url(refer_url(input))
-        url = refer_url(input)
-        return "hoge: #{url}"
-      end
-    end
   end
 end
 
-Liquid::Template.register_filter(Jekyll::MyModule::MyFilter)
+Liquid::Template.register_filter(Jekyll::ReferFilters)
