@@ -2,6 +2,8 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
+{% include error.html msg="link-to-ref.html is deprecated!" %}
+
 {%- if include.type == "post" %}
   {%- assign pages = site.posts %}
 {%- else %}
