@@ -43,6 +43,12 @@ body {
   overflow-y: scroll;
 }
 
+div.footnotes{
+  border-top: 1px solid hsl(0, 0%, 70%);
+  margin-top: 50px;
+  font-size: small;
+}
+
 img{
   max-width: 100%;
 }
