@@ -69,20 +69,12 @@
 - emacs の `web-mode` が Jekyll(Liquid?) の `case`-`else`-`endcase` に対応してない
 - `include_md_tag.rb`
     - ドキュメントを整える
-- front matter の `ref` と `lang` を使ってるやつ
-    - url とか path とかを取得するのは，filter を使うと良さそう？
-    - いちいち `"lang", page.lang` を指定するのは面倒
-      `_config.yml` で設定できるようにしたい
+- front matter の `ref` と `lang` を使ってるやつを plugin にする
     - `absolute_url` を使うかどうか再考(ソースコード内のコメント参照)
+    - `baselayout.html` 内の main menu も，この plugin を使う？
+    - ドキュメント！！！
 - 「ページ一覧」にその他の欄を作る
     - 多分(front matter を持つから？) `.css` とかも含まれるけど，
       それは除外した方が良さそう？
-- 言語選択の部分のバグ修正とリファクタリング
-    - `{% assign pages=site.pages %}` としているので，posts が探索対象になっていない．
-      そのため，post のページでバグってる．
-    - 日本語ページが見つからないときに `ja` をクリックすると `index.html` (英語版) に飛ばされる．
-      この辺りをうまく実装するためにも，
-      `index.html` の `ref` は， `top` じゃなくて `index` の方が良いかも？
-    - この辺りも plugin を使った方が良い？
 - `single-page.html` とかで項目ごとの折り畳みを実装する
 - あんまり見かけないけど，講演一覧とかは table にした方が見易くない？

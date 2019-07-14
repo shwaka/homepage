@@ -7,7 +7,7 @@ syntax-highlighting: true
 ref-list:
   - "post:highlight-and-image"
   - "post:cleveref"
-  - "top"
+  - "index"
   - "research"
 ---
 

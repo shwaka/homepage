@@ -2,7 +2,7 @@
 layout: mylayout
 title: Top
 lang: ja
-ref: top
+ref: index
 ---
 
 ## Shun Wakatsuki
