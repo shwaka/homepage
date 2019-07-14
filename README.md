@@ -69,15 +69,14 @@
 - emacs の `web-mode` が Jekyll(Liquid?) の `case`-`else`-`endcase` に対応してない
 - `include_md_tag.rb`
     - ドキュメントを整える
-    - `include_md` を使って，メインページの別バージョンを作る
 - front matter の `ref` と `lang` を使ってるやつ
     - plugin を使ってどうにかしたい
     - `ref` や `lang` は plugin 側に書くんじゃなくて，
       使うときに引数に指定する？
     - url とか path とかを取得するのは，filter を使うと良さそう？
 - コードブロック
-    - スマホから表示すると，右にはみ出て悲惨なことになる
     - コードブロックにファイル名をつけるやつも plugin を使った方が良さそう
 - 「ページ一覧」にその他の欄を作る
     - 多分(front matter を持つから？) `.css` とかも含まれるけど，
       それは除外した方が良さそう？
+- 脚注のスタイル
