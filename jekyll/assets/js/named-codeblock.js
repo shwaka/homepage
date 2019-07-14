@@ -1,3 +1,6 @@
+// deprecated!!
+// use the plugin _plugins/named_codeblock_hook.rb
+
 function insert_filename(to_insert, filename){
   var div = document.createElement("div");
   div.textContent = filename;
