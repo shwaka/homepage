@@ -9,6 +9,9 @@ def insert_filename(to_insert, filename)
 end
 
 def named_codeblock_hook(page)
+  if page.extname != ".md" then
+    return
+  end
   html_str = page.output
   doc = Nokogiri::HTML.parse(html_str, nil, "utf-8")
   filename_attr = "filename"
