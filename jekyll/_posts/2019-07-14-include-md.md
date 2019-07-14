@@ -4,7 +4,11 @@ layout: post
 lang: ja
 title: markdown を include する
 syntax-highlighting: true
-ref: post:include-md
+ref-list:
+  - "post:highlight-and-image"
+  - "post:cleveref"
+  - "top"
+  - "research"
 ---
 
 <style>
@@ -23,42 +27,11 @@ ref: post:include-md
  }
 </style>
 
-------
-
-{% include_md top %}
-
-------
-
-<div class="included">
-  <div class="title">
-    post:highlight-and-image
+{% for ref in page.ref-list %}
+  <div class="included">
+    <div class="title">
+      {{ ref }}
+    </div>
+    {% include_md {{ ref }} %}
   </div>
-  {% include_md post:highlight-and-image %}
-</div>
-
-------
-
-<div class="included">
-  <div class="title">
-    post:cleveref
-  </div>
-  {% include_md post:cleveref %}
-</div>
-
-------
-
-<div class="included">
-  <div class="title">
-    research
-  </div>
-  {% include_md research %}
-</div>
-
-------
-
-<div class="included">
-  <div class="title">
-    top
-  </div>
-  {% include_md top %}
-</div>
+{% endfor %}
