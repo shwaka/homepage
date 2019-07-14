@@ -67,14 +67,14 @@
     - 自動化したい
     - 重いPDFをいちいち upload するのは無駄
 - emacs の `web-mode` が Jekyll(Liquid?) の `case`-`else`-`endcase` に対応してない
-- ディレクトリ構造を整理
-    - `jekyll/img/` を `assets/img/` に統合
-- コードブロックをスマホから表示すると，右にはみ出て悲惨なことになる
-- `include_md_tag.rb` のドキュメントを整える
+- `include_md_tag.rb`
+    - ドキュメントを整える
+    - `include_md` を使って，メインページの別バージョンを作る
 - front matter の `ref` と `lang` を使ってるやつ
     - plugin を使ってどうにかしたい
     - `ref` や `lang` は plugin 側に書くんじゃなくて，
       使うときに引数に指定する？
     - url とか path とかを取得するのは，filter を使うと良さそう？
-- `include_md` を使って，メインページの別バージョンを作る
-- コードブロックにファイル名をつけるやつも plugin を使った方が良さそう
+- コードブロック
+    - スマホから表示すると，右にはみ出て悲惨なことになる
+    - コードブロックにファイル名をつけるやつも plugin を使った方が良さそう
