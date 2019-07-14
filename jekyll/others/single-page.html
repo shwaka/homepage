@@ -1,0 +1,113 @@
+---
+magiccomment: "-*- engine: liquid -*-"
+backref: others
+lang: ja
+title: 単独のページ
+ref: single-page
+ref-list:
+  - "top"
+  - "cv"
+  - "research"
+  - "others"
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Shun Wakatsuki, 若月駿">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet"
+          href="{{ site.baseurl }}/assets/css/mystyle.css"
+          type="text/css"></link>
+    {% if page.syntax-highlighting %}
+      <link rel="stylesheet"
+            href="{{ site.baseurl }}/assets/css/syntax-highlighting.css"
+            type="text/css"></link>
+      <script src="{{ site.baseurl }}/assets/js/named-codeblock.js"></script>
+    {% endif %}
+  </head>
+  <body class="{{ page.lang }}">
+    <header>
+      <div id="myname">
+        {% if page.lang == "ja" %}
+          若月 駿
+        {% else %}
+          Shun Wakatsuki
+        {% endif %}
+      </div>
+
+      <!-- language selector -->
+      <div id="lang_selector">
+        {% for lang_data in site.data.languages %}
+          {% assign page_found = false %}
+          {% if page.ref %}
+            {% assign pages=site.pages | where: "ref", page.ref | where: "lang", lang_data.key %}
+            {% for pg in pages %}
+              {% comment %} length(pages) <= 1 {% endcomment %}
+              {% if page_found %}
+                {% include error.html msg="duplicated ref" %}
+                {% break %}
+              {% endif %}
+              {% if pg.lang == page.lang %}
+                {% assign current = "true" %}
+              {% else %}
+                {% assign current = "false" %}
+              {% endif %}
+              {% assign url = pg.url %}
+              {% assign page_found = true %}
+            {% endfor %}
+          {% elsif page.lang == lang_data.key %}
+            {% assign url = page.url %}
+            {% assign current = "true" %}
+            {% assign page_found = true %}
+          {% endif %}
+          {% unless page_found %}
+            {% assign url = "/index.html" %}
+            {% assign current = "false" %}
+          {% endunless %}
+          <span class="lang {{ lang_data.key }}" current="{{ current }}">
+            <a href="{{ site.baseurl }}{{ url }}" class="{{ lang_data.key }}" current="{{ current }}">
+              {{ lang_data.names.short }}
+            </a>
+          </span>
+        {% endfor %}
+      </div>
+
+      <div id="info">
+        <span id="back">
+          {% if page.backref %}
+            {% assign backref = page.backref %}
+          {% elsif layout.backref %}
+            {% assign backref = layout.backref %}
+          {% endif %}
+          {% if backref %}
+            {% include link-to-ref.html ref=backref prefix="<< "%}
+          {% endif %}
+        </span>
+        <span id="last-modified">
+          Updated on
+          {{ site.time | date: "%Y-%m-%d %H:%M" }}
+          {% comment %}
+          {{ page.last_modified_at | date: "%Y-%m-%d %H:%M" }}
+          インポート先を見に行ってくれないのでやめた．
+          とりあえず代わりに site.time を使ってサイト全体の変更日時を見る．
+          {% endcomment %}
+        </span>
+      </div>
+    </header>
+
+    <div>
+      1ページにまとめてみた．
+      試しにやってみただけなので，レイアウトなどは全然調整してないです．
+    </div>
+
+    <div id="base_container">
+      {% for ref in page.ref-list %}
+        <h1>{{ ref }}</h1>
+        {% include_md {{ ref }} %}
+      {% endfor %}
+    </div>
+  </body>
+</html>

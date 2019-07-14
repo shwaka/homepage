@@ -25,3 +25,4 @@ ref: others
 - {% include link-to-ref.html ref="list-of-pages" text="ページ一覧" -%}
 - {% include link-to-ref.html ref="blog" text="ブログ" -%}
 - {% include link-to-ref.html ref="counter" -%}
+- {% include link-to-ref.html ref="single-page" -%}
