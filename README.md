@@ -59,6 +59,8 @@
 - [Syntax Highlighting in Jekyll](https://mycyberuniverse.com/syntax-highlighting-jekyll.html)
     - [richleland/pygments-css](https://github.com/richleland/pygments-css) `rouge` は `pygments` のものを流用できる
     - [themesのプレビュー](http://richleland.github.io/pygments-css/)
+- [Outputting Markdown from Jekyll using hooks](https://humanwhocodes.com/blog/2019/04/jekyll-hooks-output-markdown/)
+  Jekyll のプラグイン作成について
 
 # TODO
 - デプロイ方法をどうにかしたい．
