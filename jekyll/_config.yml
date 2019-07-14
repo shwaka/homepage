@@ -3,3 +3,6 @@ baseurl: /~swaka
 host: 0.0.0.0
 livereload: true
 timezone: Asia/Tokyo
+refer:
+  key: ref
+  default_value: top
