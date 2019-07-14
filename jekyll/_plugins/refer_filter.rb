@@ -36,7 +36,10 @@ module Jekyll
       page = input
       url = refer_url(page)
       # Jekyll::Filters::URLFilters.absolute_url ってそのまま呼び出せるの？extend?
-      url = absolute_url(refer_url(page)) # baseurl + refer_url(page) の方が良くない？
+      # url = absolute_url(refer_url(page))
+      site = @context.registers[:site]
+      baseurl = site.config["baseurl"]
+      url = baseurl + refer_url(page)
       if text then
         link_text = text
       elsif page["title"]
