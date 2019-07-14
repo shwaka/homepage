@@ -69,5 +69,9 @@
 - emacs の `web-mode` が Jekyll(Liquid?) の `case`-`else`-`endcase` に対応してない
 - ディレクトリ構造を整理
     - `jekyll/img/` を `assets/img/` に統合
-    - `jekyll/research-includes/` は `_includes/` のサブディレクトリにする (できる？)
 - コードブロックをスマホから表示すると，右にはみ出て悲惨なことになる
+- `include_md_tag.rb` 関連
+    - `ref` の指定に liquid の変数を使えるようにする
+    - 出力を `html` にするか `md` にするか選べるようにする？
+      そもそも posts は最初から `html` になってるっぽい？
+    - ドキュメントを整える
