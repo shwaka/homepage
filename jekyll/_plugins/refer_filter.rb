@@ -6,11 +6,11 @@ module Jekyll
       config_refer = site.config["refer"]
       refer_key = config_refer["key"]
       options = alist_to_hash(args)
-      # options = alist_to_hash(["lang", "ja"])
       current_page = @context.registers[:page]
+      # page の デフォルト値
       if config_refer.key?("default_to_page") then
         config_refer["default_to_page"].each do |key|
-          if current_page.key?(key) then
+          if current_page.key?(key) and not options.key?(key) then
             options[key] = current_page[key]
           end
         end
