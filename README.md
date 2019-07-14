@@ -69,6 +69,7 @@
 - emacs の `web-mode` が Jekyll(Liquid?) の `case`-`else`-`endcase` に対応してない
 - `include_md_tag.rb`
     - ドキュメントを整える
+    - ついでに `others/include-test.md` で試したやつがどう上手くいかないかも記録しておく？
 - front matter の `ref` と `lang` を使ってるやつを plugin にする
     - `baselayout.html` 内の main menu も，この plugin を使う？
     - ドキュメント！！！
@@ -77,3 +78,4 @@
       それは除外した方が良さそう？
 - `single-page.html` とかで項目ごとの折り畳みを実装する
 - あんまり見かけないけど，講演一覧とかは table にした方が見易くない？
+- URLパラメータを使って遷移前のページから情報を持ってくる
