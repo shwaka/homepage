@@ -4,11 +4,6 @@ backref: others
 lang: ja
 title: 単独のページ
 ref: single-page
-ref-list:
-  - "index"
-  - "cv"
-  - "research"
-  - "others"
 ---
 
 <!DOCTYPE html>
@@ -105,7 +100,7 @@ ref-list:
     </div>
 
     <div id="base_container">
-      {% for ref in page.ref-list %}
+      {% for ref in site.data.pages %}
         <h1>{{ ref }}</h1>
         {% include_md {{ ref }} %}
       {% endfor %}

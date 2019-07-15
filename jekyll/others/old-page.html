@@ -4,11 +4,6 @@ backref: others
 lang: ja
 title: 旧形式のページ
 ref: old-page
-ref-list:
-  - "index"
-  - "cv"
-  - "research"
-  - "others"
 ---
 
 <!DOCTYPE html>
@@ -48,7 +43,7 @@ ref-list:
       {% include lang_selector.html %}
       <table id="menu" align="center">
         <tr>
-          {% for ref in page.ref-list %}
+          {% for ref in site.data.pages %}
             {% assign referred_page = ref | refer %}
             <td show="false"><a href="#{{ ref }}" show="false">{{ referred_page.title }}</a></td>
           {% endfor %}
@@ -65,7 +60,7 @@ ref-list:
       その4つ以外のリンク先はメインページの方に飛びます．
     </div>
 
-    {% for ref in page.ref-list %}
+    {% for ref in site.data.pages %}
       {% assign referred_page = ref | refer %}
       <div class="area" id="{{ ref }}">
         <h1>{{ referred_page.title }}</h1>
