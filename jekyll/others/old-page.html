@@ -16,6 +16,7 @@ ref-list:
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="keywords" content="Shun Wakatsuki, 若月駿">
+    <link href="{{ site.baseurl }}/assets/css/mystyle.css" rel="stylesheet" type="text/css">
     <link href="{{ site.baseurl }}/assets/css/oldstyle.css" rel="stylesheet" type="text/css">
 
     <script src="{{ site.baseurl }}/assets/js/jquery.js" type="text/javascript"></script>
@@ -42,19 +43,25 @@ ref-list:
     <header id="header">
       Shun Wakatsuki
     </header>
-    <table id="menu" align="center">
-      <tr>
-        {% for ref in page.ref-list %}
-          {% assign referred_page = ref | refer %}
-          <td show="false"><a href="#{{ ref }}" show="false">{{ referred_page.title }}</a></td>
-        {% endfor %}
-      </tr>
-    </table>
-
+    <nav>
+      {% include lang_selector.html %}
+      <table id="menu" align="center">
+        <tr>
+          {% for ref in page.ref-list %}
+            {% assign referred_page = ref | refer %}
+            <td show="false"><a href="#{{ ref }}" show="false">{{ referred_page.title }}</a></td>
+          {% endfor %}
+        </tr>
+      </table>
+    </nav>
+    <div id="info">
+      {% include backref.html %}
+    </div>
     <div>
       以前使っていたページの html, css, javascript を流用したページ．
       内容はちゃんとメインページと同期されています．
       javascript を使ってページ遷移なしで4つの項目が表示されるのがポイント．
+      その4つ以外のリンク先はメインページの方に飛びます．
     </div>
 
     {% for ref in page.ref-list %}

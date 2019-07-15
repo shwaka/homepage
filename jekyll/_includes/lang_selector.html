@@ -1,0 +1,25 @@
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
+<div id="lang_selector">
+  {% for lang_data in site.data.languages %}
+    {% if lang_data.key == page.lang %}
+      {% assign current = "true" %}
+    {% else %}
+      {% assign current = "false" %}
+    {% endif %}
+    {% if page.ref %}
+      {% assign url = page.ref | refer: "index", "lang", lang_data.key | refer_url %}
+    {% elsif lang_data.key == page.lang %}
+      {% assign url = page.url %}
+    {% else %}
+      {% assign url = "invalid-ref" | refer: "index", "lang", lang_data.key | refer_url %}
+    {% endif %}
+    <span class="lang {{ lang_data.key }}" current="{{ current }}">
+      <a href="{{ site.baseurl }}{{ url }}" class="{{ lang_data.key }}" current="{{ current }}">
+        {{ lang_data.names.short }}
+      </a>
+    </span>
+  {% endfor %}
+</div>

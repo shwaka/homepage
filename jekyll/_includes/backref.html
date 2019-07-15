@@ -1,0 +1,14 @@
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
+<span id="back">
+  {% if page.backref %}
+    {% assign backref = page.backref %}
+  {% elsif layout.backref %}
+    {% assign backref = layout.backref %}
+  {% endif %}
+  {% if backref %}
+    {{ backref | refer | refer_link: nil, "<< " }}
+  {% endif %}
+</span>
