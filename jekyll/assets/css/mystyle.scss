@@ -40,6 +40,8 @@ div#myname {
 
 
 body {
+  color: $body-color;
+  background-color: $body-background-color;
   text-align: left;
   overflow-y: scroll;
 }

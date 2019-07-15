@@ -1,20 +1,24 @@
-$base-color: hsl(160, 30%, 50%);
+$base-color: hsl(160, 30%, 50%); // lightness は 50% で固定
 // $base-color: hsl(0, 0%, 50%);   // 元々の配色(hueは何でも良い)
+$text-color: hsl(0, 0%, 50%);
+
+$body-color: darken($text-color, 50%);
+$body-background-color: lighten($base-color, 45%);
 
 $color-selected: lighten($base-color, 50%);
 $background-color-selected: darken($base-color, 10%);
 
-$color-unselected: darken($base-color, 10%);
-$background-color-unselected: lighten($base-color, 42%);
+$color-unselected: darken($base-color, 20%);
+$background-color-unselected: lighten($base-color, 35%);
 
 $border-color: $base-color;
 $footnote-border-color: lighten($base-color, 20%);
-$table-border-color: black;
+$table-border-color: darken($text-color, 50%);
 
 $hamburger-color: darken($base-color, 20%);
 $hamburger-background-color: lighten($base-color, 48%);
 
-$unimportant-color: hsl(0, 0%, 40%);
+$unimportant-color: lighten($text-color, 10%);
 
 
 // (inline) code blocks
