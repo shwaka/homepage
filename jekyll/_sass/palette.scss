@@ -1,19 +1,22 @@
-$color-selected: white;
-$background-color-selected: hsl(0, 0%, 40%);
+$base-color: hsl(160, 30%, 50%);
+// $base-color: hsl(0, 0%, 50%);   // 元々の配色(hueは何でも良い)
 
-$color-unselected: hsl(0, 0%, 40%);
-$background-color-unselected: hsl(0, 0%, 92%);
+$color-selected: lighten($base-color, 50%);
+$background-color-selected: darken($base-color, 10%);
 
-$border-color: gray;
-$footnote-border-color: hsl(0, 0%, 70%);
+$color-unselected: darken($base-color, 10%);
+$background-color-unselected: lighten($base-color, 42%);
+
+$border-color: $base-color;
+$footnote-border-color: lighten($base-color, 20%);
 $table-border-color: black;
 
-$hamburger-color: hsl(0, 0%, 30%);
-$hamburger-background-color: white;
+$hamburger-color: darken($base-color, 20%);
+$hamburger-background-color: lighten($base-color, 48%);
 
 $unimportant-color: hsl(0, 0%, 40%);
 
 
 // (inline) code blocks
 $inline-codeblock-background: hsl(0, 0%, 95%);
-$codeblock-filename-background: hsl(0, 0%, 85%);
+$codeblock-filename-background: lighten($base-color, 35%);
