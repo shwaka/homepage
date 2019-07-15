@@ -172,3 +172,10 @@ div#access_counter{
 .highlighter-rouge{
   background: hsl(0, 0%, 95%);
 }
+
+.articles-table, .talks-table{
+  border-collapse: collapse;
+  td, th{
+    border: 1px solid black;
+  }
+}

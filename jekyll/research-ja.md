@@ -5,6 +5,10 @@ lang: ja
 ref: research
 ---
 
+{{ "research-table" | refer | refer_link: "表形式" }}
+も用意したので，
+お好みでご覧ください．
+
 ## Publications
 ### 論文・プレプリント
 {% include research/papers-preprints.html %}

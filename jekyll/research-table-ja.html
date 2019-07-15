@@ -1,0 +1,132 @@
+---
+magiccomment: "-*- engine: liquid -*-"
+layout: mylayout
+title: 研究
+lang: ja
+ref: research-table
+backref: research
+---
+
+レイアウトは調整中
+
+<h2>Publications</h2>
+<h3>論文・プレプリント</h3>
+<table class="articles-table">
+  <tr>
+    <th>タイトル</th>
+    <th>雑誌</th>
+    <th>arXiv</th>
+  </tr>
+  {% assign articles = site.data.articles | reverse %}
+  {% for article in articles %}
+    {% if article.type == "toappear" %}
+      <tr>
+        <td>{{ article.title }}</td>
+        <td>  to appear in
+          <a target="_blank" href="{{ article.journal-url }}">
+            {{ article.journal }}
+          </a>
+        </td>
+        <td>
+          <a target="_blank" href="https://arxiv.org/abs/{{ article.arxiv }}">
+            {{ article.arxiv }}
+          </a>
+        </td>
+      </tr>
+    {% endif %}
+    {% if article.type == "preprint" %}
+      <tr>
+        <td>{{ article.title }}</td>
+        <td></td>
+        <td>
+          <a target="_blank" href="https://arxiv.org/abs/{{ article.arxiv }}">
+            {{ article.arxiv }}
+          </a>
+        </td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
+
+
+<h3>その他</h3>
+<table class="articles-table">
+  <tr>
+    <th>タイトル</th>
+    <th>雑誌</th>
+    <th>出版年</th>
+  </tr>
+  {% assign articles = site.data.articles | reverse %}
+  {% for article in articles %}
+    {% if article.type == "proceedings" %}
+      <tr>
+        <td>{{ article.title }}</td>
+        <td>
+          <a target="_blank" href="{{ article.journal-url }}">
+            {{ article.journal }}
+          </a>
+        </td>
+        <td>
+          {{ article.year }}
+        </td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
+
+<h2>講演一覧</h2>
+<h3>講演一覧(国際研究集会)</h3>
+<table class="talks-table">
+  <tr>
+    <th>タイトル</th>
+    <th>研究集会</th>
+    <th>会場</th>
+    <th>日付</th>
+  </tr>
+  {% assign talks = site.data.talks | where: "base.lang", "en" | reverse %}
+  {% for talk in talks %}
+    {% include assign_lang.html from=talk %}
+    {% if ldata %}
+      <tr>
+        <td>{{ ldata.title }}</td>
+        <td>
+          {% if ldata.url %}
+            <a target="_blank" href="{{ ldata.url }}"> {{ ldata.conference }}</a>
+          {% else %}
+            {{ ldata.conference }}
+          {% endif %}
+        </td>
+        <td>{{ ldata.venue }}</td>
+        <td>{% include date.html date=bdata.date type="month" %}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
+
+<h3>講演一覧(国内研究集会)</h3>
+<table class="talks-table">
+  <tr>
+    <th>タイトル</th>
+    <th>研究集会</th>
+    <th>会場</th>
+    <th>日付</th>
+  </tr>
+  {% assign talks = site.data.talks | where: "base.lang", "ja" | reverse %}
+  {% for talk in talks %}
+    {% include assign_lang.html from=talk %}
+    {% if ldata %}
+      <tr>
+        <td>{{ ldata.title }}</td>
+        <td>
+          {% if ldata.url %}
+            <a target="_blank" href="{{ ldata.url }}"> {{ ldata.conference }}</a>
+          {% else %}
+            {{ ldata.conference }}
+          {% endif %}
+        </td>
+        <td>{{ ldata.venue }}</td>
+        <td>{% include date.html date=bdata.date type="month" %}</td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
