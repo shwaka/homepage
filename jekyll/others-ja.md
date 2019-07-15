@@ -26,3 +26,4 @@ ref: others
 - {{ "blog" | refer | refer_link: "ブログ" }}
 - {{ "counter" | refer | refer_link }}
 - {{ "single-page" | refer | refer_link }}
+- {{ "old-page" | refer | refer_link }}

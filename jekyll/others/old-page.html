@@ -1,0 +1,68 @@
+---
+magiccomment: "-*- engine: liquid -*-"
+backref: others
+lang: ja
+title: 旧形式のページ
+ref: old-page
+ref-list:
+  - "index"
+  - "cv"
+  - "research"
+  - "others"
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="Shun Wakatsuki, 若月駿">
+    <link href="{{ site.baseurl }}/assets/css/oldstyle.css" rel="stylesheet" type="text/css">
+
+    <script src="{{ site.baseurl }}/assets/js/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+     $(document).ready(function(){
+       $(".area").hide();
+       $("#menu a:first").attr("show", "true");
+       $("#menu td:first").attr("show", "true");
+       $(".area:first").show();
+       $("#menu td").click(function(){
+         $(".area").fadeOut("fast"); //hide();
+         $("#menu a").attr("show", "false");
+         $("#menu td").attr("show", "false");
+         $(this).find("a").attr("show", "true");
+         $(this).attr("show", "true");
+         $($(this).find("a").attr("href")).fadeIn("fast"); //show();
+         return false;
+       });
+     });
+    </script>
+  </head>
+  <title>Shun Wakatsuki</title>
+  <body>
+    <header id="header">
+      Shun Wakatsuki
+    </header>
+    <table id="menu" align="center">
+      <tr>
+        {% for ref in page.ref-list %}
+          {% assign referred_page = ref | refer %}
+          <td show="false"><a href="#{{ ref }}" show="false">{{ referred_page.title }}</a></td>
+        {% endfor %}
+      </tr>
+    </table>
+
+    <div>
+      以前使っていたページの html, css, javascript を流用したページ．
+      内容はちゃんとメインページと同期されています．
+      javascript を使ってページ遷移なしで4つの項目が表示されるのがポイント．
+    </div>
+
+    {% for ref in page.ref-list %}
+      {% assign referred_page = ref | refer %}
+      <div class="area" id="{{ ref }}">
+        <h1>{{ referred_page.title }}</h1>
+        {% include_md {{ ref }} %}
+      </div>
+    {% endfor %}
+  </body>
+</html>
