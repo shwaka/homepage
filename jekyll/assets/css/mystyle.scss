@@ -1,6 +1,7 @@
 ---
 ---
 
+@import "palette.scss";
 
 $breakpoints: (
   "small": "screen and (max-width: 480px)",
@@ -44,7 +45,7 @@ body {
 }
 
 div.footnotes{
-  border-top: 1px solid hsl(0, 0%, 70%);
+  border-top: 1px solid $footnote-border-color;
   margin-top: 50px;
   font-size: small;
 }
@@ -60,8 +61,8 @@ h1 {
   font-size: 30px;
   font-weight: normal;
   /* font-family: "Estrangelo Edessa"; "Trebuchet MS"; "Arial"; "Helvetica"; */
-  border-bottom: 3px solid gray;
-  border-left: 15px solid gray;
+  border-bottom: 3px solid $border-color;
+  border-left: 15px solid $border-color;
   padding-bottom: 3px;
   margin-left: -15px;
 }
@@ -72,8 +73,8 @@ h2 {
   font-size: 25px;
   font-weight: normal;
   /* font-family: "Estrangelo Edessa"; "Trebuchet MS"; "Arial"; "Helvetica"; */
-  border-bottom: 2px solid gray;
-  border-left: 10px solid gray;
+  border-bottom: 2px solid $border-color;
+  border-left: 10px solid $border-color;
 }
 
 a[target="_blank"]{
@@ -110,7 +111,7 @@ div#info{
   }
   #last-modified{
     // text-align: right;
-    color: hsl(0, 0%, 40%);
+    color: $unimportant-color;
   }
 }
 
@@ -170,12 +171,12 @@ div#access_counter{
 
 // inline code block
 .highlighter-rouge{
-  background: hsl(0, 0%, 95%);
+  background-color: $inline-codeblock-background;
 }
 
 .articles-table, .talks-table{
   border-collapse: collapse;
   td, th{
-    border: 1px solid black;
+    border: 1px solid $table-border-color;
   }
 }

@@ -6,8 +6,9 @@
   @extend .highlight;           // inline code block にも背景色を適用する
 }
 
+@import "palette.scss";
 .named-block-filename{
-  background-color: hsl(0, 0%, 85%);
+  background-color: $codeblock-filename-background;
   display: inline-block;
   padding-left: 5px;
   padding-right: 5px;
