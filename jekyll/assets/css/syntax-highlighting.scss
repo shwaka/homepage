@@ -28,6 +28,12 @@ figure.highlight{
 }
 
 // はみ出したときに，内部だけスクロール
-.highlight > pre{
-  overflow: auto;
+.highlight{
+  & > pre{
+    overflow: auto;
+    padding: 5px;
+  }
+  & > .named-block-filename + pre{
+    padding-top: 0px;
+  }
 }
