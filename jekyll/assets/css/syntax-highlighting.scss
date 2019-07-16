@@ -11,6 +11,14 @@
   @extend .highlight;           // inline code block にも背景色を適用する
 }
 
+// highlgiht タグを用いたコードブロックの余白の調整
+figure.highlight{
+  margin: 0px;
+  td > pre{
+    margin: 0px;
+  }
+}
+
 .named-block-filename{
   background-color: $codeblock-filename-background;
   display: inline-block;
@@ -19,6 +27,7 @@
   margin-left: 10px;
 }
 
+// はみ出したときに，内部だけスクロール
 .highlight > pre{
   overflow: auto;
 }
