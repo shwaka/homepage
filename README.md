@@ -66,7 +66,6 @@
 - デプロイ方法をどうにかしたい．
     - 自動化したい
     - 重いPDFをいちいち upload するのは無駄
-- emacs の `web-mode` が Jekyll(Liquid?) の `case`-`else`-`endcase` に対応してない
 - `include_md_tag.rb`
     - ドキュメントを整える
     - ついでに `others/include-test.md` で試したやつがどう上手くいかないかも記録しておく？
