@@ -17,6 +17,14 @@ ref: single-page
     <link rel="stylesheet"
           href="{{ site.baseurl }}/assets/css/mystyle.css"
           type="text/css"></link>
+    <script type="text/javascript">
+     var link = document.createElement("link");
+     var style_id = Math.ceil(Math.random()*3);
+     link.href = `{{ site.baseurl }}/assets/css/style${style_id}.css`;
+     link.type = "text/css";
+     link.rel = "stylesheet";
+     document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
     {% if page.syntax-highlighting %}
       <link rel="stylesheet"
             href="{{ site.baseurl }}/assets/css/syntax-highlighting.css"
@@ -97,6 +105,7 @@ ref: single-page
     <div>
       1ページにまとめてみた．
       試しにやってみただけなので，レイアウトなどは全然調整してないです．
+      javascript を使ってランダムにCSSを読み込んでいます．
     </div>
 
     <div id="base_container">
