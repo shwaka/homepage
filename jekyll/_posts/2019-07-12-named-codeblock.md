@@ -5,6 +5,7 @@ title: コードブロックにファイル名を指定する
 syntax-highlighting: true
 ref: post:named-codeblock
 date: 2019-07-12 21:00:00 +09:00
+toc: true
 ---
 
 `Jekyll` + `kramdown` の環境で，コードブロックにファイル名を表示する．

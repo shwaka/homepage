@@ -4,6 +4,7 @@ lang: ja
 title: company-dabbrevで日本語を補完しない
 syntax-highlighting: true
 ref: post:company-dabbrev-japanese
+toc: true
 ---
 
 この記事は，以前 Qiita に書いた

@@ -3,6 +3,8 @@ baseurl: /~swaka
 host: 0.0.0.0
 livereload: true
 timezone: Asia/Tokyo
+plugins:
+  - jekyll-toc
 refer:
   key: ref
   default_to_page:

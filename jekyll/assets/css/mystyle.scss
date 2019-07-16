@@ -48,6 +48,11 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
+div#table-of-contents{
+  border: 1px solid $border-color;
+  background-color: $body-highlighted-background-color;
+}
+
 div.footnotes{
   border-top: 1px solid $footnote-border-color;
   margin-top: 50px;

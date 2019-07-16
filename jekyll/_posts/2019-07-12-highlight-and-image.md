@@ -4,6 +4,7 @@ lang: ja
 title: ハイライトと画像のテスト
 syntax-highlighting: true
 ref: post:highlight-and-image
+toc: true
 ---
 
 色々とテストしてみる．

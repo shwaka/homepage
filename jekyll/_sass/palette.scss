@@ -4,6 +4,7 @@ $text-color: hsl(0, 0%, 50%);
 
 $body-color: darken($text-color, 50%);
 $body-background-color: lighten($base-color, 45%);
+$body-highlighted-background-color: lighten($base-color, 40%);
 
 $color-selected: lighten($base-color, 50%);
 $background-color-selected: darken($base-color, 10%);
