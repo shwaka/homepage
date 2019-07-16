@@ -1,0 +1,11 @@
+{% comment %}
+-*- engine: liquid -*-
+{% endcomment %}
+
+<div class="accbox">
+  <label for="{{ include.id }}">{{ include.title }}</label>
+  <input type="checkbox" id="{{ include.id }}" class="acccheck"/>
+  <div class="accshow">
+    {{ include.content }}
+  </div>
+</div>

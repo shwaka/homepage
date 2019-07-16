@@ -28,10 +28,13 @@ ref-list:
 </style>
 
 {% for ref in page.ref-list %}
-  <div class="included">
-    <div class="title">
-      {{ ref }}
+  {% capture acc_content %}
+    <div class="included">
+      <div class="title">
+        {{ ref }}
+      </div>
+      {% include_md {{ ref }} %}
     </div>
-    {% include_md {{ ref }} %}
-  </div>
+  {% endcapture %}
+  {% include accordion.html id=ref title=ref content=acc_content %}
 {% endfor %}
