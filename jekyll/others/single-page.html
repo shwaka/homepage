@@ -19,7 +19,7 @@ ref: single-page
           type="text/css"></link>
     <script type="text/javascript">
      var link = document.createElement("link");
-     var style_id = Math.ceil(Math.random()*3);
+     var style_id = Math.ceil(Math.random()*{{ site.num_styles }});
      link.href = `{{ site.baseurl }}/assets/css/style${style_id}.css`;
      link.type = "text/css";
      link.rel = "stylesheet";

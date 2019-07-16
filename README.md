@@ -59,8 +59,10 @@
 - [Syntax Highlighting in Jekyll](https://mycyberuniverse.com/syntax-highlighting-jekyll.html)
     - [richleland/pygments-css](https://github.com/richleland/pygments-css) `rouge` は `pygments` のものを流用できる
     - [themesのプレビュー](http://richleland.github.io/pygments-css/)
-- [Outputting Markdown from Jekyll using hooks](https://humanwhocodes.com/blog/2019/04/jekyll-hooks-output-markdown/)
-  Jekyll のプラグイン作成について
+- Jekyll のプラグイン作成について
+    - [Outputting Markdown from Jekyll using hooks](https://humanwhocodes.com/blog/2019/04/jekyll-hooks-output-markdown/)
+    - [jekyllプラグインの作り方 ジェネレータ編 -- ぺけみさお](https://www.xmisao.com/2013/08/06/how-to-make-a-jekyll-plugin.html)
+    - [avillafiorita/jekyll-datapage_gen: Generate one page per yaml record in Jekyll sites.](https://github.com/avillafiorita/jekyll-datapage_gen)
 
 # TODO
 - デプロイ方法をどうにかしたい．
@@ -79,3 +81,7 @@
     - とりあえずやってみたけど，レイアウトは調整中
     - 外部リンクを示す画像が表からはみ出る
 - URLパラメータを使って遷移前のページから情報を持ってくる
+- ランダムに CSS を選ぶやつで使っている
+  `_plugins/generator.rb` と `assets/css/template.scss` を色々と整理する
+    - ファイル名とクラス名
+    - 色々とハードコードしている
