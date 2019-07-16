@@ -36,5 +36,7 @@ ref-list:
       {% include_md {{ ref }} %}
     </div>
   {% endcapture %}
-  {% include accordion.html id=ref title=ref content=acc_content %}
+  {% assign page_to_include = ref | refer %}
+  {% assign acc_title = page_to_include.title %}
+  {% include accordion.html id=ref title=acc_title content=acc_content %}
 {% endfor %}
