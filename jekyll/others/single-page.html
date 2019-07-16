@@ -19,11 +19,16 @@ ref: single-page
           type="text/css"></link>
     <script type="text/javascript">
      var link = document.createElement("link");
-     var style_id = Math.ceil(Math.random()*{{ site.num_styles }});
+     var style_total = {{ site.num_styles }};
+     var style_id = Math.floor(Math.random()*style_total);
      link.href = `{{ site.baseurl }}/assets/css/style${style_id}.css`;
      link.type = "text/css";
      link.rel = "stylesheet";
      document.getElementsByTagName("head")[0].appendChild(link);
+     document.addEventListener("DOMContentLoaded", () => {
+       let elm = document.querySelector("#style-info");
+       elm.textContent = `(${style_id} of 0...${style_total-1})`;
+     })
     </script>
     {% if page.syntax-highlighting %}
       <link rel="stylesheet"
@@ -106,6 +111,7 @@ ref: single-page
       1ページにまとめてみた．
       試しにやってみただけなので，レイアウトなどは全然調整してないです．
       javascript を使ってランダムにCSSを読み込んでいます．
+      <span id="style-info"></span>
     </div>
 
     <div id="base_container">
