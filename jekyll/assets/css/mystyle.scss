@@ -45,6 +45,7 @@ body {
   background-color: $body-background-color;
   text-align: left;
   overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
 }
 
 div.footnotes{
