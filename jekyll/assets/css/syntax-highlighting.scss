@@ -2,11 +2,15 @@
 ---
 
 @import "pygments/emacs.scss";
+
+@import "palette.scss";
+.highlight{
+  background: $codeblock-background;
+}
 .highlighter-rouge{
   @extend .highlight;           // inline code block にも背景色を適用する
 }
 
-@import "palette.scss";
 .named-block-filename{
   background-color: $codeblock-filename-background;
   display: inline-block;
