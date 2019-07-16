@@ -87,15 +87,23 @@ h2 {
 }
 
 a[target="_blank"]{
-  // background-color: red;
-  padding-right: 13px;
-  background: url({{ site.baseurl }}/assets/img/target_blank.png) right center/11px auto no-repeat;
-  // &:after{
-  //   content: "a";
-  // }
-  div#access_counter &{
-    padding-right: 0px;
-    background: none;
+  // padding-right: 13px;
+  // background: url({{ site.baseurl }}/assets/img/target_blank.png) right center/11px auto no-repeat;
+  &::after{
+    content: "";
+    display: inline-block;
+    background-image: url({{ site.baseurl }}/assets/img/target_blank.png);
+    background-size: contain;
+    vertical-align: middle;
+    width: 13px;
+    height: 13px;
+    div#access_counter &{
+      padding-right: 0px;
+      background: none;
+    }
+  }
+  &.arxiv{
+    white-space: nowrap;
   }
 }
 
