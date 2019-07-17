@@ -20,21 +20,29 @@ $body-color: mylighten($text-color, -50%);
 $body-background-color: mylighten($base-color, 45%);
 $body-highlighted-background-color: mylighten($base-color, 40%);
 
+// colors for buttons
 $color-selected: mylighten($base-color, 50%);
 $background-color-selected: mylighten($base-color, -10%);
+@if $dark-mode {
+  // scope の都合で，一度 @if の外で定義しておく必要がある
+  $background-color-selected: mylighten($base-color, -30%);
+}
 
 $color-unselected: mylighten($base-color, -20%);
 $background-color-unselected: mylighten($base-color, 35%);
 
+// border
 $border-color: $base-color;
 $footnote-border-color: mylighten($base-color, 20%);
 $table-border-color: $base-color;
 
+// hamburger menu
 $hamburger-color: mylighten($base-color, -20%);
 $hamburger-background-color: mylighten($base-color, 48%);
 
 $unimportant-color: mylighten($text-color, 10%);
 
+// links (<a> tags)
 $link-color: mylighten(hsl(200, 80%, 50%), 0%);
 $link-visited-color: mylighten(hsl(280, 30%, 50%), -10%);
 
