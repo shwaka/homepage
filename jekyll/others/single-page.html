@@ -18,9 +18,14 @@ ref: single-page
           href="{{ site.baseurl }}/assets/css/mystyle.css"
           type="text/css"></link>
     <script type="text/javascript">
-     function load_css(style_id){
+     function load_css(style_id, dark_mode){
        let link = document.createElement("link");
-       link.href = `{{ site.baseurl }}/assets/css/style${style_id}.css`;
+       if (dark_mode){
+         dark_mode_str = "-dark";
+       } else {
+         dark_mode_str = "";
+       }
+       link.href = `{{ site.baseurl }}/assets/css/style${style_id}${dark_mode_str}.css`;
        link.type = "text/css";
        link.rel = "stylesheet";
        document.getElementsByTagName("head")[0].appendChild(link);
@@ -28,18 +33,18 @@ ref: single-page
      function random_css(){
        const style_total = {{ site.num_styles }};
        var style_id = Math.floor(Math.random() * style_total);
-       load_css(style_id);
+       dark_mode = document.myform["dark-mode"].checked;
+       load_css(style_id, dark_mode);
        let elm = document.querySelector("#style-info");
        elm.textContent = `(${style_id} of 0...${style_total-1})`;
      }
      document.addEventListener("DOMContentLoaded", random_css);
     </script>
-    {% if page.syntax-highlighting %}
-      <link rel="stylesheet"
-            href="{{ site.baseurl }}/assets/css/syntax-highlighting.css"
-            type="text/css"></link>
-      <script src="{{ site.baseurl }}/assets/js/named-codeblock.js"></script>
-    {% endif %}
+    <style>
+     form input{
+       margin-left: 20px;
+     }
+    </style>
   </head>
   <body class="{{ page.lang }}">
     <header>
@@ -84,9 +89,10 @@ ref: single-page
         javascript を使ってランダムにCSSを読み込んでいます．
         <span id="style-info"></span>
       </div>
-      <div>
+      <form name="myform">
         <input type="button" value="random" onclick="random_css()"/>
-      </div>
+        <input type="checkbox" name="dark-mode"/> dark mode
+      </form>
       {% for ref in site.data.pages %}
         <h1>{{ ref }}</h1>
         {% include_md {{ ref }} %}
