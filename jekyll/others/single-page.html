@@ -73,14 +73,13 @@ ref: single-page
       </div>
     </header>
 
-    <div>
-      1ページにまとめてみた．
-      試しにやってみただけなので，レイアウトなどは全然調整してないです．
-      javascript を使ってランダムにCSSを読み込んでいます．
-      <span id="style-info"></span>
-    </div>
-
     <div id="base_container">
+      <div>
+        1ページにまとめてみた．
+        試しにやってみただけなので，レイアウトなどは全然調整してないです．
+        javascript を使ってランダムにCSSを読み込んでいます．
+        <span id="style-info"></span>
+      </div>
       {% for ref in site.data.pages %}
         <h1>{{ ref }}</h1>
         {% include_md {{ ref }} %}
