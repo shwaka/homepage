@@ -31,7 +31,8 @@ module Jekyll
         current_page["refer_default"] = false
       end
       if page.nil?
-        raise "no page found for #{refer_key}=#{input} with options #{options}"
+        path = current_page["path"]
+        raise "no page found for #{refer_key}=#{input} with options #{options} during processing #{path}"
       end
       return page
     end
