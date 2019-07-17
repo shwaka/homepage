@@ -27,12 +27,18 @@
         *   let elm = document.querySelector("#message");
         *   elm.textContent = decodeURIComponent(params["msg"].replace(/\+/g, "%20"));
         * } */
+       // div#message に redirect メッセージを表示する
        if ("redirect_from" in params) {
          let elm = document.querySelector("#message");
          lang = "{%- include get-lang-name.html lang=page.lang as="en" -%}";
          redirect_from = decodeURIComponent(params.redirect_from.replace(/\+/g, "%20"));
          msg = `Redirected to the top page! No ${lang} page found for ${redirect_from}`;
          elm.textContent = msg;
+       }
+       // アクセスカウンタを表示する
+       if (localStorage.getItem("show-counter") === "true"){
+         const counter = document.getElementById("access_counter");
+         counter.classList.remove("access_counter_hidden");
        }
      })
     </script>
