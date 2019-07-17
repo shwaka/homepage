@@ -37,29 +37,30 @@ ref: old-page
   <title>Shun Wakatsuki</title>
   <body>
     <header id="header">
-      Shun Wakatsuki
+      <div id="myname">
+        Shun Wakatsuki
+      </div>
+      <nav>
+        {% include lang_selector.html %}
+        <table id="menu" align="center">
+          <tr>
+            {% for ref in site.data.pages %}
+              {% assign referred_page = ref | refer %}
+              <td show="false"><a href="#{{ ref }}" show="false">{{ referred_page.title }}</a></td>
+            {% endfor %}
+          </tr>
+        </table>
+      </nav>
+      <div id="info">
+        {% include backref.html %}
+        <div>
+          以前使っていたページの html, css, javascript を流用したページ．
+          内容はちゃんとメインページと同期されています．
+          javascript を使ってページ遷移なしで4つの項目が表示されるのがポイント．
+          その4つ以外のリンク先はメインページの方に飛びます．
+        </div>
+      </div>
     </header>
-    <nav>
-      {% include lang_selector.html %}
-      <table id="menu" align="center">
-        <tr>
-          {% for ref in site.data.pages %}
-            {% assign referred_page = ref | refer %}
-            <td show="false"><a href="#{{ ref }}" show="false">{{ referred_page.title }}</a></td>
-          {% endfor %}
-        </tr>
-      </table>
-    </nav>
-    <div id="info">
-      {% include backref.html %}
-    </div>
-    <div>
-      以前使っていたページの html, css, javascript を流用したページ．
-      内容はちゃんとメインページと同期されています．
-      javascript を使ってページ遷移なしで4つの項目が表示されるのがポイント．
-      その4つ以外のリンク先はメインページの方に飛びます．
-    </div>
-
     {% for ref in site.data.pages %}
       {% assign referred_page = ref | refer %}
       <div class="area" id="{{ ref }}">
