@@ -2,27 +2,40 @@
 
 $base-color: hsl(0, 0%, 50%) !default;
 $text-color: hsl(0, 0%, 50%) !default;
+$dark-mode: false !default;
 
-$body-color: darken($text-color, 50%);
-$body-background-color: lighten($base-color, 45%);
-$body-highlighted-background-color: lighten($base-color, 40%);
+// $base-color: change-color($base-color, $lightness: 0%);
+@function mylighten($color, $amount){
+  @if $dark-mode {
+    $amount: -$amount*0.7;
+  }
+  @if $amount > 0% {
+    @return lighten($color, $amount);
+  } @else {
+    @return darken($color, -$amount);
+  }
+}
 
-$color-selected: lighten($base-color, 50%);
-$background-color-selected: darken($base-color, 10%);
+$body-color: mylighten($text-color, -50%);
+$body-background-color: mylighten($base-color, 45%);
+$body-highlighted-background-color: mylighten($base-color, 40%);
 
-$color-unselected: darken($base-color, 20%);
-$background-color-unselected: lighten($base-color, 35%);
+$color-selected: mylighten($base-color, 50%);
+$background-color-selected: mylighten($base-color, -10%);
+
+$color-unselected: mylighten($base-color, -20%);
+$background-color-unselected: mylighten($base-color, 35%);
 
 $border-color: $base-color;
-$footnote-border-color: lighten($base-color, 20%);
+$footnote-border-color: mylighten($base-color, 20%);
 $table-border-color: $base-color;
 
-$hamburger-color: darken($base-color, 20%);
-$hamburger-background-color: lighten($base-color, 48%);
+$hamburger-color: mylighten($base-color, -20%);
+$hamburger-background-color: mylighten($base-color, 48%);
 
-$unimportant-color: lighten($text-color, 10%);
+$unimportant-color: mylighten($text-color, 10%);
 
 
 // (inline) code blocks
 $codeblock-background: hsl(0, 0%, 90%);
-$codeblock-filename-background: lighten($base-color, 35%);
+$codeblock-filename-background: mylighten($base-color, 35%);
