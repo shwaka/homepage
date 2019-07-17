@@ -181,3 +181,11 @@ div#access_counter{
     border: 1px solid $table-border-color;
   }
 }
+
+// single-page.html
+table#select-css{
+  border-collapse: collapse;
+  td, th{
+    border: 1px solid $table-border-color;
+  }
+}

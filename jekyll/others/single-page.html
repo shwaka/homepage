@@ -49,14 +49,9 @@ ref: single-page
      function random_css(){
        const style_total = {{ site.num_styles }};
        var style_id = Math.floor(Math.random() * style_total);
-       if (document.myform["dark-mode"].checked) {
-         lightness = "dark";
-       } else {
-         lightness = "light";
-       }
+       var n = Math.floor(Math.random() * 2);
+       lightness = ["light", "dark"][n];
        load_css(style_id, lightness);
-       let elm = document.querySelector("#style-info");
-       elm.textContent = `(${style_id} of 0...${style_total-1})`;
      }
      document.addEventListener("DOMContentLoaded", random_css);
     </script>
@@ -107,18 +102,13 @@ ref: single-page
         1ページにまとめてみた．
         試しにやってみただけなので，レイアウトなどは全然調整してないです．
         javascript を使ってランダムにCSSを読み込んでいます．
-        <span id="style-info"></span>
       </div>
-      <form name="myform">
-        <input type="button" value="random" onclick="random_css()"/>
-        <input type="checkbox" name="dark-mode"/> dark mode
-      </form>
       <table id="select-css">
         <tr>
           <td>light</td>
-          <td>
-            {% assign max_style_num = site.num_styles | minus: 1 %}
-            {% for i in (0..max_style_num) %}
+          {% assign max_style_num = site.num_styles | minus: 1 %}
+          {% for i in (0..max_style_num) %}
+            <td>
               <input type="radio"
                      name="select-css"
                      class="select-css"
@@ -126,14 +116,15 @@ ref: single-page
                      id="select-css-{{ i }}"
                      onchange='load_css({{ i }}, "light")' />
               <label for="select-css-{{ i }}">{{ i }}</label>
-            {% endfor %}
-          </td>
+            </td>
+          {% endfor %}
         </tr>
         <tr>
           <td>dark</td>
-          <td>
-            {% assign max_style_num = site.num_styles | minus: 1 %}
-            {% for i in (0..max_style_num) %}
+
+          {% assign max_style_num = site.num_styles | minus: 1 %}
+          {% for i in (0..max_style_num) %}
+            <td>
               <input type="radio"
                      name="select-css-dark"
                      class="select-css-dark"
@@ -141,8 +132,8 @@ ref: single-page
                      id="select-css-{{ i }}-dark"
                      onchange='load_css({{ i }}, "dark")' />
               <label for="select-css-{{ i }}-dark">{{ i }}</label>
-            {% endfor %}
-          </td>
+            </td>
+          {% endfor %}
         </tr>
       </table>
       {% for ref in site.data.pages %}
