@@ -1,7 +1,7 @@
 ---
 layout: mylayout
 lang: jp
-ref: list-of-pages
+ref: lang-typo
 title: 言語指定ミス (for debugging)
 ---
 
