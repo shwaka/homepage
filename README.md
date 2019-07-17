@@ -74,13 +74,6 @@
 - front matter の `ref` と `lang` を使ってるやつを plugin にする
     - `baselayout.html` 内の main menu も，この plugin を使う？
     - ドキュメント！！！
-- 「ページ一覧」にその他の欄を作る？
-    - 多分(front matter を持つから？) `.css` とかも含まれるけど，
-      それは除外した方が良さそう？
-- あんまり見かけないけど，講演一覧とかは table にした方が見易くない？
-    - とりあえずやってみたけど，レイアウトは調整中
-    - 外部リンクを示す画像が表からはみ出る
-- URLパラメータを使って遷移前のページから情報を持ってくる
 - ランダムに CSS を選ぶやつで使っている
   `_plugins/generator.rb` と `assets/css/template.scss` を色々と整理する
     - ファイル名とクラス名
