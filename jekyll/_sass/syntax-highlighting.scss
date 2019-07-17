@@ -2,6 +2,10 @@
 
 .highlight{
   background: $codeblock-background;
+  color: black;
+  .named-block-filename{
+    color: $body-color;
+  }
 }
 .highlighter-rouge{
   @extend .highlight;           // inline code block にも背景色を適用する
