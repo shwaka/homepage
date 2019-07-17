@@ -68,6 +68,13 @@ h2 {
   border-left: 10px solid $border-color;
 }
 
+a{
+  color: $link-color;
+  &:visited{
+    color: $link-visited-color;
+  }
+}
+
 a[target="_blank"]{
   // padding-right: 13px;
   // background: url({{ site.baseurl }}/assets/img/target_blank.png) right center/11px auto no-repeat;

@@ -35,6 +35,8 @@ $hamburger-background-color: mylighten($base-color, 48%);
 
 $unimportant-color: mylighten($text-color, 10%);
 
+$link-color: mylighten(hsl(200, 80%, 50%), 0%);
+$link-visited-color: mylighten(hsl(280, 30%, 50%), -10%);
 
 // (inline) code blocks
 $codeblock-background: hsl(0, 0%, 90%);
