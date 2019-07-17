@@ -2,11 +2,11 @@
 
 $base-color: hsl(0, 0%, 50%) !default;
 $text-color: hsl(0, 0%, 50%) !default;
-$dark-mode: false !default;
+$palette-lightness: light !default;
 
-// $base-color: change-color($base-color, $lightness: 0%);
+// $base-color: change-color($base-color, $palette-lightness: 0%);
 @function mylighten($color, $amount){
-  @if $dark-mode {
+  @if $palette-lightness == dark {
     $amount: -$amount*0.7;
   }
   @if $amount > 0% {
@@ -23,7 +23,7 @@ $body-highlighted-background-color: mylighten($base-color, 40%);
 // colors for buttons
 $color-selected: mylighten($base-color, 50%);
 $background-color-selected: mylighten($base-color, -10%);
-@if $dark-mode {
+@if $palette-lightness == dark {
   // scope の都合で，一度 @if の外で定義しておく必要がある
   $background-color-selected: mylighten($base-color, -30%);
 }

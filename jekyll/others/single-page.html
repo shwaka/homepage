@@ -18,23 +18,43 @@ ref: single-page
           href="{{ site.baseurl }}/assets/css/mystyle.css"
           type="text/css"></link>
     <script type="text/javascript">
-     function load_css(style_id, dark_mode){
-       let link = document.createElement("link");
-       if (dark_mode){
-         dark_mode_str = "-dark";
+     function get_lightness_suffix(lightness){
+       if (lightness == "light"){
+         return "";
+       } else if (lightness == "dark") {
+         return "-dark";
        } else {
-         dark_mode_str = "";
+         throw new Error("invalid lightness");
        }
-       link.href = `{{ site.baseurl }}/assets/css/style${style_id}${dark_mode_str}.css`;
+     }
+     function load_css(style_id, lightness){
+       let link = document.createElement("link");
+       const lightness_suffix = get_lightness_suffix(lightness);
+       link.href = `{{ site.baseurl }}/assets/css/style${style_id}${lightness_suffix}.css`;
        link.type = "text/css";
        link.rel = "stylesheet";
        document.getElementsByTagName("head")[0].appendChild(link);
+       update_radiobutton(style_id, lightness);
+     }
+     function update_radiobutton(style_id, lightness){
+       /* const other = (lightness == "light") ? "dark" : "light"; */
+       for (var i = 0; i < {{ site.num_styles }}; i++){
+         // とりあえず全部のチェックを外す
+         document.getElementById(`select-css-${i}`).checked = false;
+         document.getElementById(`select-css-${i}-dark`).checked = false;
+       }
+       const lightness_suffix = get_lightness_suffix(lightness);
+       document.getElementById(`select-css-${style_id}${lightness_suffix}`).checked = true;
      }
      function random_css(){
        const style_total = {{ site.num_styles }};
        var style_id = Math.floor(Math.random() * style_total);
-       dark_mode = document.myform["dark-mode"].checked;
-       load_css(style_id, dark_mode);
+       if (document.myform["dark-mode"].checked) {
+         lightness = "dark";
+       } else {
+         lightness = "light";
+       }
+       load_css(style_id, lightness);
        let elm = document.querySelector("#style-info");
        elm.textContent = `(${style_id} of 0...${style_total-1})`;
      }
@@ -101,9 +121,10 @@ ref: single-page
             {% for i in (0..max_style_num) %}
               <input type="radio"
                      name="select-css"
+                     class="select-css"
                      value="{{ i }}"
                      id="select-css-{{ i }}"
-                     onchange="load_css({{ i }}, false)" />
+                     onchange='load_css({{ i }}, "light")' />
               <label for="select-css-{{ i }}">{{ i }}</label>
             {% endfor %}
           </td>
@@ -114,10 +135,11 @@ ref: single-page
             {% assign max_style_num = site.num_styles | minus: 1 %}
             {% for i in (0..max_style_num) %}
               <input type="radio"
-                     name="select-css"
+                     name="select-css-dark"
+                     class="select-css-dark"
                      value="{{ i }}"
                      id="select-css-{{ i }}-dark"
-                     onchange="load_css({{ i }}, true)" />
+                     onchange='load_css({{ i }}, "dark")' />
               <label for="select-css-{{ i }}-dark">{{ i }}</label>
             {% endfor %}
           </td>

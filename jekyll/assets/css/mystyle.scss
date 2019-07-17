@@ -4,7 +4,7 @@
 $site-base-url: "{{ site.baseurl }}";
 $base-color: hsl(160, 30%, 50%); // lightness は 50% で固定
 $text-color: hsl(0, 0%, 50%);
-$dark-mode: false;
+$palette-lightness: light;
 
 @import "media.scss";
 @import "palette.scss";
