@@ -2,8 +2,8 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
-{% for lang_data in site.data.languages %}
-  {% if lang_data.key == include.lang %}
-    {{ lang_data.names[include.as] }}
-  {% endif %}
-{% endfor %}
+{%- for lang_data in site.data.languages -%}
+  {%- if lang_data.key == include.lang -%}
+    {{- lang_data.names[include.as] -}}
+  {%- endif -%}
+{%- endfor -%}

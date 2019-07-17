@@ -8,21 +8,29 @@ module Jekyll
       options = alist_to_hash(args)
       current_page = @context.registers[:page]
       # page の デフォルト値
-      if config_refer.key?("default_to_page") then
+      if config_refer.key?("default_to_page")
         config_refer["default_to_page"].each do |key|
-          if current_page.key?(key) and not options.key?(key) then
+          if current_page.key?(key) and not options.key?(key)
             options[key] = current_page[key]
           end
         end
       end
       pages = site.pages + site.posts.docs
-      if default_ref then
-        page = find_page(pages, refer_key, input, options) ||
-               find_page(pages, refer_key, default_ref, options)
+      # if default_ref then
+      #   page = find_page(pages, refer_key, input, options) ||
+      #          find_page(pages, refer_key, default_ref, options)
+      # else
+      #   page = find_page(pages, refer_key, input, options)
+      # end
+      page = find_page(pages, refer_key, input, options)
+      if page.nil? and default_ref
+        # default_ref でも nil を返すかもしれないので，下の if とは統合できない
+        page = find_page(pages, refer_key, default_ref, options)
+        current_page["refer_default"] = true
       else
-        page = find_page(pages, refer_key, input, options)
+        current_page["refer_default"] = false
       end
-      if page.nil? then
+      if page.nil?
         raise "no page found for #{refer_key}=#{input} with options #{options}"
       end
       return page
@@ -40,7 +48,7 @@ module Jekyll
       site = @context.registers[:site]
       baseurl = site.config["baseurl"]
       url = baseurl + refer_url(page)
-      if text then
+      if text
         link_text = text
       elsif page["title"]
         link_text = prefix + page["title"]
@@ -55,7 +63,7 @@ module Jekyll
 
     def alist_to_hash(alist)
       # alist = association list (from lisp)
-      if alist.length % 2 != 0 then
+      if alist.length % 2 != 0
         raise "alist.length must be even!"
       end
       hash_result = {}
@@ -68,9 +76,9 @@ module Jekyll
       pages_filtered = pages
                          .select{|page| options.keys.all?{|key| page.data[key] == options[key]}}
                          .select{|page| page.data[refer_key] == ref }
-      if pages_filtered.length == 0 then
+      if pages_filtered.length == 0
         return nil
-      elsif pages_filtered.length == 1 then
+      elsif pages_filtered.length == 1
         return pages_filtered[0]
       else
         page_urls = pages_filtered.map do |page|

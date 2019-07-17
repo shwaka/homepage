@@ -16,8 +16,25 @@
     {% else %}
       {% assign url = "invalid-ref" | refer: "index", "lang", lang_data.key | refer_url %}
     {% endif %}
+    {% if page.refer_default %}
+      {% comment %}
+      {% capture msg_cap -%}
+        Redirected to the top page! No {{ lang_data.names.en }} page found for {{ page.url }}
+      {%- endcapture %}
+      {% assign msg = msg_cap | url_encode %}
+      {% endcomment %}
+      {% capture redirect_from_cap -%}
+        {{ page.url }}
+      {%- endcapture %}
+      {% assign redirect_from = redirect_from_cap | url_encode %}
+      {% assign params = "?redirect_from=" | append: redirect_from %}
+    {% else %}
+      {% assign params = "" %}
+    {% endif %}
     <span class="lang {{ lang_data.key }}" current="{{ current }}">
-      <a href="{{ site.baseurl }}{{ url }}" class="{{ lang_data.key }}" current="{{ current }}">
+      <a href="{{ site.baseurl }}{{ url }}{{ params }}"
+         class="{{ lang_data.key }}"
+         current="{{ current }}">
         {{ lang_data.names.short }}
       </a>
     </span>

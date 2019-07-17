@@ -22,6 +22,26 @@
          <script type="text/javascript"
          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
          </script> -->
+    <script type="text/javascript">
+     var params = new Object;
+     location.search.substring(1).split("&").forEach((str) => {
+       var key_value = str.split("=");
+       params[key_value[0]] = key_value[1];
+     })
+     document.addEventListener("DOMContentLoaded", () => {
+       /* if ("msg" in params) {
+        *   let elm = document.querySelector("#message");
+        *   elm.textContent = decodeURIComponent(params["msg"].replace(/\+/g, "%20"));
+        * } */
+       if ("redirect_from" in params) {
+         let elm = document.querySelector("#message");
+         lang = "{%- include get-lang-name.html lang=page.lang as="en" -%}";
+         redirect_from = decodeURIComponent(params.redirect_from.replace(/\+/g, "%20"));
+         msg = `Redirected to the top page! No ${lang} page found for ${redirect_from}`;
+         elm.textContent = msg;
+       }
+     })
+    </script>
   </head>
   <body class="{{ page.lang }}">
     <header>
@@ -80,6 +100,8 @@
           とりあえず代わりに site.time を使ってサイト全体の変更日時を見る．
           {% endcomment %}
         </span>
+      </div>
+      <div id="message">
       </div>
     </header>
 
