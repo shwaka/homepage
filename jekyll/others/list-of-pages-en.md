@@ -6,8 +6,6 @@ title: List of pages
 backref: others
 ---
 
-Pages are listed in the alphabetical order of the URL.
-
 ## Pages written in English
 {% include_relative list-of-pages.html lang="en" %}
 
