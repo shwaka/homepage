@@ -15,7 +15,7 @@ $background-color-unselected: lighten($base-color, 35%);
 
 $border-color: $base-color;
 $footnote-border-color: lighten($base-color, 20%);
-$table-border-color: darken($text-color, 50%);
+$table-border-color: $base-color;
 
 $hamburger-color: darken($base-color, 20%);
 $hamburger-background-color: lighten($base-color, 48%);
