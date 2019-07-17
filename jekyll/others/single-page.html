@@ -61,7 +61,7 @@ ref: single-page
      }
     </style>
   </head>
-  <body class="{{ page.lang }}">
+  <body class="{{ page.lang }} single-page">
     <header>
       <div id="myname">
         {% if page.lang == "ja" %}
@@ -136,10 +136,15 @@ ref: single-page
           {% endfor %}
         </tr>
       </table>
+
+
       {% for ref in site.data.pages %}
-        <h1>{{ ref }}</h1>
+        {% assign pg = ref | refer %}
+        <h1>{{ pg.title }}</h1>
         {% include_md {{ ref }} %}
       {% endfor %}
+
+
     </div>
   </body>
 </html>
