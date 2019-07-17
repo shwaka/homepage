@@ -36,9 +36,9 @@ backref: others
 </script>
 
 <div>
-  <input type="radio" name="show-counter" value="true" id="show-counter-true" />
+  <input type="radio" name="show-counter" value="true" id="show-counter-true" onchange="save()" />
   <label for="show-counter-true">表示する</label>  <br/>
-  <input type="radio" name="show-counter" value="false" id="show-counter-false" />
+  <input type="radio" name="show-counter" value="false" id="show-counter-false" onchange="save()" />
   <label for="show-counter-false">表示しない</label> <br/>
-  <input type="button" id="show-counter-button" name="show-counter-save" value="設定" onclick="save()" />
+  <!-- <input type="button" id="show-counter-button" name="show-counter-save" value="設定" onclick="save()" /> -->
 </div>
