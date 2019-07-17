@@ -2,7 +2,7 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
-<ol class="articles">
+<ol class="articles" reversed>
   {% assign articles = site.data.articles | where: "type", "proceedings" | reverse %}
   {% for article in articles %}
     <li>

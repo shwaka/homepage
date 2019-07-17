@@ -2,7 +2,7 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
-<ol class="talks">
+<ol class="talks" reversed>
 {% assign talks = site.data.talks | where: "base.lang", "en" | reverse %}
 {% for talk in talks %}
   {% include assign_lang.html from=talk %}
