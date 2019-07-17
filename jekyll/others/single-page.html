@@ -48,41 +48,7 @@ ref: single-page
       </div>
 
       <!-- language selector -->
-      <div id="lang_selector">
-        {% for lang_data in site.data.languages %}
-          {% assign page_found = false %}
-          {% if page.ref %}
-            {% assign pages=site.pages | where: "ref", page.ref | where: "lang", lang_data.key %}
-            {% for pg in pages %}
-              {% comment %} length(pages) <= 1 {% endcomment %}
-              {% if page_found %}
-                {% include error.html msg="duplicated ref" %}
-                {% break %}
-              {% endif %}
-              {% if pg.lang == page.lang %}
-                {% assign current = "true" %}
-              {% else %}
-                {% assign current = "false" %}
-              {% endif %}
-              {% assign url = pg.url %}
-              {% assign page_found = true %}
-            {% endfor %}
-          {% elsif page.lang == lang_data.key %}
-            {% assign url = page.url %}
-            {% assign current = "true" %}
-            {% assign page_found = true %}
-          {% endif %}
-          {% unless page_found %}
-            {% assign url = "/index.html" %}
-            {% assign current = "false" %}
-          {% endunless %}
-          <span class="lang {{ lang_data.key }}" current="{{ current }}">
-            <a href="{{ site.baseurl }}{{ url }}" class="{{ lang_data.key }}" current="{{ current }}">
-              {{ lang_data.names.short }}
-            </a>
-          </span>
-        {% endfor %}
-      </div>
+      {% include lang_selector.html %}
 
       <div id="info">
         <span id="back">
