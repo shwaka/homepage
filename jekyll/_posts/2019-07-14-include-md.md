@@ -3,7 +3,6 @@ magiccomment: "-*- engine: liquid -*-"
 layout: post
 lang: ja
 title: markdown を include する
-syntax-highlighting: true
 ref-list:
   - "post:highlight-and-image"
   - "post:cleveref"

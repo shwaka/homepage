@@ -2,7 +2,6 @@
 layout: post
 lang: ja
 title: company-dabbrevで日本語を補完しない
-syntax-highlighting: true
 ref: post:company-dabbrev-japanese
 toc: true
 ---

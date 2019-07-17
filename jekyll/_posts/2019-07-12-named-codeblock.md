@@ -2,7 +2,6 @@
 layout: post
 lang: ja
 title: コードブロックにファイル名を指定する
-syntax-highlighting: true
 ref: post:named-codeblock
 date: 2019-07-12 21:00:00 +09:00
 toc: true

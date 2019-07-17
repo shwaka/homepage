@@ -2,7 +2,6 @@
 layout: post
 lang: ja
 title: arXivでcleverefを使う
-syntax-highlighting: true
 ref: post:cleveref-arxiv
 date: 2016-12-11 01:00:00 +09:00
 toc: true
