@@ -1,0 +1,19 @@
+---
+permalink: /404.html
+layout: mylayout
+title: "ERROR: 404 Page Not Found"
+---
+
+<script type="text/javascript">
+ document.addEventListener("DOMContentLoaded", () => {
+   document.getElementById("current-url").textContent = location.pathname;
+ });
+</script>
+
+<div>
+  `<span id="current-url"></span>' not found.
+</div>
+
+<div>
+  Please go to <a href="{{ site.baseurl }}/index.html">top page</a>.
+</div>
