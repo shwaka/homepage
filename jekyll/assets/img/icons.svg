@@ -1,0 +1,25 @@
+---
+magiccomment: "-*- engine: liquid -*-"
+---
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    {% assign tb_margin = 1.7 %}
+    {% assign tb_side = 4 %}
+    <symbol id="target_blank" viewBox="0 0 10 10">
+      <!-- hoge -->
+      <polyline points="{{tb_margin|plus:tb_side}},{{tb_margin}}
+                        {{tb_margin}},{{tb_margin}}
+                        {{tb_margin}},{{10|minus:tb_margin}}
+                        {{10|minus:tb_margin}},{{10|minus:tb_margin}}
+                        {{10|minus:tb_margin}},{{10|minus:tb_margin|minus:tb_side}}"
+                stroke="var(--icon-color,gray)" stroke-width="1.5" fill="none" />
+      <polygon points="{{tb_margin|plus:tb_side}},0
+                       10,0
+                       10,{{10|minus:tb_margin|minus:tb_side}}"
+               fill="var(--icon-color,gray)" stroke="none" />
+      <line x1="{{tb_margin|plus:tb_margin}}" y1="{{10|minus:tb_margin|minus:tb_margin}}"
+            x2="10" y2="0"
+            stroke="var(--icon-color,gray)" stroke-width="1.5" />
+    </symbol>
+  </defs>
+</svg>

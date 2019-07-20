@@ -1,0 +1,52 @@
+---
+magiccomment: "-*- engine: liquid -*-"
+layout: post
+lang: ja
+title: svg で書いてみる
+---
+
+<h1>svg</h1>
+<span>
+  svg でアイコンを書いてみるテスト
+</span>
+
+<style>
+ svg{
+   --icon-color: orange;
+ }
+ a svg{
+   --icon-color: gray;
+ }
+ svg.fuga{
+   display: inline-block;
+   margin-bottom: -2px;
+ }
+ use{
+   padding: 0px;
+   margin: 0px;
+ }
+</style>
+
+<svg class="fuga" width="13px" height="13px"><use xlink:href="{{ site.baseurl }}/assets/img/icons.svg#arrow"></use></svg>
+
+<span>
+  ここにアイコンを表示:
+</span>
+<svg class="fuga" width="13px" height="13px"><use xlink:href="{{ site.baseurl }}/assets/img/icons.svg#target_blank"></use></svg>
+<svg class="fuga" width="100px" height="100px"><use xlink:href="{{ site.baseurl }}/assets/img/icons.svg#target_blank"></use></svg>
+
+<div>
+  <ul>
+    <li>
+      <a href="hoge" target="_blank">hoge</a>
+    </li>
+    <li>
+      <a href="hoge">
+        hoge
+        <svg class="fuga" width="13px" height="13px">
+          <use xlink:href="{{ site.baseurl }}/assets/img/icons.svg#target_blank"></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</div>
