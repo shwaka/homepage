@@ -6,7 +6,6 @@ magiccomment: "-*- engine: liquid -*-"
     {% assign tb_margin = 1.7 %}
     {% assign tb_side = 4 %}
     <symbol id="target_blank" viewBox="0 0 10 10">
-      <!-- hoge -->
       <polyline points="{{tb_margin|plus:tb_side}},{{tb_margin}}
                         {{tb_margin}},{{tb_margin}}
                         {{tb_margin}},{{10|minus:tb_margin}}
