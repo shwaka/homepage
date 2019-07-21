@@ -46,6 +46,12 @@ h2 {
     border-left: 10px solid #000;
 }
 
+svg.target-blank-icon{
+  width: 13px;
+  height: 13px;
+  --icon-color: gray;
+}
+
 table#menu {
     width: 90%;
     font-size: 30px;

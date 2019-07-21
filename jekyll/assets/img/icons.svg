@@ -17,7 +17,7 @@ magiccomment: "-*- engine: liquid -*-"
                        10,{{10|minus:tb_margin|minus:tb_side}}"
                fill="var(--icon-color,gray)" stroke="none" />
       <line x1="{{tb_margin|plus:tb_margin}}" y1="{{10|minus:tb_margin|minus:tb_margin}}"
-            x2="10" y2="0"
+            x2="{{10|minus:tb_margin}}" y2="{{tb_margin}}"
             stroke="var(--icon-color,gray)" stroke-width="1.5" />
     </symbol>
   </defs>
