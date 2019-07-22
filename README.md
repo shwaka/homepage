@@ -73,6 +73,8 @@
     - ついでに `others/include-test.md` で試したやつがどう上手くいかないかも記録しておく？
 - `refer_filter.rb`
     - ドキュメント！！！
+- `named_codeblock_hook.rb`
+    - ドキュメント！！！！！
 - ランダムに CSS を選ぶやつで使っている
   `_plugins/generator.rb` と `assets/css/template.scss` を色々と整理する
     - ファイル名とクラス名
