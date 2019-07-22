@@ -9,6 +9,14 @@
     {% assign backref = layout.backref %}
   {% endif %}
   {% if backref %}
-    {{ backref | refer | refer_link: nil, "<< " }}
+    {% assign backpage = backref | refer %}
+    {% if backpage %}
+      {{ backpage | refer_link: nil, "<< " }}
+    {% else %}
+      {% capture error_msg -%}
+        invalid ref ({{ backref }}) for lang ({{ page.lang }})
+      {%- endcapture %}
+      {{ error_msg | raise_error }}
+    {% endif %}
   {% endif %}
 </span>
