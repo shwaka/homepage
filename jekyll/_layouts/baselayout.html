@@ -66,25 +66,21 @@
             {% if page.lang %}
               {% assign pages=site.pages | where:"lang", page.lang %}
               {% for ref in site.data.pages %}
-                {% for pg in pages %}
-                  {% if pg.ref == ref %}
+                {% assign pg = ref | refer: "index" %}
+                {% if pg.title_short %}
+                  {% assign title = pg.title_short %}
+                {% else %}
+                  {% assign title = pg.title %}
+                {% endif %}
 
-                    {% if pg.title_short %}
-                      {% assign title = pg.title_short %}
-                    {% else %}
-                      {% assign title = pg.title %}
-                    {% endif %}
-
-                    {% if pg.ref == page.ref %}
-                      {% assign current = "true" %}
-                    {% else %}
-                      {% assign current = "false" %}
-                    {% endif %}
-                    <div class="menu_item" current="{{ current }}">
-                      <a href="{{ site.baseurl }}{{ pg.url }}"> {{ title }}</a>
-                    </div>
-                  {% endif %}
-                {% endfor %}
+                {% if pg.ref == page.ref %}
+                  {% assign current = "true" %}
+                {% else %}
+                  {% assign current = "false" %}
+                {% endif %}
+                <div class="menu_item" current="{{ current }}">
+                  <a href="{{ site.baseurl }}{{ pg.url }}"> {{ title }}</a>
+                </div>
               {% endfor %}
             {% endif %}
           </div>

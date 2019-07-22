@@ -71,9 +71,10 @@
 - `include_md_tag.rb`
     - ドキュメントを整える
     - ついでに `others/include-test.md` で試したやつがどう上手くいかないかも記録しておく？
-- front matter の `ref` と `lang` を使ってるやつを plugin にする
+- `refer_filter.rb`
     - `baselayout.html` 内の main menu も，この plugin を使う？
     - ドキュメント！！！
+    - `include_md_tag.rb` もこれを利用する？
 - ランダムに CSS を選ぶやつで使っている
   `_plugins/generator.rb` と `assets/css/template.scss` を色々と整理する
     - ファイル名とクラス名
