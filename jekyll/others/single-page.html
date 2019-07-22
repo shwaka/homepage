@@ -143,7 +143,7 @@ ref: single-page
       {% for ref in site.data.pages %}
         {% assign pg = ref | refer %}
         <h1>{{ pg.title }}</h1>
-        {% include_md {{ ref }} %}
+        {{ ref | refer | include_md }}
       {% endfor %}
 
 

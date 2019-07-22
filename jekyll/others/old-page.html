@@ -65,7 +65,7 @@ ref: old-page
       {% assign referred_page = ref | refer %}
       <div class="area" id="{{ ref }}">
         <h1>{{ referred_page.title }}</h1>
-        {% include_md {{ ref }} %}
+        {{ ref | refer | include_md }}
       </div>
     {% endfor %}
   </body>

@@ -27,15 +27,31 @@ ref-list:
 </style>
 
 {% for ref in page.ref-list %}
+  {% assign page_to_include = ref | refer %}
   {% capture acc_content %}
     <div class="included">
       <div class="title">
         {{ ref }}
       </div>
-      {% include_md {{ ref }} %}
+      {% comment %}{% include_md {{ ref }} %}{% endcomment %}
+      {{ page_to_include | include_md }}
     </div>
   {% endcapture %}
-  {% assign page_to_include = ref | refer %}
   {% assign acc_title = page_to_include.title %}
   {% include accordion.html id=ref title=acc_title content=acc_content %}
 {% endfor %}
+
+
+{% comment %} refer は使わずに {% endcomment %}
+{% assign ref = "others" %}
+{% assign page_to_include = ref | refer %}
+{% capture acc_content %}
+  <div class="included">
+    <div class="title">
+      {{ ref }}
+    </div>
+    {{ page_to_include | include_md }}
+  </div>
+{% endcapture %}
+{% assign acc_title = page_to_include.title %}
+{% include accordion.html id=ref title=acc_title content=acc_content %}
