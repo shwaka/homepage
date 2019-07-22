@@ -1,7 +1,8 @@
 # coding: utf-8
 module Jekyll
   module ReferFilters
-    def refer(input, default_ref=nil, *args)
+    def refer(input, *args)
+      # ページが見つからないときは nil を返す
       site = @context.registers[:site]
       config_refer = site.config["refer"]
       refer_key = config_refer["key"]
@@ -23,25 +24,32 @@ module Jekyll
       #   page = find_page(pages, refer_key, input, options)
       # end
       page = find_page(pages, refer_key, input, options)
-      if page.nil? and default_ref
-        # default_ref でも nil を返すかもしれないので，下の if とは統合できない
-        page = find_page(pages, refer_key, default_ref, options)
-        current_page["refer_default"] = true
-      else
-        current_page["refer_default"] = false
-      end
+      # if page.nil? and default_ref
+      #   # default_ref でも nil を返すかもしれないので，下の if とは統合できない
+      #   page = find_page(pages, refer_key, default_ref, options)
+      #   current_page["refer_default"] = true
+      # else
+      #   current_page["refer_default"] = false
+      # end
       if page.nil?
-        path = current_page["path"]
-        raise "no page found for #{refer_key}=#{input} with options #{options} during processing #{path}"
+        return nil
+        # path = current_page["path"]
+        # raise "no page found for #{refer_key}=#{input} with options #{options} during processing #{path}"
       end
       return page
     end
     def refer_url(input)
-      # input must be a page
+      # input must be a page or nil
+      if input.nil?
+        return nil
+      end
       return input["url"]
     end
     def refer_link(input, text=nil, prefix="")
-      # input must be a page
+      # input must be a page or nil
+      if input.nil?
+        return nil
+      end
       page = input
       url = refer_url(page)
       # Jekyll::Filters::URLFilters.absolute_url ってそのまま呼び出せるの？extend?

@@ -10,13 +10,18 @@
       {% assign current = "false" %}
     {% endif %}
     {% if page.ref %}
-      {% assign url = page.ref | refer: "index", "lang", lang_data.key | refer_url %}
+      {% assign url = page.ref | refer: "lang", lang_data.key | refer_url %}
+      {% unless url %}
+        {% assign url = "index" | refer: "lang", lang_data.key | refer_url %}
+        {% assign refer_default = true %}
+      {% endunless %}
     {% elsif lang_data.key == page.lang %}
       {% assign url = page.url %}
     {% else %}
-      {% assign url = "invalid-ref" | refer: "index", "lang", lang_data.key | refer_url %}
+      {% assign url = "index" | refer: "lang", lang_data.key | refer_url %}
+      {% assign refer_default = true %}
     {% endif %}
-    {% if page.refer_default %}
+    {% if refer_default %}
       {% comment %}
       {% capture msg_cap -%}
         Redirected to the top page! No {{ lang_data.names.en }} page found for {{ page.url }}
