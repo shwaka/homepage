@@ -30,5 +30,5 @@
   </a>,
   {{ include.article.year }}
 {% else %}
-  {% include error.html msg="invalid article type" %}
+  {{ "invalid article type" | raise_error }}
 {% endif %}
