@@ -71,8 +71,6 @@
 - `include_md_filter.rb`
     - ドキュメントを整える
     - ついでに `others/include-test.md` で試したやつがどう上手くいかないかも記録しておく？
-- `refer_filter.rb`
-    - ドキュメント！！！
 - `named_codeblock_hook.rb`
     - ドキュメント！！！！！
 - ランダムに CSS を選ぶやつで使っている
