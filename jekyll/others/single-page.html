@@ -115,7 +115,8 @@ ref: single-page
                      value="{{ i }}"
                      id="select-css-{{ i }}"
                      onchange='load_css({{ i }}, "light")' />
-              <label for="select-css-{{ i }}">{{ i }}</label>
+              {{ i }}
+              <label for="select-css-{{ i }}"></label>
             </td>
           {% endfor %}
         </tr>
@@ -131,7 +132,8 @@ ref: single-page
                      value="{{ i }}"
                      id="select-css-{{ i }}-dark"
                      onchange='load_css({{ i }}, "dark")' />
-              <label for="select-css-{{ i }}-dark">{{ i }}</label>
+              {{ i }}
+              <label for="select-css-{{ i }}-dark"></label>
             </td>
           {% endfor %}
         </tr>
