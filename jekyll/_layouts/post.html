@@ -2,7 +2,6 @@
 magiccomment: "-*- engine: liquid -*-"
 layout: baselayout
 backref: blog
-toc: true
 ---
 
 {% comment %}
@@ -15,9 +14,11 @@ toc: true
 </header>
 
 <div class="blog_main">
-  <div id="table-of-contents">
-    {% toc %}
-  </div>
+  {% if page.toc %}
+    <div id="table-of-contents">
+      {% toc %}
+    </div>
+  {% endif %}
 
   <div id="markdown-content">
     {{ content }}
