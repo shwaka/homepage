@@ -51,7 +51,7 @@
 - [Jekyll Date Formatting Examples - Alan W. Smith](http://alanwsmith.com/jekyll-liquid-date-formatting-examples)
   日付のフォーマットの例がたくさん載ってる
 - [How to properly indicate an error during site generation?](https://talk.jekyllrb.com/t/how-to-properly-indicate-an-error-during-site-generation/447)
-  エラーをraiseする方法 (`error.html`で使用)
+  エラーをraiseする方法
 - [icooon-mono](http://icooon-mono.com/)
   新しいタブで開くリンクにつけている画像([target_blank.png](/jekyll/img/target_blank.png))はここから取得
 - [CSSだけで簡単！ハンバーガーメニューの作り方（スマホ対応）](https://saruwakakun.com/html-css/reference/nav-drawer)
@@ -68,13 +68,11 @@
 - デプロイ方法をどうにかしたい．
     - 自動化したい
     - 重いPDFをいちいち upload するのは無駄
-- `include_md_tag.rb`
+- `include_md_filter.rb`
     - ドキュメントを整える
     - ついでに `others/include-test.md` で試したやつがどう上手くいかないかも記録しておく？
 - `refer_filter.rb`
-    - `baselayout.html` 内の main menu も，この plugin を使う？
     - ドキュメント！！！
-    - `include_md_tag.rb` もこれを利用する？
 - ランダムに CSS を選ぶやつで使っている
   `_plugins/generator.rb` と `assets/css/template.scss` を色々と整理する
     - ファイル名とクラス名
