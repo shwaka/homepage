@@ -3,7 +3,6 @@ magiccomment: "-*- engine: liquid -*-"
 layout: mylayout
 lang: ja
 title: ほげ
-backref: list-of-tests
 ref: hoge
 ---
 

@@ -13,3 +13,9 @@ num_styles: 10
 collections:
   tests:
     output: true
+defaults:
+  - scope:
+      path: ""
+      type: tests
+    values:
+      backref: list-of-tests

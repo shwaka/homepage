@@ -3,7 +3,6 @@ magiccomment: "-*- engine: liquid -*-"
 layout: mylayout
 lang: ja
 title: ふが
-backref: list-of-tests
 ref: fuga
 ---
 
