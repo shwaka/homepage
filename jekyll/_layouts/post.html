@@ -8,8 +8,17 @@ backref: blog
 -*- engine: liquid -*-
 {% endcomment %}
 
-<header>
-  <div>{% include date.html date=page.date %}</div>
+<header class="blog-header">
+  <div class="post-info">
+    <div class="post-date">
+      {% include date.html date=page.date %}
+    </div>
+    <div class="post-tags">
+      {% for tag in page.tags %}
+        <span class="post-tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    </div>
   <h1>{{ page.title }}</h1>
 </header>
 
