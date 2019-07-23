@@ -8,6 +8,7 @@ lightness_list:
 $site-base-url: "{{ site.baseurl }}";
 
 {% assign hue_num = site.num_styles %}
+{% assign hue_num = 2 %} // site.num_styles でやると重すぎるので，とりあえず2で固定
 {% assign hue_max = hue_num | minus: 1 %}
 
 {% for lightness in page.lightness_list %}

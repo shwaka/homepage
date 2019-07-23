@@ -80,3 +80,8 @@
   `_plugins/generator.rb` と `assets/css/template.scss` を色々と整理する
     - ファイル名とクラス名
     - 色々とハードコードしている
+- `dynamic-css.html` あたり
+    - `_tests/dynamic-css.html` と `assets/css/dynamic.scss` で `site.num_styles` を呼び出さず，
+      `2` をハードコードしている．
+      (10などの大きな値にすると，20秒ほどコンパイルにかかってしまう)
+    - SCSSとしてのコンパイルは分割した方が早い？
