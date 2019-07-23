@@ -15,7 +15,11 @@ collections:
     output: true
 defaults:
   - scope:
-      path: ""
+      path: "*.md"
+    values:
+      layout: mylayout
+  - scope:
+      path: "others/*.md"
     values:
       layout: mylayout
   - scope:
@@ -23,3 +27,4 @@ defaults:
       type: tests
     values:
       backref: list-of-tests
+      layout: mylayout
