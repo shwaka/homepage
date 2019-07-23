@@ -4,6 +4,7 @@ ref: counter
 title: アクセスカウンター
 access_counter: true
 backref: others
+layout: mylayout
 ---
 
 アクセスカウンターを試しに置いてみた．

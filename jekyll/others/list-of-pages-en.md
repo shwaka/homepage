@@ -3,6 +3,7 @@ lang: en
 ref: list-of-pages
 title: List of pages
 backref: others
+layout: mylayout
 ---
 
 ## Pages written in English

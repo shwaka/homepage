@@ -2,6 +2,7 @@
 title: Research
 lang: en
 ref: research
+layout: mylayout
 ---
 
 ## Publications

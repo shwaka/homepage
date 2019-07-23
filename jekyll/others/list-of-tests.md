@@ -4,6 +4,7 @@ lang: ja
 title: test ページたち
 ref: list-of-tests
 backref: others
+layout: mylayout
 ---
 
 <ul>

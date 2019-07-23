@@ -2,6 +2,7 @@
 lang: jp
 ref: lang-typo
 title: 言語指定ミス (for debugging)
+layout: mylayout
 ---
 
 for debugging

@@ -3,6 +3,7 @@ title: Curriculum Vitae
 title_short: CV
 lang: en
 ref: cv
+layout: mylayout
 ---
 
 {:#cv}

@@ -2,6 +2,7 @@
 title: 研究
 lang: ja
 ref: research
+layout: mylayout
 ---
 
 {{ "research-table" | refer | refer_link: "表形式" }}

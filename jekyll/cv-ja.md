@@ -2,6 +2,7 @@
 title: 履歴書
 lang: ja
 ref: cv
+layout: mylayout
 ---
 
 {:#cv}

@@ -2,6 +2,7 @@
 title: その他
 lang: ja
 ref: others
+layout: mylayout
 ---
 
 <!-- ## Teaching Assistant -->

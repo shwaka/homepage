@@ -2,6 +2,7 @@
 title: Top
 lang: en
 ref: index
+layout: mylayout
 ---
 
 ## Shun Wakatsuki
