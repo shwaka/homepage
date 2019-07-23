@@ -129,6 +129,18 @@ div#info{
   }
 }
 
+#list-of-posts{
+  .post{
+    margin-bottom: 10px;
+    .date{
+      color: $unimportant-color;
+    }
+    .link{
+      padding-left: 10px;
+    }
+  }
+}
+
 div#blog_footer{
   display: flex;
   justify-content: space-between;

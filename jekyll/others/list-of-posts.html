@@ -2,13 +2,17 @@
 -*- engine: liquid -*-
 {% endcomment %}
 
-<ul>
+<div id="list-of-posts">
   {% for post in site.posts %}
-    <li>
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        {% include date.html date=post.date %} ---
-        {{ post.title }}
-      </a>
-    </li>
+    <div class="post">
+      <div class="date">
+        {% include date.html date=post.date %}
+      </div>
+      <div class="link">
+        <a href="{{ site.baseurl }}{{ post.url }}">
+          {{ post.title }}
+        </a>
+      </div>
+    </div>
   {% endfor %}
-</ul>
+</div>
