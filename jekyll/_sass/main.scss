@@ -36,7 +36,7 @@ div#table-of-contents{
 }
 
 div.footnotes{
-  border-top: 1px solid $footnote-border-color;
+  border-top: 1px solid $weak-border-color;
   margin-top: 50px;
   font-size: small;
 }
@@ -131,9 +131,28 @@ div#info{
 
 #list-of-posts{
   .post{
-    margin-bottom: 10px;
-    .date{
-      color: $unimportant-color;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid $weak-border-color;
+    .info{
+      .date{
+        display: inline-block;
+        color: $unimportant-color;
+      }
+      .tags{
+        display: inline-block;
+        height: 100%;
+        .tag{
+          display: inline-block;
+          margin: 0 2px;
+          padding: 0 2px;
+          background-color: $background-color-unselected;
+          // color: $color-unselected;
+          font-size: small;
+          border: 1px solid $border-color;
+          border-radius: 5px;
+        }
+      }
     }
     .link{
       padding-left: 10px;

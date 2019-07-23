@@ -5,6 +5,10 @@ title: コードブロックにファイル名を指定する
 ref: post:named-codeblock
 date: 2019-07-12 01:00:00 +09:00
 toc: true
+tags:
+  - jekyll
+  - javascript
+  - documentation
 ---
 
 `Jekyll` + `kramdown` の環境で，コードブロックにファイル名を表示する．

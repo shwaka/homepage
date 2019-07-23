@@ -5,8 +5,15 @@
 <div id="list-of-posts">
   {% for post in site.posts %}
     <div class="post">
-      <div class="date">
-        {% include date.html date=post.date %}
+      <div class="info">
+        <div class="date">
+          {% include date.html date=post.date %}
+        </div>
+        <div class="tags">
+          {% for tag in post.tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
       </div>
       <div class="link">
         <a href="{{ site.baseurl }}{{ post.url }}">

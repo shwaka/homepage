@@ -4,6 +4,9 @@ lang: ja
 title: company-dabbrevで日本語を補完しない
 ref: post:company-dabbrev-japanese
 toc: true
+tags:
+  - qiita
+  - emacs
 ---
 
 この記事は，以前 Qiita に書いた
