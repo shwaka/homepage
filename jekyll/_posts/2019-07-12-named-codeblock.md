@@ -3,7 +3,7 @@ layout: post
 lang: ja
 title: コードブロックにファイル名を指定する
 ref: post:named-codeblock
-date: 2019-07-12 21:00:00 +09:00
+date: 2019-07-12 01:00:00 +09:00
 toc: true
 ---
 
