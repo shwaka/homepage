@@ -1,6 +1,5 @@
 ---
 magiccomment: "-*- engine: liquid -*-"
-layout: mylayout
 title: てすと
 lang: ja
 ref: test-include

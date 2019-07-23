@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 lang: en
 ref: list-of-pages
 title: List of pages

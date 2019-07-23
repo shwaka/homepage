@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 lang: ja
 ref: list-of-pages
 title: ページ一覧

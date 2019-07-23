@@ -1,9 +1,7 @@
 ---
-layout: post
 lang: ja
 title: ハイライトと画像のテスト
 ref: post:highlight-and-image
-toc: true
 ---
 
 色々とテストしてみる．

@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 title: その他
 lang: ja
 ref: others

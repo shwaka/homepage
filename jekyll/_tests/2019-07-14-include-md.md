@@ -1,6 +1,5 @@
 ---
 magiccomment: "-*- engine: liquid -*-"
-layout: post
 lang: ja
 title: markdown を include する
 ref-list:

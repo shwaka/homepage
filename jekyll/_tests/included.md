@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 title: てすと(included)
 lang: ja
 ref: test-included

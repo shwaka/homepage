@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 lang: ja
 ref: counter
 title: アクセスカウンター

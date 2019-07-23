@@ -1,6 +1,5 @@
 ---
 magiccomment: "-*- engine: liquid -*-"
-layout: mylayout
 lang: ja
 title: ふが
 ref: fuga

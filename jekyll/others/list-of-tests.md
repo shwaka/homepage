@@ -1,6 +1,5 @@
 ---
 magiccomment: "-*- engine: liquid -*-"
-layout: mylayout
 lang: ja
 title: test ページたち
 ref: list-of-tests

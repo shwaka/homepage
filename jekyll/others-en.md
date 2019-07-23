@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 title: Others
 lang: en
 ref: others

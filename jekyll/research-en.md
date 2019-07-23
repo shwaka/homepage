@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 title: Research
 lang: en
 ref: research

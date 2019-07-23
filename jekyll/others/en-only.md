@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 lang: en
 ref: en-only
 title: English only (for debugging)

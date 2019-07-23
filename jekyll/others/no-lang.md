@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 ref: no-lang
 title: No language specified (for debugging)
 ---

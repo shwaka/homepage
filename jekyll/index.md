@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 title: Top
 lang: en
 ref: index

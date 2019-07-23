@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 lang: jp
 ref: lang-typo
 title: 言語指定ミス (for debugging)

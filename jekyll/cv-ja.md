@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 title: 履歴書
 lang: ja
 ref: cv

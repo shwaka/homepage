@@ -1,5 +1,4 @@
 ---
-layout: mylayout
 title: Curriculum Vitae
 title_short: CV
 lang: en
