@@ -27,3 +27,4 @@ ref: others
 - {{ "counter" | refer | refer_link }}
 - {{ "single-page" | refer | refer_link }}
 - {{ "old-page" | refer | refer_link }}
+- {{ "list-of-tests" | refer | refer_link }}

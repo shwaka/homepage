@@ -16,7 +16,9 @@ module Jekyll
           end
         end
       end
-      pages = site.pages + site.posts.docs
+      pages = site.collection_names.inject(site.pages){|_pages,col_name|
+        _pages = _pages + site.collections[col_name].docs
+      }
       # if default_ref then
       #   page = find_page(pages, refer_key, input, options) ||
       #          find_page(pages, refer_key, default_ref, options)

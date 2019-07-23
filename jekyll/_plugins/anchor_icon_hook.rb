@@ -28,6 +28,11 @@ Jekyll::Hooks.register :pages, :post_render do |page|
   insert_anchor_icon(page)
 end
 
-Jekyll::Hooks.register :posts, :post_render do |page|
-  insert_anchor_icon(page)
+# :documents に含まれる
+# Jekyll::Hooks.register :posts, :post_render do |page|
+#   insert_anchor_icon(page)
+# end
+
+Jekyll::Hooks.register :documents, :post_render do |doc|
+  insert_anchor_icon(doc)
 end

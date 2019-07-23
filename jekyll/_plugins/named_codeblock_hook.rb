@@ -36,6 +36,11 @@ Jekyll::Hooks.register :pages, :post_render do |page|
   named_codeblock_hook(page)
 end
 
-Jekyll::Hooks.register :posts, :post_render do |post|
-  named_codeblock_hook(post)
+# :documents に含まれる
+# Jekyll::Hooks.register :posts, :post_render do |post|
+#   named_codeblock_hook(post)
+# end
+
+Jekyll::Hooks.register :documents, :post_render do |doc|
+  named_codeblock_hook(doc)
 end
