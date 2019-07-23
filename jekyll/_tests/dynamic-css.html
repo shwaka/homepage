@@ -1,0 +1,76 @@
+---
+magiccomment: "-*- engine: liquid -*-"
+lang: ja
+title: CSSを動的に指定する
+ref: dynamic-css
+layout: none
+---
+
+<!DOCTYPE html>
+<html>
+  <head class="hoge">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Shun Wakatsuki, 若月駿">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="robots" content="noindex"/>
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet"
+          href="{{ site.baseurl }}/assets/css/dynamic.css"
+          type="text/css"></link>
+  </head>
+  <body class="{{ page.lang }}">
+    <script type="text/javascript">
+     const style_total = {{ site.num_styles }};
+     var style_id = Math.floor(Math.random() * style_total);
+     var n = Math.floor(Math.random() * 2);
+     lightness = ["light", "dark"][n];
+     body = document.getElementsByTagName("body")[0];
+     body.classList.add(`${lightness}-${style_id}`);
+    </script>
+    <header>
+      <div id="myname">
+        {% if page.lang == "ja" %}
+          若月 駿
+        {% else %}
+          Shun Wakatsuki
+        {% endif %}
+      </div>
+
+      <!-- language selector -->
+      {% include lang_selector.html %}
+
+      <div id="info">
+        <span id="back">
+          {% if page.backref %}
+            {% assign backref = page.backref %}
+          {% elsif layout.backref %}
+            {% assign backref = layout.backref %}
+          {% endif %}
+          {% if backref %}
+            {{ backref | refer | refer_link: nil, "<< " }}
+          {% endif %}
+        </span>
+        <span id="last-modified">
+          Updated on
+          {{ site.time | date: "%Y-%m-%d %H:%M" }}
+          {% comment %}
+          {{ page.last_modified_at | date: "%Y-%m-%d %H:%M" }}
+          インポート先を見に行ってくれないのでやめた．
+          とりあえず代わりに site.time を使ってサイト全体の変更日時を見る．
+          {% endcomment %}
+        </span>
+      </div>
+    </header>
+
+    <div id="base_container">
+
+      {% for ref in site.data.pages %}
+        {% assign pg = ref | refer %}
+        <h1>{{ pg.title }}</h1>
+        {{ ref | refer | include_md }}
+      {% endfor %}
+
+
+    </div>
+  </body>
+</html>

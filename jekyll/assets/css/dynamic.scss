@@ -1,0 +1,44 @@
+---
+magiccomment: "-*- engine: liquid -*-"
+lightness_list:
+  - light
+  - dark
+---
+
+$site-base-url: "{{ site.baseurl }}";
+
+{% assign hue_num = site.num_styles %}
+{% assign hue_max = hue_num | minus: 1 %}
+
+{% for lightness in page.lightness_list %}
+{% for hue_count in (0..hue_max) %}
+{% assign hue = hue_count | times: 360 | divided_by: hue_num %}
+body.{{- lightness -}}-{{- hue_count -}}{
+  $base-color: hsl({{ hue }}, 30%, 50%); // lightness は 50% で固定
+  $text-color: hsl(0, 0%, 50%);
+  $palette-lightness: {{ lightness }};
+
+  @import "media.scss";
+  @import "palette.scss";
+  @import "menu.scss";
+  @import "accordion.scss";
+  @import "main.scss";
+  @import "syntax-highlighting.scss";
+}
+{% endfor %}
+{% endfor %}
+
+{% comment %}
+body.dark{
+  $base-color: hsl(160, 30%, 50%); // lightness は 50% で固定
+  $text-color: hsl(0, 0%, 50%);
+  $palette-lightness: dark;
+
+  @import "media.scss";
+  @import "palette.scss";
+  @import "menu.scss";
+  @import "accordion.scss";
+  @import "main.scss";
+  @import "syntax-highlighting.scss";
+}
+{% endcomment %}

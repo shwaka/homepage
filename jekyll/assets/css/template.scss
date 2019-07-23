@@ -5,8 +5,10 @@ $base-color: {{ page.base-color }}; // lightness は 50% で固定
 $text-color: hsl(0, 0%, 50%);
 $palette-lightness: {{ page.palette-lightness }};
 
-@import "media.scss";
-@import "palette.scss";
-@import "menu.scss";
-@import "accordion.scss";
-@import "main.scss";
+body{
+  @import "media.scss";
+  @import "palette.scss";
+  @import "menu.scss";
+  @import "accordion.scss";
+  @import "main.scss";
+}

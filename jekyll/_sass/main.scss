@@ -15,14 +15,19 @@ div#myname {
   }
   text-align: center;
   margin: 20px;
-  body.ja &{
-    letter-spacing: 30px;
+  @at-root{
+    body.ja &{
+      letter-spacing: 30px;
+      color: blue;
+    }
   }
 }
 
+&.ja div#myname{
+  letter-spacing: 30px;
+}
 
-
-body {
+& {
   color: $body-color;
   background-color: $body-background-color;
   text-align: left;
@@ -224,7 +229,7 @@ div#access_counter{
 }
 
 // single-page.html
-.single-page{
+&.single-page{
   table#select-css{
     border-collapse: collapse;
     td, th{
