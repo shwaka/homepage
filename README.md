@@ -81,7 +81,7 @@
     - ファイル名とクラス名
     - 色々とハードコードしている
 - `dynamic-css.html` あたり
-    - `_tests/dynamic-css.html` と `assets/css/dynamic.scss` で `site.num_styles` を呼び出さず，
-      `2` をハードコードしている．
+    - `_tests/dynamic-css.html` と `assets/css/dynamic.scss` では
+      `site.num_styles` の代わりに `site._num_styles` を呼び出している．
       (10などの大きな値にすると，20秒ほどコンパイルにかかってしまう)
     - SCSSとしてのコンパイルは分割した方が早い？
