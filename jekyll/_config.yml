@@ -11,7 +11,7 @@ refer:
     - lang
 num_styles: 10
 # dynamic-css.html では 10 とかにすると重いので
-_num_styles: 3
+_num_styles: 10
 collections:
   tests:
     output: true
