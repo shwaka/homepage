@@ -17,6 +17,5 @@ layout: mylayout
 {% include_relative list-of-pages.html lang="en" %}
 
 ## その他の言語か言語未指定のページ
-(ページというよりCSSの一覧に近い…)
 
 {% include_relative list-of-pages.html lang=nil %}

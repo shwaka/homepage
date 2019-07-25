@@ -25,6 +25,5 @@ layout: mylayout
 - {{ "list-of-pages" | refer | refer_link: "ページ一覧" }}
 - {{ "blog" | refer | refer_link: "ブログ" }}
 - {{ "config" | refer | refer_link }}
-- {{ "single-page" | refer | refer_link }}
 - {{ "old-page" | refer | refer_link }}
 - {{ "list-of-tests" | refer | refer_link }}
