@@ -1,19 +1,25 @@
-@import "pygments/emacs.scss";
-
-.highlight{
-  background: $codeblock-background;
-  color: $codeblock-color;
-  .named-block-filename{
-    color: $body-color;
-  }
-}
-.highlighter-rouge{
-  // @extend .highlight;           // inline code block にも背景色を適用する
-  background-color: $codeblock-background;
-  color: $codeblock-color;
+@if $palette-lightness == light {
+  @include pygments-emacs;
+} @else if $palette-lightness == dark {
+  @include pygments-monokai;
+} @else {
+  @include pygments-emacs;
 }
 
-// highlgiht タグを用いたコードブロックの余白の調整
+// .highlight{
+//   background: $codeblock-background;
+//   color: $codeblock-color;
+//   .named-block-filename{
+//     color: $body-color;
+//   }
+// }
+// .highlighter-rouge{
+//   // @extend .highlight;           // inline code block にも背景色を適用する
+//   background-color: $codeblock-background;
+//   color: $codeblock-color;
+// }
+
+// {% highlgiht %} タグを用いたコードブロックの余白の調整
 figure.highlight{
   margin: 0px;
   td > pre{
@@ -23,6 +29,7 @@ figure.highlight{
 
 .named-block-filename{
   background-color: $codeblock-filename-background;
+  color: $body-color;
   display: inline-block;
   padding-left: 5px;
   padding-right: 5px;

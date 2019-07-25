@@ -9,7 +9,7 @@ def insert_filename(to_insert, filename)
 end
 
 def named_codeblock_hook(page)
-  if page.extname != ".md" then
+  if page.extname != ".md"
     return
   end
   html_str = page.output
@@ -32,8 +32,22 @@ def named_codeblock_hook(page)
   page.output = doc.to_html
 end
 
+def add_tag_to_inline_codeblock(page)
+  # code.highlighter-rouge に highlight タグを追加する
+  if page.extname != ".md"
+    return
+  end
+  html_str = page.output
+  doc = Nokogiri::HTML.parse(html_str, nil, "utf-8")
+  doc.css("code.highlighter-rouge").each do |code|
+    code["class"] = code["class"] << " highlight"
+  end
+  page.output = doc.to_html
+end
+
 Jekyll::Hooks.register :pages, :post_render do |page|
   named_codeblock_hook(page)
+  add_tag_to_inline_codeblock(page)
 end
 
 # :documents に含まれる
@@ -43,4 +57,5 @@ end
 
 Jekyll::Hooks.register :documents, :post_render do |doc|
   named_codeblock_hook(doc)
+  add_tag_to_inline_codeblock(doc)
 end

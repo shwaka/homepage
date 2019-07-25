@@ -7,6 +7,8 @@ lightness_list:
 
 $site-base-url: "{{ site.baseurl }}";
 
+@import "pygments-themes.scss";
+
 // default theme
 {% assign default_hue = 160 %}
 {% assign default_lightness = "light" %}
