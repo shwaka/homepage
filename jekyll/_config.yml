@@ -22,3 +22,5 @@ defaults:
     values:
       backref: list-of-tests
       layout: mylayout
+sass:
+  style: compressed
