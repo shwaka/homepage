@@ -48,6 +48,7 @@ $link-visited-color: mylighten(hsl(280, 30%, 50%), -10%);
 
 // (inline) code blocks
 $codeblock-background: hsl(0, 0%, 90%);
+$codeblock-color: black;
 $codeblock-filename-background: mylighten($base-color, 35%);
 
 // target="_blank"

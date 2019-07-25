@@ -2,7 +2,7 @@
 
 .highlight{
   background: $codeblock-background;
-  color: black;
+  color: $codeblock-color;
   .named-block-filename{
     color: $body-color;
   }
@@ -10,6 +10,7 @@
 .highlighter-rouge{
   // @extend .highlight;           // inline code block にも背景色を適用する
   background-color: $codeblock-background;
+  color: $codeblock-color;
 }
 
 // highlgiht タグを用いたコードブロックの余白の調整
