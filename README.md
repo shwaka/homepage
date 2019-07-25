@@ -76,12 +76,3 @@
       色々試したけど直すの難しそう…
 - `named_codeblock_hook.rb`
     - ドキュメント！！！！！
-- ランダムに CSS を選ぶやつで使っている
-  `_plugins/generator.rb` と `assets/css/template.scss` を色々と整理する
-    - ファイル名とクラス名
-    - 色々とハードコードしている
-- `dynamic-css.html` あたり
-    - `_tests/dynamic-css.html` と `assets/css/dynamic.scss` では
-      `site.num_styles` の代わりに `site._num_styles` を呼び出している．
-      (10などの大きな値にすると，20秒ほどコンパイルにかかってしまう)
-    - SCSSとしてのコンパイルは分割した方が早い？
