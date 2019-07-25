@@ -74,5 +74,3 @@
     - include される側の markdown で `page.ref` とすると，
       include する側の `ref` が表示されるバグがある．
       色々試したけど直すの難しそう…
-- `named_codeblock_hook.rb`
-    - ドキュメント！！！！！

@@ -17,6 +17,11 @@ tags:
 を参考にして，
 色々と自分好みに変更した．
 
+- 追記:
+  plugin 版を作成したので，基本的にはそちらの使用を推奨．
+  詳細は {{ "post:named-codeblock-plugin" | refer | refer_link }} を参照．
+
+
 ## 使用方法
 1. layout として使っている html ファイルで [named-codeblock.js]({{ site.baseurl }}/assets/js/named-codeblock.js) を読み込む．
 2. CSS を適当に書く．
