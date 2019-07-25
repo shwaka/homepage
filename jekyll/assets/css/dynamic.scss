@@ -7,6 +7,23 @@ lightness_list:
 
 $site-base-url: "{{ site.baseurl }}";
 
+// default theme
+{% assign default_hue = 160 %}
+{% assign default_lightness = "light" %}
+body{
+  $base-color: hsl({{default_hue}}, 30%, 50%); // lightness は 50% で固定
+  $text-color: hsl(0, 0%, 50%);
+  $palette-lightness: {{default_lightness}};
+
+  @import "media.scss";
+  @import "palette.scss";
+  @import "menu.scss";
+  @import "accordion.scss";
+  @import "main.scss";
+  @import "syntax-highlighting.scss";
+}
+
+// custom theme
 {% assign hue_num = site._num_styles %}
 {% assign hue_max = hue_num | minus: 1 %}
 
