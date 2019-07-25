@@ -30,7 +30,7 @@ body{
 {% for lightness in page.lightness_list %}
 {% for hue_count in (0..hue_max) %}
 {% assign hue = hue_count | times: 360 | divided_by: hue_num %}
-body.{{- lightness -}}-{{- hue_count -}}{
+body[theme="{{- lightness -}}-{{- hue_count -}}"]{
   $base-color: hsl({{ hue }}, 30%, 50%); // lightness は 50% で固定
   $text-color: hsl(0, 0%, 50%);
   $palette-lightness: {{ lightness }};

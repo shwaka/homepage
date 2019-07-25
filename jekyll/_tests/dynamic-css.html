@@ -24,8 +24,9 @@ layout: none
      var style_id = Math.floor(Math.random() * style_total);
      var n = Math.floor(Math.random() * 2);
      lightness = ["light", "dark"][n];
-     /* body = document.getElementsByTagName("body")[0]; */
-     document.body.classList.add(`${lightness}-${style_id}`);
+     theme = `${lightness}-${style_id}`;
+     {% include dynamic-css.js %}
+     apply_theme(theme);
     </script>
     <header>
       <div id="myname">

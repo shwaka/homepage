@@ -1,11 +1,12 @@
 function apply_theme(theme){
-   document.body.classList.add(theme);
+  // document.body.classList.add(theme);
+  document.body.setAttribute("theme", theme);
 }
 
 function load_theme(){
   theme = localStorage.getItem("theme");
   if (theme) {
-    document.body.classList.add(theme);
+    apply_theme(theme);
   }
 }
 

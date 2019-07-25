@@ -1,10 +1,14 @@
 ---
+magiccomment: "-*- engine: liquid -*-"
 lang: ja
 ref: counter
 title: アクセスカウンター
 access_counter: true
 backref: others
 layout: mylayout
+lightness_list:
+  - light
+  - dark
 ---
 
 ## アクセスカウンター
@@ -51,37 +55,22 @@ layout: mylayout
 </script>
 
 <table id="select-css">
-  <tr>
-    <td>light</td>
-    {% assign max_style_num = site.num_styles | minus: 1 %}
-    {% for i in (0..max_style_num) %}
-    <td>
-      <input type="radio"
-             name="select-css"
-             class="select-css"
-             value="{{ i }}"
-             id="select-css-{{ i }}"
-             onchange='apply_theme("light-{{i}}");' />
-      {{ i }}
-      <label for="select-css-{{ i }}"></label>
-    </td>
-    {% endfor %}
-  </tr>
-  <tr>
-    <td>dark</td>
-
-    {% assign max_style_num = site.num_styles | minus: 1 %}
-    {% for i in (0..max_style_num) %}
-    <td>
-      <input type="radio"
-             name="select-css-dark"
-             class="select-css-dark"
-             value="{{ i }}"
-             id="select-css-{{ i }}-dark"
-             onchange='load_css({{ i }}, "dark")' />
-      {{ i }}
-      <label for="select-css-{{ i }}-dark"></label>
-    </td>
-    {% endfor %}
-  </tr>
+  {% for lightness in page.lightness_list %}
+    <tr>
+      <td>{{lightness}}</td>
+      {% assign max_style_num = site.num_styles | minus: 1 %}
+      {% for i in (0..max_style_num) %}
+        <td>
+          <input type="radio"
+                 name="select-css"
+                 class="select-css"
+                 value="{{ i }}"
+                 id="select-css-{{lightness}}-{{ i }}"
+                 onchange='theme="{{lightness}}-{{i}}";apply_theme(theme);save_theme(theme);' />
+          {{ i }}
+          <label for="select-css-{{lightness}}-{{ i }}"></label>
+        </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
 </table>
