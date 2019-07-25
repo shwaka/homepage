@@ -10,15 +10,15 @@
       {% assign current = "false" %}
     {% endif %}
     {% if page.ref %}
-      {% assign url = page.ref | refer: "lang", lang_data.key | refer_url %}
+      {% assign url = page.ref | refer: true, "lang", lang_data.key | refer_url %}
       {% unless url %}
-        {% assign url = "index" | refer: "lang", lang_data.key | refer_url %}
+        {% assign url = "index" | refer: false, "lang", lang_data.key | refer_url %}
         {% assign refer_default = true %}
       {% endunless %}
     {% elsif lang_data.key == page.lang %}
       {% assign url = page.url %}
     {% else %}
-      {% assign url = "index" | refer: "lang", lang_data.key | refer_url %}
+      {% assign url = "index" | refer: false, "lang", lang_data.key | refer_url %}
       {% assign refer_default = true %}
     {% endif %}
     {% if refer_default %}

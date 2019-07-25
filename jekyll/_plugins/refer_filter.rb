@@ -1,7 +1,7 @@
 # coding: utf-8
 module Jekyll
   module ReferFilters
-    def refer(input, *args)
+    def refer(input, noerror=false, *args)
       # ページが見つからないときは nil を返す
       site = @context.registers[:site]
       config_refer = site.config["refer"]
@@ -25,7 +25,7 @@ module Jekyll
       # else
       #   page = find_page(pages, refer_key, input, options)
       # end
-      page = find_page(pages, refer_key, input, options)
+      page = find_page(pages, refer_key, input, options, noerror)
       # if page.nil? and default_ref
       #   # default_ref でも nil を返すかもしれないので，下の if とは統合できない
       #   page = find_page(pages, refer_key, default_ref, options)
@@ -83,12 +83,17 @@ module Jekyll
       end
       return hash_result
     end
-    def find_page(pages, refer_key, ref, options)
+
+    def find_page(pages, refer_key, ref, options, noerror)
       pages_filtered = pages
                          .select{|page| options.keys.all?{|key| page.data[key] == options[key]}}
                          .select{|page| page.data[refer_key] == ref }
       if pages_filtered.length == 0
-        return nil
+        if noerror
+          return nil
+        end
+        current_page_path = @context.registers[:page]["path"]
+        raise "page not found:\nref=#{ref} with options #{options} in #{current_page_path}"
       elsif pages_filtered.length == 1
         return pages_filtered[0]
       else

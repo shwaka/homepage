@@ -72,7 +72,7 @@
             {% if page.lang %}
               {% assign pages=site.pages | where:"lang", page.lang %}
               {% for ref in site.data.pages %}
-                {% assign pg = ref | refer %}
+                {% assign pg = ref | refer: true %}
                 {% if pg %}
                   {% if pg.title_short %}
                     {% assign title = pg.title_short %}
