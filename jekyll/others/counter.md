@@ -7,6 +7,7 @@ backref: others
 layout: mylayout
 ---
 
+## アクセスカウンター
 アクセスカウンターを試しに置いてみた．
 他のページでは表示はされないがカウントはされている．
 扱いをどうするかは検討中．
@@ -42,3 +43,45 @@ layout: mylayout
   <label for="show-counter-false">表示しない</label> <br/>
   <!-- <input type="button" id="show-counter-button" name="show-counter-save" value="設定" onclick="save()" /> -->
 </div>
+
+## テーマ
+
+<script type="text/javascript">
+ {% include dynamic-css.js %}
+</script>
+
+<table id="select-css">
+  <tr>
+    <td>light</td>
+    {% assign max_style_num = site.num_styles | minus: 1 %}
+    {% for i in (0..max_style_num) %}
+    <td>
+      <input type="radio"
+             name="select-css"
+             class="select-css"
+             value="{{ i }}"
+             id="select-css-{{ i }}"
+             onchange='apply_theme("light-{{i}}");' />
+      {{ i }}
+      <label for="select-css-{{ i }}"></label>
+    </td>
+    {% endfor %}
+  </tr>
+  <tr>
+    <td>dark</td>
+
+    {% assign max_style_num = site.num_styles | minus: 1 %}
+    {% for i in (0..max_style_num) %}
+    <td>
+      <input type="radio"
+             name="select-css-dark"
+             class="select-css-dark"
+             value="{{ i }}"
+             id="select-css-{{ i }}-dark"
+             onchange='load_css({{ i }}, "dark")' />
+      {{ i }}
+      <label for="select-css-{{ i }}-dark"></label>
+    </td>
+    {% endfor %}
+  </tr>
+</table>

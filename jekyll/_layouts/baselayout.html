@@ -44,6 +44,12 @@
     </script>
   </head>
   <body class="{{ page.lang }}">
+
+    <script type="text/javascript">
+     {% include dynamic-css.js %}
+     load_theme();
+    </script>
+
     <header>
       <div id="myname">
         {% if page.lang == "ja" %}

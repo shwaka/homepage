@@ -24,8 +24,8 @@ layout: none
      var style_id = Math.floor(Math.random() * style_total);
      var n = Math.floor(Math.random() * 2);
      lightness = ["light", "dark"][n];
-     body = document.getElementsByTagName("body")[0];
-     body.classList.add(`${lightness}-${style_id}`);
+     /* body = document.getElementsByTagName("body")[0]; */
+     document.body.classList.add(`${lightness}-${style_id}`);
     </script>
     <header>
       <div id="myname">
