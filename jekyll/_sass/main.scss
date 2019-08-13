@@ -182,14 +182,15 @@ div#blog_footer{
 
 table#cv{
   border-spacing: 10px 0px;
-}
-
-table#cv th{
-  text-align: right;
-}
-
-table#cv td{
-  text-align: left;
+  td, th{
+    border: 0;
+  }
+  th{
+    text-align: right;
+  }
+  td{
+    text-align: left;
+  }
 }
 
 h3.list-header{
@@ -197,6 +198,7 @@ h3.list-header{
   margin: 0px;
   font-size: 12pt;
   font-weight: normal;
+  border: 0;
 }
 
 ul#current-position{
@@ -255,5 +257,12 @@ table#select-css{
       width: 100%;
       height: 100%;
     }
+  }
+}
+
+table{
+  border-collapse: collapse;
+  td, th{
+    border: 1px solid $table-border-color;
   }
 }
