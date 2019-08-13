@@ -73,6 +73,12 @@ h2 {
   border-left: 10px solid $border-color;
 }
 
+h3 {
+  font-weight: normal;
+  border-bottom: 1px solid $border-color;
+  // border-left: 1px solid $border-color;
+}
+
 a{
   color: $link-color;
   &:visited{
