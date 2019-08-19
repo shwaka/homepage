@@ -4,14 +4,14 @@
 
 {% if include.article.type == "preprint" %}
   <span class="article-title">
-    {{ include.article.title }}
+    {{- include.article.title -}}
   </span>,
   <a target="_blank" href="https://arxiv.org/abs/{{ include.article.arxiv }}">
     arXiv:{{ include.article.arxiv }}
   </a>
 {% elsif include.article.type == "toappear" %}
   <span class="article-title">
-    {{ include.article.title }}
+    {{- include.article.title -}}
   </span>,
   to appear in
   <a target="_blank" href="{{ include.article.journal-url }}">
@@ -23,7 +23,7 @@
   </a>
 {% elsif include.article.type == "proceedings" %}
   <span class="article-title">
-    {{ include.article.title }}
+    {{- include.article.title -}}
   </span>,
   <a target="_blank" href="{{ include.article.journal-url }}">
     {{ include.article.journal }}
