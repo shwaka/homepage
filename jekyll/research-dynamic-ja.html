@@ -10,7 +10,9 @@ hoge
 
 <script src="{{ site.baseurl }}/assets/js/research.js"></script>
 <script type="text/javascript">
- loadFromJson("{{ site.baseurl}}/assets/data/talks.json");
+ document.addEventListener("DOMContentLoaded", function(){
+   loadFromJson("{{ site.baseurl}}/assets/data/talks.json");
+ });
 </script>
 
 <ul id="talk-list">

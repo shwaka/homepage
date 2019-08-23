@@ -58,25 +58,49 @@ var Talk = /** @class */ (function () {
         var venue = talkInfo.venue;
         return title + ", " + conference + ", " + venue + ", " + date;
     };
-    Talk.prototype.addToUl = function (id, outputLang) {
-        var ul = document.getElementById(id);
+    Talk.prototype.toLi = function (outputLang) {
         var li = document.createElement("li");
-        li.appendChild(document.createTextNode(this.toStr(outputLang)));
-        if (ul != null) {
-            ul.appendChild(li);
+        var talkInfo = this.getInfo(outputLang);
+        // title
+        var title = talkInfo.title;
+        li.appendChild(document.createTextNode(title + ", "));
+        // conference
+        var conference = talkInfo.conference;
+        if (talkInfo.url) {
+            var a = document.createElement("a");
+            a.appendChild(document.createTextNode(conference));
+            a.target = "_blank";
+            a.href = talkInfo.url;
+            li.appendChild(a);
+            li.appendChild(document.createTextNode(", "));
         }
+        else {
+            li.appendChild(document.createTextNode(conference + ", "));
+        }
+        // venue
+        var venue = talkInfo.venue;
+        li.appendChild(document.createTextNode(venue + ", "));
+        // date
+        var date = this.getDateString(outputLang);
+        li.appendChild(document.createTextNode("" + date));
+        return li;
+    };
+    Talk.prototype.addToUl = function (ul, outputLang) {
+        var li = this.toLi(outputLang);
+        ul.appendChild(li);
     };
     return Talk;
 }());
 function loadFromJson(file) {
     var httpObj = new XMLHttpRequest();
     httpObj.open("get", file, true);
+    var ul = document.getElementById("talk-list"); // さすがにマズい…
     httpObj.onload = function () {
         var talkObjArray = JSON.parse(this.responseText);
         talkObjArray.forEach(function (talkObj) {
             var talk = new Talk(talkObj);
             // console.log(talk.toStr());
-            talk.addToUl("talk-list", Lang.ja);
+            talk.addToUl(ul, Lang.ja);
         });
     };
     httpObj.send(null);

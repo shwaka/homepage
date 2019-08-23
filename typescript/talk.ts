@@ -72,25 +72,50 @@ class Talk implements TalkObject{
     return `${title}, ${conference}, ${venue}, ${date}`;
   }
 
-  addToUl(id: string, outputLang: Lang): void{
-    let ul = document.getElementById(id);
-    let li = document.createElement("li");
-    li.appendChild(document.createTextNode(this.toStr(outputLang)));
-    if (ul != null){
-      ul.appendChild(li);
+  toLi(outputLang: Lang): HTMLLIElement {
+    const li = document.createElement("li");
+    const talkInfo = this.getInfo(outputLang);
+    // title
+    const title: string = talkInfo.title;
+    li.appendChild(document.createTextNode(`${title}, `));
+    // conference
+    const conference: string = talkInfo.conference;
+    if (talkInfo.url) {
+      const a = document.createElement("a");
+      a.appendChild(document.createTextNode(conference));
+      a.target = "_blank";
+      a.href = talkInfo.url;
+      li.appendChild(a);
+      li.appendChild(document.createTextNode(`, `));
+    } else {
+      li.appendChild(document.createTextNode(`${conference}, `));
     }
+    // venue
+    const venue: string = talkInfo.venue;
+    li.appendChild(document.createTextNode(`${venue}, `));
+    // date
+    const date: string = this.getDateString(outputLang);
+    li.appendChild(document.createTextNode(`${date}`));
+
+    return li;
+  }
+
+  addToUl(ul: HTMLUListElement, outputLang: Lang): void{
+    const li = this.toLi(outputLang);
+    ul.appendChild(li);
   }
 }
 
 function loadFromJson(file: string){
   const httpObj = new XMLHttpRequest();
   httpObj.open("get", file, true);
+  const ul = document.getElementById("talk-list") as HTMLUListElement; // さすがにマズい…
   httpObj.onload = function(){
     const talkObjArray: TalkObject[] = JSON.parse(this.responseText);
     talkObjArray.forEach(talkObj => {
       const talk = new Talk(talkObj);
       // console.log(talk.toStr());
-      talk.addToUl("talk-list", Lang.ja);
+      talk.addToUl(ul, Lang.ja);
     })
   }
   httpObj.send(null);
