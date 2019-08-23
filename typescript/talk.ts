@@ -52,7 +52,7 @@ class Talk implements TalkObject{
             // const monthNames: Array<string> = [
             //     "January", "February", "March", "April", "May", "June",
             //     "July", "August", "September", "October", "November", "December"];
-            const monthNames: Array<string> = [
+            const monthNames: string[] = [
                 "Jan.", "Feb.", "Mar.", "Apr.", "May", "June",
                 "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
             const monthString: string = monthNames[monthZeroIndex];
