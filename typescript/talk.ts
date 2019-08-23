@@ -77,7 +77,8 @@ class Talk implements TalkObject{
     const talkInfo = this.getInfo(outputLang);
     // title
     const title: string = talkInfo.title;
-    li.appendChild(document.createTextNode(`${title}, `));
+    li.appendChild(document.createTextNode(`${title}`));
+    li.appendChild(document.createTextNode(`, `));
     // conference
     const conference: string = talkInfo.conference;
     if (talkInfo.url) {
@@ -88,11 +89,13 @@ class Talk implements TalkObject{
       li.appendChild(a);
       li.appendChild(document.createTextNode(`, `));
     } else {
-      li.appendChild(document.createTextNode(`${conference}, `));
+      li.appendChild(document.createTextNode(`${conference}`));
+      li.appendChild(document.createTextNode(`, `));
     }
     // venue
     const venue: string = talkInfo.venue;
-    li.appendChild(document.createTextNode(`${venue}, `));
+    li.appendChild(document.createTextNode(`${venue}`));
+    li.appendChild(document.createTextNode(`, `));
     // date
     const date: string = this.getDateString(outputLang);
     li.appendChild(document.createTextNode(`${date}`));

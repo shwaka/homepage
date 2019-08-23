@@ -63,7 +63,8 @@ var Talk = /** @class */ (function () {
         var talkInfo = this.getInfo(outputLang);
         // title
         var title = talkInfo.title;
-        li.appendChild(document.createTextNode(title + ", "));
+        li.appendChild(document.createTextNode("" + title));
+        li.appendChild(document.createTextNode(", "));
         // conference
         var conference = talkInfo.conference;
         if (talkInfo.url) {
@@ -75,11 +76,13 @@ var Talk = /** @class */ (function () {
             li.appendChild(document.createTextNode(", "));
         }
         else {
-            li.appendChild(document.createTextNode(conference + ", "));
+            li.appendChild(document.createTextNode("" + conference));
+            li.appendChild(document.createTextNode(", "));
         }
         // venue
         var venue = talkInfo.venue;
-        li.appendChild(document.createTextNode(venue + ", "));
+        li.appendChild(document.createTextNode("" + venue));
+        li.appendChild(document.createTextNode(", "));
         // date
         var date = this.getDateString(outputLang);
         li.appendChild(document.createTextNode("" + date));
