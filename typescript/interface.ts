@@ -38,7 +38,7 @@ function getForm(): ConfigForm {
 }
 
 function setupForm(): void {
-  ["format-itemize", "order-new-old", "language-japanese"].forEach((id) => {
+  ["format-table", "order-new-old", "language-japanese"].forEach((id) => {
     const radioButton = document.getElementById(id) as any; // やばい
     radioButton.checked = true;
   })

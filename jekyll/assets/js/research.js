@@ -441,7 +441,7 @@ var TalkListHandler = /** @class */ (function () {
     TalkListHandler.prototype.getHeadingEnglish = function (outputLang) {
         var h3 = document.createElement("h3");
         if (outputLang == Lang.en) {
-            h3.innerText = "talks in English";
+            h3.innerText = "Talks in English";
         }
         else if (outputLang == Lang.ja) {
             h3.innerText = "国際研究集会";
@@ -451,7 +451,7 @@ var TalkListHandler = /** @class */ (function () {
     TalkListHandler.prototype.getHeadingJapanese = function (outputLang) {
         var h3 = document.createElement("h3");
         if (outputLang == Lang.en) {
-            h3.innerText = "talks in Japanese";
+            h3.innerText = "Talks in Japanese";
         }
         else if (outputLang == Lang.ja) {
             h3.innerText = "国内研究集会";
@@ -509,7 +509,7 @@ function getForm() {
     return configForm;
 }
 function setupForm() {
-    ["format-itemize", "order-new-old", "language-japanese"].forEach(function (id) {
+    ["format-table", "order-new-old", "language-japanese"].forEach(function (id) {
         var radioButton = document.getElementById(id); // やばい
         radioButton.checked = true;
     });

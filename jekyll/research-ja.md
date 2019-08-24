@@ -5,7 +5,7 @@ ref: research
 layout: mylayout
 ---
 
-{{ "research-table" | refer | refer_link: "表形式" }}
+{{ "research-dynamic" | refer | refer_link: "表示形式が選択可能なページ" }}
 も用意したので，
 お好みでご覧ください．
 

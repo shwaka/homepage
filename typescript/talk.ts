@@ -147,7 +147,7 @@ class TalkListHandler {
   private getHeadingEnglish(outputLang: Lang): HTMLHeadingElement {
     const h3 = document.createElement("h3");
     if (outputLang == Lang.en) {
-      h3.innerText = "talks in English";
+      h3.innerText = "Talks in English";
     } else if (outputLang == Lang.ja) {
       h3.innerText = "国際研究集会";
     }
@@ -157,7 +157,7 @@ class TalkListHandler {
   private getHeadingJapanese(outputLang: Lang): HTMLHeadingElement {
     const h3 = document.createElement("h3");
     if (outputLang == Lang.en) {
-      h3.innerText = "talks in Japanese";
+      h3.innerText = "Talks in Japanese";
     } else if (outputLang == Lang.ja) {
       h3.innerText = "国内研究集会";
     }

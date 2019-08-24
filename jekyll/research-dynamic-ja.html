@@ -3,6 +3,7 @@ magiccomment: "-*- engine: liquid -*-"
 title: 研究
 lang: ja
 ref: research-dynamic
+backref: research
 layout: mylayout
 ---
 
@@ -28,16 +29,16 @@ layout: mylayout
   <div>
     order:
     <input type="radio" name="order" id="order-new-old" value="new-old" />
-    <label for="order-new-old">new-old</label>
+    <label for="order-new-old">new→old</label>
     <input type="radio" name="order" id="order-old-new" value="old-new" />
-    <label for="order-old-new">old-new</label>
+    <label for="order-old-new">old→new</label>
   </div>
   <div>
     language:
     <input type="radio" name="language" id="language-english" value="en" />
-    <label for="language-english">english</label>
+    <label for="language-english">English</label>
     <input type="radio" name="language" id="language-japanese" value="ja" />
-    <label for="language-japanese">japanese</label>
+    <label for="language-japanese">Japanese</label>
   </div>
   <input type="button" value="apply" onclick="updateTalks()"/>
 </form>
