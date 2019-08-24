@@ -126,10 +126,15 @@ var Article = /** @class */ (function (_super) {
         // journal
         var journal = document.createElement("span");
         if (this.type == ArticleType.toappear) {
-            journal.innerText = "to appear in " + this.journal; // anchor にする
+            journal.appendChild(document.createTextNode("to appear in "));
+            journal.appendChild(makeAnchor(String(this.journal), String(this["journal-url"])));
+            // ↑this.journal とかが undefined かもしれない
+            // user defined type guards をうまく使えば回避できるかも？
         }
         else if (this.type == ArticleType.proceedings) {
-            journal.innerText = String(this.journal); // anchor
+            journal.appendChild(makeAnchor(String(this.journal), String(this["journal-url"])));
+            // ↑this.journal とかが undefined かもしれない
+            // user defined type guards をうまく使えば回避できるかも？
         }
         // year
         var year = document.createElement("span");
@@ -139,7 +144,10 @@ var Article = /** @class */ (function (_super) {
         // arxiv
         var arxiv = document.createElement("span");
         if (this.type == ArticleType.preprint || this.type == ArticleType.toappear) {
-            arxiv.innerText = String(this.arxiv); // anchor
+            var url = "https://arxiv.org/abs/" + this.arxiv;
+            arxiv.appendChild(makeAnchor(String(this.arxiv), url));
+            // ↑this.arxiv とかが undefined かもしれない
+            // user defined type guards をうまく使えば回避できるかも？
         }
         // output
         var outputElements = {

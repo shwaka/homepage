@@ -37,9 +37,14 @@ class Article extends Work<ArticleKey>{
     // journal
     const journal = document.createElement("span");
     if (this.type == ArticleType.toappear) {
-      journal.innerText = `to appear in ${this.journal}` // anchor にする
+      journal.appendChild(document.createTextNode("to appear in "));
+      journal.appendChild(makeAnchor(String(this.journal), String(this["journal-url"])));
+      // ↑this.journal とかが undefined かもしれない
+      // user defined type guards をうまく使えば回避できるかも？
     } else if (this.type == ArticleType.proceedings) {
-      journal.innerText = String(this.journal); // anchor
+      journal.appendChild(makeAnchor(String(this.journal), String(this["journal-url"])));
+      // ↑this.journal とかが undefined かもしれない
+      // user defined type guards をうまく使えば回避できるかも？
     }
     // year
     const year = document.createElement("span");
@@ -49,7 +54,10 @@ class Article extends Work<ArticleKey>{
     // arxiv
     const arxiv = document.createElement("span");
     if (this.type == ArticleType.preprint || this.type == ArticleType.toappear) {
-      arxiv.innerText = String(this.arxiv); // anchor
+      const url = `https://arxiv.org/abs/${this.arxiv}`;
+      arxiv.appendChild(makeAnchor(String(this.arxiv), url));
+      // ↑this.arxiv とかが undefined かもしれない
+      // user defined type guards をうまく使えば回避できるかも？
     }
     // output
     const outputElements = {
