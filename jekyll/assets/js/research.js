@@ -72,11 +72,22 @@ var WorkList = /** @class */ (function () {
             list.appendChild(work.toLi(outputLang, headerList));
         });
     };
+    WorkList.prototype.getTableHeader = function (headerList) {
+        var tr = document.createElement("tr");
+        headerList.forEach(function (keyHeader) {
+            var header = keyHeader[1];
+            var th = document.createElement("th");
+            th.appendChild(document.createTextNode(header));
+            tr.appendChild(th);
+        });
+        return tr;
+    };
     WorkList.prototype.showTable = function (outputLang, headerList, reverse) {
         if (reverse === void 0) { reverse = false; }
         this.output.innerHTML = ""; // clear the content of the HTML element
         var table = document.createElement("table");
         this.output.appendChild(table);
+        table.appendChild(this.getTableHeader(headerList));
         this.getData(reverse).forEach(function (work) {
             table.appendChild(work.toTr(outputLang, headerList));
         });

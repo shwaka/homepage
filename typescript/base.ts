@@ -63,10 +63,22 @@ class WorkList<Key extends string, W extends Work<Key>> {
     })
   }
 
+  getTableHeader(headerList: [Key, string][]): HTMLTableRowElement {
+    const tr = document.createElement("tr");
+    headerList.forEach((keyHeader) => {
+      const header: string = keyHeader[1];
+      const th = document.createElement("th");
+      th.appendChild(document.createTextNode(header));
+      tr.appendChild(th);
+    })
+    return tr;
+  }
+
   showTable(outputLang: Lang, headerList: [Key, string][], reverse: boolean = false): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
     const table = document.createElement("table");
     this.output.appendChild(table);
+    table.appendChild(this.getTableHeader(headerList));
     this.getData(reverse).forEach(work => {
       table.appendChild(work.toTr(outputLang, headerList));
     })
