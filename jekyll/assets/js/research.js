@@ -12,11 +12,25 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-function makeAnchor(text, url) {
+function makeAnchor(text, url, target_blank) {
+    if (target_blank === void 0) { target_blank = true; }
     var a = document.createElement("a");
     a.appendChild(document.createTextNode(text));
-    a.target = "_blank";
     a.href = url;
+    if (target_blank) {
+        a.target = "_blank";
+        // add icon
+        // https://stackoverflow.com/questions/23463072/how-do-i-use-javascript-to-insert-an-svg-use-element-into-an-svg-group
+        var svgns = "http://www.w3.org/2000/svg";
+        var svg = document.createElementNS(svgns, "svg");
+        svg.classList.add("target-blank-icon");
+        var use = document.createElementNS(svgns, "use");
+        // const use = document.createElement("use");
+        var xlinkns = "http://www.w3.org/1999/xlink";
+        use.setAttributeNS(xlinkns, "href", "/~swaka/assets/img/icons.svg#target_blank");
+        svg.appendChild(use);
+        a.appendChild(svg);
+    }
     return a;
 }
 var Lang;

@@ -1,8 +1,21 @@
-function makeAnchor(text: string, url: string): HTMLAnchorElement {
+function makeAnchor(text: string, url: string, target_blank: boolean = true): HTMLAnchorElement {
   const a = document.createElement("a");
   a.appendChild(document.createTextNode(text));
-  a.target = "_blank";
   a.href = url;
+  if (target_blank) {
+    a.target = "_blank";
+    // add icon
+    // https://stackoverflow.com/questions/23463072/how-do-i-use-javascript-to-insert-an-svg-use-element-into-an-svg-group
+    const svgns = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgns, "svg");
+    svg.classList.add("target-blank-icon");
+    const use = document.createElementNS(svgns, "use");
+    // const use = document.createElement("use");
+    const xlinkns = "http://www.w3.org/1999/xlink";
+    use.setAttributeNS(xlinkns, "href", "/~swaka/assets/img/icons.svg#target_blank");
+    svg.appendChild(use);
+    a.appendChild(svg);
+  }
   return a;
 }
 
