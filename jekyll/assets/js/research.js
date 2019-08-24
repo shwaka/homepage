@@ -57,9 +57,10 @@ var WorkList = /** @class */ (function () {
         this.data = data;
         this.output = output;
     }
-    WorkList.prototype.showUl = function (outputLang) {
+    WorkList.prototype.showList = function (outputLang, listType) {
+        if (listType === void 0) { listType = "ol"; }
         this.output.innerHTML = ""; // clear the content of the HTML element
-        var ul = document.createElement("ul");
+        var ul = document.createElement(listType);
         this.output.appendChild(ul);
         this.data.forEach(function (work) {
             ul.appendChild(work.toLi(outputLang));
@@ -186,7 +187,7 @@ function loadFromJson(file) {
     httpObj.onload = function () {
         var json = this.responseText;
         var talkList = TalkList.create(json, "talk");
-        talkList.showUl(Lang.ja);
+        talkList.showList(Lang.ja);
         // talkList.showTable(Lang.ja);
     };
     httpObj.send(null);

@@ -47,9 +47,9 @@ class WorkList<Key extends string, W extends Work<Key>> {
     this.output = output;
   }
 
-  showUl(outputLang: Lang): void {
+  showList(outputLang: Lang, listType: "ul"|"ol" = "ol"): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
-    const ul = document.createElement("ul");
+    const ul = document.createElement(listType);
     this.output.appendChild(ul);
     this.data.forEach(work => {
       ul.appendChild(work.toLi(outputLang));
