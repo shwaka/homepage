@@ -116,20 +116,20 @@ class TalkList extends WorkList<TalkKey, Talk> {
     super(data);
   }
 
-  static create(json: string): TalkList {
-    const talkObjArray: TalkObject[] = JSON.parse(json);
-    const talkList = new TalkList(talkObjArray);
-    return talkList;
-  }
+  // static create(json: string): TalkList {
+  //   const talkObjArray: TalkObject[] = JSON.parse(json);
+  //   const talkList = new TalkList(talkObjArray);
+  //   return talkList;
+  // }
 }
 
 class TalkListHandler {
   output: HTMLElement;
   talkList: TalkList;
 
-  constructor(json: string, output: HTMLElement) {
+  constructor(talkObjArray: TalkObject[], output: HTMLElement) {
     this.output = output;
-    this.talkList = TalkList.create(json);
+    this.talkList = new TalkList(talkObjArray);
   }
 
   getHeadingEnglish(outputLang: Lang): HTMLHeadingElement {

@@ -157,11 +157,6 @@ var ArticleList = /** @class */ (function (_super) {
         _this = _super.call(this, data) || this;
         return _this;
     }
-    ArticleList.create = function (json) {
-        var articleObjArray = JSON.parse(json);
-        var articleList = new ArticleList(articleObjArray);
-        return articleList;
-    };
     ArticleList.headerList = [["title", "タイトル"],
         ["journal", "雑誌"],
         ["year", "出版年"],
@@ -169,9 +164,9 @@ var ArticleList = /** @class */ (function (_super) {
     return ArticleList;
 }(WorkList));
 var ArticleListHandler = /** @class */ (function () {
-    function ArticleListHandler(json, output) {
+    function ArticleListHandler(articleObjArray, output) {
         this.output = output;
-        this.articleList = ArticleList.create(json);
+        this.articleList = new ArticleList(articleObjArray);
     }
     ArticleListHandler.prototype.showList = function (outputLang, headerList, reverse) {
         if (reverse === void 0) { reverse = false; }
@@ -272,11 +267,6 @@ var TalkList = /** @class */ (function (_super) {
         _this = _super.call(this, data) || this;
         return _this;
     }
-    TalkList.create = function (json) {
-        var talkObjArray = JSON.parse(json);
-        var talkList = new TalkList(talkObjArray);
-        return talkList;
-    };
     TalkList.headerListJa = [["title", "講演タイトル"],
         ["conference", "研究集会名"],
         ["venue", "会場"],
@@ -288,9 +278,9 @@ var TalkList = /** @class */ (function (_super) {
     return TalkList;
 }(WorkList));
 var TalkListHandler = /** @class */ (function () {
-    function TalkListHandler(json, output) {
+    function TalkListHandler(talkObjArray, output) {
         this.output = output;
-        this.talkList = TalkList.create(json);
+        this.talkList = new TalkList(talkObjArray);
     }
     TalkListHandler.prototype.getHeadingEnglish = function (outputLang) {
         var h3 = document.createElement("h3");
@@ -345,13 +335,14 @@ function loadFromJson(file) {
     httpObj.open("get", file, true);
     httpObj.onload = function () {
         var json = this.responseText;
+        var jsonObj = JSON.parse(json);
         var talkDiv = document.getElementById("talk"); // まずい
-        talkListHandler = new TalkListHandler(json, talkDiv);
+        talkListHandler = new TalkListHandler(jsonObj.talks, talkDiv);
         // talkListGlobal = TalkList.create(json, "talk");
         // talkListGlobal.showList(Lang.ja, true);
         // talkList.showTable(Lang.ja);
-        // const articleDiv = document.getElementById("article") as HTMLElement; // まずい
-        // articleListHandler = new ArticleListHandler(json, articleDiv);
+        var articleDiv = document.getElementById("article"); // まずい
+        articleListHandler = new ArticleListHandler(jsonObj.articles, articleDiv);
         setupForm();
         updateTalks();
     };
@@ -411,8 +402,10 @@ function updateTalks() {
     // update
     if (format == "list") {
         talkListHandler.showList(outputLang, talksHeaderList, reverse);
+        articleListHandler.showList(outputLang, ArticleList.headerList, reverse);
     }
     else if (format == "table") {
         talkListHandler.showTable(outputLang, talksHeaderList, reverse);
+        articleListHandler.showList(outputLang, ArticleList.headerList, reverse);
     }
 }

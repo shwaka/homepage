@@ -9,13 +9,14 @@ function loadFromJson(file: string): void {
   httpObj.open("get", file, true);
   httpObj.onload = function() {
     const json = this.responseText;
+    const jsonObj = JSON.parse(json);
     const talkDiv = document.getElementById("talk") as HTMLElement; // まずい
-    talkListHandler = new TalkListHandler(json, talkDiv);
+    talkListHandler = new TalkListHandler(jsonObj.talks, talkDiv);
     // talkListGlobal = TalkList.create(json, "talk");
     // talkListGlobal.showList(Lang.ja, true);
     // talkList.showTable(Lang.ja);
-    // const articleDiv = document.getElementById("article") as HTMLElement; // まずい
-    // articleListHandler = new ArticleListHandler(json, articleDiv);
+    const articleDiv = document.getElementById("article") as HTMLElement; // まずい
+    articleListHandler = new ArticleListHandler(jsonObj.articles, articleDiv);
     setupForm();
     updateTalks();
   }
@@ -76,7 +77,9 @@ function updateTalks(): void {
   // update
   if (format == "list") {
     talkListHandler.showList(outputLang, talksHeaderList, reverse);
+    articleListHandler.showList(outputLang, ArticleList.headerList, reverse);
   } else if (format == "table") {
     talkListHandler.showTable(outputLang, talksHeaderList, reverse);
+    articleListHandler.showList(outputLang, ArticleList.headerList, reverse);
   }
 }

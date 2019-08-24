@@ -1,0 +1,7 @@
+---
+---
+
+{
+  "talks": {{ site.data.talks | jsonify }},
+  "articles": {{ site.data.articles | jsonify }}
+}

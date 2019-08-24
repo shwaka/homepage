@@ -76,20 +76,20 @@ class ArticleList extends WorkList<ArticleKey, Article> {
     super(data);
   }
 
-  static create(json: string): ArticleList {
-    const articleObjArray: ArticleObject[] = JSON.parse(json);
-    const articleList = new ArticleList(articleObjArray);
-    return articleList;
-  }
+  // static create(json: string): ArticleList {
+  //   const articleObjArray: ArticleObject[] = JSON.parse(json);
+  //   const articleList = new ArticleList(articleObjArray);
+  //   return articleList;
+  // }
 }
 
 class ArticleListHandler {
   output: HTMLElement;
   articleList: ArticleList;
 
-  constructor(json: string, output: HTMLElement) {
+  constructor(articleObjArray: ArticleObject[], output: HTMLElement) {
     this.output = output;
-    this.articleList = ArticleList.create(json);
+    this.articleList = new ArticleList(articleObjArray);
   }
 
   showList(outputLang: Lang,
