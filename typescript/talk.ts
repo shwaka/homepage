@@ -18,13 +18,6 @@ interface TalkObject {
   en?: TalkInfo;
 }
 
-interface TalkOutputElements {
-  title: HTMLElement;
-  conference: HTMLElement;
-  venue: HTMLElement;
-  date: HTMLElement;
-}
-
 type TalkKey = "title" | "conference" | "venue" | "date";
 
 class Talk extends Work<TalkKey> implements TalkObject {
@@ -73,7 +66,7 @@ class Talk extends Work<TalkKey> implements TalkObject {
     }
   }
 
-  getOutputElements(outputLang: Lang): TalkOutputElements {
+  getOutputElements(outputLang: Lang): {[T in TalkKey]: HTMLElement} {
     const talkInfo = this.getInfo(outputLang);
     // title
     const title = document.createElement("span");
@@ -108,35 +101,14 @@ class Talk extends Work<TalkKey> implements TalkObject {
   }
 }
 
-class TalkList {
-  data: Talk[];
-  output: HTMLElement;
-
+class TalkList extends WorkList<TalkKey, Talk> {
   constructor(talkObjArray: TalkObject[], output: HTMLElement) {
-    this.output = output;
-    this.data = [];
+    const data: Talk[] = [];
     talkObjArray.forEach(talkObj => {
       // map 的な何かでどうにかならない？
-      this.data.push(new Talk(talkObj));
+      data.push(new Talk(talkObj));
     })
-  }
-
-  showUl(outputLang: Lang): void {
-    this.output.innerHTML = ""; // clear the content of the HTML element
-    const ul = document.createElement("ul");
-    this.output.appendChild(ul);
-    this.data.forEach(talk => {
-      ul.appendChild(talk.toLi(outputLang));
-    })
-  }
-
-  showTable(outputLang: Lang): void {
-    this.output.innerHTML = ""; // clear the content of the HTML element
-    const table = document.createElement("table");
-    this.output.appendChild(table);
-    this.data.forEach(talk => {
-      table.appendChild(talk.toTr(outputLang));
-    })
+    super(data, output);
   }
 
   static create(json: string, id: string): TalkList {

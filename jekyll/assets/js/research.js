@@ -160,32 +160,18 @@ var Talk = /** @class */ (function (_super) {
     };
     return Talk;
 }(Work));
-var TalkList = /** @class */ (function () {
+var TalkList = /** @class */ (function (_super) {
+    __extends(TalkList, _super);
     function TalkList(talkObjArray, output) {
         var _this = this;
-        this.output = output;
-        this.data = [];
+        var data = [];
         talkObjArray.forEach(function (talkObj) {
             // map 的な何かでどうにかならない？
-            _this.data.push(new Talk(talkObj));
+            data.push(new Talk(talkObj));
         });
+        _this = _super.call(this, data, output) || this;
+        return _this;
     }
-    TalkList.prototype.showUl = function (outputLang) {
-        this.output.innerHTML = ""; // clear the content of the HTML element
-        var ul = document.createElement("ul");
-        this.output.appendChild(ul);
-        this.data.forEach(function (talk) {
-            ul.appendChild(talk.toLi(outputLang));
-        });
-    };
-    TalkList.prototype.showTable = function (outputLang) {
-        this.output.innerHTML = ""; // clear the content of the HTML element
-        var table = document.createElement("table");
-        this.output.appendChild(table);
-        this.data.forEach(function (talk) {
-            table.appendChild(talk.toTr(outputLang));
-        });
-    };
     TalkList.create = function (json, id) {
         var output = document.getElementById(id); // さすがにマズい…
         var talkObjArray = JSON.parse(json);
@@ -193,7 +179,7 @@ var TalkList = /** @class */ (function () {
         return talkList;
     };
     return TalkList;
-}());
+}(WorkList));
 function loadFromJson(file) {
     var httpObj = new XMLHttpRequest();
     httpObj.open("get", file, true);
