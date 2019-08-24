@@ -38,7 +38,7 @@ function getForm(): ConfigForm {
 }
 
 function setupForm(): void {
-  ["format-ol", "order-new-old", "language-japanese"].forEach((id) => {
+  ["format-itemize", "order-new-old", "language-japanese"].forEach((id) => {
     const radioButton = document.getElementById(id) as any; // やばい
     radioButton.checked = true;
   })
@@ -78,6 +78,8 @@ function updateTalks(): void {
     outputFormat = OutputFormat.ul;
   } else if (format == "table") {
     outputFormat = OutputFormat.table;
+  } else if (format == "itemize") {
+    outputFormat = OutputFormat.itemize;
   } else {
     throw Error("Invalid output format");
   }

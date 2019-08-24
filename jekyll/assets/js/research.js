@@ -60,6 +60,10 @@ var Work = /** @class */ (function () {
         });
         return tr;
     };
+    Work.prototype.toLaTeXItem = function (outputLang, headerList) {
+        var latexCode = this.toLaTeX(outputLang, headerList);
+        return "\\item " + latexCode;
+    };
     return Work;
 }());
 var WorkList = /** @class */ (function () {
@@ -111,6 +115,17 @@ var WorkList = /** @class */ (function () {
         });
         return table;
     };
+    WorkList.prototype.toLaTeXCodeBlock = function (outputLang, headerList, reverse, filter) {
+        if (reverse === void 0) { reverse = false; }
+        var pre = document.createElement("pre");
+        pre.appendChild(document.createTextNode("\\begin{itemize}\n"));
+        this.getData(reverse, filter).forEach(function (work) {
+            var item = work.toLaTeXItem(outputLang, headerList);
+            pre.appendChild(document.createTextNode("  " + item + "\n"));
+        });
+        pre.appendChild(document.createTextNode("\\end{itemize}\n"));
+        return pre;
+    };
     WorkList.prototype.toHTMLElement = function (outputFormat, outputLang, headerList, reverse, filter) {
         if (reverse === void 0) { reverse = false; }
         if (outputFormat == OutputFormat.ul || outputFormat == OutputFormat.ol) {
@@ -118,6 +133,9 @@ var WorkList = /** @class */ (function () {
         }
         else if (outputFormat == OutputFormat.table) {
             return this.toTable(outputLang, headerList, reverse, filter);
+        }
+        else if (outputFormat == OutputFormat.itemize) {
+            return this.toLaTeXCodeBlock(outputLang, headerList, reverse, filter);
         }
         else {
             throw Error("This can't happen!");
@@ -130,6 +148,7 @@ var OutputFormat;
     OutputFormat["ul"] = "ul";
     OutputFormat["ol"] = "ol";
     OutputFormat["table"] = "table";
+    OutputFormat["itemize"] = "itemize";
 })(OutputFormat || (OutputFormat = {}));
 /// <reference path="base.ts"/>
 var ArticleType;
@@ -182,6 +201,9 @@ var Article = /** @class */ (function (_super) {
             arxiv: arxiv
         };
         return outputElements;
+    };
+    Article.prototype.toLaTeX = function (outputLang, headerList) {
+        return "hoge";
     };
     return Article;
 }(Work));
@@ -350,6 +372,9 @@ var Talk = /** @class */ (function (_super) {
         };
         return outputElements;
     };
+    Talk.prototype.toLaTeX = function (outputLang, headerList) {
+        return "fuga";
+    };
     return Talk;
 }(Work));
 var TalkList = /** @class */ (function (_super) {
@@ -459,7 +484,7 @@ function getForm() {
     return configForm;
 }
 function setupForm() {
-    ["format-ol", "order-new-old", "language-japanese"].forEach(function (id) {
+    ["format-itemize", "order-new-old", "language-japanese"].forEach(function (id) {
         var radioButton = document.getElementById(id); // やばい
         radioButton.checked = true;
     });
@@ -504,6 +529,9 @@ function updateTalks() {
     }
     else if (format == "table") {
         outputFormat = OutputFormat.table;
+    }
+    else if (format == "itemize") {
+        outputFormat = OutputFormat.itemize;
     }
     else {
         throw Error("Invalid output format");

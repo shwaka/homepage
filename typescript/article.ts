@@ -80,6 +80,10 @@ class Article extends Work<ArticleKey>{
     }
     return outputElements;
   }
+
+  protected toLaTeX(outputLang: Lang, headerList: [ArticleKey, string][]): string {
+    return "hoge";
+  }
 }
 
 class ArticleList extends WorkList<ArticleKey, Article> {

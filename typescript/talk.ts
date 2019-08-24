@@ -92,6 +92,10 @@ class Talk extends Work<TalkKey> {
     }
     return outputElements;
   }
+
+  protected toLaTeX(outputLang: Lang, headerList: [TalkKey, string][]): string {
+    return "fuga";
+  }
 }
 
 class TalkList extends WorkList<TalkKey, Talk> {

@@ -49,6 +49,12 @@ abstract class Work<Key extends string> {
     });
     return tr;
   }
+
+  protected abstract toLaTeX(outputLang: Lang, headerList: [Key, string][]): string;
+  public toLaTeXItem(outputLang: Lang, headerList: [Key, string][]): string {
+    const latexCode = this.toLaTeX(outputLang, headerList);
+    return `\\item ${latexCode}`;
+  }
 }
 
 class WorkList<Key extends string, W extends Work<Key>> {
@@ -111,6 +117,20 @@ class WorkList<Key extends string, W extends Work<Key>> {
     return table;
   }
 
+  private toLaTeXCodeBlock(outputLang: Lang,
+                           headerList: [Key, string][],
+                           reverse: boolean = false,
+                           filter?: (work: W) => boolean): HTMLElement {
+    const pre = document.createElement("pre");
+    pre.appendChild(document.createTextNode("\\begin{itemize}\n"))
+    this.getData(reverse, filter).forEach(work => {
+      const item = work.toLaTeXItem(outputLang, headerList);
+      pre.appendChild(document.createTextNode(`  ${item}\n`));
+    });
+    pre.appendChild(document.createTextNode("\\end{itemize}\n"))
+    return pre;
+  }
+
   public toHTMLElement(outputFormat: OutputFormat,
                        outputLang: Lang,
                        headerList: [Key, string][],
@@ -120,6 +140,8 @@ class WorkList<Key extends string, W extends Work<Key>> {
       return this.toList(outputFormat, outputLang, headerList, reverse, filter);
     } else if (outputFormat == OutputFormat.table) {
       return this.toTable(outputLang, headerList, reverse, filter);
+    } else if (outputFormat == OutputFormat.itemize) {
+      return this.toLaTeXCodeBlock(outputLang, headerList, reverse, filter);
     } else {
       throw Error("This can't happen!");
     }
@@ -130,4 +152,5 @@ enum OutputFormat {
   ul = "ul",
   ol = "ol",
   table = "table",
+  itemize = "itemize",
 }
