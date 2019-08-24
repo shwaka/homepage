@@ -132,20 +132,51 @@ class TalkListHandler {
     this.talkList = TalkList.create(json);
   }
 
+  getHeadingEnglish(outputLang: Lang): HTMLHeadingElement {
+    const h3 = document.createElement("h3");
+    if (outputLang == Lang.en) {
+      h3.innerText = "talks in English";
+    } else if (outputLang == Lang.ja) {
+      h3.innerText = "国際研究集会";
+    }
+    return h3;
+  }
+
+  getHeadingJapanese(outputLang: Lang): HTMLHeadingElement {
+    const h3 = document.createElement("h3");
+    if (outputLang == Lang.en) {
+      h3.innerText = "talks in Japanese";
+    } else if (outputLang == Lang.ja) {
+      h3.innerText = "国内研究集会";
+    }
+    return h3;
+  }
+
   showList(outputLang: Lang,
            headerList: [TalkKey, string][],
-           reverse: boolean = false,
-           filter?: (talk: Talk) => boolean,
-           listType: "ul"|"ol" = "ol"): void {
+           reverse: boolean = false): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
-    this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, filter, listType));
+    this.output.appendChild(this.getHeadingEnglish(outputLang));
+    this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isEnglishTalk));
+    this.output.appendChild(this.getHeadingJapanese(outputLang));
+    this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isJapaneseTalk));
   }
 
   showTable(outputLang: Lang,
             headerList: [TalkKey, string][],
-            reverse: boolean = false,
-            filter?: (talk: Talk) => boolean): void {
+            reverse: boolean = false): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
-    this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, filter));
+    this.output.appendChild(this.getHeadingEnglish(outputLang));
+    this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, isEnglishTalk));
+    this.output.appendChild(this.getHeadingJapanese(outputLang));
+    this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, isJapaneseTalk));
   }
+}
+
+function isEnglishTalk(talk: Talk): boolean {
+  return (talk.base.lang == Lang.en);
+}
+
+function isJapaneseTalk(talk: Talk): boolean {
+  return (talk.base.lang == Lang.ja);
 }

@@ -218,19 +218,50 @@ var TalkListHandler = /** @class */ (function () {
         this.output = output;
         this.talkList = TalkList.create(json);
     }
-    TalkListHandler.prototype.showList = function (outputLang, headerList, reverse, filter, listType) {
-        if (reverse === void 0) { reverse = false; }
-        if (listType === void 0) { listType = "ol"; }
-        this.output.innerHTML = ""; // clear the content of the HTML element
-        this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, filter, listType));
+    TalkListHandler.prototype.getHeadingEnglish = function (outputLang) {
+        var h3 = document.createElement("h3");
+        if (outputLang == Lang.en) {
+            h3.innerText = "talks in English";
+        }
+        else if (outputLang == Lang.ja) {
+            h3.innerText = "国際研究集会";
+        }
+        return h3;
     };
-    TalkListHandler.prototype.showTable = function (outputLang, headerList, reverse, filter) {
+    TalkListHandler.prototype.getHeadingJapanese = function (outputLang) {
+        var h3 = document.createElement("h3");
+        if (outputLang == Lang.en) {
+            h3.innerText = "talks in Japanese";
+        }
+        else if (outputLang == Lang.ja) {
+            h3.innerText = "国内研究集会";
+        }
+        return h3;
+    };
+    TalkListHandler.prototype.showList = function (outputLang, headerList, reverse) {
         if (reverse === void 0) { reverse = false; }
         this.output.innerHTML = ""; // clear the content of the HTML element
-        this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, filter));
+        this.output.appendChild(this.getHeadingEnglish(outputLang));
+        this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isEnglishTalk));
+        this.output.appendChild(this.getHeadingJapanese(outputLang));
+        this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isJapaneseTalk));
+    };
+    TalkListHandler.prototype.showTable = function (outputLang, headerList, reverse) {
+        if (reverse === void 0) { reverse = false; }
+        this.output.innerHTML = ""; // clear the content of the HTML element
+        this.output.appendChild(this.getHeadingEnglish(outputLang));
+        this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, isEnglishTalk));
+        this.output.appendChild(this.getHeadingJapanese(outputLang));
+        this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, isJapaneseTalk));
     };
     return TalkListHandler;
 }());
+function isEnglishTalk(talk) {
+    return (talk.base.lang == Lang.en);
+}
+function isJapaneseTalk(talk) {
+    return (talk.base.lang == Lang.ja);
+}
 /// <reference path="talk.ts"/>
 /// <reference path="article.ts"/>
 var talkListHandler;
