@@ -38,7 +38,7 @@ function getForm(): ConfigForm {
 }
 
 function setupForm(): void {
-  ["format-list", "order-new-old", "language-japanese"].forEach((id) => {
+  ["format-ol", "order-new-old", "language-japanese"].forEach((id) => {
     const radioButton = document.getElementById(id) as any; // やばい
     radioButton.checked = true;
   })
@@ -72,10 +72,12 @@ function updateTalks(): void {
   const radioFormat = configForm.format;
   const format: string = radioFormat.value;
   let outputFormat: OutputFormat;
-  if (format == "list") {
+  if (format == "ol") {
     outputFormat = OutputFormat.ol;
+  } else if (format == "ul") {
+    outputFormat = OutputFormat.ul;
   } else if (format == "table") {
-    outputFormat = OutputFormat.ol;
+    outputFormat = OutputFormat.table;
   } else {
     throw Error("Invalid output format");
   }

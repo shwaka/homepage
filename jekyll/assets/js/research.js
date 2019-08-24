@@ -453,7 +453,7 @@ function getForm() {
     return configForm;
 }
 function setupForm() {
-    ["format-list", "order-new-old", "language-japanese"].forEach(function (id) {
+    ["format-ol", "order-new-old", "language-japanese"].forEach(function (id) {
         var radioButton = document.getElementById(id); // やばい
         radioButton.checked = true;
     });
@@ -490,11 +490,14 @@ function updateTalks() {
     var radioFormat = configForm.format;
     var format = radioFormat.value;
     var outputFormat;
-    if (format == "list") {
+    if (format == "ol") {
         outputFormat = OutputFormat.ol;
     }
+    else if (format == "ul") {
+        outputFormat = OutputFormat.ul;
+    }
     else if (format == "table") {
-        outputFormat = OutputFormat.ol;
+        outputFormat = OutputFormat.table;
     }
     else {
         throw Error("Invalid output format");
