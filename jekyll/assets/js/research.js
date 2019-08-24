@@ -189,10 +189,6 @@ var ArticleList = /** @class */ (function (_super) {
             throw Error("invalid lang");
         }
     };
-    ArticleList.headerList = [["title", "タイトル"],
-        ["journal", "雑誌"],
-        ["year", "出版年"],
-        ["arxiv", "arXiv"]];
     return ArticleList;
 }(WorkList));
 var ArticleListHandler = /** @class */ (function () {
@@ -308,14 +304,23 @@ var TalkList = /** @class */ (function (_super) {
         _this = _super.call(this, data) || this;
         return _this;
     }
-    TalkList.headerListJa = [["title", "講演タイトル"],
-        ["conference", "研究集会名"],
-        ["venue", "会場"],
-        ["date", "日付"]];
-    TalkList.headerListEn = [["title", "talk title"],
-        ["conference", "conference name"],
-        ["venue", "venue"],
-        ["date", "date"]];
+    TalkList.getHeaderList = function (outputLang) {
+        if (outputLang == Lang.en) {
+            return [["title", "talk title"],
+                ["conference", "conference name"],
+                ["venue", "venue"],
+                ["date", "date"]];
+        }
+        else if (outputLang == Lang.ja) {
+            return [["title", "講演タイトル"],
+                ["conference", "研究集会名"],
+                ["venue", "会場"],
+                ["date", "日付"]];
+        }
+        else {
+            throw Error("invalid lang");
+        }
+    };
     return TalkList;
 }(WorkList));
 var TalkListHandler = /** @class */ (function () {
@@ -343,16 +348,18 @@ var TalkListHandler = /** @class */ (function () {
         }
         return h3;
     };
-    TalkListHandler.prototype.showList = function (outputLang, headerList, reverse) {
+    TalkListHandler.prototype.showList = function (outputLang, reverse) {
         if (reverse === void 0) { reverse = false; }
+        var headerList = TalkList.getHeaderList(outputLang);
         this.output.innerHTML = ""; // clear the content of the HTML element
         this.output.appendChild(this.getHeadingEnglish(outputLang));
         this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isEnglishTalk));
         this.output.appendChild(this.getHeadingJapanese(outputLang));
         this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isJapaneseTalk));
     };
-    TalkListHandler.prototype.showTable = function (outputLang, headerList, reverse) {
+    TalkListHandler.prototype.showTable = function (outputLang, reverse) {
         if (reverse === void 0) { reverse = false; }
+        var headerList = TalkList.getHeaderList(outputLang);
         this.output.innerHTML = ""; // clear the content of the HTML element
         this.output.appendChild(this.getHeadingEnglish(outputLang));
         this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, isEnglishTalk));
@@ -425,14 +432,11 @@ function updateTalks() {
     var radioLanguage = configForm.language;
     var language = radioLanguage.value;
     var outputLang;
-    var talksHeaderList;
     if (language == "en") {
         outputLang = Lang.en;
-        talksHeaderList = TalkList.headerListEn;
     }
     else if (language == "ja") {
         outputLang = Lang.ja;
-        talksHeaderList = TalkList.headerListJa;
     }
     else {
         throw Error("invalid language");
@@ -442,11 +446,11 @@ function updateTalks() {
     var format = radioFormat.value;
     // update
     if (format == "list") {
-        talkListHandler.showList(outputLang, talksHeaderList, reverse);
+        talkListHandler.showList(outputLang, reverse);
         articleListHandler.showList(outputLang, reverse);
     }
     else if (format == "table") {
-        talkListHandler.showTable(outputLang, talksHeaderList, reverse);
+        talkListHandler.showTable(outputLang, reverse);
         articleListHandler.showList(outputLang, reverse);
     }
 }

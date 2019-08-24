@@ -98,15 +98,6 @@ class Talk extends Work<TalkKey> implements TalkObject {
 }
 
 class TalkList extends WorkList<TalkKey, Talk> {
-  static headerListJa = [["title", "講演タイトル"],
-                         ["conference", "研究集会名"],
-                         ["venue", "会場"],
-                         ["date", "日付"]] as [TalkKey, string][];
-  static headerListEn = [["title", "talk title"],
-                         ["conference", "conference name"],
-                         ["venue", "venue"],
-                         ["date", "date"]] as [TalkKey, string][];
-
   constructor(talkObjArray: TalkObject[]) {
     const data: Talk[] = [];
     talkObjArray.forEach(talkObj => {
@@ -116,6 +107,21 @@ class TalkList extends WorkList<TalkKey, Talk> {
     super(data);
   }
 
+  static getHeaderList(outputLang: Lang): [TalkKey, string][] {
+    if (outputLang == Lang.en) {
+      return [["title", "talk title"],
+              ["conference", "conference name"],
+              ["venue", "venue"],
+              ["date", "date"]] as [TalkKey, string][];
+    } else if (outputLang == Lang.ja) {
+      return [["title", "講演タイトル"],
+              ["conference", "研究集会名"],
+              ["venue", "会場"],
+              ["date", "日付"]] as [TalkKey, string][];
+    } else {
+      throw Error("invalid lang");
+    }
+  }
   // static create(json: string): TalkList {
   //   const talkObjArray: TalkObject[] = JSON.parse(json);
   //   const talkList = new TalkList(talkObjArray);
@@ -153,8 +159,8 @@ class TalkListHandler {
   }
 
   showList(outputLang: Lang,
-           headerList: [TalkKey, string][],
            reverse: boolean = false): void {
+    const headerList = TalkList.getHeaderList(outputLang);
     this.output.innerHTML = ""; // clear the content of the HTML element
     this.output.appendChild(this.getHeadingEnglish(outputLang));
     this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isEnglishTalk));
@@ -163,8 +169,8 @@ class TalkListHandler {
   }
 
   showTable(outputLang: Lang,
-            headerList: [TalkKey, string][],
             reverse: boolean = false): void {
+    const headerList = TalkList.getHeaderList(outputLang);
     this.output.innerHTML = ""; // clear the content of the HTML element
     this.output.appendChild(this.getHeadingEnglish(outputLang));
     this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, isEnglishTalk));

@@ -63,10 +63,6 @@ class Article extends Work<ArticleKey>{
 }
 
 class ArticleList extends WorkList<ArticleKey, Article> {
-  static headerList = [["title", "タイトル"],
-                       ["journal", "雑誌"],
-                       ["year", "出版年"],
-                       ["arxiv", "arXiv"]] as [ArticleKey, string][];
   constructor(articleObjArray: ArticleObject[]) {
     const data: Article[] = [];
     articleObjArray.forEach(articleObj => {
