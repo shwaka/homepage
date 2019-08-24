@@ -132,17 +132,38 @@ class Talk implements TalkObject{
   }
 }
 
+class TalkList {
+  data: Talk[];
+  output: HTMLElement;
+
+  constructor(talkObjArray: TalkObject[], output: HTMLElement) {
+    this.output = output;
+    this.data = [];
+    talkObjArray.forEach(talkObj => {
+      // map 的な何かでどうにかならない？
+      this.data.push(new Talk(talkObj));
+    })
+  }
+
+  showUl(outputLang: Lang) {
+    this.output.innerHTML = ""; // clear the content of the HTML element
+    const ul = document.createElement("ul");
+    this.output.appendChild(ul);
+    this.data.forEach(talk => {
+      ul.appendChild(talk.toLi(outputLang));
+    })
+  }
+}
+
 function loadFromJson(file: string){
   const httpObj = new XMLHttpRequest();
   httpObj.open("get", file, true);
-  const ul = document.getElementById("talk-list") as HTMLUListElement; // さすがにマズい…
+  // const ul = document.getElementById("talk-list") as HTMLUListElement; // さすがにマズい…
+  const div = document.getElementById("talk") as HTMLUListElement; // さすがにマズい…
   httpObj.onload = function(){
     const talkObjArray: TalkObject[] = JSON.parse(this.responseText);
-    talkObjArray.forEach(talkObj => {
-      const talk = new Talk(talkObj);
-      // console.log(talk.toStr());
-      talk.addToUl(ul, Lang.ja);
-    })
+    const talkList = new TalkList(talkObjArray, div);
+    talkList.showUl(Lang.ja);
   }
   httpObj.send(null);
 }

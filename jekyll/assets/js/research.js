@@ -110,17 +110,35 @@ var Talk = /** @class */ (function () {
     };
     return Talk;
 }());
+var TalkList = /** @class */ (function () {
+    function TalkList(talkObjArray, output) {
+        var _this = this;
+        this.output = output;
+        this.data = [];
+        talkObjArray.forEach(function (talkObj) {
+            // map 的な何かでどうにかならない？
+            _this.data.push(new Talk(talkObj));
+        });
+    }
+    TalkList.prototype.showUl = function (outputLang) {
+        this.output.innerHTML = ""; // clear the content of the HTML element
+        var ul = document.createElement("ul");
+        this.output.appendChild(ul);
+        this.data.forEach(function (talk) {
+            ul.appendChild(talk.toLi(outputLang));
+        });
+    };
+    return TalkList;
+}());
 function loadFromJson(file) {
     var httpObj = new XMLHttpRequest();
     httpObj.open("get", file, true);
-    var ul = document.getElementById("talk-list"); // さすがにマズい…
+    // const ul = document.getElementById("talk-list") as HTMLUListElement; // さすがにマズい…
+    var div = document.getElementById("talk"); // さすがにマズい…
     httpObj.onload = function () {
         var talkObjArray = JSON.parse(this.responseText);
-        talkObjArray.forEach(function (talkObj) {
-            var talk = new Talk(talkObj);
-            // console.log(talk.toStr());
-            talk.addToUl(ul, Lang.ja);
-        });
+        var talkList = new TalkList(talkObjArray, div);
+        talkList.showUl(Lang.ja);
     };
     httpObj.send(null);
 }
