@@ -125,7 +125,7 @@ function loadFromJson(file: string): void {
   httpObj.onload = function() {
     const json = this.responseText;
     const talkList = TalkList.create(json, "talk");
-    talkList.showList(Lang.ja);
+    talkList.showList(Lang.ja, true);
     // talkList.showTable(Lang.ja);
   }
   httpObj.send(null);

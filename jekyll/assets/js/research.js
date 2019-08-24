@@ -57,20 +57,33 @@ var WorkList = /** @class */ (function () {
         this.data = data;
         this.output = output;
     }
-    WorkList.prototype.showList = function (outputLang, listType) {
+    WorkList.prototype.getData = function (reverse) {
+        if (reverse === void 0) { reverse = false; }
+        if (reverse) {
+            return this.data.slice().reverse();
+        }
+        return this.data;
+    };
+    WorkList.prototype.showList = function (outputLang, reverse, listType) {
+        if (reverse === void 0) { reverse = false; }
         if (listType === void 0) { listType = "ol"; }
         this.output.innerHTML = ""; // clear the content of the HTML element
-        var ul = document.createElement(listType);
-        this.output.appendChild(ul);
-        this.data.forEach(function (work) {
-            ul.appendChild(work.toLi(outputLang));
+        var list = document.createElement(listType);
+        if (reverse && listType == "ol") {
+            var ol = list; // もうちょっとマシな書き方？
+            ol.reversed = true;
+        }
+        this.output.appendChild(list);
+        this.getData(reverse).forEach(function (work) {
+            list.appendChild(work.toLi(outputLang));
         });
     };
-    WorkList.prototype.showTable = function (outputLang) {
+    WorkList.prototype.showTable = function (outputLang, reverse) {
+        if (reverse === void 0) { reverse = false; }
         this.output.innerHTML = ""; // clear the content of the HTML element
         var table = document.createElement("table");
         this.output.appendChild(table);
-        this.data.forEach(function (work) {
+        this.getData(reverse).forEach(function (work) {
             table.appendChild(work.toTr(outputLang));
         });
     };
@@ -187,7 +200,7 @@ function loadFromJson(file) {
     httpObj.onload = function () {
         var json = this.responseText;
         var talkList = TalkList.create(json, "talk");
-        talkList.showList(Lang.ja);
+        talkList.showList(Lang.ja, true);
         // talkList.showTable(Lang.ja);
     };
     httpObj.send(null);

@@ -47,20 +47,31 @@ class WorkList<Key extends string, W extends Work<Key>> {
     this.output = output;
   }
 
-  showList(outputLang: Lang, listType: "ul"|"ol" = "ol"): void {
+  getData(reverse: boolean = false): W[] {
+    if (reverse) {
+      return this.data.slice().reverse();
+    }
+    return this.data;
+  }
+
+  showList(outputLang: Lang, reverse: boolean = false, listType: "ul"|"ol" = "ol"): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
-    const ul = document.createElement(listType);
-    this.output.appendChild(ul);
-    this.data.forEach(work => {
-      ul.appendChild(work.toLi(outputLang));
+    const list = document.createElement(listType);
+    if (reverse && listType == "ol") {
+      const ol = list as HTMLOListElement; // もうちょっとマシな書き方？
+      ol.reversed = true;
+    }
+    this.output.appendChild(list);
+    this.getData(reverse).forEach(work => {
+      list.appendChild(work.toLi(outputLang));
     })
   }
 
-  showTable(outputLang: Lang): void {
+  showTable(outputLang: Lang, reverse: boolean = false): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
     const table = document.createElement("table");
     this.output.appendChild(table);
-    this.data.forEach(work => {
+    this.getData(reverse).forEach(work => {
       table.appendChild(work.toTr(outputLang));
     })
   }
