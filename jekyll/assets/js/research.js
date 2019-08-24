@@ -47,9 +47,8 @@ var Work = /** @class */ (function () {
     return Work;
 }());
 var WorkList = /** @class */ (function () {
-    function WorkList(data, output) {
+    function WorkList(data) {
         this.data = data;
-        this.output = output;
     }
     WorkList.prototype.getData = function (reverse, filter) {
         if (reverse === void 0) { reverse = false; }
@@ -65,19 +64,18 @@ var WorkList = /** @class */ (function () {
         }
         return data.filter(filter);
     };
-    WorkList.prototype.showList = function (outputLang, headerList, reverse, filter, listType) {
+    WorkList.prototype.toList = function (outputLang, headerList, reverse, filter, listType) {
         if (reverse === void 0) { reverse = false; }
         if (listType === void 0) { listType = "ol"; }
-        this.output.innerHTML = ""; // clear the content of the HTML element
         var list = document.createElement(listType);
         if (reverse && listType == "ol") {
             var ol = list; // もうちょっとマシな書き方？
             ol.reversed = true;
         }
-        this.output.appendChild(list);
         this.getData(reverse, filter).forEach(function (work) {
             list.appendChild(work.toLi(outputLang, headerList));
         });
+        return list;
     };
     WorkList.prototype.getTableHeader = function (headerList) {
         var tr = document.createElement("tr");
@@ -89,15 +87,14 @@ var WorkList = /** @class */ (function () {
         });
         return tr;
     };
-    WorkList.prototype.showTable = function (outputLang, headerList, reverse, filter) {
+    WorkList.prototype.toTable = function (outputLang, headerList, reverse, filter) {
         if (reverse === void 0) { reverse = false; }
-        this.output.innerHTML = ""; // clear the content of the HTML element
         var table = document.createElement("table");
-        this.output.appendChild(table);
         table.appendChild(this.getTableHeader(headerList));
         this.getData(reverse, filter).forEach(function (work) {
             table.appendChild(work.toTr(outputLang, headerList));
         });
+        return table;
     };
     return WorkList;
 }());
@@ -191,20 +188,19 @@ var Talk = /** @class */ (function (_super) {
 }(Work));
 var TalkList = /** @class */ (function (_super) {
     __extends(TalkList, _super);
-    function TalkList(talkObjArray, output) {
+    function TalkList(talkObjArray) {
         var _this = this;
         var data = [];
         talkObjArray.forEach(function (talkObj) {
             // map 的な何かでどうにかならない？
             data.push(new Talk(talkObj));
         });
-        _this = _super.call(this, data, output) || this;
+        _this = _super.call(this, data) || this;
         return _this;
     }
-    TalkList.create = function (json, id) {
-        var output = document.getElementById(id); // さすがにマズい…
+    TalkList.create = function (json) {
         var talkObjArray = JSON.parse(json);
-        var talkList = new TalkList(talkObjArray, output);
+        var talkList = new TalkList(talkObjArray);
         return talkList;
     };
     TalkList.headerListJa = [["title", "講演タイトル"],
@@ -217,15 +213,35 @@ var TalkList = /** @class */ (function (_super) {
         ["date", "date"]];
     return TalkList;
 }(WorkList));
+var TalkListHandler = /** @class */ (function () {
+    function TalkListHandler(json, output) {
+        this.output = output;
+        this.talkList = TalkList.create(json);
+    }
+    TalkListHandler.prototype.showList = function (outputLang, headerList, reverse, filter, listType) {
+        if (reverse === void 0) { reverse = false; }
+        if (listType === void 0) { listType = "ol"; }
+        this.output.innerHTML = ""; // clear the content of the HTML element
+        this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, filter, listType));
+    };
+    TalkListHandler.prototype.showTable = function (outputLang, headerList, reverse, filter) {
+        if (reverse === void 0) { reverse = false; }
+        this.output.innerHTML = ""; // clear the content of the HTML element
+        this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, filter));
+    };
+    return TalkListHandler;
+}());
 /// <reference path="talk.ts"/>
 /// <reference path="article.ts"/>
-var talkListGlobal;
+var talkListHandler;
 function loadFromJson(file) {
     var httpObj = new XMLHttpRequest();
     httpObj.open("get", file, true);
     httpObj.onload = function () {
         var json = this.responseText;
-        talkListGlobal = TalkList.create(json, "talk");
+        var talkDiv = document.getElementById("talk"); // まずい
+        talkListHandler = new TalkListHandler(json, talkDiv);
+        // talkListGlobal = TalkList.create(json, "talk");
         // talkListGlobal.showList(Lang.ja, true);
         // talkList.showTable(Lang.ja);
         setupForm();
@@ -286,9 +302,9 @@ function updateTalks() {
     var format = radioFormat.value;
     // update
     if (format == "list") {
-        talkListGlobal.showList(outputLang, talksHeaderList, reverse);
+        talkListHandler.showList(outputLang, talksHeaderList, reverse);
     }
     else if (format == "table") {
-        talkListGlobal.showTable(outputLang, talksHeaderList, reverse);
+        talkListHandler.showTable(outputLang, talksHeaderList, reverse);
     }
 }

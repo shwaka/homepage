@@ -107,19 +107,45 @@ class TalkList extends WorkList<TalkKey, Talk> {
                          ["venue", "venue"],
                          ["date", "date"]] as [TalkKey, string][];
 
-  constructor(talkObjArray: TalkObject[], output: HTMLElement) {
+  constructor(talkObjArray: TalkObject[]) {
     const data: Talk[] = [];
     talkObjArray.forEach(talkObj => {
       // map 的な何かでどうにかならない？
       data.push(new Talk(talkObj));
     })
-    super(data, output);
+    super(data);
   }
 
-  static create(json: string, id: string): TalkList {
-    const output = document.getElementById(id) as HTMLUListElement; // さすがにマズい…
+  static create(json: string): TalkList {
     const talkObjArray: TalkObject[] = JSON.parse(json);
-    const talkList = new TalkList(talkObjArray, output);
+    const talkList = new TalkList(talkObjArray);
     return talkList;
+  }
+}
+
+class TalkListHandler {
+  output: HTMLElement;
+  talkList: TalkList;
+
+  constructor(json: string, output: HTMLElement) {
+    this.output = output;
+    this.talkList = TalkList.create(json);
+  }
+
+  showList(outputLang: Lang,
+           headerList: [TalkKey, string][],
+           reverse: boolean = false,
+           filter?: (talk: Talk) => boolean,
+           listType: "ul"|"ol" = "ol"): void {
+    this.output.innerHTML = ""; // clear the content of the HTML element
+    this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, filter, listType));
+  }
+
+  showTable(outputLang: Lang,
+            headerList: [TalkKey, string][],
+            reverse: boolean = false,
+            filter?: (talk: Talk) => boolean): void {
+    this.output.innerHTML = ""; // clear the content of the HTML element
+    this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, filter));
   }
 }

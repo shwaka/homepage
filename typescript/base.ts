@@ -36,11 +36,9 @@ abstract class Work<Key extends string> {
 
 class WorkList<Key extends string, W extends Work<Key>> {
   data: W[];
-  output: HTMLElement;
 
-  constructor(data: W[], output: HTMLElement) {
+  constructor(data: W[]) {
     this.data = data;
-    this.output = output;
   }
 
   getData(reverse: boolean = false,
@@ -57,21 +55,20 @@ class WorkList<Key extends string, W extends Work<Key>> {
     return data.filter(filter);
   }
 
-  showList(outputLang: Lang,
-           headerList: [Key, string][],
-           reverse: boolean = false,
-           filter?: (work: W) => boolean,
-           listType: "ul"|"ol" = "ol"): void {
-    this.output.innerHTML = ""; // clear the content of the HTML element
-    const list = document.createElement(listType);
+  toList(outputLang: Lang,
+         headerList: [Key, string][],
+         reverse: boolean = false,
+         filter?: (work: W) => boolean,
+         listType: "ul"|"ol" = "ol"): HTMLUListElement | HTMLOListElement {
+    const list: HTMLUListElement | HTMLOListElement = document.createElement(listType);
     if (reverse && listType == "ol") {
       const ol = list as HTMLOListElement; // もうちょっとマシな書き方？
       ol.reversed = true;
     }
-    this.output.appendChild(list);
     this.getData(reverse, filter).forEach(work => {
       list.appendChild(work.toLi(outputLang, headerList));
-    })
+    });
+    return list;
   }
 
   getTableHeader(headerList: [Key, string][]): HTMLTableRowElement {
@@ -81,20 +78,19 @@ class WorkList<Key extends string, W extends Work<Key>> {
       const th = document.createElement("th");
       th.appendChild(document.createTextNode(header));
       tr.appendChild(th);
-    })
+    });
     return tr;
   }
 
-  showTable(outputLang: Lang,
-            headerList: [Key, string][],
-            reverse: boolean = false,
-            filter?: (work: W) => boolean): void {
-    this.output.innerHTML = ""; // clear the content of the HTML element
+  toTable(outputLang: Lang,
+          headerList: [Key, string][],
+          reverse: boolean = false,
+          filter?: (work: W) => boolean): HTMLTableElement {
     const table = document.createElement("table");
-    this.output.appendChild(table);
     table.appendChild(this.getTableHeader(headerList));
     this.getData(reverse, filter).forEach(work => {
       table.appendChild(work.toTr(outputLang, headerList));
-    })
+    });
+    return table;
   }
 }

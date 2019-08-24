@@ -1,14 +1,16 @@
 /// <reference path="talk.ts"/>
 /// <reference path="article.ts"/>
 
-var talkListGlobal: TalkList;
+var talkListHandler: TalkListHandler;
 
 function loadFromJson(file: string): void {
   const httpObj = new XMLHttpRequest();
   httpObj.open("get", file, true);
   httpObj.onload = function() {
     const json = this.responseText;
-    talkListGlobal = TalkList.create(json, "talk");
+    const talkDiv = document.getElementById("talk") as HTMLElement; // まずい
+    talkListHandler = new TalkListHandler(json, talkDiv);
+    // talkListGlobal = TalkList.create(json, "talk");
     // talkListGlobal.showList(Lang.ja, true);
     // talkList.showTable(Lang.ja);
     setupForm();
@@ -70,8 +72,8 @@ function updateTalks(): void {
   const format: string = radioFormat.value;
   // update
   if (format == "list") {
-    talkListGlobal.showList(outputLang, talksHeaderList, reverse);
+    talkListHandler.showList(outputLang, talksHeaderList, reverse);
   } else if (format == "table") {
-    talkListGlobal.showTable(outputLang, talksHeaderList, reverse);
+    talkListHandler.showTable(outputLang, talksHeaderList, reverse);
   }
 }
