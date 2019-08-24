@@ -59,7 +59,7 @@ class WorkList<Key extends string, W extends Work<Key>> {
   }
 
   private getData(reverse: boolean = false,
-          filter?: (work: W) => boolean,): W[] {
+                  filter?: (work: W) => boolean,): W[] {
     let data: W[];
     if (reverse) {
       data = this.data.slice().reverse();
@@ -73,10 +73,10 @@ class WorkList<Key extends string, W extends Work<Key>> {
   }
 
   private toList(outputLang: Lang,
-         headerList: [Key, string][],
-         reverse: boolean = false,
-         filter?: (work: W) => boolean,
-         listType: "ul"|"ol" = "ol"): HTMLUListElement | HTMLOListElement {
+                 headerList: [Key, string][],
+                 reverse: boolean = false,
+                 filter?: (work: W) => boolean,
+                 listType: "ul"|"ol" = "ol"): HTMLUListElement | HTMLOListElement {
     const list: HTMLUListElement | HTMLOListElement = document.createElement(listType);
     if (reverse && listType == "ol") {
       const ol = list as HTMLOListElement; // もうちょっとマシな書き方？
@@ -100,9 +100,9 @@ class WorkList<Key extends string, W extends Work<Key>> {
   }
 
   private toTable(outputLang: Lang,
-          headerList: [Key, string][],
-          reverse: boolean = false,
-          filter?: (work: W) => boolean): HTMLTableElement {
+                  headerList: [Key, string][],
+                  reverse: boolean = false,
+                  filter?: (work: W) => boolean): HTMLTableElement {
     const table = document.createElement("table");
     table.appendChild(this.getTableHeader(headerList));
     this.getData(reverse, filter).forEach(work => {
@@ -112,10 +112,10 @@ class WorkList<Key extends string, W extends Work<Key>> {
   }
 
   public toHTMLElement(outputFormat: OutputFormat,
-                outputLang: Lang,
-                headerList: [Key, string][],
-                reverse: boolean = false,
-                filter?: (work: W) => boolean): HTMLElement {
+                       outputLang: Lang,
+                       headerList: [Key, string][],
+                       reverse: boolean = false,
+                       filter?: (work: W) => boolean): HTMLElement {
     if (outputFormat == OutputFormat.ul) {
       return this.toList(outputLang, headerList, reverse, filter, "ul");
     } else if (outputFormat == OutputFormat.ol) {
