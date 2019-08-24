@@ -253,25 +253,15 @@ var ArticleListHandler = /** @class */ (function () {
         }
         return h3;
     };
-    ArticleListHandler.prototype.showList = function (outputLang, reverse) {
+    ArticleListHandler.prototype.show = function (outputFormat, outputLang, reverse) {
         if (reverse === void 0) { reverse = false; }
         this.output.innerHTML = ""; // clear the content of the HTML element
         var headerListNormal = ArticleList.getHeaderListNormal(outputLang);
         this.output.appendChild(this.getHeadingNormal(outputLang));
-        this.output.appendChild(this.articleList.toHTMLElement(OutputFormat.ol, outputLang, headerListNormal, reverse, isNormalArticle));
+        this.output.appendChild(this.articleList.toHTMLElement(outputFormat, outputLang, headerListNormal, reverse, isNormalArticle));
         var headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
         this.output.appendChild(this.getHeadingNonRefereed(outputLang));
-        this.output.appendChild(this.articleList.toHTMLElement(OutputFormat.ol, outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
-    };
-    ArticleListHandler.prototype.showTable = function (outputLang, reverse) {
-        if (reverse === void 0) { reverse = false; }
-        this.output.innerHTML = ""; // clear the content of the HTML element
-        var headerListNormal = ArticleList.getHeaderListNormal(outputLang);
-        this.output.appendChild(this.getHeadingNormal(outputLang));
-        this.output.appendChild(this.articleList.toHTMLElement(OutputFormat.table, outputLang, headerListNormal, reverse, isNormalArticle));
-        var headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
-        this.output.appendChild(this.getHeadingNonRefereed(outputLang));
-        this.output.appendChild(this.articleList.toHTMLElement(OutputFormat.table, outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
+        this.output.appendChild(this.articleList.toHTMLElement(outputFormat, outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
     };
     return ArticleListHandler;
 }());
@@ -412,23 +402,14 @@ var TalkListHandler = /** @class */ (function () {
         }
         return h3;
     };
-    TalkListHandler.prototype.showList = function (outputLang, reverse) {
+    TalkListHandler.prototype.show = function (outputFormat, outputLang, reverse) {
         if (reverse === void 0) { reverse = false; }
         var headerList = TalkList.getHeaderList(outputLang);
         this.output.innerHTML = ""; // clear the content of the HTML element
         this.output.appendChild(this.getHeadingEnglish(outputLang));
-        this.output.appendChild(this.talkList.toHTMLElement(OutputFormat.ol, outputLang, headerList, reverse, isEnglishTalk));
+        this.output.appendChild(this.talkList.toHTMLElement(outputFormat, outputLang, headerList, reverse, isEnglishTalk));
         this.output.appendChild(this.getHeadingJapanese(outputLang));
-        this.output.appendChild(this.talkList.toHTMLElement(OutputFormat.ol, outputLang, headerList, reverse, isJapaneseTalk));
-    };
-    TalkListHandler.prototype.showTable = function (outputLang, reverse) {
-        if (reverse === void 0) { reverse = false; }
-        var headerList = TalkList.getHeaderList(outputLang);
-        this.output.innerHTML = ""; // clear the content of the HTML element
-        this.output.appendChild(this.getHeadingEnglish(outputLang));
-        this.output.appendChild(this.talkList.toHTMLElement(OutputFormat.ol, outputLang, headerList, reverse, isEnglishTalk));
-        this.output.appendChild(this.getHeadingJapanese(outputLang));
-        this.output.appendChild(this.talkList.toHTMLElement(OutputFormat.ol, outputLang, headerList, reverse, isJapaneseTalk));
+        this.output.appendChild(this.talkList.toHTMLElement(outputFormat, outputLang, headerList, reverse, isJapaneseTalk));
     };
     return TalkListHandler;
 }());
@@ -508,13 +489,17 @@ function updateTalks() {
     // format
     var radioFormat = configForm.format;
     var format = radioFormat.value;
-    // update
+    var outputFormat;
     if (format == "list") {
-        talkListHandler.showList(outputLang, reverse);
-        articleListHandler.showList(outputLang, reverse);
+        outputFormat = OutputFormat.ol;
     }
     else if (format == "table") {
-        talkListHandler.showTable(outputLang, reverse);
-        articleListHandler.showTable(outputLang, reverse);
+        outputFormat = OutputFormat.ol;
     }
+    else {
+        throw Error("Invalid output format");
+    }
+    // update
+    talkListHandler.show(outputFormat, outputLang, reverse);
+    articleListHandler.show(outputFormat, outputLang, reverse);
 }

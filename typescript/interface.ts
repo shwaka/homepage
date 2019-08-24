@@ -71,12 +71,16 @@ function updateTalks(): void {
   // format
   const radioFormat = configForm.format;
   const format: string = radioFormat.value;
-  // update
+  let outputFormat: OutputFormat;
   if (format == "list") {
-    talkListHandler.showList(outputLang, reverse);
-    articleListHandler.showList(outputLang, reverse);
+    outputFormat = OutputFormat.ol;
   } else if (format == "table") {
-    talkListHandler.showTable(outputLang, reverse);
-    articleListHandler.showTable(outputLang, reverse);
+    outputFormat = OutputFormat.ol;
+  } else {
+    throw Error("Invalid output format");
   }
+  // update
+  talkListHandler.show(outputFormat, outputLang, reverse);
+  articleListHandler.show(outputFormat, outputLang, reverse);
+
 }
