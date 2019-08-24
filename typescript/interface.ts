@@ -23,7 +23,10 @@ function loadFromJson(file: string): void {
   httpObj.send(null);
 }
 
-type ConfigForm = {order: RadioNodeList, language: RadioNodeList, format: RadioNodeList}
+type ConfigForm = {order: RadioNodeList,
+                   language: RadioNodeList,
+                   format: RadioNodeList,
+                   split: RadioNodeList}
 function isConfigForm(arg: any): arg is ConfigForm {
   // チェックが緩すぎる
   return ("order" in arg) && ("language" in arg) && ("format" in arg);
@@ -38,7 +41,7 @@ function getForm(): ConfigForm {
 }
 
 function setupForm(): void {
-  ["format-table", "order-new-old", "language-japanese"].forEach((id) => {
+  ["format-table", "order-new-old", "language-japanese", "split-true"].forEach((id) => {
     const radioButton = document.getElementById(id) as any; // やばい
     radioButton.checked = true;
   })
@@ -83,8 +86,10 @@ function updateTalks(): void {
   } else {
     throw Error("Invalid output format");
   }
+  // split
+  const radioSplit = configForm.split;
+  const split: boolean = (radioSplit.value == "true");
   // update
-  talkListHandler.show(outputFormat, outputLang, reverse);
+  talkListHandler.show(outputFormat, outputLang, reverse, split);
   articleListHandler.show(outputFormat, outputLang, reverse);
-
 }

@@ -458,14 +458,20 @@ var TalkListHandler = /** @class */ (function () {
         }
         return h3;
     };
-    TalkListHandler.prototype.show = function (outputFormat, outputLang, reverse) {
+    TalkListHandler.prototype.show = function (outputFormat, outputLang, reverse, split) {
         if (reverse === void 0) { reverse = false; }
+        if (split === void 0) { split = true; }
         var headerList = TalkList.getHeaderList(outputLang);
         this.output.innerHTML = ""; // clear the content of the HTML element
-        this.output.appendChild(this.getHeadingEnglish(outputLang));
-        this.output.appendChild(this.talkList.toHTMLElement(outputFormat, outputLang, headerList, reverse, isEnglishTalk));
-        this.output.appendChild(this.getHeadingJapanese(outputLang));
-        this.output.appendChild(this.talkList.toHTMLElement(outputFormat, outputLang, headerList, reverse, isJapaneseTalk));
+        if (split) {
+            this.output.appendChild(this.getHeadingEnglish(outputLang));
+            this.output.appendChild(this.talkList.toHTMLElement(outputFormat, outputLang, headerList, reverse, isEnglishTalk));
+            this.output.appendChild(this.getHeadingJapanese(outputLang));
+            this.output.appendChild(this.talkList.toHTMLElement(outputFormat, outputLang, headerList, reverse, isJapaneseTalk));
+        }
+        else {
+            this.output.appendChild(this.talkList.toHTMLElement(outputFormat, outputLang, headerList, reverse, undefined));
+        }
     };
     return TalkListHandler;
 }());
@@ -509,7 +515,7 @@ function getForm() {
     return configForm;
 }
 function setupForm() {
-    ["format-table", "order-new-old", "language-japanese"].forEach(function (id) {
+    ["format-table", "order-new-old", "language-japanese", "split-true"].forEach(function (id) {
         var radioButton = document.getElementById(id); // やばい
         radioButton.checked = true;
     });
@@ -561,7 +567,10 @@ function updateTalks() {
     else {
         throw Error("Invalid output format");
     }
+    // split
+    var radioSplit = configForm.split;
+    var split = (radioSplit.value == "true");
     // update
-    talkListHandler.show(outputFormat, outputLang, reverse);
+    talkListHandler.show(outputFormat, outputLang, reverse, split);
     articleListHandler.show(outputFormat, outputLang, reverse);
 }
