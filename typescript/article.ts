@@ -159,12 +159,12 @@ class ArticleListHandler {
     this.output.innerHTML = ""; // clear the content of the HTML element
     const headerListNormal = ArticleList.getHeaderListNormal(outputLang);
     this.output.appendChild(this.getHeadingNormal(outputLang));
-    this.output.appendChild(this.articleList.toList(
-      outputLang, headerListNormal, reverse, isNormalArticle));
+    this.output.appendChild(this.articleList.toHTMLElement(
+      OutputFormat.ol,      outputLang, headerListNormal, reverse, isNormalArticle));
     const headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
     this.output.appendChild(this.getHeadingNonRefereed(outputLang));
-    this.output.appendChild(this.articleList.toList(
-      outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
+    this.output.appendChild(this.articleList.toHTMLElement(
+      OutputFormat.ol, outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
   }
 
   showTable(outputLang: Lang,
@@ -172,12 +172,12 @@ class ArticleListHandler {
     this.output.innerHTML = ""; // clear the content of the HTML element
     const headerListNormal = ArticleList.getHeaderListNormal(outputLang);
     this.output.appendChild(this.getHeadingNormal(outputLang));
-    this.output.appendChild(this.articleList.toTable(
-      outputLang, headerListNormal, reverse, isNormalArticle));
+    this.output.appendChild(this.articleList.toHTMLElement(
+      OutputFormat.table, outputLang, headerListNormal, reverse, isNormalArticle));
     const headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
     this.output.appendChild(this.getHeadingNonRefereed(outputLang));
-    this.output.appendChild(this.articleList.toTable(
-      outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
+    this.output.appendChild(this.articleList.toHTMLElement(
+      OutputFormat.table, outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
   }
 }
 

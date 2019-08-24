@@ -158,9 +158,11 @@ class TalkListHandler {
     const headerList = TalkList.getHeaderList(outputLang);
     this.output.innerHTML = ""; // clear the content of the HTML element
     this.output.appendChild(this.getHeadingEnglish(outputLang));
-    this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isEnglishTalk));
+    this.output.appendChild(this.talkList.toHTMLElement(
+      OutputFormat.ol, outputLang, headerList, reverse, isEnglishTalk));
     this.output.appendChild(this.getHeadingJapanese(outputLang));
-    this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isJapaneseTalk));
+    this.output.appendChild(this.talkList.toHTMLElement(
+      OutputFormat.ol, outputLang, headerList, reverse, isJapaneseTalk));
   }
 
   showTable(outputLang: Lang,
@@ -168,9 +170,11 @@ class TalkListHandler {
     const headerList = TalkList.getHeaderList(outputLang);
     this.output.innerHTML = ""; // clear the content of the HTML element
     this.output.appendChild(this.getHeadingEnglish(outputLang));
-    this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, isEnglishTalk));
+    this.output.appendChild(this.talkList.toHTMLElement(
+      OutputFormat.ol, outputLang, headerList, reverse, isEnglishTalk));
     this.output.appendChild(this.getHeadingJapanese(outputLang));
-    this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, isJapaneseTalk));
+    this.output.appendChild(this.talkList.toHTMLElement(
+      OutputFormat.ol, outputLang, headerList, reverse, isJapaneseTalk));
   }
 }
 

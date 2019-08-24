@@ -112,8 +112,29 @@ var WorkList = /** @class */ (function () {
         });
         return table;
     };
+    WorkList.prototype.toHTMLElement = function (outputFormat, outputLang, headerList, reverse, filter) {
+        if (reverse === void 0) { reverse = false; }
+        if (outputFormat == OutputFormat.ul) {
+            return this.toList(outputLang, headerList, reverse, filter, "ul");
+        }
+        else if (outputFormat == OutputFormat.ol) {
+            return this.toList(outputLang, headerList, reverse, filter, "ol");
+        }
+        else if (outputFormat == OutputFormat.table) {
+            return this.toTable(outputLang, headerList, reverse, filter);
+        }
+        else {
+            throw Error("This can't happen!");
+        }
+    };
     return WorkList;
 }());
+var OutputFormat;
+(function (OutputFormat) {
+    OutputFormat["ul"] = "ul";
+    OutputFormat["ol"] = "ol";
+    OutputFormat["table"] = "table";
+})(OutputFormat || (OutputFormat = {}));
 /// <reference path="base.ts"/>
 var ArticleType;
 (function (ArticleType) {
@@ -241,20 +262,20 @@ var ArticleListHandler = /** @class */ (function () {
         this.output.innerHTML = ""; // clear the content of the HTML element
         var headerListNormal = ArticleList.getHeaderListNormal(outputLang);
         this.output.appendChild(this.getHeadingNormal(outputLang));
-        this.output.appendChild(this.articleList.toList(outputLang, headerListNormal, reverse, isNormalArticle));
+        this.output.appendChild(this.articleList.toHTMLElement(OutputFormat.ol, outputLang, headerListNormal, reverse, isNormalArticle));
         var headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
         this.output.appendChild(this.getHeadingNonRefereed(outputLang));
-        this.output.appendChild(this.articleList.toList(outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
+        this.output.appendChild(this.articleList.toHTMLElement(OutputFormat.ol, outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
     };
     ArticleListHandler.prototype.showTable = function (outputLang, reverse) {
         if (reverse === void 0) { reverse = false; }
         this.output.innerHTML = ""; // clear the content of the HTML element
         var headerListNormal = ArticleList.getHeaderListNormal(outputLang);
         this.output.appendChild(this.getHeadingNormal(outputLang));
-        this.output.appendChild(this.articleList.toTable(outputLang, headerListNormal, reverse, isNormalArticle));
+        this.output.appendChild(this.articleList.toHTMLElement(OutputFormat.table, outputLang, headerListNormal, reverse, isNormalArticle));
         var headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
         this.output.appendChild(this.getHeadingNonRefereed(outputLang));
-        this.output.appendChild(this.articleList.toTable(outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
+        this.output.appendChild(this.articleList.toHTMLElement(OutputFormat.table, outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
     };
     return ArticleListHandler;
 }());
@@ -400,18 +421,18 @@ var TalkListHandler = /** @class */ (function () {
         var headerList = TalkList.getHeaderList(outputLang);
         this.output.innerHTML = ""; // clear the content of the HTML element
         this.output.appendChild(this.getHeadingEnglish(outputLang));
-        this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isEnglishTalk));
+        this.output.appendChild(this.talkList.toHTMLElement(OutputFormat.ol, outputLang, headerList, reverse, isEnglishTalk));
         this.output.appendChild(this.getHeadingJapanese(outputLang));
-        this.output.appendChild(this.talkList.toList(outputLang, headerList, reverse, isJapaneseTalk));
+        this.output.appendChild(this.talkList.toHTMLElement(OutputFormat.ol, outputLang, headerList, reverse, isJapaneseTalk));
     };
     TalkListHandler.prototype.showTable = function (outputLang, reverse) {
         if (reverse === void 0) { reverse = false; }
         var headerList = TalkList.getHeaderList(outputLang);
         this.output.innerHTML = ""; // clear the content of the HTML element
         this.output.appendChild(this.getHeadingEnglish(outputLang));
-        this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, isEnglishTalk));
+        this.output.appendChild(this.talkList.toHTMLElement(OutputFormat.ol, outputLang, headerList, reverse, isEnglishTalk));
         this.output.appendChild(this.getHeadingJapanese(outputLang));
-        this.output.appendChild(this.talkList.toTable(outputLang, headerList, reverse, isJapaneseTalk));
+        this.output.appendChild(this.talkList.toHTMLElement(OutputFormat.ol, outputLang, headerList, reverse, isJapaneseTalk));
     };
     return TalkListHandler;
 }());

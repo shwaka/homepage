@@ -16,7 +16,7 @@ abstract class Work<Key extends string> {
 
   constructor() {};
 
-  toLi(outputLang: Lang, headerList: [Key, string][]): HTMLLIElement {
+  public toLi(outputLang: Lang, headerList: [Key, string][]): HTMLLIElement {
     const li = document.createElement("li");
     const outputElements = this.getOutputElements(outputLang);
     let elementAlreadyAdded = false;
@@ -35,7 +35,7 @@ abstract class Work<Key extends string> {
     return li;
   }
 
-  toTr(outputLang: Lang, headerList: [Key, string][]): HTMLTableRowElement {
+  public toTr(outputLang: Lang, headerList: [Key, string][]): HTMLTableRowElement {
     const tr = document.createElement("tr");
     const outputElements = this.getOutputElements(outputLang);
     headerList.forEach((keyHeader) => {
@@ -52,13 +52,13 @@ abstract class Work<Key extends string> {
 }
 
 class WorkList<Key extends string, W extends Work<Key>> {
-  data: W[];
+  private data: W[];
 
   constructor(data: W[]) {
     this.data = data;
   }
 
-  getData(reverse: boolean = false,
+  private getData(reverse: boolean = false,
           filter?: (work: W) => boolean,): W[] {
     let data: W[];
     if (reverse) {
@@ -72,7 +72,7 @@ class WorkList<Key extends string, W extends Work<Key>> {
     return data.filter(filter);
   }
 
-  toList(outputLang: Lang,
+  private toList(outputLang: Lang,
          headerList: [Key, string][],
          reverse: boolean = false,
          filter?: (work: W) => boolean,
@@ -88,7 +88,7 @@ class WorkList<Key extends string, W extends Work<Key>> {
     return list;
   }
 
-  getTableHeader(headerList: [Key, string][]): HTMLTableRowElement {
+  private getTableHeader(headerList: [Key, string][]): HTMLTableRowElement {
     const tr = document.createElement("tr");
     headerList.forEach((keyHeader) => {
       const header: string = keyHeader[1];
@@ -99,7 +99,7 @@ class WorkList<Key extends string, W extends Work<Key>> {
     return tr;
   }
 
-  toTable(outputLang: Lang,
+  private toTable(outputLang: Lang,
           headerList: [Key, string][],
           reverse: boolean = false,
           filter?: (work: W) => boolean): HTMLTableElement {
@@ -110,4 +110,26 @@ class WorkList<Key extends string, W extends Work<Key>> {
     });
     return table;
   }
+
+  public toHTMLElement(outputFormat: OutputFormat,
+                outputLang: Lang,
+                headerList: [Key, string][],
+                reverse: boolean = false,
+                filter?: (work: W) => boolean): HTMLElement {
+    if (outputFormat == OutputFormat.ul) {
+      return this.toList(outputLang, headerList, reverse, filter, "ul");
+    } else if (outputFormat == OutputFormat.ol) {
+      return this.toList(outputLang, headerList, reverse, filter, "ol");
+    } else if (outputFormat == OutputFormat.table) {
+      return this.toTable(outputLang, headerList, reverse, filter);
+    } else {
+      throw Error("This can't happen!");
+    }
+  }
+}
+
+enum OutputFormat {
+  ul = "ul",
+  ol = "ol",
+  table = "table",
 }
