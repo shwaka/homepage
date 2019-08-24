@@ -124,9 +124,55 @@ function loadFromJson(file: string): void {
   httpObj.open("get", file, true);
   httpObj.onload = function() {
     const json = this.responseText;
-    const talkList = TalkList.create(json, "talk");
-    talkList.showList(Lang.ja, true);
+    talkListGlobal = TalkList.create(json, "talk");
+    talkListGlobal.showList(Lang.ja, true);
     // talkList.showTable(Lang.ja);
   }
   httpObj.send(null);
 }
+
+type ConfigForm = {order: RadioNodeList, language: RadioNodeList, format: RadioNodeList}
+function isConfigForm(arg: any): arg is ConfigForm {
+  // チェックが緩すぎる
+  return ("order" in arg) && ("language" in arg) && ("format" in arg);
+}
+
+function updateTalks(): void {
+  const configForm = document.getElementById("config-form");
+  if (!isConfigForm(configForm)) {
+    throw Error("no config-form found");
+  }
+  // order
+  const radioOrder = configForm.order;
+  const order: string = radioOrder.value;
+  let reverse: boolean;
+  if (order == "new-old") {
+    reverse = true;
+  } else if (order == "old-new") {
+    reverse = false;
+  } else {
+    throw Error("invalid order specification");
+  }
+  // language
+  const radioLanguage = configForm.language;
+  const language: string = radioLanguage.value;
+  let outputLang: Lang;
+  if (language == "en") {
+    outputLang = Lang.en;
+  } else if (language == "ja") {
+    outputLang = Lang.ja;
+  } else {
+    throw Error("invalid language");
+  }
+  // format
+  const radioFormat = configForm.format;
+  const format: string = radioFormat.value;
+  // update
+  if (format == "list") {
+    talkListGlobal.showList(outputLang, reverse);
+  } else if (format == "table") {
+    talkListGlobal.showTable(outputLang, reverse);
+  }
+}
+
+var talkListGlobal: TalkList;

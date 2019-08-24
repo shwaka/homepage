@@ -13,4 +13,29 @@ layout: mylayout
  });
 </script>
 
+<form id="config-form">
+  <div>
+    format:
+    <input type="radio" name="format" id="format-list" value="list" />
+    <label for="format-list">list</label>
+    <input type="radio" name="format" id="format-table" value="table" />
+    <label for="format-table">table</label>
+  </div>
+  <div>
+    order:
+    <input type="radio" name="order" id="order-new-old" value="new-old" />
+    <label for="order-new-old">new-old</label>
+    <input type="radio" name="order" id="order-old-new" value="old-new" />
+    <label for="order-old-new">old-new</label>
+  </div>
+  <div>
+    language:
+    <input type="radio" name="language" id="language-english" value="en" />
+    <label for="language-english">english</label>
+    <input type="radio" name="language" id="language-japanese" value="ja" />
+    <label for="language-japanese">japanese</label>
+  </div>
+  <input type="button" value="apply" onclick="updateTalks()"/>
+</form>
+
 <div id="talk"></div>

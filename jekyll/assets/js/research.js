@@ -199,9 +199,56 @@ function loadFromJson(file) {
     httpObj.open("get", file, true);
     httpObj.onload = function () {
         var json = this.responseText;
-        var talkList = TalkList.create(json, "talk");
-        talkList.showList(Lang.ja, true);
+        talkListGlobal = TalkList.create(json, "talk");
+        talkListGlobal.showList(Lang.ja, true);
         // talkList.showTable(Lang.ja);
     };
     httpObj.send(null);
 }
+function isConfigForm(arg) {
+    // チェックが緩すぎる
+    return ("order" in arg) && ("language" in arg) && ("format" in arg);
+}
+function updateTalks() {
+    var configForm = document.getElementById("config-form");
+    if (!isConfigForm(configForm)) {
+        throw Error("no config-form found");
+    }
+    // order
+    var radioOrder = configForm.order;
+    var order = radioOrder.value;
+    var reverse;
+    if (order == "new-old") {
+        reverse = true;
+    }
+    else if (order == "old-new") {
+        reverse = false;
+    }
+    else {
+        throw Error("invalid order specification");
+    }
+    // language
+    var radioLanguage = configForm.language;
+    var language = radioLanguage.value;
+    var outputLang;
+    if (language == "en") {
+        outputLang = Lang.en;
+    }
+    else if (language == "ja") {
+        outputLang = Lang.ja;
+    }
+    else {
+        throw Error("invalid language");
+    }
+    // format
+    var radioFormat = configForm.format;
+    var format = radioFormat.value;
+    // update
+    if (format == "list") {
+        talkListGlobal.showList(outputLang, reverse);
+    }
+    else if (format == "table") {
+        talkListGlobal.showTable(outputLang, reverse);
+    }
+}
+var talkListGlobal;
