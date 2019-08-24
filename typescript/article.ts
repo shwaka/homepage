@@ -150,6 +150,19 @@ class ArticleListHandler {
     this.output.appendChild(this.articleList.toList(
       outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
   }
+
+  showTable(outputLang: Lang,
+            reverse: boolean = false): void {
+    this.output.innerHTML = ""; // clear the content of the HTML element
+    const headerListNormal = ArticleList.getHeaderListNormal(outputLang);
+    this.output.appendChild(this.getHeadingNormal(outputLang));
+    this.output.appendChild(this.articleList.toTable(
+      outputLang, headerListNormal, reverse, isNormalArticle));
+    const headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
+    this.output.appendChild(this.getHeadingNonRefereed(outputLang));
+    this.output.appendChild(this.articleList.toTable(
+      outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
+  }
 }
 
 function isNormalArticle(article: Article): boolean {

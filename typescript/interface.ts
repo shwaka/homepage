@@ -77,6 +77,6 @@ function updateTalks(): void {
     articleListHandler.showList(outputLang, reverse);
   } else if (format == "table") {
     talkListHandler.showTable(outputLang, reverse);
-    articleListHandler.showList(outputLang, reverse);
+    articleListHandler.showTable(outputLang, reverse);
   }
 }

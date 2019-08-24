@@ -226,6 +226,16 @@ var ArticleListHandler = /** @class */ (function () {
         this.output.appendChild(this.getHeadingNonRefereed(outputLang));
         this.output.appendChild(this.articleList.toList(outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
     };
+    ArticleListHandler.prototype.showTable = function (outputLang, reverse) {
+        if (reverse === void 0) { reverse = false; }
+        this.output.innerHTML = ""; // clear the content of the HTML element
+        var headerListNormal = ArticleList.getHeaderListNormal(outputLang);
+        this.output.appendChild(this.getHeadingNormal(outputLang));
+        this.output.appendChild(this.articleList.toTable(outputLang, headerListNormal, reverse, isNormalArticle));
+        var headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
+        this.output.appendChild(this.getHeadingNonRefereed(outputLang));
+        this.output.appendChild(this.articleList.toTable(outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
+    };
     return ArticleListHandler;
 }());
 function isNormalArticle(article) {
@@ -473,6 +483,6 @@ function updateTalks() {
     }
     else if (format == "table") {
         talkListHandler.showTable(outputLang, reverse);
-        articleListHandler.showList(outputLang, reverse);
+        articleListHandler.showTable(outputLang, reverse);
     }
 }
