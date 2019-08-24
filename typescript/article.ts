@@ -118,13 +118,35 @@ class ArticleListHandler {
     this.articleList = new ArticleList(articleObjArray);
   }
 
+  getHeadingNormal(outputLang: Lang): HTMLHeadingElement {
+    const h3 = document.createElement("h3");
+    if (outputLang == Lang.en) {
+      h3.innerText = "Papers and preprints";
+    } else if (outputLang == Lang.ja) {
+      h3.innerText = "論文・プレプリント";
+    }
+    return h3;
+  }
+
+  getHeadingNonRefereed(outputLang: Lang): HTMLHeadingElement {
+    const h3 = document.createElement("h3");
+    if (outputLang == Lang.en) {
+      h3.innerText = "Non refereed articles";
+    } else if (outputLang == Lang.ja) {
+      h3.innerText = "その他";
+    }
+    return h3;
+  }
+
   showList(outputLang: Lang,
            reverse: boolean = false): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
     const headerListNormal = ArticleList.getHeaderListNormal(outputLang);
+    this.output.appendChild(this.getHeadingNormal(outputLang));
     this.output.appendChild(this.articleList.toList(
       outputLang, headerListNormal, reverse, isNormalArticle));
     const headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
+    this.output.appendChild(this.getHeadingNonRefereed(outputLang));
     this.output.appendChild(this.articleList.toList(
       outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
   }
