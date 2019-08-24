@@ -104,9 +104,18 @@ var Talk = /** @class */ (function () {
         li.appendChild(outputElements.date);
         return li;
     };
-    Talk.prototype.addToUl = function (ul, outputLang) {
-        var li = this.toLi(outputLang);
-        ul.appendChild(li);
+    Talk.prototype.toTr = function (outputLang) {
+        var tr = document.createElement("tr");
+        var outputElements = this.getOutputElements(outputLang);
+        [outputElements.title,
+            outputElements.conference,
+            outputElements.venue,
+            outputElements.date].forEach(function (element) {
+            var td = document.createElement("td");
+            td.appendChild(element);
+            tr.appendChild(td);
+        });
+        return tr;
     };
     return Talk;
 }());
@@ -128,17 +137,30 @@ var TalkList = /** @class */ (function () {
             ul.appendChild(talk.toLi(outputLang));
         });
     };
+    TalkList.prototype.showTable = function (outputLang) {
+        this.output.innerHTML = ""; // clear the content of the HTML element
+        var table = document.createElement("table");
+        this.output.appendChild(table);
+        this.data.forEach(function (talk) {
+            table.appendChild(talk.toTr(outputLang));
+        });
+    };
+    TalkList.create = function (json, id) {
+        var output = document.getElementById(id); // さすがにマズい…
+        var talkObjArray = JSON.parse(json);
+        var talkList = new TalkList(talkObjArray, output);
+        return talkList;
+    };
     return TalkList;
 }());
 function loadFromJson(file) {
     var httpObj = new XMLHttpRequest();
     httpObj.open("get", file, true);
-    // const ul = document.getElementById("talk-list") as HTMLUListElement; // さすがにマズい…
-    var div = document.getElementById("talk"); // さすがにマズい…
     httpObj.onload = function () {
-        var talkObjArray = JSON.parse(this.responseText);
-        var talkList = new TalkList(talkObjArray, div);
+        var json = this.responseText;
+        var talkList = TalkList.create(json, "talk");
         talkList.showUl(Lang.ja);
+        // talkList.showTable(Lang.ja);
     };
     httpObj.send(null);
 }

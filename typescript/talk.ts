@@ -126,9 +126,18 @@ class Talk implements TalkObject{
     return li;
   }
 
-  addToUl(ul: HTMLUListElement, outputLang: Lang): void{
-    const li = this.toLi(outputLang);
-    ul.appendChild(li);
+  toTr(outputLang: Lang): HTMLTableRowElement {
+    const tr = document.createElement("tr");
+    const outputElements = this.getOutputElements(outputLang);
+    [outputElements.title,
+     outputElements.conference,
+     outputElements.venue,
+     outputElements.date].forEach(element => {
+       const td = document.createElement("td");
+       td.appendChild(element);
+       tr.appendChild(td);
+     })
+    return tr;
   }
 }
 
@@ -153,17 +162,32 @@ class TalkList {
       ul.appendChild(talk.toLi(outputLang));
     })
   }
+
+  showTable(outputLang: Lang) {
+    this.output.innerHTML = ""; // clear the content of the HTML element
+    const table = document.createElement("table");
+    this.output.appendChild(table);
+    this.data.forEach(talk => {
+      table.appendChild(talk.toTr(outputLang));
+    })
+  }
+
+  static create(json: string, id: string): TalkList {
+    const output = document.getElementById(id) as HTMLUListElement; // さすがにマズい…
+    const talkObjArray: TalkObject[] = JSON.parse(json);
+    const talkList = new TalkList(talkObjArray, output);
+    return talkList;
+  }
 }
 
 function loadFromJson(file: string){
   const httpObj = new XMLHttpRequest();
   httpObj.open("get", file, true);
-  // const ul = document.getElementById("talk-list") as HTMLUListElement; // さすがにマズい…
-  const div = document.getElementById("talk") as HTMLUListElement; // さすがにマズい…
   httpObj.onload = function(){
-    const talkObjArray: TalkObject[] = JSON.parse(this.responseText);
-    const talkList = new TalkList(talkObjArray, div);
+    const json = this.responseText;
+    const talkList = TalkList.create(json, "talk");
     talkList.showUl(Lang.ja);
+    // talkList.showTable(Lang.ja);
   }
   httpObj.send(null);
 }
