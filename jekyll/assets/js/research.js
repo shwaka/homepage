@@ -279,25 +279,28 @@ var Talk = /** @class */ (function (_super) {
     __extends(Talk, _super);
     function Talk(talkObj) {
         var _this = _super.call(this) || this;
-        Object.assign(_this, talkObj);
+        _this.data = talkObj;
         return _this;
     }
+    Talk.prototype.getLang = function () {
+        return this.data.base.lang;
+    };
     Talk.prototype.getInfo = function (outputLang) {
-        if (this[outputLang] != null) {
-            return this[outputLang]; // 良くないけど…
+        if (this.data[outputLang] != null) {
+            return this.data[outputLang]; // 良くないけど…
         }
-        else if (this.ja != null) {
-            return this.ja;
+        else if (this.data.ja != null) {
+            return this.data.ja;
         }
-        else if (this.en != null) {
-            return this.en;
+        else if (this.data.en != null) {
+            return this.data.en;
         }
         else {
             throw new Error("ja nor en found");
         }
     };
     Talk.prototype.getDateString = function (outputLang) {
-        var date = new Date(this.base.date);
+        var date = new Date(this.data.base.date);
         var year = date.getFullYear();
         var monthZeroIndex = date.getMonth(); // 0, 1,..., 11
         if (outputLang == Lang.ja) {
@@ -417,10 +420,10 @@ var TalkListHandler = /** @class */ (function () {
     return TalkListHandler;
 }());
 function isEnglishTalk(talk) {
-    return (talk.base.lang == Lang.en);
+    return (talk.getLang() == Lang.en);
 }
 function isJapaneseTalk(talk) {
-    return (talk.base.lang == Lang.ja);
+    return (talk.getLang() == Lang.ja);
 }
 /// <reference path="talk.ts"/>
 /// <reference path="article.ts"/>

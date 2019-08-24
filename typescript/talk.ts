@@ -2,7 +2,7 @@
 
 interface TalkBaseInfo {
   date: string;
-  lang: string;
+  lang: Lang;
 }
 
 interface TalkInfo {
@@ -20,30 +20,32 @@ interface TalkObject {
 
 type TalkKey = "title" | "conference" | "venue" | "date";
 
-class Talk extends Work<TalkKey> implements TalkObject {
-  base: TalkBaseInfo;
-  ja?: TalkInfo;
-  en?: TalkInfo;
+class Talk extends Work<TalkKey> {
+  private data: TalkObject;
 
   constructor(talkObj: TalkObject) {
     super();
-    (<any>Object).assign(this, talkObj);
+    this.data = talkObj;
+  }
+
+  public getLang(): Lang {
+    return this.data.base.lang;
   }
 
   private getInfo(outputLang: Lang): TalkInfo {
-    if (this[outputLang] != null) {
-      return this[outputLang] as TalkInfo; // 良くないけど…
-    } else if (this.ja != null) {
-      return this.ja;
-    } else if (this.en != null) {
-      return this.en;
+    if (this.data[outputLang] != null) {
+      return this.data[outputLang] as TalkInfo; // 良くないけど…
+    } else if (this.data.ja != null) {
+      return this.data.ja;
+    } else if (this.data.en != null) {
+      return this.data.en;
     } else {
       throw new Error("ja nor en found");
     }
   }
 
   private getDateString(outputLang: Lang): string {
-    const date: Date = new Date(this.base.date);
+    const date: Date = new Date(this.data.base.date);
     const year: number = date.getFullYear();
     const monthZeroIndex: number = date.getMonth(); // 0, 1,..., 11
     if (outputLang == Lang.ja) {
@@ -168,9 +170,9 @@ class TalkListHandler {
 }
 
 function isEnglishTalk(talk: Talk): boolean {
-  return (talk.base.lang == Lang.en);
+  return (talk.getLang() == Lang.en);
 }
 
 function isJapaneseTalk(talk: Talk): boolean {
-  return (talk.base.lang == Lang.ja);
+  return (talk.getLang() == Lang.ja);
 }
