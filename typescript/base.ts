@@ -121,15 +121,17 @@ class WorkList<Key extends string, W extends Work<Key>> {
                            headerList: [Key, string][],
                            reverse: boolean = false,
                            filter?: (work: W) => boolean): HTMLElement {
+    const div = document.createElement("div");
+    div.classList.add("highlight"); // code block の highlight を適用
     const pre = document.createElement("pre");
-    pre.classList.add("highlight"); // code block の highlight を適用
+    div.appendChild(pre);
     pre.appendChild(document.createTextNode("\\begin{itemize}\n"))
     this.getData(reverse, filter).forEach(work => {
       const item = work.toLaTeXItem(outputLang, headerList);
       pre.appendChild(document.createTextNode(`  ${item}\n`));
     });
     pre.appendChild(document.createTextNode("\\end{itemize}\n"))
-    return pre;
+    return div;
   }
 
   public toHTMLElement(outputFormat: OutputFormat,

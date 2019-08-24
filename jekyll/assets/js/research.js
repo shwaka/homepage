@@ -117,15 +117,17 @@ var WorkList = /** @class */ (function () {
     };
     WorkList.prototype.toLaTeXCodeBlock = function (outputLang, headerList, reverse, filter) {
         if (reverse === void 0) { reverse = false; }
+        var div = document.createElement("div");
+        div.classList.add("highlight"); // code block の highlight を適用
         var pre = document.createElement("pre");
-        pre.classList.add("highlight"); // code block の highlight を適用
+        div.appendChild(pre);
         pre.appendChild(document.createTextNode("\\begin{itemize}\n"));
         this.getData(reverse, filter).forEach(function (work) {
             var item = work.toLaTeXItem(outputLang, headerList);
             pre.appendChild(document.createTextNode("  " + item + "\n"));
         });
         pre.appendChild(document.createTextNode("\\end{itemize}\n"));
-        return pre;
+        return div;
     };
     WorkList.prototype.toHTMLElement = function (outputFormat, outputLang, headerList, reverse, filter) {
         if (reverse === void 0) { reverse = false; }
