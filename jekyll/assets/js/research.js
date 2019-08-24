@@ -9,6 +9,60 @@ var Lang;
     Lang["ja"] = "ja";
     Lang["en"] = "en";
 })(Lang || (Lang = {}));
+var Work = /** @class */ (function () {
+    function Work(headerList) {
+        this.headerList = headerList;
+    }
+    ;
+    Work.prototype.toLi = function (outputLang) {
+        var li = document.createElement("li");
+        var outputElements = this.getOutputElements(outputLang);
+        this.headerList.forEach(function (keyHeader, index, array) {
+            var key = keyHeader[0];
+            li.appendChild(outputElements[key]);
+            if (index < array.length - 1) {
+                li.appendChild(document.createTextNode(", "));
+            }
+        });
+        return li;
+    };
+    Work.prototype.toTr = function (outputLang) {
+        var tr = document.createElement("tr");
+        var outputElements = this.getOutputElements(outputLang);
+        this.headerList.forEach(function (keyHeader) {
+            var key = keyHeader[0];
+            var td = document.createElement("td");
+            td.appendChild(outputElements[key]);
+            tr.appendChild(td);
+        });
+        return tr;
+    };
+    return Work;
+}());
+var WorkList = /** @class */ (function () {
+    function WorkList(data, output) {
+        this.data = data;
+        this.output = output;
+    }
+    WorkList.prototype.showUl = function (outputLang) {
+        this.output.innerHTML = ""; // clear the content of the HTML element
+        var ul = document.createElement("ul");
+        this.output.appendChild(ul);
+        this.data.forEach(function (work) {
+            ul.appendChild(work.toLi(outputLang));
+        });
+    };
+    WorkList.prototype.showTable = function (outputLang) {
+        this.output.innerHTML = ""; // clear the content of the HTML element
+        var table = document.createElement("table");
+        this.output.appendChild(table);
+        this.data.forEach(function (work) {
+            table.appendChild(work.toTr(outputLang));
+        });
+    };
+    return WorkList;
+}());
+/// <reference path="base.ts"/>
 var Talk = /** @class */ (function () {
     function Talk(talkObj) {
         Object.assign(this, talkObj);

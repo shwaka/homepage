@@ -1,7 +1,4 @@
-enum Lang {
-  ja = "ja",
-  en = "en"
-}
+/// <reference path="base.ts"/>
 
 interface TalkBaseInfo {
   date: string;
