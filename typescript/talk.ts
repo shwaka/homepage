@@ -64,7 +64,7 @@ class Talk extends Work<TalkKey> {
     }
   }
 
-  public getOutputElements(outputLang: Lang): {[T in TalkKey]: HTMLElement} {
+  protected getOutputElements(outputLang: Lang): {[T in TalkKey]: HTMLElement} {
     const talkInfo = this.getInfo(outputLang);
     // title
     const title = document.createElement("span");

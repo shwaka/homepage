@@ -46,7 +46,7 @@ class Article extends Work<ArticleKey>{
     return this.data.type;
   }
 
-  public getOutputElements(outputLang: Lang): {[T in ArticleKey]: HTMLElement | null } {
+  protected getOutputElements(outputLang: Lang): {[T in ArticleKey]: HTMLElement | null } {
     // title
     const title = document.createElement("span");
     title.innerText = this.data.title;

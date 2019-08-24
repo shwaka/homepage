@@ -12,7 +12,7 @@ enum Lang {
 }
 
 abstract class Work<Key extends string> {
-  abstract getOutputElements(outputLang: Lang): {[T in Key]: HTMLElement | null };
+  protected abstract getOutputElements(outputLang: Lang): {[T in Key]: HTMLElement | null };
 
   constructor() {};
 
