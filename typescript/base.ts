@@ -1,3 +1,5 @@
+var target_blankIconUrl: string = "undefined";
+
 function makeAnchor(text: string, url: string, target_blank: boolean = true): HTMLAnchorElement {
   const a = document.createElement("a");
   a.appendChild(document.createTextNode(text));
@@ -12,7 +14,7 @@ function makeAnchor(text: string, url: string, target_blank: boolean = true): HT
     const use = document.createElementNS(svgns, "use");
     // const use = document.createElement("use");
     const xlinkns = "http://www.w3.org/1999/xlink";
-    use.setAttributeNS(xlinkns, "href", "/~swaka/assets/img/icons.svg#target_blank");
+    use.setAttributeNS(xlinkns, "href", target_blankIconUrl);
     svg.appendChild(use);
     a.appendChild(svg);
   }

@@ -12,6 +12,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var target_blankIconUrl = "undefined";
 function makeAnchor(text, url, target_blank) {
     if (target_blank === void 0) { target_blank = true; }
     var a = document.createElement("a");
@@ -27,7 +28,7 @@ function makeAnchor(text, url, target_blank) {
         var use = document.createElementNS(svgns, "use");
         // const use = document.createElement("use");
         var xlinkns = "http://www.w3.org/1999/xlink";
-        use.setAttributeNS(xlinkns, "href", "/~swaka/assets/img/icons.svg#target_blank");
+        use.setAttributeNS(xlinkns, "href", target_blankIconUrl);
         svg.appendChild(use);
         a.appendChild(svg);
     }
