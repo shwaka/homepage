@@ -43,14 +43,25 @@ class WorkList<Key extends string, W extends Work<Key>> {
     this.output = output;
   }
 
-  getData(reverse: boolean = false): W[] {
+  getData(reverse: boolean = false,
+          filter?: (work: W) => boolean,): W[] {
+    let data: W[];
     if (reverse) {
-      return this.data.slice().reverse();
+      data = this.data.slice().reverse();
+    } else {
+      data = this.data;
     }
-    return this.data;
+    if (filter == null){
+      return data
+    }
+    return data.filter(filter);
   }
 
-  showList(outputLang: Lang, headerList: [Key, string][], reverse: boolean = false, listType: "ul"|"ol" = "ol"): void {
+  showList(outputLang: Lang,
+           headerList: [Key, string][],
+           reverse: boolean = false,
+           filter?: (work: W) => boolean,
+           listType: "ul"|"ol" = "ol"): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
     const list = document.createElement(listType);
     if (reverse && listType == "ol") {
@@ -58,7 +69,7 @@ class WorkList<Key extends string, W extends Work<Key>> {
       ol.reversed = true;
     }
     this.output.appendChild(list);
-    this.getData(reverse).forEach(work => {
+    this.getData(reverse, filter).forEach(work => {
       list.appendChild(work.toLi(outputLang, headerList));
     })
   }
@@ -74,12 +85,15 @@ class WorkList<Key extends string, W extends Work<Key>> {
     return tr;
   }
 
-  showTable(outputLang: Lang, headerList: [Key, string][], reverse: boolean = false): void {
+  showTable(outputLang: Lang,
+            headerList: [Key, string][],
+            reverse: boolean = false,
+            filter?: (work: W) => boolean): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
     const table = document.createElement("table");
     this.output.appendChild(table);
     table.appendChild(this.getTableHeader(headerList));
-    this.getData(reverse).forEach(work => {
+    this.getData(reverse, filter).forEach(work => {
       table.appendChild(work.toTr(outputLang, headerList));
     })
   }

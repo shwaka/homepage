@@ -51,14 +51,21 @@ var WorkList = /** @class */ (function () {
         this.data = data;
         this.output = output;
     }
-    WorkList.prototype.getData = function (reverse) {
+    WorkList.prototype.getData = function (reverse, filter) {
         if (reverse === void 0) { reverse = false; }
+        var data;
         if (reverse) {
-            return this.data.slice().reverse();
+            data = this.data.slice().reverse();
         }
-        return this.data;
+        else {
+            data = this.data;
+        }
+        if (filter == null) {
+            return data;
+        }
+        return data.filter(filter);
     };
-    WorkList.prototype.showList = function (outputLang, headerList, reverse, listType) {
+    WorkList.prototype.showList = function (outputLang, headerList, reverse, filter, listType) {
         if (reverse === void 0) { reverse = false; }
         if (listType === void 0) { listType = "ol"; }
         this.output.innerHTML = ""; // clear the content of the HTML element
@@ -68,7 +75,7 @@ var WorkList = /** @class */ (function () {
             ol.reversed = true;
         }
         this.output.appendChild(list);
-        this.getData(reverse).forEach(function (work) {
+        this.getData(reverse, filter).forEach(function (work) {
             list.appendChild(work.toLi(outputLang, headerList));
         });
     };
@@ -82,13 +89,13 @@ var WorkList = /** @class */ (function () {
         });
         return tr;
     };
-    WorkList.prototype.showTable = function (outputLang, headerList, reverse) {
+    WorkList.prototype.showTable = function (outputLang, headerList, reverse, filter) {
         if (reverse === void 0) { reverse = false; }
         this.output.innerHTML = ""; // clear the content of the HTML element
         var table = document.createElement("table");
         this.output.appendChild(table);
         table.appendChild(this.getTableHeader(headerList));
-        this.getData(reverse).forEach(function (work) {
+        this.getData(reverse, filter).forEach(function (work) {
             table.appendChild(work.toTr(outputLang, headerList));
         });
     };
