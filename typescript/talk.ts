@@ -70,15 +70,10 @@ class Talk extends Work<TalkKey> implements TalkObject {
     // conference
     let conference: HTMLElement;
     if (talkInfo.url) {
-      const conferenceAnchor = document.createElement("a");
-      conferenceAnchor.appendChild(document.createTextNode(talkInfo.conference));
-      conferenceAnchor.target = "_blank";
-      conferenceAnchor.href = talkInfo.url;
-      conference = conferenceAnchor;
+      conference = makeAnchor(talkInfo.conference, talkInfo.url);
     } else {
-      const conferenceSpan = document.createElement("span");
-      conferenceSpan.innerText = talkInfo.conference;
-      conference = conferenceSpan;
+      conference = document.createElement("span");
+      conference.innerText = talkInfo.conference;
     }
     // venue
     const venue = document.createElement("span");

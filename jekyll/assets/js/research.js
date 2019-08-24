@@ -12,6 +12,13 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+function makeAnchor(text, url) {
+    var a = document.createElement("a");
+    a.appendChild(document.createTextNode(text));
+    a.target = "_blank";
+    a.href = url;
+    return a;
+}
 var Lang;
 (function (Lang) {
     Lang["ja"] = "ja";
@@ -296,16 +303,11 @@ var Talk = /** @class */ (function (_super) {
         // conference
         var conference;
         if (talkInfo.url) {
-            var conferenceAnchor = document.createElement("a");
-            conferenceAnchor.appendChild(document.createTextNode(talkInfo.conference));
-            conferenceAnchor.target = "_blank";
-            conferenceAnchor.href = talkInfo.url;
-            conference = conferenceAnchor;
+            conference = makeAnchor(talkInfo.conference, talkInfo.url);
         }
         else {
-            var conferenceSpan = document.createElement("span");
-            conferenceSpan.innerText = talkInfo.conference;
-            conference = conferenceSpan;
+            conference = document.createElement("span");
+            conference.innerText = talkInfo.conference;
         }
         // venue
         var venue = document.createElement("span");

@@ -1,3 +1,11 @@
+function makeAnchor(text: string, url: string): HTMLAnchorElement {
+  const a = document.createElement("a");
+  a.appendChild(document.createTextNode(text));
+  a.target = "_blank";
+  a.href = url;
+  return a;
+}
+
 enum Lang {
   ja = "ja",
   en = "en"
