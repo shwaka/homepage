@@ -12,18 +12,24 @@ enum Lang {
 }
 
 abstract class Work<Key extends string> {
-  abstract getOutputElements(outputLang: Lang): {[T in Key]: HTMLElement};
+  abstract getOutputElements(outputLang: Lang): {[T in Key]: HTMLElement | null };
 
   constructor() {};
 
   toLi(outputLang: Lang, headerList: [Key, string][]): HTMLLIElement {
     const li = document.createElement("li");
     const outputElements = this.getOutputElements(outputLang);
-    headerList.forEach((keyHeader, index, array) => {
+    let elementAlreadyAdded = false;
+    headerList.forEach((keyHeader) => {
       const key = keyHeader[0];
-      li.appendChild(outputElements[key]);
-      if (index < array.length - 1) {
-        li.appendChild(document.createTextNode(`, `));
+      const element: HTMLElement | null = outputElements[key];
+      // ↑ element の型注釈を省略すると，下の if 節内で element が non-null だと推論してくれない
+      if (element != null) {
+        if (elementAlreadyAdded) {
+          li.appendChild(document.createTextNode(`, `));
+        }
+        li.appendChild(element);
+        elementAlreadyAdded = true;
       }
     });
     return li;
@@ -35,7 +41,10 @@ abstract class Work<Key extends string> {
     headerList.forEach((keyHeader) => {
       const key = keyHeader[0];
       const td = document.createElement("td");
-      td.appendChild(outputElements[key]);
+      const element: HTMLElement | null = outputElements[key]
+      if (element != null) {
+        td.appendChild(element);
+      }
       tr.appendChild(td);
     });
     return tr;

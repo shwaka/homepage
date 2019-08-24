@@ -31,11 +31,17 @@ var Work = /** @class */ (function () {
     Work.prototype.toLi = function (outputLang, headerList) {
         var li = document.createElement("li");
         var outputElements = this.getOutputElements(outputLang);
-        headerList.forEach(function (keyHeader, index, array) {
+        var elementAlreadyAdded = false;
+        headerList.forEach(function (keyHeader) {
             var key = keyHeader[0];
-            li.appendChild(outputElements[key]);
-            if (index < array.length - 1) {
-                li.appendChild(document.createTextNode(", "));
+            var element = outputElements[key];
+            // ↑ element の型注釈を省略すると，下の if 節内で element が non-null だと推論してくれない
+            if (element != null) {
+                if (elementAlreadyAdded) {
+                    li.appendChild(document.createTextNode(", "));
+                }
+                li.appendChild(element);
+                elementAlreadyAdded = true;
             }
         });
         return li;
@@ -46,7 +52,10 @@ var Work = /** @class */ (function () {
         headerList.forEach(function (keyHeader) {
             var key = keyHeader[0];
             var td = document.createElement("td");
-            td.appendChild(outputElements[key]);
+            var element = outputElements[key];
+            if (element != null) {
+                td.appendChild(element);
+            }
             tr.appendChild(td);
         });
         return tr;
@@ -124,12 +133,14 @@ var Article = /** @class */ (function (_super) {
         var title = document.createElement("span");
         title.innerText = this.data.title;
         // journal
-        var journal = document.createElement("span");
+        var journal = null;
         if (this.data.type == ArticleType.toappear) {
+            journal = document.createElement("span");
             journal.appendChild(document.createTextNode("to appear in "));
             journal.appendChild(makeAnchor(this.data.journal, this.data["journal-url"]));
         }
         else if (this.data.type == ArticleType.proceedings) {
+            journal = document.createElement("span");
             journal.appendChild(makeAnchor(this.data.journal, this.data["journal-url"]));
         }
         // year

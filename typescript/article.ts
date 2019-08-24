@@ -42,16 +42,18 @@ class Article extends Work<ArticleKey>{
     this.data = articleObj;
   }
 
-  getOutputElements(outputLang: Lang): {[T in ArticleKey]: HTMLElement} {
+  getOutputElements(outputLang: Lang): {[T in ArticleKey]: HTMLElement | null } {
     // title
     const title = document.createElement("span");
     title.innerText = this.data.title;
     // journal
-    const journal = document.createElement("span");
+    let journal: HTMLElement | null = null;
     if (this.data.type == ArticleType.toappear) {
+      journal = document.createElement("span");
       journal.appendChild(document.createTextNode("to appear in "));
       journal.appendChild(makeAnchor(this.data.journal, this.data["journal-url"]));
     } else if (this.data.type == ArticleType.proceedings) {
+      journal = document.createElement("span");
       journal.appendChild(makeAnchor(this.data.journal, this.data["journal-url"]));
     }
     // year
