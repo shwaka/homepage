@@ -187,6 +187,7 @@ var Article = /** @class */ (function (_super) {
     Article.prototype.getOutputElements = function (outputLang) {
         // title
         var title = document.createElement("span");
+        title.classList.add("article-title");
         title.innerText = this.data.title;
         // journal
         var journal = null;
@@ -208,7 +209,9 @@ var Article = /** @class */ (function (_super) {
         var arxiv = document.createElement("span");
         if (this.data.type == ArticleType.preprint || this.data.type == ArticleType.toappear) {
             var url = "https://arxiv.org/abs/" + this.data.arxiv;
-            arxiv.appendChild(makeAnchor(this.data.arxiv, url));
+            var a = makeAnchor(this.data.arxiv, url);
+            a.classList.add("arxiv");
+            arxiv.appendChild(a);
         }
         // output
         var outputElements = {

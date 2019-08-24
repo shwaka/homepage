@@ -49,6 +49,7 @@ class Article extends Work<ArticleKey>{
   protected getOutputElements(outputLang: Lang): {[T in ArticleKey]: HTMLElement | null } {
     // title
     const title = document.createElement("span");
+    title.classList.add("article-title");
     title.innerText = this.data.title;
     // journal
     let journal: HTMLElement | null = null;
@@ -69,7 +70,9 @@ class Article extends Work<ArticleKey>{
     const arxiv = document.createElement("span");
     if (this.data.type == ArticleType.preprint || this.data.type == ArticleType.toappear) {
       const url = `https://arxiv.org/abs/${this.data.arxiv}`;
-      arxiv.appendChild(makeAnchor(this.data.arxiv, url));
+      const a = makeAnchor(this.data.arxiv, url);
+      a.classList.add("arxiv");
+      arxiv.appendChild(a);
     }
     // output
     const outputElements = {
