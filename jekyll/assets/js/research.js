@@ -58,34 +58,50 @@ var Talk = /** @class */ (function () {
         var venue = talkInfo.venue;
         return title + ", " + conference + ", " + venue + ", " + date;
     };
-    Talk.prototype.toLi = function (outputLang) {
-        var li = document.createElement("li");
+    Talk.prototype.getOutputElements = function (outputLang) {
         var talkInfo = this.getInfo(outputLang);
         // title
-        var title = talkInfo.title;
-        li.appendChild(document.createTextNode("" + title));
-        li.appendChild(document.createTextNode(", "));
+        var title = document.createElement("span");
+        title.innerText = talkInfo.title;
         // conference
-        var conference = talkInfo.conference;
+        var conference;
         if (talkInfo.url) {
-            var a = document.createElement("a");
-            a.appendChild(document.createTextNode(conference));
-            a.target = "_blank";
-            a.href = talkInfo.url;
-            li.appendChild(a);
-            li.appendChild(document.createTextNode(", "));
+            var conferenceAnchor = document.createElement("a");
+            conferenceAnchor.appendChild(document.createTextNode(talkInfo.conference));
+            conferenceAnchor.target = "_blank";
+            conferenceAnchor.href = talkInfo.url;
+            conference = conferenceAnchor;
         }
         else {
-            li.appendChild(document.createTextNode("" + conference));
-            li.appendChild(document.createTextNode(", "));
+            var conferenceSpan = document.createElement("span");
+            conferenceSpan.innerText = talkInfo.conference;
+            conference = conferenceSpan;
         }
         // venue
-        var venue = talkInfo.venue;
-        li.appendChild(document.createTextNode("" + venue));
-        li.appendChild(document.createTextNode(", "));
+        var venue = document.createElement("span");
+        venue.innerText = talkInfo.venue;
         // date
-        var date = this.getDateString(outputLang);
-        li.appendChild(document.createTextNode("" + date));
+        var date = document.createElement("span");
+        date.innerText = this.getDateString(outputLang);
+        // output
+        var outputElements = {
+            title: title,
+            conference: conference,
+            venue: venue,
+            date: date
+        };
+        return outputElements;
+    };
+    Talk.prototype.toLi = function (outputLang) {
+        var li = document.createElement("li");
+        var outputElements = this.getOutputElements(outputLang);
+        li.appendChild(outputElements.title);
+        li.appendChild(document.createTextNode(", "));
+        li.appendChild(outputElements.conference);
+        li.appendChild(document.createTextNode(", "));
+        li.appendChild(outputElements.venue);
+        li.appendChild(document.createTextNode(", "));
+        li.appendChild(outputElements.date);
         return li;
     };
     Talk.prototype.addToUl = function (ul, outputLang) {

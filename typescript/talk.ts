@@ -21,6 +21,13 @@ interface TalkObject {
   en?: TalkInfo;
 }
 
+interface TalkOutputElements {
+  title: HTMLElement;
+  conference: HTMLElement;
+  venue: HTMLElement;
+  date: HTMLElement;
+}
+
 class Talk implements TalkObject{
   base: TalkBaseInfo;
   ja?: TalkInfo;
@@ -72,34 +79,50 @@ class Talk implements TalkObject{
     return `${title}, ${conference}, ${venue}, ${date}`;
   }
 
-  toLi(outputLang: Lang): HTMLLIElement {
-    const li = document.createElement("li");
+  getOutputElements(outputLang: Lang): TalkOutputElements {
     const talkInfo = this.getInfo(outputLang);
     // title
-    const title: string = talkInfo.title;
-    li.appendChild(document.createTextNode(`${title}`));
-    li.appendChild(document.createTextNode(`, `));
+    const title = document.createElement("span");
+    title.innerText = talkInfo.title;
     // conference
-    const conference: string = talkInfo.conference;
+    let conference: HTMLElement;
     if (talkInfo.url) {
-      const a = document.createElement("a");
-      a.appendChild(document.createTextNode(conference));
-      a.target = "_blank";
-      a.href = talkInfo.url;
-      li.appendChild(a);
-      li.appendChild(document.createTextNode(`, `));
+      const conferenceAnchor = document.createElement("a");
+      conferenceAnchor.appendChild(document.createTextNode(talkInfo.conference));
+      conferenceAnchor.target = "_blank";
+      conferenceAnchor.href = talkInfo.url;
+      conference = conferenceAnchor;
     } else {
-      li.appendChild(document.createTextNode(`${conference}`));
-      li.appendChild(document.createTextNode(`, `));
+      const conferenceSpan = document.createElement("span");
+      conferenceSpan.innerText = talkInfo.conference;
+      conference = conferenceSpan;
     }
     // venue
-    const venue: string = talkInfo.venue;
-    li.appendChild(document.createTextNode(`${venue}`));
-    li.appendChild(document.createTextNode(`, `));
+    const venue = document.createElement("span");
+    venue.innerText = talkInfo.venue;
     // date
-    const date: string = this.getDateString(outputLang);
-    li.appendChild(document.createTextNode(`${date}`));
+    const date = document.createElement("span");
+    date.innerText = this.getDateString(outputLang);
+    // output
+    const outputElements = {
+      title: title,
+      conference: conference,
+      venue: venue,
+      date: date
+    }
+    return outputElements;
+  }
 
+  toLi(outputLang: Lang): HTMLLIElement {
+    const li = document.createElement("li");
+    const outputElements = this.getOutputElements(outputLang);
+    li.appendChild(outputElements.title);
+    li.appendChild(document.createTextNode(`, `));
+    li.appendChild(outputElements.conference);
+    li.appendChild(document.createTextNode(`, `));
+    li.appendChild(outputElements.venue);
+    li.appendChild(document.createTextNode(`, `));
+    li.appendChild(outputElements.date);
     return li;
   }
 
