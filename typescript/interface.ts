@@ -2,6 +2,7 @@
 /// <reference path="article.ts"/>
 
 var talkListHandler: TalkListHandler;
+var articleListHandler: ArticleListHandler;
 
 function loadFromJson(file: string): void {
   const httpObj = new XMLHttpRequest();
@@ -13,6 +14,8 @@ function loadFromJson(file: string): void {
     // talkListGlobal = TalkList.create(json, "talk");
     // talkListGlobal.showList(Lang.ja, true);
     // talkList.showTable(Lang.ja);
+    // const articleDiv = document.getElementById("article") as HTMLElement; // まずい
+    // articleListHandler = new ArticleListHandler(json, articleDiv);
     setupForm();
     updateTalks();
   }

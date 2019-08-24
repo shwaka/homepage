@@ -99,13 +99,87 @@ var WorkList = /** @class */ (function () {
     return WorkList;
 }());
 /// <reference path="base.ts"/>
-// interface ArticleObject {
-//   title: string;
-//   arxiv
-// }
-// class Article extends Work<ArticleKey>{
-//     title: string;
-// }
+var ArticleType;
+(function (ArticleType) {
+    ArticleType[ArticleType["preprint"] = 0] = "preprint";
+    ArticleType[ArticleType["toappear"] = 1] = "toappear";
+    ArticleType[ArticleType["proceedings"] = 2] = "proceedings";
+})(ArticleType || (ArticleType = {}));
+var Article = /** @class */ (function (_super) {
+    __extends(Article, _super);
+    function Article(articleObj) {
+        var _this = _super.call(this) || this;
+        Object.assign(_this, articleObj);
+        return _this;
+    }
+    Article.prototype.getOutputElements = function (outputLang) {
+        // title
+        var title = document.createElement("span");
+        title.innerText = this.title;
+        // journal
+        var journal = document.createElement("span");
+        if (this.type == ArticleType.toappear) {
+            journal.innerText = "to appear in " + this.journal; // anchor にする
+        }
+        else if (this.type == ArticleType.proceedings) {
+            journal.innerText = String(this.journal); // anchor
+        }
+        // year
+        var year = document.createElement("span");
+        if (this.type == ArticleType.proceedings) {
+            year.innerText = String(this.year);
+        }
+        // arxiv
+        var arxiv = document.createElement("span");
+        if (this.type == ArticleType.preprint || this.type == ArticleType.toappear) {
+            arxiv.innerText = String(this.arxiv); // anchor
+        }
+        // output
+        var outputElements = {
+            title: title,
+            journal: journal,
+            year: year,
+            arxiv: arxiv
+        };
+        return outputElements;
+    };
+    return Article;
+}(Work));
+var ArticleList = /** @class */ (function (_super) {
+    __extends(ArticleList, _super);
+    function ArticleList(articleObjArray) {
+        var _this = this;
+        var data = [];
+        articleObjArray.forEach(function (articleObj) {
+            // map 的な何かでどうにかならない？
+            data.push(new Article(articleObj));
+        });
+        _this = _super.call(this, data) || this;
+        return _this;
+    }
+    ArticleList.create = function (json) {
+        var articleObjArray = JSON.parse(json);
+        var articleList = new ArticleList(articleObjArray);
+        return articleList;
+    };
+    ArticleList.headerList = [["title", "タイトル"],
+        ["journal", "雑誌"],
+        ["year", "出版年"],
+        ["arxiv", "arXiv"]];
+    return ArticleList;
+}(WorkList));
+var ArticleListHandler = /** @class */ (function () {
+    function ArticleListHandler(json, output) {
+        this.output = output;
+        this.articleList = ArticleList.create(json);
+    }
+    ArticleListHandler.prototype.showList = function (outputLang, headerList, reverse) {
+        if (reverse === void 0) { reverse = false; }
+        this.output.innerHTML = ""; // clear the content of the HTML element
+        this.output.appendChild(this.articleList.toList(outputLang, headerList, reverse));
+    };
+    return ArticleListHandler;
+}());
 /// <reference path="base.ts"/>
 var Talk = /** @class */ (function (_super) {
     __extends(Talk, _super);
@@ -265,6 +339,7 @@ function isJapaneseTalk(talk) {
 /// <reference path="talk.ts"/>
 /// <reference path="article.ts"/>
 var talkListHandler;
+var articleListHandler;
 function loadFromJson(file) {
     var httpObj = new XMLHttpRequest();
     httpObj.open("get", file, true);
@@ -275,6 +350,8 @@ function loadFromJson(file) {
         // talkListGlobal = TalkList.create(json, "talk");
         // talkListGlobal.showList(Lang.ja, true);
         // talkList.showTable(Lang.ja);
+        // const articleDiv = document.getElementById("article") as HTMLElement; // まずい
+        // articleListHandler = new ArticleListHandler(json, articleDiv);
         setupForm();
         updateTalks();
     };
