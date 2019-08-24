@@ -18,14 +18,13 @@ var Lang;
     Lang["en"] = "en";
 })(Lang || (Lang = {}));
 var Work = /** @class */ (function () {
-    function Work(headerList) {
-        this.headerList = headerList;
+    function Work() {
     }
     ;
-    Work.prototype.toLi = function (outputLang) {
+    Work.prototype.toLi = function (outputLang, headerList) {
         var li = document.createElement("li");
         var outputElements = this.getOutputElements(outputLang);
-        this.headerList.forEach(function (keyHeader, index, array) {
+        headerList.forEach(function (keyHeader, index, array) {
             var key = keyHeader[0];
             li.appendChild(outputElements[key]);
             if (index < array.length - 1) {
@@ -34,10 +33,10 @@ var Work = /** @class */ (function () {
         });
         return li;
     };
-    Work.prototype.toTr = function (outputLang) {
+    Work.prototype.toTr = function (outputLang, headerList) {
         var tr = document.createElement("tr");
         var outputElements = this.getOutputElements(outputLang);
-        this.headerList.forEach(function (keyHeader) {
+        headerList.forEach(function (keyHeader) {
             var key = keyHeader[0];
             var td = document.createElement("td");
             td.appendChild(outputElements[key]);
@@ -59,7 +58,7 @@ var WorkList = /** @class */ (function () {
         }
         return this.data;
     };
-    WorkList.prototype.showList = function (outputLang, reverse, listType) {
+    WorkList.prototype.showList = function (outputLang, headerList, reverse, listType) {
         if (reverse === void 0) { reverse = false; }
         if (listType === void 0) { listType = "ol"; }
         this.output.innerHTML = ""; // clear the content of the HTML element
@@ -70,16 +69,16 @@ var WorkList = /** @class */ (function () {
         }
         this.output.appendChild(list);
         this.getData(reverse).forEach(function (work) {
-            list.appendChild(work.toLi(outputLang));
+            list.appendChild(work.toLi(outputLang, headerList));
         });
     };
-    WorkList.prototype.showTable = function (outputLang, reverse) {
+    WorkList.prototype.showTable = function (outputLang, headerList, reverse) {
         if (reverse === void 0) { reverse = false; }
         this.output.innerHTML = ""; // clear the content of the HTML element
         var table = document.createElement("table");
         this.output.appendChild(table);
         this.getData(reverse).forEach(function (work) {
-            table.appendChild(work.toTr(outputLang));
+            table.appendChild(work.toTr(outputLang, headerList));
         });
     };
     return WorkList;
@@ -96,12 +95,7 @@ var WorkList = /** @class */ (function () {
 var Talk = /** @class */ (function (_super) {
     __extends(Talk, _super);
     function Talk(talkObj) {
-        var _this = this;
-        var headerList = [["title", "talk title"],
-            ["conference", "conference name"],
-            ["venue", "venue"],
-            ["date", "date of the talk"]];
-        _this = _super.call(this, headerList) || this;
+        var _this = _super.call(this) || this;
         Object.assign(_this, talkObj);
         return _this;
     }
@@ -195,6 +189,14 @@ var TalkList = /** @class */ (function (_super) {
         var talkList = new TalkList(talkObjArray, output);
         return talkList;
     };
+    TalkList.headerListJa = [["title", "講演タイトル"],
+        ["conference", "研究集会名"],
+        ["venue", "会場"],
+        ["date", "日付"]];
+    TalkList.headerListEn = [["title", "talk title"],
+        ["conference", "conference name"],
+        ["venue", "venue"],
+        ["date", "date"]];
     return TalkList;
 }(WorkList));
 /// <reference path="talk.ts"/>
@@ -249,11 +251,14 @@ function updateTalks() {
     var radioLanguage = configForm.language;
     var language = radioLanguage.value;
     var outputLang;
+    var talksHeaderList;
     if (language == "en") {
         outputLang = Lang.en;
+        talksHeaderList = TalkList.headerListEn;
     }
     else if (language == "ja") {
         outputLang = Lang.ja;
+        talksHeaderList = TalkList.headerListJa;
     }
     else {
         throw Error("invalid language");
@@ -263,9 +268,9 @@ function updateTalks() {
     var format = radioFormat.value;
     // update
     if (format == "list") {
-        talkListGlobal.showList(outputLang, reverse);
+        talkListGlobal.showList(outputLang, talksHeaderList, reverse);
     }
     else if (format == "table") {
-        talkListGlobal.showTable(outputLang, reverse);
+        talkListGlobal.showTable(outputLang, talksHeaderList, reverse);
     }
 }

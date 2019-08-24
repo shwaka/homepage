@@ -55,10 +55,13 @@ function updateTalks(): void {
   const radioLanguage = configForm.language;
   const language: string = radioLanguage.value;
   let outputLang: Lang;
+  let talksHeaderList: [TalkKey, string][];
   if (language == "en") {
     outputLang = Lang.en;
+    talksHeaderList = TalkList.headerListEn;
   } else if (language == "ja") {
     outputLang = Lang.ja;
+    talksHeaderList = TalkList.headerListJa;
   } else {
     throw Error("invalid language");
   }
@@ -67,8 +70,8 @@ function updateTalks(): void {
   const format: string = radioFormat.value;
   // update
   if (format == "list") {
-    talkListGlobal.showList(outputLang, reverse);
+    talkListGlobal.showList(outputLang, talksHeaderList, reverse);
   } else if (format == "table") {
-    talkListGlobal.showTable(outputLang, reverse);
+    talkListGlobal.showTable(outputLang, talksHeaderList, reverse);
   }
 }

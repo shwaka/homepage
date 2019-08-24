@@ -26,11 +26,7 @@ class Talk extends Work<TalkKey> implements TalkObject {
   en?: TalkInfo;
 
   constructor(talkObj: TalkObject) {
-    const headerList = [["title", "talk title"],
-                        ["conference", "conference name"],
-                        ["venue", "venue"],
-                        ["date", "date of the talk"]] as [TalkKey, string][];
-    super(headerList);
+    super();
     (<any>Object).assign(this, talkObj);
   }
 
@@ -102,6 +98,15 @@ class Talk extends Work<TalkKey> implements TalkObject {
 }
 
 class TalkList extends WorkList<TalkKey, Talk> {
+  static headerListJa = [["title", "講演タイトル"],
+                         ["conference", "研究集会名"],
+                         ["venue", "会場"],
+                         ["date", "日付"]] as [TalkKey, string][];
+  static headerListEn = [["title", "talk title"],
+                         ["conference", "conference name"],
+                         ["venue", "venue"],
+                         ["date", "date"]] as [TalkKey, string][];
+
   constructor(talkObjArray: TalkObject[], output: HTMLElement) {
     const data: Talk[] = [];
     talkObjArray.forEach(talkObj => {
