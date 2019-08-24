@@ -1,9 +1,9 @@
 /// <reference path="base.ts"/>
 
 enum ArticleType {
-  preprint,
-  toappear,
-  proceedings
+  preprint = "preprint",
+  toappear = "toappear",
+  proceedings = "proceedings"
 }
 
 interface ArticleObject {
@@ -76,6 +76,36 @@ class ArticleList extends WorkList<ArticleKey, Article> {
     super(data);
   }
 
+  static getHeaderListNormal(outputLang: Lang): [ArticleKey, string][] {
+    if (outputLang == Lang.en) {
+      return [["title", "title"],
+              ["journal", "journal"],
+              // ["year", "year"],
+              ["arxiv", "arXiv"]] as [ArticleKey, string][];
+    } else if (outputLang == Lang.ja) {
+      return [["title", "タイトル"],
+              ["journal", "雑誌"],
+              // ["year", "出版年"],
+              ["arxiv", "arXiv"]] as [ArticleKey, string][];
+    } else {
+      throw Error("invalid lang");
+    }
+  }
+
+  static getHeaderListNonRefereed(outputLang: Lang): [ArticleKey, string][] {
+    if (outputLang == Lang.en) {
+      return [["title", "title"],
+              ["journal", "journal"],
+              ["year", "year"]] as [ArticleKey, string][];
+    } else if (outputLang == Lang.ja) {
+      return [["title", "タイトル"],
+              ["journal", "雑誌"],
+              ["year", "出版年"]] as [ArticleKey, string][];
+    } else {
+      throw Error("invalid lang");
+    }
+  }
+
   // static create(json: string): ArticleList {
   //   const articleObjArray: ArticleObject[] = JSON.parse(json);
   //   const articleList = new ArticleList(articleObjArray);
@@ -93,9 +123,21 @@ class ArticleListHandler {
   }
 
   showList(outputLang: Lang,
-           headerList: [ArticleKey, string][],
            reverse: boolean = false): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
-    this.output.appendChild(this.articleList.toList(outputLang, headerList, reverse));
+    const headerListNormal = ArticleList.getHeaderListNormal(outputLang);
+    this.output.appendChild(this.articleList.toList(
+      outputLang, headerListNormal, reverse, isNormalArticle));
+    const headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
+    this.output.appendChild(this.articleList.toList(
+      outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
   }
+}
+
+function isNormalArticle(article: Article): boolean {
+  return article.type == ArticleType.preprint || article.type == ArticleType.toappear;
+}
+
+function isNonRefereedArticle(article: Article): boolean {
+  return article.type == ArticleType.proceedings;
 }

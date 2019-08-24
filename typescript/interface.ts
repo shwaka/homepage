@@ -77,9 +77,9 @@ function updateTalks(): void {
   // update
   if (format == "list") {
     talkListHandler.showList(outputLang, talksHeaderList, reverse);
-    articleListHandler.showList(outputLang, ArticleList.headerList, reverse);
+    articleListHandler.showList(outputLang, reverse);
   } else if (format == "table") {
     talkListHandler.showTable(outputLang, talksHeaderList, reverse);
-    articleListHandler.showList(outputLang, ArticleList.headerList, reverse);
+    articleListHandler.showList(outputLang, reverse);
   }
 }

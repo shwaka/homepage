@@ -101,9 +101,9 @@ var WorkList = /** @class */ (function () {
 /// <reference path="base.ts"/>
 var ArticleType;
 (function (ArticleType) {
-    ArticleType[ArticleType["preprint"] = 0] = "preprint";
-    ArticleType[ArticleType["toappear"] = 1] = "toappear";
-    ArticleType[ArticleType["proceedings"] = 2] = "proceedings";
+    ArticleType["preprint"] = "preprint";
+    ArticleType["toappear"] = "toappear";
+    ArticleType["proceedings"] = "proceedings";
 })(ArticleType || (ArticleType = {}));
 var Article = /** @class */ (function (_super) {
     __extends(Article, _super);
@@ -157,6 +157,38 @@ var ArticleList = /** @class */ (function (_super) {
         _this = _super.call(this, data) || this;
         return _this;
     }
+    ArticleList.getHeaderListNormal = function (outputLang) {
+        if (outputLang == Lang.en) {
+            return [["title", "title"],
+                ["journal", "journal"],
+                // ["year", "year"],
+                ["arxiv", "arXiv"]];
+        }
+        else if (outputLang == Lang.ja) {
+            return [["title", "タイトル"],
+                ["journal", "雑誌"],
+                // ["year", "出版年"],
+                ["arxiv", "arXiv"]];
+        }
+        else {
+            throw Error("invalid lang");
+        }
+    };
+    ArticleList.getHeaderListNonRefereed = function (outputLang) {
+        if (outputLang == Lang.en) {
+            return [["title", "title"],
+                ["journal", "journal"],
+                ["year", "year"]];
+        }
+        else if (outputLang == Lang.ja) {
+            return [["title", "タイトル"],
+                ["journal", "雑誌"],
+                ["year", "出版年"]];
+        }
+        else {
+            throw Error("invalid lang");
+        }
+    };
     ArticleList.headerList = [["title", "タイトル"],
         ["journal", "雑誌"],
         ["year", "出版年"],
@@ -168,13 +200,22 @@ var ArticleListHandler = /** @class */ (function () {
         this.output = output;
         this.articleList = new ArticleList(articleObjArray);
     }
-    ArticleListHandler.prototype.showList = function (outputLang, headerList, reverse) {
+    ArticleListHandler.prototype.showList = function (outputLang, reverse) {
         if (reverse === void 0) { reverse = false; }
         this.output.innerHTML = ""; // clear the content of the HTML element
-        this.output.appendChild(this.articleList.toList(outputLang, headerList, reverse));
+        var headerListNormal = ArticleList.getHeaderListNormal(outputLang);
+        this.output.appendChild(this.articleList.toList(outputLang, headerListNormal, reverse, isNormalArticle));
+        var headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
+        this.output.appendChild(this.articleList.toList(outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
     };
     return ArticleListHandler;
 }());
+function isNormalArticle(article) {
+    return article.type == ArticleType.preprint || article.type == ArticleType.toappear;
+}
+function isNonRefereedArticle(article) {
+    return article.type == ArticleType.proceedings;
+}
 /// <reference path="base.ts"/>
 var Talk = /** @class */ (function (_super) {
     __extends(Talk, _super);
@@ -402,10 +443,10 @@ function updateTalks() {
     // update
     if (format == "list") {
         talkListHandler.showList(outputLang, talksHeaderList, reverse);
-        articleListHandler.showList(outputLang, ArticleList.headerList, reverse);
+        articleListHandler.showList(outputLang, reverse);
     }
     else if (format == "table") {
         talkListHandler.showTable(outputLang, talksHeaderList, reverse);
-        articleListHandler.showList(outputLang, ArticleList.headerList, reverse);
+        articleListHandler.showList(outputLang, reverse);
     }
 }
