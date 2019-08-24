@@ -125,8 +125,10 @@ function loadFromJson(file: string): void {
   httpObj.onload = function() {
     const json = this.responseText;
     talkListGlobal = TalkList.create(json, "talk");
-    talkListGlobal.showList(Lang.ja, true);
+    // talkListGlobal.showList(Lang.ja, true);
     // talkList.showTable(Lang.ja);
+    setupForm();
+    updateTalks();
   }
   httpObj.send(null);
 }
@@ -137,11 +139,23 @@ function isConfigForm(arg: any): arg is ConfigForm {
   return ("order" in arg) && ("language" in arg) && ("format" in arg);
 }
 
-function updateTalks(): void {
+function getForm(): ConfigForm {
   const configForm = document.getElementById("config-form");
   if (!isConfigForm(configForm)) {
     throw Error("no config-form found");
   }
+  return configForm;
+}
+
+function setupForm(): void {
+  ["format-list", "order-new-old", "language-japanese"].forEach((id) => {
+    const radioButton = document.getElementById(id) as any; // やばい
+    radioButton.checked = true;
+  })
+}
+
+function updateTalks(): void {
+  const configForm: ConfigForm = getForm();
   // order
   const radioOrder = configForm.order;
   const order: string = radioOrder.value;

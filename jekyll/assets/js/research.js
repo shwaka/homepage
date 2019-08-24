@@ -200,8 +200,10 @@ function loadFromJson(file) {
     httpObj.onload = function () {
         var json = this.responseText;
         talkListGlobal = TalkList.create(json, "talk");
-        talkListGlobal.showList(Lang.ja, true);
+        // talkListGlobal.showList(Lang.ja, true);
         // talkList.showTable(Lang.ja);
+        setupForm();
+        updateTalks();
     };
     httpObj.send(null);
 }
@@ -209,11 +211,21 @@ function isConfigForm(arg) {
     // チェックが緩すぎる
     return ("order" in arg) && ("language" in arg) && ("format" in arg);
 }
-function updateTalks() {
+function getForm() {
     var configForm = document.getElementById("config-form");
     if (!isConfigForm(configForm)) {
         throw Error("no config-form found");
     }
+    return configForm;
+}
+function setupForm() {
+    ["format-list", "order-new-old", "language-japanese"].forEach(function (id) {
+        var radioButton = document.getElementById(id); // やばい
+        radioButton.checked = true;
+    });
+}
+function updateTalks() {
+    var configForm = getForm();
     // order
     var radioOrder = configForm.order;
     var order = radioOrder.value;
