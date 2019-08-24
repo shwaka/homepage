@@ -25,12 +25,19 @@ interface TalkOutputElements {
   date: HTMLElement;
 }
 
-class Talk implements TalkObject {
+type TalkKey = "title" | "conference" | "venue" | "date";
+
+class Talk extends Work<TalkKey> implements TalkObject {
   base: TalkBaseInfo;
   ja?: TalkInfo;
   en?: TalkInfo;
 
   constructor(talkObj: TalkObject) {
+    const headerList = [["title", "talk title"],
+                        ["conference", "conference name"],
+                        ["venue", "venue"],
+                        ["date", "date of the talk"]] as [TalkKey, string][];
+    super(headerList);
     (<any>Object).assign(this, talkObj);
   }
 
@@ -98,33 +105,6 @@ class Talk implements TalkObject {
       date: date
     }
     return outputElements;
-  }
-
-  toLi(outputLang: Lang): HTMLLIElement {
-    const li = document.createElement("li");
-    const outputElements = this.getOutputElements(outputLang);
-    li.appendChild(outputElements.title);
-    li.appendChild(document.createTextNode(`, `));
-    li.appendChild(outputElements.conference);
-    li.appendChild(document.createTextNode(`, `));
-    li.appendChild(outputElements.venue);
-    li.appendChild(document.createTextNode(`, `));
-    li.appendChild(outputElements.date);
-    return li;
-  }
-
-  toTr(outputLang: Lang): HTMLTableRowElement {
-    const tr = document.createElement("tr");
-    const outputElements = this.getOutputElements(outputLang);
-    [outputElements.title,
-     outputElements.conference,
-     outputElements.venue,
-     outputElements.date].forEach(element => {
-       const td = document.createElement("td");
-       td.appendChild(element);
-       tr.appendChild(td);
-     })
-    return tr;
   }
 }
 

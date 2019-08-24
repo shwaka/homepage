@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var Article = /** @class */ (function () {
     function Article() {
     }
@@ -63,9 +76,17 @@ var WorkList = /** @class */ (function () {
     return WorkList;
 }());
 /// <reference path="base.ts"/>
-var Talk = /** @class */ (function () {
+var Talk = /** @class */ (function (_super) {
+    __extends(Talk, _super);
     function Talk(talkObj) {
-        Object.assign(this, talkObj);
+        var _this = this;
+        var headerList = [["title", "talk title"],
+            ["conference", "conference name"],
+            ["venue", "venue"],
+            ["date", "date of the talk"]];
+        _this = _super.call(this, headerList) || this;
+        Object.assign(_this, talkObj);
+        return _this;
     }
     Talk.prototype.getInfo = function (outputLang) {
         if (this[outputLang] != null) {
@@ -137,33 +158,8 @@ var Talk = /** @class */ (function () {
         };
         return outputElements;
     };
-    Talk.prototype.toLi = function (outputLang) {
-        var li = document.createElement("li");
-        var outputElements = this.getOutputElements(outputLang);
-        li.appendChild(outputElements.title);
-        li.appendChild(document.createTextNode(", "));
-        li.appendChild(outputElements.conference);
-        li.appendChild(document.createTextNode(", "));
-        li.appendChild(outputElements.venue);
-        li.appendChild(document.createTextNode(", "));
-        li.appendChild(outputElements.date);
-        return li;
-    };
-    Talk.prototype.toTr = function (outputLang) {
-        var tr = document.createElement("tr");
-        var outputElements = this.getOutputElements(outputLang);
-        [outputElements.title,
-            outputElements.conference,
-            outputElements.venue,
-            outputElements.date].forEach(function (element) {
-            var td = document.createElement("td");
-            td.appendChild(element);
-            tr.appendChild(td);
-        });
-        return tr;
-    };
     return Talk;
-}());
+}(Work));
 var TalkList = /** @class */ (function () {
     function TalkList(talkObjArray, output) {
         var _this = this;
