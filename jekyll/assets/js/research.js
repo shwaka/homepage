@@ -80,11 +80,10 @@ var WorkList = /** @class */ (function () {
         }
         return data.filter(filter);
     };
-    WorkList.prototype.toList = function (outputLang, headerList, reverse, filter, listType) {
+    WorkList.prototype.toList = function (listType, outputLang, headerList, reverse, filter) {
         if (reverse === void 0) { reverse = false; }
-        if (listType === void 0) { listType = "ol"; }
         var list = document.createElement(listType);
-        if (reverse && listType == "ol") {
+        if (reverse && listType == OutputFormat.ol) {
             var ol = list; // もうちょっとマシな書き方？
             ol.reversed = true;
         }
@@ -114,11 +113,8 @@ var WorkList = /** @class */ (function () {
     };
     WorkList.prototype.toHTMLElement = function (outputFormat, outputLang, headerList, reverse, filter) {
         if (reverse === void 0) { reverse = false; }
-        if (outputFormat == OutputFormat.ul) {
-            return this.toList(outputLang, headerList, reverse, filter, "ul");
-        }
-        else if (outputFormat == OutputFormat.ol) {
-            return this.toList(outputLang, headerList, reverse, filter, "ol");
+        if (outputFormat == OutputFormat.ul || outputFormat == OutputFormat.ol) {
+            return this.toList(outputFormat, outputLang, headerList, reverse, filter);
         }
         else if (outputFormat == OutputFormat.table) {
             return this.toTable(outputLang, headerList, reverse, filter);

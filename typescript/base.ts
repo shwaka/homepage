@@ -72,13 +72,13 @@ class WorkList<Key extends string, W extends Work<Key>> {
     return data.filter(filter);
   }
 
-  private toList(outputLang: Lang,
+  private toList(listType: OutputFormat.ol | OutputFormat.ul,
+                 outputLang: Lang,
                  headerList: [Key, string][],
                  reverse: boolean = false,
-                 filter?: (work: W) => boolean,
-                 listType: "ul"|"ol" = "ol"): HTMLUListElement | HTMLOListElement {
+                 filter?: (work: W) => boolean): HTMLUListElement | HTMLOListElement {
     const list: HTMLUListElement | HTMLOListElement = document.createElement(listType);
-    if (reverse && listType == "ol") {
+    if (reverse && listType == OutputFormat.ol) {
       const ol = list as HTMLOListElement; // もうちょっとマシな書き方？
       ol.reversed = true;
     }
@@ -116,10 +116,8 @@ class WorkList<Key extends string, W extends Work<Key>> {
                        headerList: [Key, string][],
                        reverse: boolean = false,
                        filter?: (work: W) => boolean): HTMLElement {
-    if (outputFormat == OutputFormat.ul) {
-      return this.toList(outputLang, headerList, reverse, filter, "ul");
-    } else if (outputFormat == OutputFormat.ol) {
-      return this.toList(outputLang, headerList, reverse, filter, "ol");
+    if (outputFormat == OutputFormat.ul || outputFormat == OutputFormat.ol ) {
+      return this.toList(outputFormat, outputLang, headerList, reverse, filter);
     } else if (outputFormat == OutputFormat.table) {
       return this.toTable(outputLang, headerList, reverse, filter);
     } else {
