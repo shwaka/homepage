@@ -28,17 +28,17 @@ interface TalkOutputElements {
   date: HTMLElement;
 }
 
-class Talk implements TalkObject{
+class Talk implements TalkObject {
   base: TalkBaseInfo;
   ja?: TalkInfo;
   en?: TalkInfo;
 
-  constructor(talkObj: TalkObject){
+  constructor(talkObj: TalkObject) {
     (<any>Object).assign(this, talkObj);
   }
 
-  getInfo(outputLang: Lang): TalkInfo{
-    if (this[outputLang] != null){
+  getInfo(outputLang: Lang): TalkInfo {
+    if (this[outputLang] != null) {
       return this[outputLang] as TalkInfo; // 良くないけど…
     } else if (this.ja != null) {
       return this.ja;
@@ -69,7 +69,7 @@ class Talk implements TalkObject{
     }
   }
 
-  toStr(outputLang: Lang): string{
+  toStr(outputLang: Lang): string {
     const talkInfo = this.getInfo(outputLang);
     // return this.base.date + " " + this.base.lang + " " + talkInfo.venue;
     const date: string = this.getDateString(outputLang);
@@ -154,7 +154,7 @@ class TalkList {
     })
   }
 
-  showUl(outputLang: Lang) {
+  showUl(outputLang: Lang): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
     const ul = document.createElement("ul");
     this.output.appendChild(ul);
@@ -163,7 +163,7 @@ class TalkList {
     })
   }
 
-  showTable(outputLang: Lang) {
+  showTable(outputLang: Lang): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
     const table = document.createElement("table");
     this.output.appendChild(table);
@@ -180,10 +180,10 @@ class TalkList {
   }
 }
 
-function loadFromJson(file: string){
+function loadFromJson(file: string): void {
   const httpObj = new XMLHttpRequest();
   httpObj.open("get", file, true);
-  httpObj.onload = function(){
+  httpObj.onload = function() {
     const json = this.responseText;
     const talkList = TalkList.create(json, "talk");
     talkList.showUl(Lang.ja);
