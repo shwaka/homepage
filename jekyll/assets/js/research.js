@@ -145,6 +145,9 @@ var Article = /** @class */ (function (_super) {
         _this.data = articleObj;
         return _this;
     }
+    Article.prototype.getType = function () {
+        return this.data.type;
+    };
     Article.prototype.getOutputElements = function (outputLang) {
         // title
         var title = document.createElement("span");
@@ -266,10 +269,10 @@ var ArticleListHandler = /** @class */ (function () {
     return ArticleListHandler;
 }());
 function isNormalArticle(article) {
-    return article.data.type == ArticleType.preprint || article.data.type == ArticleType.toappear;
+    return article.getType() == ArticleType.preprint || article.getType() == ArticleType.toappear;
 }
 function isNonRefereedArticle(article) {
-    return article.data.type == ArticleType.proceedings;
+    return article.getType() == ArticleType.proceedings;
 }
 /// <reference path="base.ts"/>
 var Talk = /** @class */ (function (_super) {

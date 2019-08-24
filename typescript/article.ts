@@ -35,14 +35,18 @@ type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticleProc
 type ArticleKey = "title" | "journal" | "year" | "arxiv"
 
 class Article extends Work<ArticleKey>{
-  data: ArticleObject;
+  private data: ArticleObject;
 
   constructor(articleObj: ArticleObject) {
     super();
     this.data = articleObj;
   }
 
-  getOutputElements(outputLang: Lang): {[T in ArticleKey]: HTMLElement | null } {
+  public getType(): ArticleType {
+    return this.data.type;
+  }
+
+  public getOutputElements(outputLang: Lang): {[T in ArticleKey]: HTMLElement | null } {
     // title
     const title = document.createElement("span");
     title.innerText = this.data.title;
@@ -126,15 +130,15 @@ class ArticleList extends WorkList<ArticleKey, Article> {
 }
 
 class ArticleListHandler {
-  output: HTMLElement;
-  articleList: ArticleList;
+  private output: HTMLElement;
+  private articleList: ArticleList;
 
   constructor(articleObjArray: ArticleObject[], output: HTMLElement) {
     this.output = output;
     this.articleList = new ArticleList(articleObjArray);
   }
 
-  getHeadingNormal(outputLang: Lang): HTMLHeadingElement {
+  private getHeadingNormal(outputLang: Lang): HTMLHeadingElement {
     const h3 = document.createElement("h3");
     if (outputLang == Lang.en) {
       h3.innerText = "Papers and preprints";
@@ -144,7 +148,7 @@ class ArticleListHandler {
     return h3;
   }
 
-  getHeadingNonRefereed(outputLang: Lang): HTMLHeadingElement {
+  private getHeadingNonRefereed(outputLang: Lang): HTMLHeadingElement {
     const h3 = document.createElement("h3");
     if (outputLang == Lang.en) {
       h3.innerText = "Non refereed articles";
@@ -154,9 +158,9 @@ class ArticleListHandler {
     return h3;
   }
 
-  show(outputFormat: OutputFormat,
-       outputLang: Lang,
-       reverse: boolean = false): void {
+  public show(outputFormat: OutputFormat,
+              outputLang: Lang,
+              reverse: boolean = false): void {
     this.output.innerHTML = ""; // clear the content of the HTML element
     const headerListNormal = ArticleList.getHeaderListNormal(outputLang);
     this.output.appendChild(this.getHeadingNormal(outputLang));
@@ -170,9 +174,9 @@ class ArticleListHandler {
 }
 
 function isNormalArticle(article: Article): boolean {
-  return article.data.type == ArticleType.preprint || article.data.type == ArticleType.toappear;
+  return article.getType() == ArticleType.preprint || article.getType() == ArticleType.toappear;
 }
 
 function isNonRefereedArticle(article: Article): boolean {
-  return article.data.type == ArticleType.proceedings;
+  return article.getType() == ArticleType.proceedings;
 }

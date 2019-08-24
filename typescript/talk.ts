@@ -30,7 +30,7 @@ class Talk extends Work<TalkKey> implements TalkObject {
     (<any>Object).assign(this, talkObj);
   }
 
-  getInfo(outputLang: Lang): TalkInfo {
+  private getInfo(outputLang: Lang): TalkInfo {
     if (this[outputLang] != null) {
       return this[outputLang] as TalkInfo; // 良くないけど…
     } else if (this.ja != null) {
@@ -42,7 +42,7 @@ class Talk extends Work<TalkKey> implements TalkObject {
     }
   }
 
-  getDateString(outputLang: Lang): string {
+  private getDateString(outputLang: Lang): string {
     const date: Date = new Date(this.base.date);
     const year: number = date.getFullYear();
     const monthZeroIndex: number = date.getMonth(); // 0, 1,..., 11
@@ -62,7 +62,7 @@ class Talk extends Work<TalkKey> implements TalkObject {
     }
   }
 
-  getOutputElements(outputLang: Lang): {[T in TalkKey]: HTMLElement} {
+  public getOutputElements(outputLang: Lang): {[T in TalkKey]: HTMLElement} {
     const talkInfo = this.getInfo(outputLang);
     // title
     const title = document.createElement("span");
@@ -125,15 +125,15 @@ class TalkList extends WorkList<TalkKey, Talk> {
 }
 
 class TalkListHandler {
-  output: HTMLElement;
-  talkList: TalkList;
+  private output: HTMLElement;
+  private talkList: TalkList;
 
   constructor(talkObjArray: TalkObject[], output: HTMLElement) {
     this.output = output;
     this.talkList = new TalkList(talkObjArray);
   }
 
-  getHeadingEnglish(outputLang: Lang): HTMLHeadingElement {
+  private getHeadingEnglish(outputLang: Lang): HTMLHeadingElement {
     const h3 = document.createElement("h3");
     if (outputLang == Lang.en) {
       h3.innerText = "talks in English";
@@ -143,7 +143,7 @@ class TalkListHandler {
     return h3;
   }
 
-  getHeadingJapanese(outputLang: Lang): HTMLHeadingElement {
+  private getHeadingJapanese(outputLang: Lang): HTMLHeadingElement {
     const h3 = document.createElement("h3");
     if (outputLang == Lang.en) {
       h3.innerText = "talks in Japanese";
@@ -153,9 +153,9 @@ class TalkListHandler {
     return h3;
   }
 
-  show(outputFormat: OutputFormat,
-       outputLang: Lang,
-       reverse: boolean = false): void {
+  public show(outputFormat: OutputFormat,
+              outputLang: Lang,
+              reverse: boolean = false): void {
     const headerList = TalkList.getHeaderList(outputLang);
     this.output.innerHTML = ""; // clear the content of the HTML element
     this.output.appendChild(this.getHeadingEnglish(outputLang));
