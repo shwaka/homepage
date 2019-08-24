@@ -94,7 +94,12 @@ class Talk extends Work<TalkKey> {
   }
 
   protected toLaTeX(outputLang: Lang, headerList: [TalkKey, string][]): string {
-    return "fuga";
+    const talkInfo = this.getInfo(outputLang);
+    const title: string = talkInfo.title;
+    const conference: string = talkInfo.conference;
+    const venue: string = talkInfo.venue;
+    const date: string = this.getDateString(outputLang);
+    return `${title}, ${conference}, ${venue}, ${date}`;
   }
 }
 

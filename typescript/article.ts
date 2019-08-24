@@ -82,7 +82,22 @@ class Article extends Work<ArticleKey>{
   }
 
   protected toLaTeX(outputLang: Lang, headerList: [ArticleKey, string][]): string {
-    return "hoge";
+    let latexCode: string = "";
+    // title
+    latexCode += this.data.title;
+    // journal
+    if (this.data.type == ArticleType.toappear) {
+      latexCode += `, to appear in ${this.data.journal}`;
+    } else if (this.data.type == ArticleType.proceedings) {
+      latexCode += `, ${this.data.journal}`;
+    }
+    // arxiv
+    if (this.data.type == ArticleType.toappear) {
+      latexCode += `, also available at arXiv:${this.data.arxiv}`;
+    } else if (this.data.type == ArticleType.preprint) {
+      latexCode += `, arXiv:${this.data.arxiv}`;
+    }
+    return latexCode;
   }
 }
 

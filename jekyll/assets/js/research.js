@@ -118,6 +118,7 @@ var WorkList = /** @class */ (function () {
     WorkList.prototype.toLaTeXCodeBlock = function (outputLang, headerList, reverse, filter) {
         if (reverse === void 0) { reverse = false; }
         var pre = document.createElement("pre");
+        pre.classList.add("highlight"); // code block の highlight を適用
         pre.appendChild(document.createTextNode("\\begin{itemize}\n"));
         this.getData(reverse, filter).forEach(function (work) {
             var item = work.toLaTeXItem(outputLang, headerList);
@@ -203,7 +204,24 @@ var Article = /** @class */ (function (_super) {
         return outputElements;
     };
     Article.prototype.toLaTeX = function (outputLang, headerList) {
-        return "hoge";
+        var latexCode = "";
+        // title
+        latexCode += this.data.title;
+        // journal
+        if (this.data.type == ArticleType.toappear) {
+            latexCode += ", to appear in " + this.data.journal;
+        }
+        else if (this.data.type == ArticleType.proceedings) {
+            latexCode += ", " + this.data.journal;
+        }
+        // arxiv
+        if (this.data.type == ArticleType.toappear) {
+            latexCode += ", also available at arXiv:" + this.data.arxiv;
+        }
+        else if (this.data.type == ArticleType.preprint) {
+            latexCode += ", arXiv:" + this.data.arxiv;
+        }
+        return latexCode;
     };
     return Article;
 }(Work));
@@ -373,7 +391,12 @@ var Talk = /** @class */ (function (_super) {
         return outputElements;
     };
     Talk.prototype.toLaTeX = function (outputLang, headerList) {
-        return "fuga";
+        var talkInfo = this.getInfo(outputLang);
+        var title = talkInfo.title;
+        var conference = talkInfo.conference;
+        var venue = talkInfo.venue;
+        var date = this.getDateString(outputLang);
+        return title + ", " + conference + ", " + venue + ", " + date;
     };
     return Talk;
 }(Work));
