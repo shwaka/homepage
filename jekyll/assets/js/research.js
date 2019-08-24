@@ -116,38 +116,32 @@ var Article = /** @class */ (function (_super) {
     __extends(Article, _super);
     function Article(articleObj) {
         var _this = _super.call(this) || this;
-        Object.assign(_this, articleObj);
+        _this.data = articleObj;
         return _this;
     }
     Article.prototype.getOutputElements = function (outputLang) {
         // title
         var title = document.createElement("span");
-        title.innerText = this.title;
+        title.innerText = this.data.title;
         // journal
         var journal = document.createElement("span");
-        if (this.type == ArticleType.toappear) {
+        if (this.data.type == ArticleType.toappear) {
             journal.appendChild(document.createTextNode("to appear in "));
-            journal.appendChild(makeAnchor(String(this.journal), String(this["journal-url"])));
-            // ↑this.journal とかが undefined かもしれない
-            // user defined type guards をうまく使えば回避できるかも？
+            journal.appendChild(makeAnchor(this.data.journal, this.data["journal-url"]));
         }
-        else if (this.type == ArticleType.proceedings) {
-            journal.appendChild(makeAnchor(String(this.journal), String(this["journal-url"])));
-            // ↑this.journal とかが undefined かもしれない
-            // user defined type guards をうまく使えば回避できるかも？
+        else if (this.data.type == ArticleType.proceedings) {
+            journal.appendChild(makeAnchor(this.data.journal, this.data["journal-url"]));
         }
         // year
         var year = document.createElement("span");
-        if (this.type == ArticleType.proceedings) {
-            year.innerText = String(this.year);
+        if (this.data.type == ArticleType.proceedings) {
+            year.innerText = String(this.data.year);
         }
         // arxiv
         var arxiv = document.createElement("span");
-        if (this.type == ArticleType.preprint || this.type == ArticleType.toappear) {
-            var url = "https://arxiv.org/abs/" + this.arxiv;
-            arxiv.appendChild(makeAnchor(String(this.arxiv), url));
-            // ↑this.arxiv とかが undefined かもしれない
-            // user defined type guards をうまく使えば回避できるかも？
+        if (this.data.type == ArticleType.preprint || this.data.type == ArticleType.toappear) {
+            var url = "https://arxiv.org/abs/" + this.data.arxiv;
+            arxiv.appendChild(makeAnchor(this.data.arxiv, url));
         }
         // output
         var outputElements = {
@@ -254,10 +248,10 @@ var ArticleListHandler = /** @class */ (function () {
     return ArticleListHandler;
 }());
 function isNormalArticle(article) {
-    return article.type == ArticleType.preprint || article.type == ArticleType.toappear;
+    return article.data.type == ArticleType.preprint || article.data.type == ArticleType.toappear;
 }
 function isNonRefereedArticle(article) {
-    return article.type == ArticleType.proceedings;
+    return article.data.type == ArticleType.proceedings;
 }
 /// <reference path="base.ts"/>
 var Talk = /** @class */ (function (_super) {
