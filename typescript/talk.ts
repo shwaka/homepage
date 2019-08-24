@@ -69,16 +69,6 @@ class Talk implements TalkObject {
     }
   }
 
-  toStr(outputLang: Lang): string {
-    const talkInfo = this.getInfo(outputLang);
-    // return this.base.date + " " + this.base.lang + " " + talkInfo.venue;
-    const date: string = this.getDateString(outputLang);
-    const title: string = talkInfo.title;
-    const conference: string = talkInfo.conference;
-    const venue: string = talkInfo.venue;
-    return `${title}, ${conference}, ${venue}, ${date}`;
-  }
-
   getOutputElements(outputLang: Lang): TalkOutputElements {
     const talkInfo = this.getInfo(outputLang);
     // title

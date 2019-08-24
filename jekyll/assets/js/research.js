@@ -49,15 +49,6 @@ var Talk = /** @class */ (function () {
             throw new Error("This can't happen!");
         }
     };
-    Talk.prototype.toStr = function (outputLang) {
-        var talkInfo = this.getInfo(outputLang);
-        // return this.base.date + " " + this.base.lang + " " + talkInfo.venue;
-        var date = this.getDateString(outputLang);
-        var title = talkInfo.title;
-        var conference = talkInfo.conference;
-        var venue = talkInfo.venue;
-        return title + ", " + conference + ", " + venue + ", " + date;
-    };
     Talk.prototype.getOutputElements = function (outputLang) {
         var talkInfo = this.getInfo(outputLang);
         // title
