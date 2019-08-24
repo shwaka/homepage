@@ -12,11 +12,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Article = /** @class */ (function () {
-    function Article() {
-    }
-    return Article;
-}());
 var Lang;
 (function (Lang) {
     Lang["ja"] = "ja";
@@ -89,6 +84,14 @@ var WorkList = /** @class */ (function () {
     };
     return WorkList;
 }());
+/// <reference path="base.ts"/>
+// interface ArticleObject {
+//   title: string;
+//   arxiv
+// }
+// class Article extends Work<ArticleKey>{
+//     title: string;
+// }
 /// <reference path="base.ts"/>
 var Talk = /** @class */ (function (_super) {
     __extends(Talk, _super);
@@ -194,6 +197,9 @@ var TalkList = /** @class */ (function (_super) {
     };
     return TalkList;
 }(WorkList));
+/// <reference path="talk.ts"/>
+/// <reference path="article.ts"/>
+var talkListGlobal;
 function loadFromJson(file) {
     var httpObj = new XMLHttpRequest();
     httpObj.open("get", file, true);
@@ -263,4 +269,3 @@ function updateTalks() {
         talkListGlobal.showTable(outputLang, reverse);
     }
 }
-var talkListGlobal;
