@@ -74,3 +74,10 @@
     - include される側の markdown で `page.ref` とすると，
       include する側の `ref` が表示されるバグがある．
       色々試したけど直すの難しそう…
+- typescript も jekyll の中に組込みたい．
+    - make を使うのが良さそう？
+    - typescript module の作成・読み込み (→makeを使ってみる)
+    - jekyll plugin から shell script の呼び出し
+    - browserify した javascript の関数を，html から呼び出す
+    - tsc, browserify あたりも package.json に書く？
+      (npx? npm run?)
