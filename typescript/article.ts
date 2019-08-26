@@ -13,6 +13,14 @@ interface ArticlePreprintObject {
   year: number;
 }
 
+function isArticlePreprintObject(arg: any): arg is ArticlePreprintObject {
+  return (typeof arg == "object") &&
+    ("type" in arg) && (arg.type == ArticleType.preprint) &&
+    ("title" in arg) && (typeof arg.title == "string") &&
+    ("arxiv" in arg) && (typeof arg.arxiv == "string") &&
+    ("year" in arg) && (typeof arg.year == "number");
+}
+
 interface ArticleToappearObject {
   type: ArticleType.toappear;
   title: string;
@@ -20,6 +28,16 @@ interface ArticleToappearObject {
   year: number;
   journal: string;
   "journal-url": string;
+}
+
+function isArticleToappearObject(arg: any): arg is ArticleToappearObject {
+  return (typeof arg == "object") &&
+    ("type" in arg) && (arg.type == ArticleType.toappear) &&
+    ("title" in arg) && (typeof arg.title == "string") &&
+    ("arxiv" in arg) && (typeof arg.arxiv == "string") &&
+    ("year" in arg) && (typeof arg.year == "number") &&
+    ("journal" in arg) && (typeof arg.journal == "string") &&
+    ("journal-url" in arg) && (typeof arg["journal-url"] == "string");
 }
 
 interface ArticleProceedingsObject {
@@ -30,7 +48,24 @@ interface ArticleProceedingsObject {
   "journal-url": string;
 }
 
+function isArticleProceedingsObject(arg: any): arg is ArticleProceedingsObject {
+  return (typeof arg == "object") &&
+    ("type" in arg) && (arg.type == ArticleType.proceedings) &&
+    ("title" in arg) && (typeof arg.title == "string") &&
+    ("year" in arg) && (typeof arg.year == "number") &&
+    ("journal" in arg) && (typeof arg.journal == "string") &&
+    ("journal-url" in arg) && (typeof arg["journal-url"] == "string");
+}
+
 type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticleProceedingsObject;
+
+function isArticleObject(arg: any): arg is ArticleObject {
+  return isArticlePreprintObject(arg) || isArticleToappearObject(arg) || isArticleProceedingsObject(arg);
+}
+
+function isArticleObjectArray(arg: any): arg is ArticleObject[] {
+  return (arg instanceof Array) && arg.every(isArticleObject);
+}
 
 type ArticleKey = "title" | "journal" | "year" | "arxiv"
 

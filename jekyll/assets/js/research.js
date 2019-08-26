@@ -175,6 +175,36 @@ var ArticleType;
     ArticleType["toappear"] = "toappear";
     ArticleType["proceedings"] = "proceedings";
 })(ArticleType || (ArticleType = {}));
+function isArticlePreprintObject(arg) {
+    return (typeof arg == "object") &&
+        ("type" in arg) && (arg.type == ArticleType.preprint) &&
+        ("title" in arg) && (typeof arg.title == "string") &&
+        ("arxiv" in arg) && (typeof arg.arxiv == "string") &&
+        ("year" in arg) && (typeof arg.year == "number");
+}
+function isArticleToappearObject(arg) {
+    return (typeof arg == "object") &&
+        ("type" in arg) && (arg.type == ArticleType.toappear) &&
+        ("title" in arg) && (typeof arg.title == "string") &&
+        ("arxiv" in arg) && (typeof arg.arxiv == "string") &&
+        ("year" in arg) && (typeof arg.year == "number") &&
+        ("journal" in arg) && (typeof arg.journal == "string") &&
+        ("journal-url" in arg) && (typeof arg["journal-url"] == "string");
+}
+function isArticleProceedingsObject(arg) {
+    return (typeof arg == "object") &&
+        ("type" in arg) && (arg.type == ArticleType.proceedings) &&
+        ("title" in arg) && (typeof arg.title == "string") &&
+        ("year" in arg) && (typeof arg.year == "number") &&
+        ("journal" in arg) && (typeof arg.journal == "string") &&
+        ("journal-url" in arg) && (typeof arg["journal-url"] == "string");
+}
+function isArticleObject(arg) {
+    return isArticlePreprintObject(arg) || isArticleToappearObject(arg) || isArticleProceedingsObject(arg);
+}
+function isArticleObjectArray(arg) {
+    return (arg instanceof Array) && arg.every(isArticleObject);
+}
 var Article = /** @class */ (function (_super) {
     __extends(Article, _super);
     function Article(articleObj) {
@@ -527,7 +557,7 @@ var articleListHandler;
 function isValidJson(arg) {
     return (typeof arg == "object") &&
         ("talks" in arg) && isTalkObjectArray(arg.talks) &&
-        ("articles" in arg);
+        ("articles" in arg) && isArticleObjectArray(arg.articles);
 }
 function loadFromJson(file) {
     var httpObj = new XMLHttpRequest();

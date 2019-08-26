@@ -6,13 +6,13 @@ var articleListHandler: ArticleListHandler;
 
 interface ValidJson {
   talks: TalkObject[];
-  articles: any;
+  articles: ArticleObject[];
 }
 
 function isValidJson(arg: any): arg is ValidJson {
   return (typeof arg == "object") &&
     ("talks" in arg) && isTalkObjectArray(arg.talks) &&
-    ("articles" in arg);
+    ("articles" in arg) && isArticleObjectArray(arg.articles);
 }
 
 function loadFromJson(file: string): void {
