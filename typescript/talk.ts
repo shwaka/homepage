@@ -5,11 +5,23 @@ interface TalkBaseInfo {
   lang: Lang;
 }
 
+function isTalkBaseInfo(arg: any): arg is TalkBaseInfo {
+  return ("date" in arg) && (typeof arg.date == "string") &&
+    ("lang" in arg) && (arg.lang in Lang);
+}
+
 interface TalkInfo {
   title: string;
   conference: string;
   venue: string;
   url?: string;
+}
+
+function isTalkInfo(arg: any): arg is TalkInfo {
+  return ("title" in arg) && (typeof arg.title == "string") &&
+    ("conference" in arg) && (typeof arg.conference == "string") &&
+    ("venue" in arg) && (typeof arg.venue == "string") &&
+    (!("url" in arg) || (typeof arg.url == "string"));
 }
 
 interface TalkObject {

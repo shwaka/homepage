@@ -335,6 +335,16 @@ function isNonRefereedArticle(article) {
     return article.getType() == ArticleType.proceedings;
 }
 /// <reference path="base.ts"/>
+function isTalkBaseInfo(arg) {
+    return ("date" in arg) && (typeof arg.date == "string") &&
+        ("lang" in arg) && (arg.lang in Lang);
+}
+function isTalkInfo(arg) {
+    return ("title" in arg) && (typeof arg.title == "string") &&
+        ("conference" in arg) && (typeof arg.conference == "string") &&
+        ("venue" in arg) && (typeof arg.venue == "string") &&
+        (!("url" in arg) || (typeof arg.url == "string"));
+}
 var Talk = /** @class */ (function (_super) {
     __extends(Talk, _super);
     function Talk(talkObj) {
@@ -592,3 +602,41 @@ function updateTalks() {
     talkListHandler.show(outputFormat, outputLang, reverse, split);
     articleListHandler.show(outputFormat, outputLang, reverse);
 }
+/// <reference path="talk.ts"/>
+function assert(arg, msg) {
+    if (msg === void 0) { msg = "(no msg)"; }
+    if (!arg) {
+        throw Error("Assertion failed: " + msg);
+    }
+}
+function testTalkBaseInfo() {
+    var talkBaseInfo = { date: "hoge", lang: Lang.en };
+    assert(isTalkBaseInfo(talkBaseInfo), "Basic example");
+    var noLang = { date: "hoge" };
+    assert(!isTalkBaseInfo(noLang), "lang missing");
+    var wrongLang = { date: "hoge", lang: "fr" };
+    assert(!isTalkBaseInfo(wrongLang), "wrong lang");
+    var directLang = { date: "hoge", lang: "ja" };
+    assert(isTalkBaseInfo(directLang), "lang directly specified");
+}
+function testTalkInfo() {
+    assert(isTalkInfo({ title: "mytitle",
+        conference: "myconference",
+        venue: "myplace" }), "example without url");
+    assert(isTalkInfo({ title: "mytitle",
+        conference: "myconference",
+        venue: "myplace",
+        url: "https://exmaple.com" }), "example with url");
+    assert(!isTalkInfo({ title: "mytitle",
+        conference: "myconference",
+        venue: 3 }), "wrong type venue");
+    assert(isTalkInfo({ title: "mytitle",
+        conference: "myconference",
+        venue: "myplace",
+        url: 123 }), "wrong type url");
+}
+function test() {
+    testTalkBaseInfo();
+    testTalkInfo();
+}
+test();
