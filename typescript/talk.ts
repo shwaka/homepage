@@ -39,6 +39,10 @@ function isTalkObject(arg: any): arg is TalkObject {
     (!("en" in arg) || isTalkInfo(arg.en));
 }
 
+function isTalkObjectArray(arg: any): arg is TalkObject[] {
+  return (arg instanceof Array) && arg.every(isTalkObject);
+}
+
 type TalkKey = "title" | "conference" | "venue" | "date";
 
 class Talk extends Work<TalkKey> {

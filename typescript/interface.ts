@@ -4,12 +4,26 @@
 var talkListHandler: TalkListHandler;
 var articleListHandler: ArticleListHandler;
 
+interface ValidJson {
+  talks: TalkObject[];
+  articles: any;
+}
+
+function isValidJson(arg: any): arg is ValidJson {
+  return (typeof arg == "object") &&
+    ("talks" in arg) && isTalkObjectArray(arg.talks) &&
+    ("articles" in arg);
+}
+
 function loadFromJson(file: string): void {
   const httpObj = new XMLHttpRequest();
   httpObj.open("get", file, true);
   httpObj.onload = function() {
     const json = this.responseText;
     const jsonObj = JSON.parse(json);
+    if (!isValidJson(jsonObj)) {
+      throw Error("invalid JSON");
+    }
     const talkDiv = document.getElementById("talk") as HTMLElement; // まずい
     talkListHandler = new TalkListHandler(jsonObj.talks, talkDiv);
     // talkListGlobal = TalkList.create(json, "talk");

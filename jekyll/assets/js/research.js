@@ -353,6 +353,9 @@ function isTalkObject(arg) {
         (!("ja" in arg) || isTalkInfo(arg.ja)) &&
         (!("en" in arg) || isTalkInfo(arg.en));
 }
+function isTalkObjectArray(arg) {
+    return (arg instanceof Array) && arg.every(isTalkObject);
+}
 var Talk = /** @class */ (function (_super) {
     __extends(Talk, _super);
     function Talk(talkObj) {
@@ -521,12 +524,20 @@ function isJapaneseTalk(talk) {
 /// <reference path="article.ts"/>
 var talkListHandler;
 var articleListHandler;
+function isValidJson(arg) {
+    return (typeof arg == "object") &&
+        ("talks" in arg) && isTalkObjectArray(arg.talks) &&
+        ("articles" in arg);
+}
 function loadFromJson(file) {
     var httpObj = new XMLHttpRequest();
     httpObj.open("get", file, true);
     httpObj.onload = function () {
         var json = this.responseText;
         var jsonObj = JSON.parse(json);
+        if (!isValidJson(jsonObj)) {
+            throw Error("invalid JSON");
+        }
         var talkDiv = document.getElementById("talk"); // まずい
         talkListHandler = new TalkListHandler(jsonObj.talks, talkDiv);
         // talkListGlobal = TalkList.create(json, "talk");
