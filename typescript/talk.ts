@@ -6,7 +6,8 @@ interface TalkBaseInfo {
 }
 
 function isTalkBaseInfo(arg: any): arg is TalkBaseInfo {
-  return ("date" in arg) && (typeof arg.date == "string") &&
+  return (typeof arg == "object") &&
+    ("date" in arg) && (typeof arg.date == "string") &&
     ("lang" in arg) && (arg.lang in Lang);
 }
 
@@ -18,7 +19,8 @@ interface TalkInfo {
 }
 
 function isTalkInfo(arg: any): arg is TalkInfo {
-  return ("title" in arg) && (typeof arg.title == "string") &&
+  return (typeof arg == "object") &&
+    ("title" in arg) && (typeof arg.title == "string") &&
     ("conference" in arg) && (typeof arg.conference == "string") &&
     ("venue" in arg) && (typeof arg.venue == "string") &&
     (!("url" in arg) || (typeof arg.url == "string"));
@@ -28,6 +30,13 @@ interface TalkObject {
   base: TalkBaseInfo;
   ja?: TalkInfo;
   en?: TalkInfo;
+}
+
+function isTalkObject(arg: any): arg is TalkObject {
+  return (typeof arg == "object") &&
+    ("base" in arg) && isTalkBaseInfo(arg.base) &&
+    (!("ja" in arg) || isTalkInfo(arg.ja)) &&
+    (!("en" in arg) || isTalkInfo(arg.en));
 }
 
 type TalkKey = "title" | "conference" | "venue" | "date";

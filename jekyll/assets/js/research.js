@@ -336,14 +336,22 @@ function isNonRefereedArticle(article) {
 }
 /// <reference path="base.ts"/>
 function isTalkBaseInfo(arg) {
-    return ("date" in arg) && (typeof arg.date == "string") &&
+    return (typeof arg == "object") &&
+        ("date" in arg) && (typeof arg.date == "string") &&
         ("lang" in arg) && (arg.lang in Lang);
 }
 function isTalkInfo(arg) {
-    return ("title" in arg) && (typeof arg.title == "string") &&
+    return (typeof arg == "object") &&
+        ("title" in arg) && (typeof arg.title == "string") &&
         ("conference" in arg) && (typeof arg.conference == "string") &&
         ("venue" in arg) && (typeof arg.venue == "string") &&
         (!("url" in arg) || (typeof arg.url == "string"));
+}
+function isTalkObject(arg) {
+    return (typeof arg == "object") &&
+        ("base" in arg) && isTalkBaseInfo(arg.base) &&
+        (!("ja" in arg) || isTalkInfo(arg.ja)) &&
+        (!("en" in arg) || isTalkInfo(arg.en));
 }
 var Talk = /** @class */ (function (_super) {
     __extends(Talk, _super);
@@ -610,33 +618,39 @@ function assert(arg, msg) {
     }
 }
 function testTalkBaseInfo() {
-    var talkBaseInfo = { date: "hoge", lang: Lang.en };
-    assert(isTalkBaseInfo(talkBaseInfo), "Basic example");
-    var noLang = { date: "hoge" };
-    assert(!isTalkBaseInfo(noLang), "lang missing");
-    var wrongLang = { date: "hoge", lang: "fr" };
-    assert(!isTalkBaseInfo(wrongLang), "wrong lang");
-    var directLang = { date: "hoge", lang: "ja" };
-    assert(isTalkBaseInfo(directLang), "lang directly specified");
+    assert(!isTalkBaseInfo("hoge"), "just a string");
+    assert(!isTalkBaseInfo(3), "just a number");
+    assert(isTalkBaseInfo({ date: "hoge", lang: Lang.en }), "Basic example");
+    assert(!isTalkBaseInfo({ date: "hoge" }), "lang missing");
+    assert(!isTalkBaseInfo({ date: "hoge", lang: "fr" }), "wrong lang");
+    assert(isTalkBaseInfo({ date: "hoge", lang: "ja" }), "lang directly specified");
 }
 function testTalkInfo() {
     assert(isTalkInfo({ title: "mytitle",
         conference: "myconference",
-        venue: "myplace" }), "example without url");
+        venue: "myvenue" }), "example without url");
     assert(isTalkInfo({ title: "mytitle",
         conference: "myconference",
-        venue: "myplace",
+        venue: "myvenue",
         url: "https://exmaple.com" }), "example with url");
     assert(!isTalkInfo({ title: "mytitle",
         conference: "myconference",
         venue: 3 }), "wrong type venue");
-    assert(isTalkInfo({ title: "mytitle",
+    assert(!isTalkInfo({ title: "mytitle",
         conference: "myconference",
-        venue: "myplace",
+        venue: "myvenue",
         url: 123 }), "wrong type url");
+}
+function testTalkObject() {
+    var talkBaseInfo = { date: "hoge", lang: Lang.en };
+    var talkInfo = { title: "mytitle", conference: "myconf", venue: "myvenue" };
+    assert(isTalkObject({ base: talkBaseInfo, ja: talkInfo }), "only ja");
+    assert(isTalkObject({ base: talkBaseInfo, ja: talkInfo, en: talkInfo }), "both ja and en");
+    assert(!isTalkObject({ base: talkBaseInfo, ja: { title: "mytitle", conference: "myconf" } }), "venue missing in ja");
 }
 function test() {
     testTalkBaseInfo();
     testTalkInfo();
+    testTalkObject();
 }
 test();
