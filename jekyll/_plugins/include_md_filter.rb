@@ -6,6 +6,9 @@ module Jekyll
       site = @context.registers[:site]
       liquid_options = site.config["liquid"]
       template = site.liquid_renderer.file(page["path"]).parse(page["content"])
+      # Upgrading from 3.x to 4.x (https://jekyllrb.com/docs/upgrading/3-to-4/) に
+      #   template = Liquid::Template.parse(content)
+      # に変更しろと書いてあるけど大丈夫？"same object" でも問題ない？
       info = {
         :registers => { :site => site, :page => page},
         :strict_filters => liquid_options["strict_filters"],
