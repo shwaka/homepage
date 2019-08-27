@@ -68,6 +68,9 @@
 - デプロイ方法をどうにかしたい．
     - 自動化したい
     - 重いPDFをいちいち upload するのは無駄
+- Jekyll 4.0.0 (2019/8/20 release) に対応したい
+    - refer_filter.rb が壊れる
+    - {{ site.baseurl }} を前置する必要がなくなる(してはいけなくなる)らしい？
 - `include_md_filter.rb`
     - ドキュメントを整える
     - ついでに `others/include-test.md` で試したやつがどう上手くいかないかも記録しておく？
