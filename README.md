@@ -84,3 +84,7 @@
     - browserify した javascript の関数を，html から呼び出す
     - tsc, browserify あたりも package.json に書く？
       (npx? npm run?)
+- `refer_filter.rb`
+    - `config.yml` を適切に設定していない場合に分かりやすいエラーメッセージを吐く
+        - `config.refer.key`
+        - `config.baseurl`
