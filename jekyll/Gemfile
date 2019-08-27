@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'jekyll', '3.8.6'
+jekyll_version = '3.8.6'
+jekyll_version = '4.0.0'
+
+gem 'jekyll', jekyll_version
 gem 'nokogiri'
 gem 'jekyll-toc'
 
