@@ -19,7 +19,7 @@
 //   color: $codeblock-color;
 // }
 
-// {% highlgiht %} タグを用いたコードブロックの余白の調整
+// Jekyll の highlgiht タグを用いたコードブロックの余白の調整
 figure.highlight{
   margin: 0px;
   td > pre{

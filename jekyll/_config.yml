@@ -24,4 +24,6 @@ defaults:
       layout: mylayout
 sass:
   style: compressed
-  sourcemap: never # source map を生成すると謎のエラーを吐く… (Jekyll 4.0.0 )
+  # sourcemap: never
+  # ↑scss 内のコメントに Jekyll タグが含まれていると，
+  # sourcemap (.css.map) ではそれが処理されてしまう
