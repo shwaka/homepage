@@ -3,6 +3,7 @@
 {% endcomment %}
 
 <span id="back">
+  {% assign backref = nil %}
   {% if page.backref %}
     {% assign backref = page.backref %}
   {% elsif layout.backref %}
