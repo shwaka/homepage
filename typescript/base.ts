@@ -21,8 +21,28 @@ function makeAnchor(text: string, url: string, target_blank: boolean = true): HT
   return a;
 }
 
-function hasProperty<T extends {}, K extends string>(obj: T, prop: K): obj is (T & {[S in K]: unknown}) {
-  return prop in obj;
+interface Types {
+  undefined: undefined;
+  object: object;
+  boolean: boolean;
+  number: number;
+  string: string;
+  symbol: symbol;
+}
+
+function hasProperty<T extends {}, K extends string>
+  (obj: T, prop: K): obj is (T & {[S in K]: unknown}) {
+    return prop in obj;
+}
+
+function hasPropertyOfType<T extends {}, K extends string, S extends keyof Types>
+  (obj: T, prop: K, valueType: S): obj is (T & {[R in K]: Types[S]}) {
+    return hasProperty(obj, prop) && (typeof obj[prop] == valueType);
+}
+
+function hasOptionalPropertyOfType<T extends {}, K extends string, S extends keyof Types>
+  (obj: T, prop: K, valueType: S): obj is (T & {[R in K]?: Types[S]}) {
+    return !hasProperty(obj, prop) || (typeof obj[prop] == valueType);
 }
 
 enum Lang {

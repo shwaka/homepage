@@ -7,8 +7,8 @@ interface TalkBaseInfo {
 
 function isTalkBaseInfo(arg: unknown): arg is TalkBaseInfo {
   return  (typeof arg == "object") && (arg != null) &&
-    hasProperty(arg, "date") && (typeof arg.date == "string") &&
-    hasProperty(arg, "lang") && (typeof arg.lang == "string") && (arg.lang in Lang);
+    hasPropertyOfType(arg, "date", "string") &&
+    hasPropertyOfType(arg, "lang", "string") && (arg.lang in Lang);
 }
 
 interface TalkInfo {
@@ -20,10 +20,10 @@ interface TalkInfo {
 
 function isTalkInfo(arg: unknown): arg is TalkInfo {
   return (typeof arg == "object") && (arg != null) &&
-    hasProperty(arg, "title") && (typeof arg.title == "string") &&
-    hasProperty(arg, "conference") && (typeof arg.conference == "string") &&
-    hasProperty(arg, "venue") && (typeof arg.venue == "string") &&
-    (!hasProperty(arg, "url") || (typeof arg.url == "string"));
+    hasPropertyOfType(arg, "title", "string") &&
+    hasPropertyOfType(arg, "conference", "string") &&
+    hasPropertyOfType(arg, "venue", "string") &&
+    hasOptionalPropertyOfType(arg, "url", "string");
 }
 
 interface TalkObject {

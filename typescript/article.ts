@@ -16,9 +16,9 @@ interface ArticlePreprintObject {
 function isArticlePreprintObject(arg: unknown): arg is ArticlePreprintObject {
   return (typeof arg == "object") && (arg != null) &&
     hasProperty(arg, "type") && (arg.type == ArticleType.preprint) &&
-    hasProperty(arg, "title") && (typeof arg.title == "string") &&
-    hasProperty(arg, "arxiv") && (typeof arg.arxiv == "string") &&
-    hasProperty(arg, "year") && (typeof arg.year == "number");
+    hasPropertyOfType(arg, "title", "string") &&
+    hasPropertyOfType(arg, "arxiv", "string") &&
+    hasPropertyOfType(arg, "year", "number");
 }
 
 interface ArticleToappearObject {
@@ -33,11 +33,11 @@ interface ArticleToappearObject {
 function isArticleToappearObject(arg: unknown): arg is ArticleToappearObject {
   return (typeof arg == "object") && (arg != null) &&
     hasProperty(arg, "type") && (arg.type == ArticleType.toappear) &&
-    hasProperty(arg, "title") && (typeof arg.title == "string") &&
-    hasProperty(arg, "arxiv") && (typeof arg.arxiv == "string") &&
-    hasProperty(arg, "year") && (typeof arg.year == "number") &&
-    hasProperty(arg, "journal") && (typeof arg.journal == "string") &&
-    hasProperty(arg, "journal-url") && (typeof arg["journal-url"] == "string");
+    hasPropertyOfType(arg, "title", "string") &&
+    hasPropertyOfType(arg, "arxiv", "string") &&
+    hasPropertyOfType(arg, "year", "number") &&
+    hasPropertyOfType(arg, "journal", "string") &&
+    hasPropertyOfType(arg, "journal-url", "string");
 }
 
 interface ArticleProceedingsObject {
@@ -51,10 +51,10 @@ interface ArticleProceedingsObject {
 function isArticleProceedingsObject(arg: unknown): arg is ArticleProceedingsObject {
   return (typeof arg == "object") && (arg != null) &&
     hasProperty(arg, "type") && (arg.type == ArticleType.proceedings) &&
-    hasProperty(arg, "title") && (typeof arg.title == "string") &&
-    hasProperty(arg, "year") && (typeof arg.year == "number") &&
-    hasProperty(arg, "journal") && (typeof arg.journal == "string") &&
-    hasProperty(arg, "journal-url") && (typeof arg["journal-url"] == "string");
+    hasPropertyOfType(arg, "title", "string") &&
+    hasPropertyOfType(arg, "year", "number") &&
+    hasPropertyOfType(arg, "journal", "string") &&
+    hasPropertyOfType(arg, "journal-url", "string");
 }
 
 type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticleProceedingsObject;

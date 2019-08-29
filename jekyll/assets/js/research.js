@@ -37,6 +37,12 @@ function makeAnchor(text, url, target_blank) {
 function hasProperty(obj, prop) {
     return prop in obj;
 }
+function hasPropertyOfType(obj, prop, valueType) {
+    return hasProperty(obj, prop) && (typeof obj[prop] == valueType);
+}
+function hasOptionalPropertyOfType(obj, prop, valueType) {
+    return !hasProperty(obj, prop) || (typeof obj[prop] == valueType);
+}
 var Lang;
 (function (Lang) {
     Lang["ja"] = "ja";
@@ -181,26 +187,26 @@ var ArticleType;
 function isArticlePreprintObject(arg) {
     return (typeof arg == "object") && (arg != null) &&
         hasProperty(arg, "type") && (arg.type == ArticleType.preprint) &&
-        hasProperty(arg, "title") && (typeof arg.title == "string") &&
-        hasProperty(arg, "arxiv") && (typeof arg.arxiv == "string") &&
-        hasProperty(arg, "year") && (typeof arg.year == "number");
+        hasPropertyOfType(arg, "title", "string") &&
+        hasPropertyOfType(arg, "arxiv", "string") &&
+        hasPropertyOfType(arg, "year", "number");
 }
 function isArticleToappearObject(arg) {
     return (typeof arg == "object") && (arg != null) &&
         hasProperty(arg, "type") && (arg.type == ArticleType.toappear) &&
-        hasProperty(arg, "title") && (typeof arg.title == "string") &&
-        hasProperty(arg, "arxiv") && (typeof arg.arxiv == "string") &&
-        hasProperty(arg, "year") && (typeof arg.year == "number") &&
-        hasProperty(arg, "journal") && (typeof arg.journal == "string") &&
-        hasProperty(arg, "journal-url") && (typeof arg["journal-url"] == "string");
+        hasPropertyOfType(arg, "title", "string") &&
+        hasPropertyOfType(arg, "arxiv", "string") &&
+        hasPropertyOfType(arg, "year", "number") &&
+        hasPropertyOfType(arg, "journal", "string") &&
+        hasPropertyOfType(arg, "journal-url", "string");
 }
 function isArticleProceedingsObject(arg) {
     return (typeof arg == "object") && (arg != null) &&
         hasProperty(arg, "type") && (arg.type == ArticleType.proceedings) &&
-        hasProperty(arg, "title") && (typeof arg.title == "string") &&
-        hasProperty(arg, "year") && (typeof arg.year == "number") &&
-        hasProperty(arg, "journal") && (typeof arg.journal == "string") &&
-        hasProperty(arg, "journal-url") && (typeof arg["journal-url"] == "string");
+        hasPropertyOfType(arg, "title", "string") &&
+        hasPropertyOfType(arg, "year", "number") &&
+        hasPropertyOfType(arg, "journal", "string") &&
+        hasPropertyOfType(arg, "journal-url", "string");
 }
 function isArticleObject(arg) {
     return isArticlePreprintObject(arg) || isArticleToappearObject(arg) || isArticleProceedingsObject(arg);
@@ -370,15 +376,15 @@ function isNonRefereedArticle(article) {
 /// <reference path="base.ts"/>
 function isTalkBaseInfo(arg) {
     return (typeof arg == "object") && (arg != null) &&
-        hasProperty(arg, "date") && (typeof arg.date == "string") &&
-        hasProperty(arg, "lang") && (typeof arg.lang == "string") && (arg.lang in Lang);
+        hasPropertyOfType(arg, "date", "string") &&
+        hasPropertyOfType(arg, "lang", "string") && (arg.lang in Lang);
 }
 function isTalkInfo(arg) {
     return (typeof arg == "object") && (arg != null) &&
-        hasProperty(arg, "title") && (typeof arg.title == "string") &&
-        hasProperty(arg, "conference") && (typeof arg.conference == "string") &&
-        hasProperty(arg, "venue") && (typeof arg.venue == "string") &&
-        (!hasProperty(arg, "url") || (typeof arg.url == "string"));
+        hasPropertyOfType(arg, "title", "string") &&
+        hasPropertyOfType(arg, "conference", "string") &&
+        hasPropertyOfType(arg, "venue", "string") &&
+        hasOptionalPropertyOfType(arg, "url", "string");
 }
 function isTalkObject(arg) {
     return (typeof arg == "object") && (arg != null) &&
