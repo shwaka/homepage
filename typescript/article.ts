@@ -141,11 +141,7 @@ class Article extends Work<ArticleKey>{
 
 class ArticleList extends WorkList<ArticleKey, Article> {
   constructor(articleObjArray: ArticleObject[]) {
-    const data: Article[] = [];
-    articleObjArray.forEach(articleObj => {
-      // map 的な何かでどうにかならない？
-      data.push(new Article(articleObj));
-    })
+    const data: Article[] = articleObjArray.map(articleObj => new Article(articleObj));
     super(data);
   }
 

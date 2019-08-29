@@ -130,11 +130,7 @@ class Talk extends Work<TalkKey> {
 
 class TalkList extends WorkList<TalkKey, Talk> {
   constructor(talkObjArray: TalkObject[]) {
-    const data: Talk[] = [];
-    talkObjArray.forEach(talkObj => {
-      // map 的な何かでどうにかならない？
-      data.push(new Talk(talkObj));
-    })
+    const data: Talk[] = talkObjArray.map(talkObj => new Talk(talkObj));
     super(data);
   }
 

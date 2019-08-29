@@ -288,11 +288,7 @@ var ArticleList = /** @class */ (function (_super) {
     __extends(ArticleList, _super);
     function ArticleList(articleObjArray) {
         var _this = this;
-        var data = [];
-        articleObjArray.forEach(function (articleObj) {
-            // map 的な何かでどうにかならない？
-            data.push(new Article(articleObj));
-        });
+        var data = articleObjArray.map(function (articleObj) { return new Article(articleObj); });
         _this = _super.call(this, data) || this;
         return _this;
     }
@@ -484,11 +480,7 @@ var TalkList = /** @class */ (function (_super) {
     __extends(TalkList, _super);
     function TalkList(talkObjArray) {
         var _this = this;
-        var data = [];
-        talkObjArray.forEach(function (talkObj) {
-            // map 的な何かでどうにかならない？
-            data.push(new Talk(talkObj));
-        });
+        var data = talkObjArray.map(function (talkObj) { return new Talk(talkObj); });
         _this = _super.call(this, data) || this;
         return _this;
     }
