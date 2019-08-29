@@ -11,10 +11,12 @@
     {% endif %}
     {% if page.ref %}
       {% assign url = page.ref | refer: true, "lang", lang_data.key | refer_url %}
-      {% unless url %}
+      {% if url %}
+        {% assign refer_default = false %}
+      {% else %}
         {% assign url = "index" | refer: false, "lang", lang_data.key | refer_url %}
         {% assign refer_default = true %}
-      {% endunless %}
+      {% endif %}
     {% elsif lang_data.key == page.lang %}
       {% assign url = page.url %}
       {% assign refer_default = false %}
