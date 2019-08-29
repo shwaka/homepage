@@ -13,12 +13,12 @@ interface ArticlePreprintObject {
   year: number;
 }
 
-function isArticlePreprintObject(arg: any): arg is ArticlePreprintObject {
-  return (typeof arg == "object") &&
-    ("type" in arg) && (arg.type == ArticleType.preprint) &&
-    ("title" in arg) && (typeof arg.title == "string") &&
-    ("arxiv" in arg) && (typeof arg.arxiv == "string") &&
-    ("year" in arg) && (typeof arg.year == "number");
+function isArticlePreprintObject(arg: unknown): arg is ArticlePreprintObject {
+  return (typeof arg == "object") && (arg != null) &&
+    hasProperty(arg, "type") && (arg.type == ArticleType.preprint) &&
+    hasProperty(arg, "title") && (typeof arg.title == "string") &&
+    hasProperty(arg, "arxiv") && (typeof arg.arxiv == "string") &&
+    hasProperty(arg, "year") && (typeof arg.year == "number");
 }
 
 interface ArticleToappearObject {
@@ -30,14 +30,14 @@ interface ArticleToappearObject {
   "journal-url": string;
 }
 
-function isArticleToappearObject(arg: any): arg is ArticleToappearObject {
-  return (typeof arg == "object") &&
-    ("type" in arg) && (arg.type == ArticleType.toappear) &&
-    ("title" in arg) && (typeof arg.title == "string") &&
-    ("arxiv" in arg) && (typeof arg.arxiv == "string") &&
-    ("year" in arg) && (typeof arg.year == "number") &&
-    ("journal" in arg) && (typeof arg.journal == "string") &&
-    ("journal-url" in arg) && (typeof arg["journal-url"] == "string");
+function isArticleToappearObject(arg: unknown): arg is ArticleToappearObject {
+  return (typeof arg == "object") && (arg != null) &&
+    hasProperty(arg, "type") && (arg.type == ArticleType.toappear) &&
+    hasProperty(arg, "title") && (typeof arg.title == "string") &&
+    hasProperty(arg, "arxiv") && (typeof arg.arxiv == "string") &&
+    hasProperty(arg, "year") && (typeof arg.year == "number") &&
+    hasProperty(arg, "journal") && (typeof arg.journal == "string") &&
+    hasProperty(arg, "journal-url") && (typeof arg["journal-url"] == "string");
 }
 
 interface ArticleProceedingsObject {
@@ -48,22 +48,22 @@ interface ArticleProceedingsObject {
   "journal-url": string;
 }
 
-function isArticleProceedingsObject(arg: any): arg is ArticleProceedingsObject {
-  return (typeof arg == "object") &&
-    ("type" in arg) && (arg.type == ArticleType.proceedings) &&
-    ("title" in arg) && (typeof arg.title == "string") &&
-    ("year" in arg) && (typeof arg.year == "number") &&
-    ("journal" in arg) && (typeof arg.journal == "string") &&
-    ("journal-url" in arg) && (typeof arg["journal-url"] == "string");
+function isArticleProceedingsObject(arg: unknown): arg is ArticleProceedingsObject {
+  return (typeof arg == "object") && (arg != null) &&
+    hasProperty(arg, "type") && (arg.type == ArticleType.proceedings) &&
+    hasProperty(arg, "title") && (typeof arg.title == "string") &&
+    hasProperty(arg, "year") && (typeof arg.year == "number") &&
+    hasProperty(arg, "journal") && (typeof arg.journal == "string") &&
+    hasProperty(arg, "journal-url") && (typeof arg["journal-url"] == "string");
 }
 
 type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticleProceedingsObject;
 
-function isArticleObject(arg: any): arg is ArticleObject {
+function isArticleObject(arg: unknown): arg is ArticleObject {
   return isArticlePreprintObject(arg) || isArticleToappearObject(arg) || isArticleProceedingsObject(arg);
 }
 
-function isArticleObjectArray(arg: any): arg is ArticleObject[] {
+function isArticleObjectArray(arg: unknown): arg is ArticleObject[] {
   return (arg instanceof Array) && arg.every(isArticleObject);
 }
 

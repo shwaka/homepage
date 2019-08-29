@@ -34,6 +34,9 @@ function makeAnchor(text, url, target_blank) {
     }
     return a;
 }
+function hasProperty(obj, prop) {
+    return prop in obj;
+}
 var Lang;
 (function (Lang) {
     Lang["ja"] = "ja";
@@ -176,28 +179,28 @@ var ArticleType;
     ArticleType["proceedings"] = "proceedings";
 })(ArticleType || (ArticleType = {}));
 function isArticlePreprintObject(arg) {
-    return (typeof arg == "object") &&
-        ("type" in arg) && (arg.type == ArticleType.preprint) &&
-        ("title" in arg) && (typeof arg.title == "string") &&
-        ("arxiv" in arg) && (typeof arg.arxiv == "string") &&
-        ("year" in arg) && (typeof arg.year == "number");
+    return (typeof arg == "object") && (arg != null) &&
+        hasProperty(arg, "type") && (arg.type == ArticleType.preprint) &&
+        hasProperty(arg, "title") && (typeof arg.title == "string") &&
+        hasProperty(arg, "arxiv") && (typeof arg.arxiv == "string") &&
+        hasProperty(arg, "year") && (typeof arg.year == "number");
 }
 function isArticleToappearObject(arg) {
-    return (typeof arg == "object") &&
-        ("type" in arg) && (arg.type == ArticleType.toappear) &&
-        ("title" in arg) && (typeof arg.title == "string") &&
-        ("arxiv" in arg) && (typeof arg.arxiv == "string") &&
-        ("year" in arg) && (typeof arg.year == "number") &&
-        ("journal" in arg) && (typeof arg.journal == "string") &&
-        ("journal-url" in arg) && (typeof arg["journal-url"] == "string");
+    return (typeof arg == "object") && (arg != null) &&
+        hasProperty(arg, "type") && (arg.type == ArticleType.toappear) &&
+        hasProperty(arg, "title") && (typeof arg.title == "string") &&
+        hasProperty(arg, "arxiv") && (typeof arg.arxiv == "string") &&
+        hasProperty(arg, "year") && (typeof arg.year == "number") &&
+        hasProperty(arg, "journal") && (typeof arg.journal == "string") &&
+        hasProperty(arg, "journal-url") && (typeof arg["journal-url"] == "string");
 }
 function isArticleProceedingsObject(arg) {
-    return (typeof arg == "object") &&
-        ("type" in arg) && (arg.type == ArticleType.proceedings) &&
-        ("title" in arg) && (typeof arg.title == "string") &&
-        ("year" in arg) && (typeof arg.year == "number") &&
-        ("journal" in arg) && (typeof arg.journal == "string") &&
-        ("journal-url" in arg) && (typeof arg["journal-url"] == "string");
+    return (typeof arg == "object") && (arg != null) &&
+        hasProperty(arg, "type") && (arg.type == ArticleType.proceedings) &&
+        hasProperty(arg, "title") && (typeof arg.title == "string") &&
+        hasProperty(arg, "year") && (typeof arg.year == "number") &&
+        hasProperty(arg, "journal") && (typeof arg.journal == "string") &&
+        hasProperty(arg, "journal-url") && (typeof arg["journal-url"] == "string");
 }
 function isArticleObject(arg) {
     return isArticlePreprintObject(arg) || isArticleToappearObject(arg) || isArticleProceedingsObject(arg);
@@ -366,22 +369,22 @@ function isNonRefereedArticle(article) {
 }
 /// <reference path="base.ts"/>
 function isTalkBaseInfo(arg) {
-    return (typeof arg == "object") &&
-        ("date" in arg) && (typeof arg.date == "string") &&
-        ("lang" in arg) && (arg.lang in Lang);
+    return (typeof arg == "object") && (arg != null) &&
+        hasProperty(arg, "date") && (typeof arg.date == "string") &&
+        hasProperty(arg, "lang") && (typeof arg.lang == "string") && (arg.lang in Lang);
 }
 function isTalkInfo(arg) {
-    return (typeof arg == "object") &&
-        ("title" in arg) && (typeof arg.title == "string") &&
-        ("conference" in arg) && (typeof arg.conference == "string") &&
-        ("venue" in arg) && (typeof arg.venue == "string") &&
-        (!("url" in arg) || (typeof arg.url == "string"));
+    return (typeof arg == "object") && (arg != null) &&
+        hasProperty(arg, "title") && (typeof arg.title == "string") &&
+        hasProperty(arg, "conference") && (typeof arg.conference == "string") &&
+        hasProperty(arg, "venue") && (typeof arg.venue == "string") &&
+        (!hasProperty(arg, "url") || (typeof arg.url == "string"));
 }
 function isTalkObject(arg) {
-    return (typeof arg == "object") &&
-        ("base" in arg) && isTalkBaseInfo(arg.base) &&
-        (!("ja" in arg) || isTalkInfo(arg.ja)) &&
-        (!("en" in arg) || isTalkInfo(arg.en));
+    return (typeof arg == "object") && (arg != null) &&
+        hasProperty(arg, "base") && isTalkBaseInfo(arg.base) &&
+        (!hasProperty(arg, "ja") || isTalkInfo(arg.ja)) &&
+        (!hasProperty(arg, "en") || isTalkInfo(arg.en));
 }
 function isTalkObjectArray(arg) {
     return (arg instanceof Array) && arg.every(isTalkObject);
@@ -555,9 +558,9 @@ function isJapaneseTalk(talk) {
 var talkListHandler;
 var articleListHandler;
 function isValidJson(arg) {
-    return (typeof arg == "object") &&
-        ("talks" in arg) && isTalkObjectArray(arg.talks) &&
-        ("articles" in arg) && isArticleObjectArray(arg.articles);
+    return (typeof arg == "object") && (arg != null) &&
+        hasProperty(arg, "talks") && isTalkObjectArray(arg.talks) &&
+        hasProperty(arg, "articles") && isArticleObjectArray(arg.articles);
 }
 function loadFromJson(file) {
     var httpObj = new XMLHttpRequest();
@@ -582,7 +585,8 @@ function loadFromJson(file) {
 }
 function isConfigForm(arg) {
     // チェックが緩すぎる
-    return ("order" in arg) && ("language" in arg) && ("format" in arg);
+    return (typeof arg == "object") && (arg != null) &&
+        ("order" in arg) && ("language" in arg) && ("format" in arg) && ("split" in arg);
 }
 function getForm() {
     var configForm = document.getElementById("config-form");

@@ -21,6 +21,10 @@ function makeAnchor(text: string, url: string, target_blank: boolean = true): HT
   return a;
 }
 
+function hasProperty<T extends {}, K extends string>(obj: T, prop: K): obj is (T & {[S in K]: unknown}) {
+  return prop in obj;
+}
+
 enum Lang {
   ja = "ja",
   en = "en"

@@ -5,10 +5,10 @@ interface TalkBaseInfo {
   lang: Lang;
 }
 
-function isTalkBaseInfo(arg: any): arg is TalkBaseInfo {
-  return (typeof arg == "object") &&
-    ("date" in arg) && (typeof arg.date == "string") &&
-    ("lang" in arg) && (arg.lang in Lang);
+function isTalkBaseInfo(arg: unknown): arg is TalkBaseInfo {
+  return  (typeof arg == "object") && (arg != null) &&
+    hasProperty(arg, "date") && (typeof arg.date == "string") &&
+    hasProperty(arg, "lang") && (typeof arg.lang == "string") && (arg.lang in Lang);
 }
 
 interface TalkInfo {
@@ -18,12 +18,12 @@ interface TalkInfo {
   url?: string;
 }
 
-function isTalkInfo(arg: any): arg is TalkInfo {
-  return (typeof arg == "object") &&
-    ("title" in arg) && (typeof arg.title == "string") &&
-    ("conference" in arg) && (typeof arg.conference == "string") &&
-    ("venue" in arg) && (typeof arg.venue == "string") &&
-    (!("url" in arg) || (typeof arg.url == "string"));
+function isTalkInfo(arg: unknown): arg is TalkInfo {
+  return (typeof arg == "object") && (arg != null) &&
+    hasProperty(arg, "title") && (typeof arg.title == "string") &&
+    hasProperty(arg, "conference") && (typeof arg.conference == "string") &&
+    hasProperty(arg, "venue") && (typeof arg.venue == "string") &&
+    (!hasProperty(arg, "url") || (typeof arg.url == "string"));
 }
 
 interface TalkObject {
@@ -32,14 +32,14 @@ interface TalkObject {
   en?: TalkInfo;
 }
 
-function isTalkObject(arg: any): arg is TalkObject {
-  return (typeof arg == "object") &&
-    ("base" in arg) && isTalkBaseInfo(arg.base) &&
-    (!("ja" in arg) || isTalkInfo(arg.ja)) &&
-    (!("en" in arg) || isTalkInfo(arg.en));
+function isTalkObject(arg: unknown): arg is TalkObject {
+  return (typeof arg == "object") && (arg != null) &&
+    hasProperty(arg, "base") && isTalkBaseInfo(arg.base) &&
+    (!hasProperty(arg, "ja") || isTalkInfo(arg.ja)) &&
+    (!hasProperty(arg, "en") || isTalkInfo(arg.en));
 }
 
-function isTalkObjectArray(arg: any): arg is TalkObject[] {
+function isTalkObjectArray(arg: unknown): arg is TalkObject[] {
   return (arg instanceof Array) && arg.every(isTalkObject);
 }
 

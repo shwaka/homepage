@@ -9,10 +9,10 @@ interface ValidJson {
   articles: ArticleObject[];
 }
 
-function isValidJson(arg: any): arg is ValidJson {
-  return (typeof arg == "object") &&
-    ("talks" in arg) && isTalkObjectArray(arg.talks) &&
-    ("articles" in arg) && isArticleObjectArray(arg.articles);
+function isValidJson(arg: unknown): arg is ValidJson {
+  return (typeof arg == "object") && (arg != null) &&
+    hasProperty(arg, "talks") && isTalkObjectArray(arg.talks) &&
+    hasProperty(arg, "articles") && isArticleObjectArray(arg.articles);
 }
 
 function loadFromJson(file: string): void {
@@ -41,9 +41,10 @@ type ConfigForm = {order: RadioNodeList,
                    language: RadioNodeList,
                    format: RadioNodeList,
                    split: RadioNodeList}
-function isConfigForm(arg: any): arg is ConfigForm {
+function isConfigForm(arg: unknown): arg is ConfigForm {
   // チェックが緩すぎる
-  return ("order" in arg) && ("language" in arg) && ("format" in arg);
+  return (typeof arg == "object") && (arg != null) &&
+    ("order" in arg) && ("language" in arg) && ("format" in arg) && ("split" in arg);
 }
 
 function getForm(): ConfigForm {
