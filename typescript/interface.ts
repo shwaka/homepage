@@ -24,12 +24,12 @@ function loadFromJson(file: string): void {
     if (!isValidJson(jsonObj)) {
       throw Error("invalid JSON");
     }
-    const talkDiv = document.getElementById("talk") as HTMLElement; // まずい
+    const talkDiv = document.getElementById("talk")!; // まずい
     talkListHandler = new TalkListHandler(jsonObj.talks, talkDiv);
     // talkListGlobal = TalkList.create(json, "talk");
     // talkListGlobal.showList(Lang.ja, true);
     // talkList.showTable(Lang.ja);
-    const articleDiv = document.getElementById("article") as HTMLElement; // まずい
+    const articleDiv = document.getElementById("article")!; // まずい
     articleListHandler = new ArticleListHandler(jsonObj.articles, articleDiv);
     setupForm();
     updateTalks();
@@ -57,7 +57,7 @@ function getForm(): ConfigForm {
 
 function setupForm(): void {
   ["format-table", "order-new-old", "language-japanese", "split-true"].forEach((id) => {
-    const radioButton = document.getElementById(id) as any; // やばい
+    const radioButton = document.querySelector<HTMLInputElement>(`#${id}`)!; // やばい
     radioButton.checked = true;
   })
 }

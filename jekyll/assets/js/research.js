@@ -603,7 +603,7 @@ function getForm() {
 }
 function setupForm() {
     ["format-table", "order-new-old", "language-japanese", "split-true"].forEach(function (id) {
-        var radioButton = document.getElementById(id); // やばい
+        var radioButton = document.querySelector("#" + id); // やばい
         radioButton.checked = true;
     });
 }
