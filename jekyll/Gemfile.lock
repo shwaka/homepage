@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:shwaka/jekyll-typescript-converter.git
-  revision: b030b73a865402230b4609fff468b9baa3477787
+  revision: 7142eb7f81f46b622822e287a13f5e03b035bcab
   specs:
     jekyll-typescript-converter (0.0.3)
 
