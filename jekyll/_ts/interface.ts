@@ -4,9 +4,28 @@ import {ArticleObject, isArticleObjectArray, ArticleListHandler} from "./article
 // <reference path="talk.ts"/>
 // <reference path="article.ts"/>
 
-document.addEventListener("DOMContentLoaded", function(){
-  loadFromJson((window as any).researchJsonFile);
-})
+main();
+
+function main(): void {
+  if (!isWindowWithGlobalVariables(window)) {
+    throw Error("window does not have required properties")
+  }
+  document.addEventListener("DOMContentLoaded", function(){
+    // scope の関係で上の type guard が効いてない？
+    loadFromJson((window as Window & WindowWithGlobalVariables).researchJsonFile);
+  });
+  window.updateTalks = updateTalks;
+}
+
+interface WindowWithGlobalVariables {
+  researchJsonFile: string;
+  updateTalks: any;             // function type としてちゃんと実装
+}
+
+function isWindowWithGlobalVariables(win: Window): win is WindowWithGlobalVariables & Window {
+  // ちゃんと実装しよう
+  return true;
+}
 
 
 var talkListHandler: TalkListHandler;
@@ -116,5 +135,3 @@ function updateTalks(): void {
   talkListHandler.show(outputFormat, outputLang, reverse, split);
   articleListHandler.show(outputFormat, outputLang, reverse);
 }
-
-(window as any).updateTalks = updateTalks;
