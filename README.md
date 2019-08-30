@@ -78,7 +78,6 @@
       include する側の `ref` が表示されるバグがある．
       色々試したけど直すの難しそう…
 - typescript も jekyll の中に組込みたい．
-    - 表示形式変更の radio button が動いていない
     - tsc, browserify あたりも package.json に書く？
       (npx? npm run?)
 - `refer_filter.rb`
