@@ -9,10 +9,11 @@ layout: mylayout
 
 <script src="{{ site.baseurl }}/assets/js/research.js"></script>
 <script type="text/javascript">
- target_blankIconUrl = "{{ site.baseurl }}/assets/img/icons.svg#target_blank";
- document.addEventListener("DOMContentLoaded", function(){
-   loadFromJson("{{ site.baseurl}}/assets/data/research.json");
- });
+ window.target_blankIconUrl = "{{ site.baseurl }}/assets/img/icons.svg#target_blank";
+ /* document.addEventListener("DOMContentLoaded", function(){
+  *   loadFromJson("{{ site.baseurl}}/assets/data/research.json");
+  * }); */
+ window.researchJsonFile = "{{ site.baseurl}}/assets/data/research.json";
 </script>
 
 <form id="config-form" onchange="updateTalks()">

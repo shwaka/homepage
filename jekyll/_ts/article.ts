@@ -1,4 +1,5 @@
-/// <reference path="base.ts"/>
+import {hasProperty, hasPropertyOfType, Lang, Work, makeAnchor, WorkList, OutputFormat} from "./base"
+// <reference path="base.ts"/>
 
 enum ArticleType {
   preprint = "preprint",
@@ -57,13 +58,13 @@ function isArticleProceedingsObject(arg: unknown): arg is ArticleProceedingsObje
     hasPropertyOfType(arg, "journal-url", "string");
 }
 
-type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticleProceedingsObject;
+export type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticleProceedingsObject;
 
 function isArticleObject(arg: unknown): arg is ArticleObject {
   return isArticlePreprintObject(arg) || isArticleToappearObject(arg) || isArticleProceedingsObject(arg);
 }
 
-function isArticleObjectArray(arg: unknown): arg is ArticleObject[] {
+export function isArticleObjectArray(arg: unknown): arg is ArticleObject[] {
   return (arg instanceof Array) && arg.every(isArticleObject);
 }
 
@@ -182,7 +183,7 @@ class ArticleList extends WorkList<ArticleKey, Article> {
   // }
 }
 
-class ArticleListHandler {
+export class ArticleListHandler {
   private output: HTMLElement;
   private articleList: ArticleList;
 

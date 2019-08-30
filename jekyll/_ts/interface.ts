@@ -1,5 +1,13 @@
-/// <reference path="talk.ts"/>
-/// <reference path="article.ts"/>
+import {hasProperty, Lang, OutputFormat} from "./base"
+import {TalkObject, isTalkObjectArray, TalkListHandler} from "./talk"
+import {ArticleObject, isArticleObjectArray, ArticleListHandler} from "./article"
+// <reference path="talk.ts"/>
+// <reference path="article.ts"/>
+
+document.addEventListener("DOMContentLoaded", function(){
+  loadFromJson((window as any).researchJsonFile);
+})
+
 
 var talkListHandler: TalkListHandler;
 var articleListHandler: ArticleListHandler;

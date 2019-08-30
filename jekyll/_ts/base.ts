@@ -1,6 +1,4 @@
-var target_blankIconUrl: string = "undefined";
-
-function makeAnchor(text: string, url: string, target_blank: boolean = true): HTMLAnchorElement {
+export function makeAnchor(text: string, url: string, target_blank: boolean = true): HTMLAnchorElement {
   const a = document.createElement("a");
   a.appendChild(document.createTextNode(text));
   a.href = url;
@@ -14,6 +12,7 @@ function makeAnchor(text: string, url: string, target_blank: boolean = true): HT
     const use = document.createElementNS(svgns, "use");
     // const use = document.createElement("use");
     const xlinkns = "http://www.w3.org/1999/xlink";
+    const target_blankIconUrl: string = (window as any).target_blankIconUrl;
     use.setAttributeNS(xlinkns, "href", target_blankIconUrl);
     svg.appendChild(use);
     a.appendChild(svg);
@@ -30,30 +29,30 @@ interface Types {
   symbol: symbol;
 }
 
-function hasProperty<T extends {}, K extends string>(
+export function hasProperty<T extends {}, K extends string>(
   obj: T, prop: K): obj is (T & {[S in K]: unknown})
 {
   return prop in obj;
 }
 
-function hasPropertyOfType<T extends {}, K extends string, S extends keyof Types>(
+export function hasPropertyOfType<T extends {}, K extends string, S extends keyof Types>(
   obj: T, prop: K, valueType: S): obj is (T & {[R in K]: Types[S]})
 {
   return hasProperty(obj, prop) && (typeof obj[prop] == valueType);
 }
 
-function hasOptionalPropertyOfType<T extends {}, K extends string, S extends keyof Types>(
+export function hasOptionalPropertyOfType<T extends {}, K extends string, S extends keyof Types>(
   obj: T, prop: K, valueType: S): obj is (T & {[R in K]?: Types[S]})
 {
     return !hasProperty(obj, prop) || (typeof obj[prop] == valueType);
 }
 
-enum Lang {
+export enum Lang {
   ja = "ja",
   en = "en"
 }
 
-abstract class Work<Key extends string> {
+export abstract class Work<Key extends string> {
   protected abstract getOutputElements(outputLang: Lang): {[T in Key]: HTMLElement | null };
 
   constructor() {};
@@ -99,7 +98,7 @@ abstract class Work<Key extends string> {
   }
 }
 
-class WorkList<Key extends string, W extends Work<Key>> {
+export class WorkList<Key extends string, W extends Work<Key>> {
   private data: W[];
 
   constructor(data: W[]) {
@@ -193,7 +192,7 @@ class WorkList<Key extends string, W extends Work<Key>> {
   }
 }
 
-enum OutputFormat {
+export enum OutputFormat {
   ul = "ul",
   ol = "ol",
   table = "table",

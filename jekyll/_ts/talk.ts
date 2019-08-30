@@ -1,4 +1,5 @@
-/// <reference path="base.ts"/>
+import {hasProperty, hasOptionalPropertyOfType, hasPropertyOfType, Lang, Work, makeAnchor, WorkList, OutputFormat} from "./base"
+// <reference path="base.ts"/>
 
 interface TalkBaseInfo {
   date: string;
@@ -26,7 +27,7 @@ function isTalkInfo(arg: unknown): arg is TalkInfo {
     hasOptionalPropertyOfType(arg, "url", "string");
 }
 
-interface TalkObject {
+export interface TalkObject {
   base: TalkBaseInfo;
   ja?: TalkInfo;
   en?: TalkInfo;
@@ -39,7 +40,7 @@ function isTalkObject(arg: unknown): arg is TalkObject {
     (!hasProperty(arg, "en") || isTalkInfo(arg.en));
 }
 
-function isTalkObjectArray(arg: unknown): arg is TalkObject[] {
+export function isTalkObjectArray(arg: unknown): arg is TalkObject[] {
   return (arg instanceof Array) && arg.every(isTalkObject);
 }
 
@@ -156,7 +157,7 @@ class TalkList extends WorkList<TalkKey, Talk> {
   // }
 }
 
-class TalkListHandler {
+export class TalkListHandler {
   private output: HTMLElement;
   private talkList: TalkList;
 

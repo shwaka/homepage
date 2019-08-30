@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "outFile": "../jekyll/assets/js/research.js",
     "noImplicitAny": true,
     "strictNullChecks": true,
     "noImplicitThis": true,

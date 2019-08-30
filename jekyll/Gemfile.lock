@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:shwaka/jekyll-typescript-converter.git
+  revision: b030b73a865402230b4609fff468b9baa3477787
+  specs:
+    jekyll-typescript-converter (0.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -50,13 +56,14 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (3.1.1)
+    rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     rouge (3.9.0)
     ruby_dep (1.5.0)
     safe_yaml (1.0.5)
-    sassc (2.1.0)
+    sassc (2.2.0)
       ffi (~> 1.9)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
@@ -68,7 +75,9 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 4.0.0)
   jekyll-toc
+  jekyll-typescript-converter!
   nokogiri
+  rake
 
 BUNDLED WITH
    1.17.2
