@@ -1,4 +1,6 @@
-/// <reference path="talk.ts"/>
+import {Lang} from "./base"
+import {isTalkBaseInfo, isTalkInfo, isTalkObject, TalkInfo, TalkBaseInfo} from "./talk"
+// <reference path="talk.ts"/>
 
 function assert(arg: boolean, msg: string = "(no msg)"): void {
   if (!arg) {

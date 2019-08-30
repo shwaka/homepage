@@ -1,25 +1,25 @@
 import {hasProperty, hasOptionalPropertyOfType, hasPropertyOfType, Lang, Work, makeAnchor, WorkList, OutputFormat} from "./base"
 // <reference path="base.ts"/>
 
-interface TalkBaseInfo {
+export interface TalkBaseInfo {
   date: string;
   lang: Lang;
 }
 
-function isTalkBaseInfo(arg: unknown): arg is TalkBaseInfo {
+export function isTalkBaseInfo(arg: unknown): arg is TalkBaseInfo {
   return  (typeof arg == "object") && (arg != null) &&
     hasPropertyOfType(arg, "date", "string") &&
     hasPropertyOfType(arg, "lang", "string") && (arg.lang in Lang);
 }
 
-interface TalkInfo {
+export interface TalkInfo {
   title: string;
   conference: string;
   venue: string;
   url?: string;
 }
 
-function isTalkInfo(arg: unknown): arg is TalkInfo {
+export function isTalkInfo(arg: unknown): arg is TalkInfo {
   return (typeof arg == "object") && (arg != null) &&
     hasPropertyOfType(arg, "title", "string") &&
     hasPropertyOfType(arg, "conference", "string") &&
@@ -33,7 +33,7 @@ export interface TalkObject {
   en?: TalkInfo;
 }
 
-function isTalkObject(arg: unknown): arg is TalkObject {
+export function isTalkObject(arg: unknown): arg is TalkObject {
   return (typeof arg == "object") && (arg != null) &&
     hasProperty(arg, "base") && isTalkBaseInfo(arg.base) &&
     (!hasProperty(arg, "ja") || isTalkInfo(arg.ja)) &&
