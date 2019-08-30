@@ -116,3 +116,5 @@ function updateTalks(): void {
   talkListHandler.show(outputFormat, outputLang, reverse, split);
   articleListHandler.show(outputFormat, outputLang, reverse);
 }
+
+(window as any).updateTalks = updateTalks;
