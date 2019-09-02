@@ -1,8 +1,8 @@
 GIT
-  remote: git@github.com:shwaka/jekyll-typescript-converter.git
-  revision: 1c10c8fcad55ba1bbee76d0a3b82c7d91a587b87
+  remote: git@github.com:shwaka/jekyll-typescript.git
+  revision: 302241a5315a95c45d358bd2ba4e88d9af5bdd69
   specs:
-    jekyll-typescript-converter (0.1.0)
+    jekyll-typescript (0.2.0)
       rake
 
 GEM
@@ -76,7 +76,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 4.0.0)
   jekyll-toc
-  jekyll-typescript-converter!
+  jekyll-typescript!
   nokogiri
   rake
 

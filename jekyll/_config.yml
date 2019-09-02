@@ -5,7 +5,7 @@ livereload: true
 timezone: Asia/Tokyo
 plugins:
   - jekyll-toc
-  - jekyll-typescript-converter
+  - jekyll-typescript
 refer:
   key: ref
   default_to_page:
