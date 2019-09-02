@@ -1,14 +1,15 @@
 GIT
   remote: git@github.com:shwaka/jekyll-typescript-converter.git
-  revision: 7142eb7f81f46b622822e287a13f5e03b035bcab
+  revision: 9f93de0f0054fbbf77efc2f98dab0cacb301847a
   specs:
-    jekyll-typescript-converter (0.0.3)
+    jekyll-typescript-converter (0.1.0)
+      rake
 
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     colorator (1.1.0)
     concurrent-ruby (1.1.5)
     em-websocket (0.5.1)
@@ -55,7 +56,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (3.1.1)
+    public_suffix (4.0.1)
     rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
