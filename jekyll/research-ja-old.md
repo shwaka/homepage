@@ -1,7 +1,7 @@
 ---
 title: 研究
 lang: ja
-ref: research
+ref: research-old
 layout: mylayout
 ---
 

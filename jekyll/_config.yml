@@ -30,4 +30,18 @@ sass:
   # sourcemap (.css.map) ではそれが処理されてしまう
 typescript:
   build_dir: .tsbuild
-  default_source_dir: _ts
+  source_dir: _ts
+  pages:
+    - source_dir: _ts
+      source_file: build_page.ts
+      layout: research_layout.html
+      destination: research-ja.html
+      site_json_file: site.json
+      cache: false
+      depend:
+        - _data/articles.yml
+        - _data/talks.yml
+  # hooks:
+  #   - container: site
+  #     event: post_read
+  #     source_file: build_page.ts
