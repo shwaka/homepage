@@ -4,8 +4,6 @@ import {Lang, OutputFormat} from "./base"
 import {TalkListHandler} from "./talk";
 import {ValidJson, isValidJson} from './data';
 
-var document;
-
 function get_data(): ValidJson {
   const site = JSON.parse(fs.readFileSync("./site.json", "utf8"));
   const data = site.site.data as unknown;
@@ -17,7 +15,8 @@ function get_data(): ValidJson {
 
 function main() {
   const dom = new JSDOM();
-  document = dom.window.document;
+  const window = dom.window;
+  const document = window.document;
 
   const body = document.body;
   const data = get_data();
@@ -25,8 +24,8 @@ function main() {
   // talks
   const talkDiv = document.createElement("div");
   body.appendChild(talkDiv);
-  const talkListHandler = new TalkListHandler(data.talks, talkDiv);
-  // talkListHandler.show(OutputFormat.ol, Lang.ja, true, true);
+  const talkListHandler = new TalkListHandler(window, data.talks, talkDiv);
+  talkListHandler.show(OutputFormat.ol, Lang.ja, true, true);
 
   // const pre = document.createElement("pre");
   // const talks = data.talks;

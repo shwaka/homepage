@@ -49,8 +49,8 @@ type TalkKey = "title" | "conference" | "venue" | "date";
 class Talk extends Work<TalkKey> {
   private data: TalkObject;
 
-  constructor(talkObj: TalkObject) {
-    super();
+  constructor(window: Window, talkObj: TalkObject) {
+    super(window);
     this.data = talkObj;
   }
 
@@ -93,21 +93,21 @@ class Talk extends Work<TalkKey> {
   protected getOutputElements(outputLang: Lang): {[T in TalkKey]: HTMLElement} {
     const talkInfo = this.getInfo(outputLang);
     // title
-    const title = document.createElement("span");
+    const title = this.document.createElement("span");
     title.innerText = talkInfo.title;
     // conference
     let conference: HTMLElement;
     if (talkInfo.url) {
-      conference = makeAnchor(talkInfo.conference, talkInfo.url);
+      conference = makeAnchor(this.window, talkInfo.conference, talkInfo.url);
     } else {
-      conference = document.createElement("span");
+      conference = this.document.createElement("span");
       conference.innerText = talkInfo.conference;
     }
     // venue
-    const venue = document.createElement("span");
+    const venue = this.document.createElement("span");
     venue.innerText = talkInfo.venue;
     // date
-    const date = document.createElement("span");
+    const date = this.document.createElement("span");
     date.innerText = this.getDateString(outputLang);
     // output
     const outputElements = {
@@ -130,9 +130,9 @@ class Talk extends Work<TalkKey> {
 }
 
 class TalkList extends WorkList<TalkKey, Talk> {
-  constructor(talkObjArray: TalkObject[]) {
-    const data: Talk[] = talkObjArray.map(talkObj => new Talk(talkObj));
-    super(data);
+  constructor(window: Window, talkObjArray: TalkObject[]) {
+    const data: Talk[] = talkObjArray.map(talkObj => new Talk(window, talkObj));
+    super(window, data);
   }
 
   static getHeaderList(outputLang: Lang): [TalkKey, string][] {
@@ -160,14 +160,16 @@ class TalkList extends WorkList<TalkKey, Talk> {
 export class TalkListHandler {
   private output: HTMLElement;
   private talkList: TalkList;
+  private document: Document;
 
-  constructor(talkObjArray: TalkObject[], output: HTMLElement) {
+  constructor(window: Window, talkObjArray: TalkObject[], output: HTMLElement) {
     this.output = output;
-    this.talkList = new TalkList(talkObjArray);
+    this.talkList = new TalkList(window, talkObjArray);
+    this.document = window.document;
   }
 
   private getHeadingEnglish(outputLang: Lang): HTMLHeadingElement {
-    const h3 = document.createElement("h3");
+    const h3 = this.document.createElement("h3");
     if (outputLang == Lang.en) {
       h3.innerText = "Talks in English";
     } else if (outputLang == Lang.ja) {
@@ -177,7 +179,7 @@ export class TalkListHandler {
   }
 
   private getHeadingJapanese(outputLang: Lang): HTMLHeadingElement {
-    const h3 = document.createElement("h3");
+    const h3 = this.document.createElement("h3");
     if (outputLang == Lang.en) {
       h3.innerText = "Talks in Japanese";
     } else if (outputLang == Lang.ja) {

@@ -42,12 +42,12 @@ function loadFromJson(file: string): void {
       throw Error("invalid JSON");
     }
     const talkDiv = document.getElementById("talk")!; // まずい
-    talkListHandler = new TalkListHandler(jsonObj.talks, talkDiv);
+    talkListHandler = new TalkListHandler(window, jsonObj.talks, talkDiv);
     // talkListGlobal = TalkList.create(json, "talk");
     // talkListGlobal.showList(Lang.ja, true);
     // talkList.showTable(Lang.ja);
     const articleDiv = document.getElementById("article")!; // まずい
-    articleListHandler = new ArticleListHandler(jsonObj.articles, articleDiv);
+    articleListHandler = new ArticleListHandler(window, jsonObj.articles, articleDiv);
     setupForm();
     updateTalks();
   }

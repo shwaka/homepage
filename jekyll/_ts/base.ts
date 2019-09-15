@@ -1,4 +1,5 @@
-export function makeAnchor(text: string, url: string, target_blank: boolean = true): HTMLAnchorElement {
+export function makeAnchor(window: Window, text: string, url: string, target_blank: boolean = true): HTMLAnchorElement {
+  const document = window.document;
   const a = document.createElement("a");
   a.appendChild(document.createTextNode(text));
   a.href = url;
@@ -55,10 +56,16 @@ export enum Lang {
 export abstract class Work<Key extends string> {
   protected abstract getOutputElements(outputLang: Lang): {[T in Key]: HTMLElement | null };
 
-  constructor() {};
+  protected window: Window;
+  protected document: Document;
+
+  constructor(window: Window) {
+    this.window = window;
+    this.document = window.document;
+  };
 
   public toLi(outputLang: Lang, headerList: [Key, string][]): HTMLLIElement {
-    const li = document.createElement("li");
+    const li = this.document.createElement("li");
     const outputElements = this.getOutputElements(outputLang);
     let elementAlreadyAdded = false;
     headerList.forEach((keyHeader) => {
@@ -67,7 +74,7 @@ export abstract class Work<Key extends string> {
       // ↑ element の型注釈を省略すると，下の if 節内で element が non-null だと推論してくれない
       if (element != null) {
         if (elementAlreadyAdded) {
-          li.appendChild(document.createTextNode(`, `));
+          li.appendChild(this.document.createTextNode(`, `));
         }
         li.appendChild(element);
         elementAlreadyAdded = true;
@@ -77,11 +84,11 @@ export abstract class Work<Key extends string> {
   }
 
   public toTr(outputLang: Lang, headerList: [Key, string][]): HTMLTableRowElement {
-    const tr = document.createElement("tr");
+    const tr = this.document.createElement("tr");
     const outputElements = this.getOutputElements(outputLang);
     headerList.forEach((keyHeader) => {
       const key = keyHeader[0];
-      const td = document.createElement("td");
+      const td = this.document.createElement("td");
       const element: HTMLElement | null = outputElements[key]
       if (element != null) {
         td.appendChild(element);
@@ -100,9 +107,13 @@ export abstract class Work<Key extends string> {
 
 export class WorkList<Key extends string, W extends Work<Key>> {
   private data: W[];
+  protected window: Window;
+  protected document: Document;
 
-  constructor(data: W[]) {
+  constructor(window: Window, data: W[]) {
     this.data = data;
+    this.window = window;
+    this.document = window.document;
   }
 
   private getData(reverse: boolean = false,
@@ -124,7 +135,7 @@ export class WorkList<Key extends string, W extends Work<Key>> {
                  headerList: [Key, string][],
                  reverse: boolean = false,
                  filter?: (work: W) => boolean): HTMLUListElement | HTMLOListElement {
-    const list: HTMLUListElement | HTMLOListElement = document.createElement(listType);
+    const list: HTMLUListElement | HTMLOListElement = this.document.createElement(listType);
     if (reverse && listType == OutputFormat.ol) {
       const ol = list as HTMLOListElement; // もうちょっとマシな書き方？
       ol.reversed = true;
@@ -136,11 +147,11 @@ export class WorkList<Key extends string, W extends Work<Key>> {
   }
 
   private getTableHeader(headerList: [Key, string][]): HTMLTableRowElement {
-    const tr = document.createElement("tr");
+    const tr = this.document.createElement("tr");
     headerList.forEach((keyHeader) => {
       const header: string = keyHeader[1];
-      const th = document.createElement("th");
-      th.appendChild(document.createTextNode(header));
+      const th = this.document.createElement("th");
+      th.appendChild(this.document.createTextNode(header));
       tr.appendChild(th);
     });
     return tr;
@@ -150,7 +161,7 @@ export class WorkList<Key extends string, W extends Work<Key>> {
                   headerList: [Key, string][],
                   reverse: boolean = false,
                   filter?: (work: W) => boolean): HTMLTableElement {
-    const table = document.createElement("table");
+    const table = this.document.createElement("table");
     table.appendChild(this.getTableHeader(headerList));
     this.getData(reverse, filter).forEach(work => {
       table.appendChild(work.toTr(outputLang, headerList));
@@ -162,16 +173,16 @@ export class WorkList<Key extends string, W extends Work<Key>> {
                            headerList: [Key, string][],
                            reverse: boolean = false,
                            filter?: (work: W) => boolean): HTMLElement {
-    const div = document.createElement("div");
+    const div = this.document.createElement("div");
     div.classList.add("highlight"); // code block の highlight を適用
-    const pre = document.createElement("pre");
+    const pre = this.document.createElement("pre");
     div.appendChild(pre);
-    pre.appendChild(document.createTextNode("\\begin{itemize}\n"))
+    pre.appendChild(this.document.createTextNode("\\begin{itemize}\n"))
     this.getData(reverse, filter).forEach(work => {
       const item = work.toLaTeXItem(outputLang, headerList);
-      pre.appendChild(document.createTextNode(`  ${item}\n`));
+      pre.appendChild(this.document.createTextNode(`  ${item}\n`));
     });
-    pre.appendChild(document.createTextNode("\\end{itemize}\n"))
+    pre.appendChild(this.document.createTextNode("\\end{itemize}\n"))
     return div;
   }
 

@@ -73,8 +73,8 @@ type ArticleKey = "title" | "journal" | "year" | "arxiv"
 class Article extends Work<ArticleKey>{
   private data: ArticleObject;
 
-  constructor(articleObj: ArticleObject) {
-    super();
+  constructor(window: Window, articleObj: ArticleObject) {
+    super(window);
     this.data = articleObj;
   }
 
@@ -84,29 +84,29 @@ class Article extends Work<ArticleKey>{
 
   protected getOutputElements(outputLang: Lang): {[T in ArticleKey]: HTMLElement | null } {
     // title
-    const title = document.createElement("span");
+    const title = this.document.createElement("span");
     title.classList.add("article-title");
     title.innerText = this.data.title;
     // journal
     let journal: HTMLElement | null = null;
     if (this.data.type == ArticleType.toappear) {
-      journal = document.createElement("span");
-      journal.appendChild(document.createTextNode("to appear in "));
-      journal.appendChild(makeAnchor(this.data.journal, this.data["journal-url"]));
+      journal = this.document.createElement("span");
+      journal.appendChild(this.document.createTextNode("to appear in "));
+      journal.appendChild(makeAnchor(this.window, this.data.journal, this.data["journal-url"]));
     } else if (this.data.type == ArticleType.proceedings) {
-      journal = document.createElement("span");
-      journal.appendChild(makeAnchor(this.data.journal, this.data["journal-url"]));
+      journal = this.document.createElement("span");
+      journal.appendChild(makeAnchor(this.window, this.data.journal, this.data["journal-url"]));
     }
     // year
-    const year = document.createElement("span");
+    const year = this.document.createElement("span");
     if (this.data.type == ArticleType.proceedings) {
       year.innerText = String(this.data.year);
     }
     // arxiv
-    const arxiv = document.createElement("span");
+    const arxiv = this.document.createElement("span");
     if (this.data.type == ArticleType.preprint || this.data.type == ArticleType.toappear) {
       const url = `https://arxiv.org/abs/${this.data.arxiv}`;
-      const a = makeAnchor(this.data.arxiv, url);
+      const a = makeAnchor(this.window, this.data.arxiv, url);
       a.classList.add("arxiv");
       arxiv.appendChild(a);
     }
@@ -141,9 +141,9 @@ class Article extends Work<ArticleKey>{
 }
 
 class ArticleList extends WorkList<ArticleKey, Article> {
-  constructor(articleObjArray: ArticleObject[]) {
-    const data: Article[] = articleObjArray.map(articleObj => new Article(articleObj));
-    super(data);
+  constructor(window: Window, articleObjArray: ArticleObject[]) {
+    const data: Article[] = articleObjArray.map(articleObj => new Article(window, articleObj));
+    super(window, data);
   }
 
   static getHeaderListNormal(outputLang: Lang): [ArticleKey, string][] {
@@ -186,14 +186,16 @@ class ArticleList extends WorkList<ArticleKey, Article> {
 export class ArticleListHandler {
   private output: HTMLElement;
   private articleList: ArticleList;
+  private document: Document;
 
-  constructor(articleObjArray: ArticleObject[], output: HTMLElement) {
+  constructor(window: Window, articleObjArray: ArticleObject[], output: HTMLElement) {
     this.output = output;
-    this.articleList = new ArticleList(articleObjArray);
+    this.articleList = new ArticleList(window, articleObjArray);
+    this.document = window.document;
   }
 
   private getHeadingNormal(outputLang: Lang): HTMLHeadingElement {
-    const h3 = document.createElement("h3");
+    const h3 = this.document.createElement("h3");
     if (outputLang == Lang.en) {
       h3.innerText = "Papers and preprints";
     } else if (outputLang == Lang.ja) {
@@ -203,7 +205,7 @@ export class ArticleListHandler {
   }
 
   private getHeadingNonRefereed(outputLang: Lang): HTMLHeadingElement {
-    const h3 = document.createElement("h3");
+    const h3 = this.document.createElement("h3");
     if (outputLang == Lang.en) {
       h3.innerText = "Non refereed articles";
     } else if (outputLang == Lang.ja) {
