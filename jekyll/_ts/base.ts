@@ -1,4 +1,4 @@
-export function makeAnchor(window: Window, text: string, url: string, target_blank: boolean = true): HTMLAnchorElement {
+export function makeAnchor(window: Window & {target_blankIconUrl?: string}, text: string, url: string, target_blank: boolean = true): HTMLAnchorElement {
   const document = window.document;
   const a = document.createElement("a");
   a.appendChild(document.createTextNode(text));
@@ -7,16 +7,18 @@ export function makeAnchor(window: Window, text: string, url: string, target_bla
     a.target = "_blank";
     // add icon
     // https://stackoverflow.com/questions/23463072/how-do-i-use-javascript-to-insert-an-svg-use-element-into-an-svg-group
-    const svgns = "http://www.w3.org/2000/svg";
-    const svg = document.createElementNS(svgns, "svg");
-    svg.classList.add("target-blank-icon");
-    const use = document.createElementNS(svgns, "use");
-    // const use = document.createElement("use");
-    const xlinkns = "http://www.w3.org/1999/xlink";
-    const target_blankIconUrl: string = (window as any).target_blankIconUrl;
-    use.setAttributeNS(xlinkns, "href", target_blankIconUrl);
-    svg.appendChild(use);
-    a.appendChild(svg);
+    if (window.target_blankIconUrl != null) {
+      const svgns = "http://www.w3.org/2000/svg";
+      const svg = document.createElementNS(svgns, "svg");
+      svg.classList.add("target-blank-icon");
+      const use = document.createElementNS(svgns, "use");
+      // const use = document.createElement("use");
+      const xlinkns = "http://www.w3.org/1999/xlink";
+      const target_blankIconUrl: string = window.target_blankIconUrl;
+      use.setAttributeNS(xlinkns, "href", target_blankIconUrl);
+      svg.appendChild(use);
+      a.appendChild(svg);
+    }
   }
   return a;
 }
