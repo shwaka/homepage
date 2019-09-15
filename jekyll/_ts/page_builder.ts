@@ -22,13 +22,25 @@ export function printContent(lang: Lang) {
   const body = document.body;
   const data = get_data();
 
+  const articleHeader = document.createElement("h2");
+  const talkHeader = document.createElement("h2");
+  if (lang == Lang.ja) {
+    articleHeader.appendChild(document.createTextNode("Publications"));
+    talkHeader.appendChild(document.createTextNode("講演一覧"));
+  } else {
+    articleHeader.appendChild(document.createTextNode("Publications"));
+    talkHeader.appendChild(document.createTextNode("Talks"));
+  }
+
   // articles
+  body.appendChild(articleHeader);
   const articleDiv = document.createElement("div");
   body.appendChild(articleDiv);
   const articleListHandler = new ArticleListHandler(window, data.articles, articleDiv);
   articleListHandler.show(OutputFormat.ol, lang, true);
 
   // talks
+  body.appendChild(talkHeader);
   const talkDiv = document.createElement("div");
   body.appendChild(talkDiv);
   const talkListHandler = new TalkListHandler(window, data.talks, talkDiv);
