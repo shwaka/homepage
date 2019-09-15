@@ -86,7 +86,7 @@ class Article extends Work<ArticleKey>{
     // title
     const title = this.document.createElement("span");
     title.classList.add("article-title");
-    title.innerText = this.data.title;
+    title.appendChild(this.document.createTextNode(this.data.title));
     // journal
     let journal: HTMLElement | null = null;
     if (this.data.type == ArticleType.toappear) {
@@ -100,7 +100,7 @@ class Article extends Work<ArticleKey>{
     // year
     const year = this.document.createElement("span");
     if (this.data.type == ArticleType.proceedings) {
-      year.innerText = String(this.data.year);
+      year.appendChild(this.document.createTextNode(String(this.data.year)));
     }
     // arxiv
     const arxiv = this.document.createElement("span");
@@ -197,9 +197,9 @@ export class ArticleListHandler {
   private getHeadingNormal(outputLang: Lang): HTMLHeadingElement {
     const h3 = this.document.createElement("h3");
     if (outputLang == Lang.en) {
-      h3.innerText = "Papers and preprints";
+      h3.appendChild(this.document.createTextNode("Papers and preprints"));
     } else if (outputLang == Lang.ja) {
-      h3.innerText = "論文・プレプリント";
+      h3.appendChild(this.document.createTextNode("論文・プレプリント"));
     }
     return h3;
   }
@@ -207,9 +207,9 @@ export class ArticleListHandler {
   private getHeadingNonRefereed(outputLang: Lang): HTMLHeadingElement {
     const h3 = this.document.createElement("h3");
     if (outputLang == Lang.en) {
-      h3.innerText = "Non refereed articles";
+      h3.appendChild(this.document.createTextNode("Non refereed articles"));
     } else if (outputLang == Lang.ja) {
-      h3.innerText = "その他";
+      h3.appendChild(this.document.createTextNode("その他"));
     }
     return h3;
   }

@@ -94,28 +94,28 @@ class Talk extends Work<TalkKey> {
     const talkInfo = this.getInfo(outputLang);
     // title
     const title = this.document.createElement("span");
-    title.innerText = talkInfo.title;
+    title.appendChild(this.document.createTextNode(talkInfo.title));
     // conference
     let conference: HTMLElement;
     if (talkInfo.url) {
       conference = makeAnchor(this.window, talkInfo.conference, talkInfo.url);
     } else {
       conference = this.document.createElement("span");
-      conference.innerText = talkInfo.conference;
+      conference.appendChild(this.document.createTextNode(talkInfo.conference));
     }
     // venue
     const venue = this.document.createElement("span");
-    venue.innerText = talkInfo.venue;
+    venue.appendChild(this.document.createTextNode(talkInfo.venue));
     // date
     const date = this.document.createElement("span");
-    date.innerText = this.getDateString(outputLang);
+    date.appendChild(this.document.createTextNode(this.getDateString(outputLang)));
     // output
     const outputElements = {
       title: title,
       conference: conference,
       venue: venue,
       date: date
-    }
+    };
     return outputElements;
   }
 
@@ -171,9 +171,9 @@ export class TalkListHandler {
   private getHeadingEnglish(outputLang: Lang): HTMLHeadingElement {
     const h3 = this.document.createElement("h3");
     if (outputLang == Lang.en) {
-      h3.innerText = "Talks in English";
+      h3.appendChild(this.document.createTextNode("Talks in English"));
     } else if (outputLang == Lang.ja) {
-      h3.innerText = "国際研究集会";
+      h3.appendChild(this.document.createTextNode("国際研究集会"));
     }
     return h3;
   }
@@ -181,9 +181,9 @@ export class TalkListHandler {
   private getHeadingJapanese(outputLang: Lang): HTMLHeadingElement {
     const h3 = this.document.createElement("h3");
     if (outputLang == Lang.en) {
-      h3.innerText = "Talks in Japanese";
+      h3.appendChild(this.document.createTextNode("Talks in Japanese"));
     } else if (outputLang == Lang.ja) {
-      h3.innerText = "国内研究集会";
+      h3.appendChild(this.document.createTextNode("国内研究集会"));
     }
     return h3;
   }
