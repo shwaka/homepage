@@ -33,7 +33,7 @@ typescript:
   source_dir: _ts
   pages:
     - source_dir: _ts
-      source_file: build_page.ts
+      source_file: research_ja.ts
       layout: research_layout.html
       destination: research-ja.html
       site_json_file: site.json
@@ -41,7 +41,18 @@ typescript:
       depend:
         - _data/articles.yml
         - _data/talks.yml
-  # hooks:
-  #   - container: site
-  #     event: post_read
-  #     source_file: build_page.ts
+      data:
+        title: "研究"
+        lang: ja
+    - source_dir: _ts
+      source_file: research_en.ts
+      layout: research_layout.html
+      destination: research-en.html
+      site_json_file: site.json
+      cache: true
+      depend:
+        - _data/articles.yml
+        - _data/talks.yml
+      data:
+        title: "Research"
+        lang: en

@@ -1,12 +1,13 @@
 ---
-title: 研究
-lang: ja
+magiccomment: "-*- engine: liquid -*-"
 ref: research
 layout: mylayout
 ---
 
-{{ "research-dynamic" | refer | refer_link: "表示形式が選択可能なページ" }}
-も用意したので，
-お好みでご覧ください．
+{% if page.lang == "ja" %}
+  {{ "research-dynamic" | refer | refer_link: "表示形式が選択可能なページ" }}
+  も用意したので，
+  お好みでご覧ください．
+{% endif %}
 
 {{ page.ts_content }}

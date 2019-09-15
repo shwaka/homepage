@@ -14,7 +14,7 @@ function get_data(): ValidJson {
   throw "Invalid data";
 }
 
-function main(lang: Lang) {
+export function printContent(lang: Lang) {
   const dom = new JSDOM();
   const window = dom.window;
   const document = window.document;
@@ -34,13 +34,5 @@ function main(lang: Lang) {
   const talkListHandler = new TalkListHandler(window, data.talks, talkDiv);
   talkListHandler.show(OutputFormat.ol, lang, true, true);
 
-  // const pre = document.createElement("pre");
-  // const talks = data.talks;
-  // const s = JSON.stringify(talks, null, 2);
-  // pre.appendChild(document.createTextNode(s));
-  // body.appendChild(pre);
-
   console.log(body.innerHTML);
 }
-
-main(Lang.ja);
