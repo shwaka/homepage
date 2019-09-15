@@ -1,6 +1,7 @@
-import {hasProperty, Lang, OutputFormat} from "./base"
-import {TalkObject, isTalkObjectArray, TalkListHandler} from "./talk"
-import {ArticleObject, isArticleObjectArray, ArticleListHandler} from "./article"
+import {Lang, OutputFormat} from "./base"
+import {TalkListHandler} from "./talk"
+import {ArticleListHandler} from "./article"
+import {isValidJson} from "./data"
 // <reference path="talk.ts"/>
 // <reference path="article.ts"/>
 
@@ -30,17 +31,6 @@ function isWindowWithGlobalVariables(win: Window): win is WindowWithGlobalVariab
 
 var talkListHandler: TalkListHandler;
 var articleListHandler: ArticleListHandler;
-
-interface ValidJson {
-  talks: TalkObject[];
-  articles: ArticleObject[];
-}
-
-function isValidJson(arg: unknown): arg is ValidJson {
-  return (typeof arg == "object") && (arg != null) &&
-    hasProperty(arg, "talks") && isTalkObjectArray(arg.talks) &&
-    hasProperty(arg, "articles") && isArticleObjectArray(arg.articles);
-}
 
 function loadFromJson(file: string): void {
   const httpObj = new XMLHttpRequest();
