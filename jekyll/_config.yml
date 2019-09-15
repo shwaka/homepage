@@ -37,7 +37,7 @@ typescript:
       layout: research_layout.html
       destination: research-ja.html
       site_json_file: site.json
-      cache: false
+      cache: true
       depend:
         - _data/articles.yml
         - _data/talks.yml
