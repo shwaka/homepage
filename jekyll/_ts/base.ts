@@ -136,11 +136,15 @@ export class WorkList<Key extends string, W extends Work<Key>> {
                  outputLang: Lang,
                  headerList: [Key, string][],
                  reverse: boolean = false,
-                 filter?: (work: W) => boolean): HTMLUListElement | HTMLOListElement {
+                 filter?: (work: W) => boolean,
+                 htmlClass?: string): HTMLUListElement | HTMLOListElement {
     const list: HTMLUListElement | HTMLOListElement = this.document.createElement(listType);
     if (reverse && listType == OutputFormat.ol) {
       const ol = list as HTMLOListElement; // もうちょっとマシな書き方？
       ol.reversed = true;
+    }
+    if (htmlClass != null) {
+      list.classList.add(htmlClass);
     }
     this.getData(reverse, filter).forEach(work => {
       list.appendChild(work.toLi(outputLang, headerList));
@@ -162,8 +166,12 @@ export class WorkList<Key extends string, W extends Work<Key>> {
   private toTable(outputLang: Lang,
                   headerList: [Key, string][],
                   reverse: boolean = false,
-                  filter?: (work: W) => boolean): HTMLTableElement {
+                  filter?: (work: W) => boolean,
+                  htmlClass?: string): HTMLTableElement {
     const table = this.document.createElement("table");
+    if (htmlClass != null) {
+      table.classList.add(htmlClass);
+    }
     table.appendChild(this.getTableHeader(headerList));
     this.getData(reverse, filter).forEach(work => {
       table.appendChild(work.toTr(outputLang, headerList));
@@ -192,11 +200,12 @@ export class WorkList<Key extends string, W extends Work<Key>> {
                        outputLang: Lang,
                        headerList: [Key, string][],
                        reverse: boolean = false,
-                       filter?: (work: W) => boolean): HTMLElement {
+                       filter?: (work: W) => boolean,
+                       htmlClass?: string): HTMLElement {
     if (outputFormat == OutputFormat.ul || outputFormat == OutputFormat.ol ) {
-      return this.toList(outputFormat, outputLang, headerList, reverse, filter);
+      return this.toList(outputFormat, outputLang, headerList, reverse, filter, htmlClass);
     } else if (outputFormat == OutputFormat.table) {
-      return this.toTable(outputLang, headerList, reverse, filter);
+      return this.toTable(outputLang, headerList, reverse, filter, htmlClass);
     } else if (outputFormat == OutputFormat.itemize) {
       return this.toLaTeXCodeBlock(outputLang, headerList, reverse, filter);
     } else {

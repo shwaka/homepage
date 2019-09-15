@@ -217,15 +217,16 @@ export class ArticleListHandler {
   public show(outputFormat: OutputFormat,
               outputLang: Lang,
               reverse: boolean = false): void {
+    const htmlClass = "articles";
     this.output.innerHTML = ""; // clear the content of the HTML element
     const headerListNormal = ArticleList.getHeaderListNormal(outputLang);
     this.output.appendChild(this.getHeadingNormal(outputLang));
     this.output.appendChild(this.articleList.toHTMLElement(
-      outputFormat, outputLang, headerListNormal, reverse, isNormalArticle));
+      outputFormat, outputLang, headerListNormal, reverse, isNormalArticle, htmlClass));
     const headerListNonRefereed = ArticleList.getHeaderListNonRefereed(outputLang);
     this.output.appendChild(this.getHeadingNonRefereed(outputLang));
     this.output.appendChild(this.articleList.toHTMLElement(
-      outputFormat, outputLang, headerListNonRefereed, reverse, isNonRefereedArticle));
+      outputFormat, outputLang, headerListNonRefereed, reverse, isNonRefereedArticle, htmlClass));
   }
 }
 

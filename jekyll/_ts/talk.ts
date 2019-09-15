@@ -192,18 +192,19 @@ export class TalkListHandler {
               outputLang: Lang,
               reverse: boolean = false,
               split: boolean = true): void {
+    const htmlClass = "talks";
     const headerList = TalkList.getHeaderList(outputLang);
     this.output.innerHTML = ""; // clear the content of the HTML element
     if (split) {
       this.output.appendChild(this.getHeadingEnglish(outputLang));
       this.output.appendChild(this.talkList.toHTMLElement(
-        outputFormat, outputLang, headerList, reverse, isEnglishTalk));
+        outputFormat, outputLang, headerList, reverse, isEnglishTalk, htmlClass));
       this.output.appendChild(this.getHeadingJapanese(outputLang));
       this.output.appendChild(this.talkList.toHTMLElement(
-        outputFormat, outputLang, headerList, reverse, isJapaneseTalk));
+        outputFormat, outputLang, headerList, reverse, isJapaneseTalk, htmlClass));
     } else {
       this.output.appendChild(this.talkList.toHTMLElement(
-        outputFormat, outputLang, headerList, reverse, undefined));
+        outputFormat, outputLang, headerList, reverse, undefined, htmlClass));
     }
   }
 }
