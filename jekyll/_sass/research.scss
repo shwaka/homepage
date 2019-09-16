@@ -1,0 +1,23 @@
+ol.articles li{
+  padding-bottom: 5px;
+}
+
+ol.talks li{
+  padding-bottom: 5px;
+}
+
+.article-title{
+  font-style: italic;
+}
+
+// これ使ってる？
+.articles-table, .talks-table{
+  border-collapse: collapse;
+  td, th{
+    border: 1px solid $table-border-color;
+  }
+}
+
+a.arxiv[target="_blank"]{
+  white-space: nowrap;
+}

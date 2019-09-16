@@ -1,0 +1,24 @@
+h3.list-header{
+  // padding: 0px;
+  margin: 0px;
+  font-size: 12pt;
+  font-weight: normal;
+  border: 0;
+}
+
+ul#current-position{
+  margin: 0px;
+}
+
+table#cv{
+  border-spacing: 10px 0px;
+  td, th{
+    border: 0;
+  }
+  th{
+    text-align: right;
+  }
+  td{
+    text-align: left;
+  }
+}

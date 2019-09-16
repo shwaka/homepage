@@ -1,0 +1,39 @@
+#list-of-posts{
+  .post{
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid $weak-border-color;
+    .link{
+      padding-left: 10px;
+    }
+  }
+}
+// list-of-posts.html と，各個別 post の両方で使う
+.post-info{
+  .post-date{
+    display: inline-block;
+    color: $unimportant-color;
+    // width: 140px;
+  }
+  .post-tags{
+    display: inline-block;
+    height: 100%;
+    .post-tag{
+      display: inline-block;
+      margin: 0 2px;
+      padding: 0 2px;
+      background-color: $background-color-unselected;
+      // color: $color-unselected;
+      font-size: small;
+      border: 1px solid $border-color;
+      border-radius: 5px;
+    }
+  }
+}
+
+div#blog_footer{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
