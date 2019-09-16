@@ -11,9 +11,10 @@ function main(): void {
   if (!isWindowWithGlobalVariables(window)) {
     throw Error("window does not have required properties")
   }
-  document.addEventListener("DOMContentLoaded", function(){
-    // scope の関係で上の type guard が効いてない？
-    loadFromJson((window as Window & WindowWithGlobalVariables).researchJsonFile);
+  const _window = window;
+  document.addEventListener("DOMContentLoaded", () => {
+    // scope の関係で window は上書きされてしまうっぽい？
+    loadFromJson(_window.researchJsonFile);
   });
   window.updateTalks = updateTalks;
 }
