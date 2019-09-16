@@ -1,5 +1,9 @@
 // require media.scss, palette.scss
 
+@import "research.scss";
+@import "cv.scss";
+@import "blog.scss";
+
 header{
   left: 0;
   right: 0;
@@ -86,35 +90,11 @@ a{
   }
 }
 
-a.arxiv[target="_blank"]{
-  white-space: nowrap;
-}
 svg.target-blank-icon{
   width: 13px;
   height: 13px;
   --icon-color: #{$target-blank-icon-color};
 }
-// a[target="_blank"]{
-//   // padding-right: 13px;
-//   // background: url({{ site.baseurl }}/assets/img/target_blank.png) right center/11px auto no-repeat;
-//   &::after{
-//     content: "";
-//     display: inline-block;
-//     background-image: url($site-base-url + "/assets/img/target_blank.png");
-//     background-size: contain;
-//     vertical-align: middle;
-//     width: 13px;
-//     height: 13px;
-//     div#access_counter &{
-//       padding-right: 0px;
-//       background: none;
-//     }
-//   }
-//   &.arxiv{
-//     white-space: nowrap;
-//   }
-// }
-
 
 div#base_container{
   // position: absolute;
@@ -140,83 +120,6 @@ div#info{
   }
 }
 
-#list-of-posts{
-  .post{
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-    border-bottom: 1px solid $weak-border-color;
-    .link{
-      padding-left: 10px;
-    }
-  }
-}
-// list-of-posts.html と，各個別 post の両方で使う
-.post-info{
-  .post-date{
-    display: inline-block;
-    color: $unimportant-color;
-    // width: 140px;
-  }
-  .post-tags{
-    display: inline-block;
-    height: 100%;
-    .post-tag{
-      display: inline-block;
-      margin: 0 2px;
-      padding: 0 2px;
-      background-color: $background-color-unselected;
-      // color: $color-unselected;
-      font-size: small;
-      border: 1px solid $border-color;
-      border-radius: 5px;
-    }
-  }
-}
-
-div#blog_footer{
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-table#cv{
-  border-spacing: 10px 0px;
-  td, th{
-    border: 0;
-  }
-  th{
-    text-align: right;
-  }
-  td{
-    text-align: left;
-  }
-}
-
-h3.list-header{
-  // padding: 0px;
-  margin: 0px;
-  font-size: 12pt;
-  font-weight: normal;
-  border: 0;
-}
-
-ul#current-position{
-  margin: 0px;
-}
-
-ol.articles li{
-  padding-bottom: 5px;
-}
-
-ol.talks li{
-  padding-bottom: 5px;
-}
-
-.article-title{
-  font-style: italic;
-}
-
 .error {
   background-color: red !important;
   color: white !important;
@@ -226,20 +129,6 @@ div#access_counter{
   text-align: center;
   &.access_counter_hidden{
     display: none;
-  }
-}
-
-.articles-table, .talks-table{
-  border-collapse: collapse;
-  td, th{
-    border: 1px solid $table-border-color;
-  }
-}
-
-// single-page.html
-&.single-page{
-  h1{
-    margin-top: 50px;
   }
 }
 
