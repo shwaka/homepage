@@ -5,6 +5,7 @@
 # install
 - `ruby`, `gem`, `bundler` あたりをインストール
 - `jekyll/` ディレクトリで `bundle update` で必要な gem をインストール
+- `jekyll/_ts/` ディレクトリで `npm install` で node package をインストール
 
 # build, test
 ## build
