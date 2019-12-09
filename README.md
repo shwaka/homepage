@@ -6,6 +6,8 @@
 - `ruby`, `gem`, `bundler` あたりをインストール
 - `jekyll/` ディレクトリで `bundle update` で必要な gem をインストール
 - `jekyll/_ts/` ディレクトリで `npm install` で node package をインストール
+- `tsc`, `browserify` をコマンドラインから叩けるようにする．
+  `npm install -g typescript`, `npm install -g browserify`
 
 # build, test
 ## build
