@@ -21,7 +21,7 @@
 ## スマホでのテスト
 [Connect to a locally built Jekyll Server using mobile devices in the LAN](https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan)
 ローカルネットワークを使うので，wifi環境下で行う．
-1. `--host=0.0.0.0` オプションをつけるか， `_config.yml_` 内に `host: 0.0.0.0` と記述
+1. `--host=0.0.0.0` オプションをつけるか， `_config.yml` 内に `host: 0.0.0.0` と記述
 2. `hostname -I` で ip アドレスを調べる (`192.168.1.10` みたいなローカルなアドレスが出るはず？)
 3. `jekyll (live)serve`
 4. スマホから `192.168.1.10:4000` にアクセス (ポート番号は `jekyll serve` の出力を見て確認)
