@@ -16,6 +16,10 @@
          <script type="text/javascript"
          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
          </script> -->
+    {% if page.math %}
+      <script src="{{ site.baseurl }}/assets/js/zotica.js"></script>
+      <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/zotica.css"/>
+    {% endif %}
     <script type="text/javascript">
      var params = new Object;
      location.search.substring(1).split("&").forEach((str) => {

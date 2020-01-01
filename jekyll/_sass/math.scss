@@ -1,0 +1,76 @@
+$theorem: "theorem";
+.#{$theorem} {
+  border: 1px solid $weak-border-color;
+  margin: 2px;
+
+  .#{$theorem}-header {
+    padding: 3px;
+    // background-color: darken($background-base, 20%);
+    background-color: $body-highlighted-background-color;
+    .#{$theorem}-name {
+      // border-bottom, display, line-height の3つで下線を引いている
+      border-bottom: 2px solid $border-color;
+      display: inline-block;
+      line-height: 0.85;
+      // text-decoration: underline gray;
+      font-weight: bold;
+      padding-top: 2px;
+      padding-left: 2px;
+    }
+    .#{$theorem}-caption-content {
+      // color: green;
+    }
+    .#{theorem}-caption-paren {
+      // color: gray;
+    }
+  }
+
+  .#{$theorem}-content {
+    padding: 2px;
+    p {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+div[#{$theorem}-key="theorem"] {
+  // color: brown;
+}
+
+$proof: "proof";
+.#{$proof} {
+  margin-left: 5px;
+  .#{$proof}-header {
+    text-decoration: underline $border-color;
+    font-weight: bold;
+  }
+  .#{$proof}-content {
+    margin-left: 5px;
+    padding-left: 10px;
+    border-left: 3px solid $border-color;
+  }
+}
+
+.math-block {
+  margin: 10px 0px;
+  display: flex;
+  align-items: baseline;
+  line-height: 1;
+  math-root {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.bibitem-display {
+  color: blue;
+}
+
+.bibliography {
+  .bibitem {
+    p {
+      margin: 3px;
+    }
+  }
+}

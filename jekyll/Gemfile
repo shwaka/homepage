@@ -8,6 +8,9 @@ gem 'nokogiri'
 gem 'jekyll-toc'
 gem 'jekyll-typescript', git: 'git@github.com:shwaka/jekyll-typescript.git'
 gem 'rake'
+gem 'jekyll-math', git: 'git@github.com:shwaka/jekyll-math.git'
+gem 'kramdown-zotica', git: 'git@github.com:shwaka/kramdown-zotica.git'
+
 
 # group :jekyll_plugins do
 #   gem 'jekyll-last-modified-at'
