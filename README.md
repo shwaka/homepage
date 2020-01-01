@@ -7,12 +7,14 @@
     - ruby 関連: `ruby`, `gem`, `bundler`
     - js 関連: `node`, `npm`
 - `jekyll/` ディレクトリで `bundle install` で必要な gem をインストール
-- `tsc`, `browserify` をコマンドラインから叩けるようにする．
-  `npm install -g typescript`, `npm install -g browserify`
 
 # build, test
 ## build
 `jekyll/` ディレクトリで `jekyll build`
+
+- このとき自動的に `jekyll/_ts/` で `npm install` される．
+  特に `tsc` や `browserify` がインストールされる
+
 
 ## test
 - `jekyll serve`
