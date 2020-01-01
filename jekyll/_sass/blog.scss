@@ -17,7 +17,10 @@
   }
   .post-tags{
     display: inline-block;
-    height: 100%;
+    height: auto;
+    // 前は 100% だったけど，表示がおかしくなったので auto に変更．
+    // 発生したのは jekyll-math (に関連した styles)を導入したタイミング
+    // だけど，関係ある…？
     .post-tag{
       display: inline-block;
       margin: 0 2px;
