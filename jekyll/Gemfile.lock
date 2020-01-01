@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:shwaka/jekyll-math.git
-  revision: 7492d3dac85534af9bd4af310b102a8bc852d957
+  revision: 9e45e113babe767003365fab4e97c8d299bc2232
   specs:
     jekyll-math (0.1.0)
       jekyll
