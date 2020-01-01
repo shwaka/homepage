@@ -3,9 +3,10 @@
 - [Jekyll](https://jekyllrb.com/) を使っているので，サーバーにアップロードする前にローカルでビルドする必要がある．
 
 # install
-- `ruby`, `gem`, `bundler` あたりをインストール
-- `jekyll/` ディレクトリで `bundle update` で必要な gem をインストール
-- `jekyll/_ts/` ディレクトリで `npm install` で node package をインストール
+- 必要なツールをインストール
+    - ruby 関連: `ruby`, `gem`, `bundler`
+    - js 関連: `node`, `npm`
+- `jekyll/` ディレクトリで `bundle install` で必要な gem をインストール
 - `tsc`, `browserify` をコマンドラインから叩けるようにする．
   `npm install -g typescript`, `npm install -g browserify`
 
