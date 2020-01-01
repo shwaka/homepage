@@ -4,5 +4,13 @@
   "dependencies": {
     "jsdom": "^15.1.1",
     "@types/jsdom": "^12.2.4"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.4",
+    "browserify": "^16.5.0"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "browserify": "browserify"
   }
 }
