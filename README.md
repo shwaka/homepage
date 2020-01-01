@@ -90,3 +90,6 @@
     - `config.yml` を適切に設定していない場合に分かりやすいエラーメッセージを吐く
         - `config.refer.key`
         - `config.baseurl`
+- `old-page.html` で `research-ja.html` がちゃんと読み込めていない．
+  `jekyll-typescript` の generator で生成された page が，
+  `include_md` フィルタで扱えていないのが原因っぽい．
