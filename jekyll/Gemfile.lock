@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git@github.com:shwaka/jekyll-typescript.git
-  revision: a9ae21de794d9d15b737d03c8abce4d6a2be1246
+  revision: b9505b5df2e0da2905427cb06a69ace1eefe5eed
   specs:
     jekyll-typescript (0.2.0)
       rake
