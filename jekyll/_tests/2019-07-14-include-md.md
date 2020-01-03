@@ -7,6 +7,7 @@ ref-list:
   - "post:cleveref"
   - "index"
   - "research"
+  - "others"
 ---
 
 <style>
@@ -32,25 +33,9 @@ ref-list:
       <div class="title">
         {{ ref }}
       </div>
-      {% comment %}{% include_md {{ ref }} %}{% endcomment %}
-      {{ page_to_include | include_md }}
+      {{ page_to_include | include_content }}
     </div>
   {% endcapture %}
   {% assign acc_title = page_to_include.title %}
   {% include accordion.html id=ref title=acc_title content=acc_content %}
 {% endfor %}
-
-
-{% comment %} refer は使わずに {% endcomment %}
-{% assign ref = "others" %}
-{% assign page_to_include = ref | refer %}
-{% capture acc_content %}
-  <div class="included">
-    <div class="title">
-      {{ ref }}
-    </div>
-    {{ page_to_include | include_md }}
-  </div>
-{% endcapture %}
-{% assign acc_title = page_to_include.title %}
-{% include accordion.html id=ref title=acc_title content=acc_content %}
