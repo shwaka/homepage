@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git@github.com:shwaka/jekyll-refer.git
-  revision: daa4c361fbf3355e0254b95b1992c5b69c8f35be
+  revision: 13a59b05bfa5b4fcbbe137650546b9e3dde25c11
   specs:
     jekyll-refer (0.1.0)
       jekyll
