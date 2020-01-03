@@ -1,6 +1,6 @@
 - title: Description and triviality of the loop products and coproducts for rational Gorenstein spaces
   arxiv: "1612.03563"
-  year: 2016
+  year-preprint: 2016
   type: "preprint"
 - title: String topology on rational Gorenstein spaces
   journal: 京都大学数理解析研究所講究録 No.~2060 「変換群を核とする代数的位相幾何学」
@@ -9,17 +9,20 @@
   type: "proceedings"
 - title: Coproducts in brane topology
   arxiv: "1802.04973"
-  journal: Algebraic and Geometric Topology
+  journal: Algebr. Geom. Topol.  # Algebraic and Geometric Topology
   journal-url: https://msp.org/agt/about/journal/about.html
-  year: 2018
-  type: "toappear"
+  year-preprint: 2018
+  journal-page: "19(6):2961–2988"
+  article-url: https://msp.org/agt/2019/19-6/p08.xhtml
+  year-published: 2019
+  type: "published"
 - title: Nontrivial example of the composition of the brane product and coproduct on Gorenstein spaces
   arxiv: "1902.10936"
-  journal: Homology, Homotopy and Applications
+  journal: Homology Homotopy Appl.  # Homology, Homotopy and Applications
   journal-url: https://intlpress.com/site/pub/pages/journals/items/hha/_home/_main/index.html
-  year: 2019
+  year-preprint: 2019
   type: "toappear"
 - title: New construction of the brane coproduct and vanishing of cup products on sphere spaces
   arxiv: "1905.00644"
-  year: 2019
+  year-preprint: 2019
   type: "preprint"

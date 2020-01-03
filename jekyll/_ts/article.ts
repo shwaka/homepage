@@ -4,14 +4,15 @@ import {hasProperty, hasPropertyOfType, Lang, Work, makeAnchor, WorkList, Output
 enum ArticleType {
   preprint = "preprint",
   toappear = "toappear",
-  proceedings = "proceedings"
+  published = "published",
+  proceedings = "proceedings",
 }
 
 interface ArticlePreprintObject {
   type: ArticleType.preprint;
   title: string;
   arxiv: string;
-  year: number;
+  "year-preprint": number;
 }
 
 function isArticlePreprintObject(arg: unknown): arg is ArticlePreprintObject {
@@ -19,14 +20,14 @@ function isArticlePreprintObject(arg: unknown): arg is ArticlePreprintObject {
     hasProperty(arg, "type") && (arg.type == ArticleType.preprint) &&
     hasPropertyOfType(arg, "title", "string") &&
     hasPropertyOfType(arg, "arxiv", "string") &&
-    hasPropertyOfType(arg, "year", "number");
+    hasPropertyOfType(arg, "year-preprint", "number");
 }
 
 interface ArticleToappearObject {
   type: ArticleType.toappear;
   title: string;
   arxiv: string;
-  year: number;
+  "year-preprint": number;
   journal: string;
   "journal-url": string;
 }
@@ -36,10 +37,36 @@ function isArticleToappearObject(arg: unknown): arg is ArticleToappearObject {
     hasProperty(arg, "type") && (arg.type == ArticleType.toappear) &&
     hasPropertyOfType(arg, "title", "string") &&
     hasPropertyOfType(arg, "arxiv", "string") &&
-    hasPropertyOfType(arg, "year", "number") &&
+    hasPropertyOfType(arg, "year-preprint", "number") &&
     hasPropertyOfType(arg, "journal", "string") &&
     hasPropertyOfType(arg, "journal-url", "string");
 }
+
+interface ArticlePublishedObject {
+  type: ArticleType.published;
+  title: string;
+  arxiv: string;
+  "year-preprint": number;
+  journal: string;
+  "journal-url": string;
+  "journal-page": string;
+  "article-url": string;
+  "year-published": number;
+}
+
+function isArticlePublishedObjet(arg: unknown): arg is ArticlePublishedObject {
+  return (typeof arg == "object") && (arg != null) &&
+    hasProperty(arg, "type") && (arg.type == ArticleType.published) &&
+    hasPropertyOfType(arg, "title", "string") &&
+    hasPropertyOfType(arg, "arxiv", "string") &&
+    hasPropertyOfType(arg, "year-preprint", "number") &&
+    hasPropertyOfType(arg, "journal", "string") &&
+    hasPropertyOfType(arg, "journal-url", "string") &&
+    hasPropertyOfType(arg, "journal-page", "string") &&
+    hasPropertyOfType(arg, "article-url", "string") &&
+    hasPropertyOfType(arg, "year-published", "number");
+}
+
 
 interface ArticleProceedingsObject {
   type: ArticleType.proceedings;
@@ -58,10 +85,10 @@ function isArticleProceedingsObject(arg: unknown): arg is ArticleProceedingsObje
     hasPropertyOfType(arg, "journal-url", "string");
 }
 
-export type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticleProceedingsObject;
+export type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticlePublishedObject | ArticleProceedingsObject;
 
 function isArticleObject(arg: unknown): arg is ArticleObject {
-  return isArticlePreprintObject(arg) || isArticleToappearObject(arg) || isArticleProceedingsObject(arg);
+  return isArticlePreprintObject(arg) || isArticleToappearObject(arg) || isArticlePublishedObjet(arg) || isArticleProceedingsObject(arg);
 }
 
 export function isArticleObjectArray(arg: unknown): arg is ArticleObject[] {
@@ -92,7 +119,13 @@ class Article extends Work<ArticleKey>{
     if (this.data.type == ArticleType.toappear) {
       journal = this.document.createElement("span");
       journal.appendChild(this.document.createTextNode("to appear in "));
-      journal.appendChild(makeAnchor(this.window, this.data.journal, this.data["journal-url"]));
+      journal.appendChild(makeAnchor(this.window, this.data.journal,
+                                     this.data["journal-url"]));
+    } else if (this.data.type == ArticleType.published) {
+      journal = this.document.createElement("span");
+      const journal_str = `${this.data.journal}, ${this.data["journal-page"]}`
+      journal.appendChild(makeAnchor(this.window, journal_str,
+                                     this.data["article-url"]));
     } else if (this.data.type == ArticleType.proceedings) {
       journal = this.document.createElement("span");
       journal.appendChild(makeAnchor(this.window, this.data.journal, this.data["journal-url"]));
@@ -104,7 +137,7 @@ class Article extends Work<ArticleKey>{
     }
     // arxiv
     const arxiv = this.document.createElement("span");
-    if (this.data.type == ArticleType.preprint || this.data.type == ArticleType.toappear) {
+    if (this.data.type == ArticleType.preprint || this.data.type == ArticleType.toappear || this.data.type == ArticleType.published) {
       const url = `https://arxiv.org/abs/${this.data.arxiv}`;
       const a = makeAnchor(this.window, this.data.arxiv, url);
       a.classList.add("arxiv");
@@ -127,6 +160,8 @@ class Article extends Work<ArticleKey>{
     // journal
     if (this.data.type == ArticleType.toappear) {
       latexCode += `, to appear in ${this.data.journal}`;
+    } else if (this.data.type == ArticleType.published) {
+      latexCode += `, ${this.data.journal}, ${this.data["journal-page"]}, ${this.data["year-published"]}`
     } else if (this.data.type == ArticleType.proceedings) {
       latexCode += `, ${this.data.journal}`;
     }
@@ -231,7 +266,7 @@ export class ArticleListHandler {
 }
 
 function isNormalArticle(article: Article): boolean {
-  return article.getType() == ArticleType.preprint || article.getType() == ArticleType.toappear;
+  return article.getType() == ArticleType.preprint || article.getType() == ArticleType.toappear || article.getType() == ArticleType.published;
 }
 
 function isNonRefereedArticle(article: Article): boolean {
