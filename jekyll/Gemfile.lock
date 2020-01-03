@@ -8,6 +8,13 @@ GIT
       zotica
 
 GIT
+  remote: git@github.com:shwaka/jekyll-refer.git
+  revision: 323acda85d047f1d762a450af157df2e3c44ec81
+  specs:
+    jekyll-refer (0.1.0)
+      jekyll
+
+GIT
   remote: git@github.com:shwaka/jekyll-typescript.git
   revision: 5c5aee36361803eea9852b1a25b9728edd42d908
   specs:
@@ -97,6 +104,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 4.0.0)
   jekyll-math!
+  jekyll-refer!
   jekyll-toc
   jekyll-typescript!
   kramdown-zotica!

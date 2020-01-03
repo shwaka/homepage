@@ -8,6 +8,7 @@ plugins:
   - jekyll-typescript
   - jekyll-math
   - kramdown-math-zotica
+  - jekyll-refer
 kramdown:
   math_engine: zotica
 crossref:
