@@ -73,7 +73,7 @@ layout: none
       {% for ref in site.data.pages %}
         {% assign pg = ref | refer %}
         <h1>{{ pg.title }}</h1>
-        {{ ref | refer | include_md }}
+        {{ ref | refer | include_content }}
       {% endfor %}
 
 
