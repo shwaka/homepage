@@ -7,9 +7,7 @@ layout: mylayout
 
 ## Shun Wakatsuki
 - [東京大学大学院 数理科学研究科](http://www.ms.u-tokyo.ac.jp/index.html){:target="_blank"}
-  博士課程
-- [FMSP](http://fmsp.ms.u-tokyo.ac.jp/index_e.html){:target="_blank"}
-  コース生
+  協力研究員
 - **email**: swaka[AT]ms.u-tokyo.ac.jp
 - **address**: 〒153-8914 東京都目黒区駒場3-8-1
 

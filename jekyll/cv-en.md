@@ -16,19 +16,21 @@ layout: mylayout
 
 {:.list-header}
 ### Current position:
-- Doctoral student,
-  [Graduate School of Mathematical Sciences, the University of Tokyo](http://www.ms.u-tokyo.ac.jp/index.html){:target="_blank"}
-- Course student,
-  [Leading Graduate Course for Frontiers of Mathematical Sciences and Physics](http://fmsp.ms.u-tokyo.ac.jp/index_e.html){:target="_blank"}
+- Collaborative researcher at Graduate School of Mathematical Sciences,
+the University of Tokyo
 {:#current-position}
 
 ## Education
 - Mar. 2010: Kaisei Senior High School, Tokyo, Japan
 - Mar. 2014: B.S. in Mathematics, the University of Tokyo
 - Mar. 2016: M.S. in Mathematical Sciences, the University of Tokyo
+- Sep. 2019: Ph.D. in Mathematical Sciences, the University of Tokyo
 
 ## Fellowships
--  Oct. 2014 – : FMSP course student,<br>
-   [Leading Graduate Course for Frontiers of Mathematical Sciences and Physics](http://fmsp.ms.u-tokyo.ac.jp/index_e.html){:target="_blank"}
--  Apr. 2016 – Mar. 2019: JSPS Research Fellow (DC1),<br>
-   [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html){:target="_blank"}
+- Oct. 2014 – Sep. 2019: FMSP course student,<br>
+  [Leading Graduate Course for Frontiers of Mathematical Sciences and Physics](http://fmsp.ms.u-tokyo.ac.jp/index_e.html){:target="_blank"}
+- Apr. 2016 – Mar. 2019: JSPS Research Fellow (DC1),<br>
+  [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html){:target="_blank"}
+- Sep. 2019 -- Jan. 2010: JSPS Overseas Challenge Program for Young Researchers,<br>
+  [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html){:target="_blank"},
+  guest researcher at Stockholm University

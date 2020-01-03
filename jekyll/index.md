@@ -6,7 +6,7 @@ layout: mylayout
 ---
 
 ## Shun Wakatsuki
-- Doctoral student at
+- Collaborative researcher at
   [Graduate School of Mathematical Sciences, the University of Tokyo](http://www.ms.u-tokyo.ac.jp/index.html){:target="_blank"}
 - [FMSP](http://fmsp.ms.u-tokyo.ac.jp/index_e.html){:target="_blank"}
   course student
