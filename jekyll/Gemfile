@@ -10,6 +10,7 @@ gem 'jekyll-typescript', git: 'git@github.com:shwaka/jekyll-typescript.git'
 gem 'rake'
 gem 'jekyll-math', git: 'git@github.com:shwaka/jekyll-math.git'
 gem 'kramdown-zotica', git: 'git@github.com:shwaka/kramdown-zotica.git'
+gem 'zotica', git: 'git@github.com:Ziphil/ZenithalMathWeb.git'
 gem 'jekyll-refer', git: 'git@github.com:shwaka/jekyll-refer.git'
 
 

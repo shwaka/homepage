@@ -1,4 +1,13 @@
 GIT
+  remote: git@github.com:Ziphil/ZenithalMathWeb.git
+  revision: 452547f478365b3255f5e04a647a1eb1c1ef32e2
+  specs:
+    zotica (0.0.0)
+      sassc
+      ttfunk
+      zenml (>= 1.2.0)
+
+GIT
   remote: git@github.com:shwaka/jekyll-math.git
   revision: 9e45e113babe767003365fab4e97c8d299bc2232
   specs:
@@ -79,7 +88,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (4.0.2)
+    public_suffix (4.0.3)
     rake (13.0.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
@@ -90,13 +99,9 @@ GEM
       ffi (~> 1.9)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
-    ttfunk (1.5.1)
+    ttfunk (1.6.0)
     unicode-display_width (1.6.0)
     zenml (1.2.1)
-    zotica (0.0.0)
-      sassc
-      ttfunk
-      zenml (>= 1.2.0)
 
 PLATFORMS
   ruby
@@ -110,6 +115,7 @@ DEPENDENCIES
   kramdown-zotica!
   nokogiri
   rake
+  zotica!
 
 BUNDLED WITH
    1.17.2
