@@ -21,7 +21,10 @@
   journal: Homology Homotopy Appl.  # Homology, Homotopy and Applications
   journal-url: https://intlpress.com/site/pub/pages/journals/items/hha/_home/_main/index.html
   year-preprint: 2019
-  type: "toappear"
+  journal-page: "22:333--341"
+  article-url: https://www.intlpress.com/site/pub/pages/journals/items/hha/content/vols/0022/0001/a019/
+  year-published: 2020
+  type: "published"
 - title: New construction of the brane coproduct and vanishing of cup products on sphere spaces
   arxiv: "1905.00644"
   year-preprint: 2019
