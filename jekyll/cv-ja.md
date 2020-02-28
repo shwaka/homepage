@@ -15,7 +15,7 @@ layout: mylayout
 {:.list-header}
 ### Current position:
 - [東京大学大学院 数理科学研究科](http://www.ms.u-tokyo.ac.jp/index-j.html){:target="_blank"}
-  協力研究員
+  特任研究員
 {:#current-position}
 
 ## 学歴
@@ -36,3 +36,6 @@ layout: mylayout
   [日本学術振興会](https://www.jsps.go.jp/index.html){:target="_blank"}
   若手研究者海外挑戦プログラム
   にて，Stockholm 大学に滞在
+- 2020年1月--2020年3月
+  [東京大学大学院 数理科学研究科](http://www.ms.u-tokyo.ac.jp/index-j.html){:target="_blank"}
+  特任研究員

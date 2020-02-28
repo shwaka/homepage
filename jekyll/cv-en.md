@@ -16,7 +16,7 @@ layout: mylayout
 
 {:.list-header}
 ### Current position:
-- Collaborative researcher at Graduate School of Mathematical Sciences,
+- Project researcher at Graduate School of Mathematical Sciences,
 the University of Tokyo
 {:#current-position}
 
@@ -31,6 +31,8 @@ the University of Tokyo
   [Leading Graduate Course for Frontiers of Mathematical Sciences and Physics](http://fmsp.ms.u-tokyo.ac.jp/index_e.html){:target="_blank"}
 - Apr. 2016 – Mar. 2019: JSPS Research Fellow (DC1),<br>
   [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html){:target="_blank"}
-- Sep. 2019 -- Jan. 2010: JSPS Overseas Challenge Program for Young Researchers,<br>
+- Sep. 2019 -- Jan. 2020: JSPS Overseas Challenge Program for Young Researchers,<br>
   [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html){:target="_blank"},
   guest researcher at Stockholm University
+- Jan. 2020 -- Mar. 2020: Project researcher at
+  [Graduate School of Mathematical Sciences, The University of Tokyo](https://www.ms.u-tokyo.ac.jp/index.html){:target="_blank"}
