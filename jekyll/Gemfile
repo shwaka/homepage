@@ -6,12 +6,12 @@ jekyll_version = '4.0.0'
 gem 'jekyll', jekyll_version
 gem 'nokogiri'
 gem 'jekyll-toc'
-gem 'jekyll-typescript', git: 'git@github.com:shwaka/jekyll-typescript.git'
+gem 'jekyll-typescript', git: 'https://github.com/shwaka/jekyll-typescript.git'
 gem 'rake'
-gem 'jekyll-math', git: 'git@github.com:shwaka/jekyll-math.git'
-gem 'kramdown-zotica', git: 'git@github.com:shwaka/kramdown-zotica.git'
-gem 'zotica', git: 'git@github.com:Ziphil/ZenithalMathWeb.git'
-gem 'jekyll-refer', git: 'git@github.com:shwaka/jekyll-refer.git'
+gem 'jekyll-math', git: 'https://github.com/shwaka/jekyll-math.git'
+gem 'kramdown-zotica', git: 'https://github.com/shwaka/kramdown-zotica.git'
+gem 'zotica', git: 'https://github.com/Ziphil/ZenithalMathWeb.git'
+gem 'jekyll-refer', git: 'https://github.com/shwaka/jekyll-refer.git'
 
 
 # group :jekyll_plugins do
