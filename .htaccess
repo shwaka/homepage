@@ -1,0 +1,4 @@
+# htaccess to redirect from https://ms.u-tokyo.ac.jp/~swaka/ to https://shwaka.github.io/
+Redirect permanent /~swaka/ https://shwaka.github.io/
+# RewriteEngine on
+# RewriteRule ^tests/2019-07-12-highlight-and-image.html$ https://shwaka.github.io/tests/2019-07-12-highlight-and-image.html
