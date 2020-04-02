@@ -1,6 +1,9 @@
 # 概要
-- [https://www.ms.u-tokyo.ac.jp/~swaka/](https://www.ms.u-tokyo.ac.jp/~swaka/) のソースコード．
-- [Jekyll](https://jekyllrb.com/) を使っているので，サーバーにアップロードする前にローカルでビルドする必要がある．
+- [https://shwaka.github.io](https://shwaka.github.io) のソースコード．
+- このリポジトリ(`shwaka/homepage`) に push すれば，
+  build や deploy などは Github Actions が勝手にやってくれる．
+  (deploy 先: [https://github.com/shwaka/shwaka.github.io](https://github.com/shwaka/shwaka.github.io))
+- ~~[Jekyll](https://jekyllrb.com/) を使っているので，サーバーにアップロードする前にローカルでビルドする必要がある．~~
 
 # install
 - 必要なツールをインストール
@@ -15,11 +18,8 @@
 - このとき自動的に `jekyll/_ts/` で `npm install` される．
   特に `tsc` や `browserify` がインストールされる
 
-
 ## test
-- `jekyll serve`
-    - 以前は `hawkins` プラグインの `jekyll liveserve` を使ってたけど，
-      割と最近 `jekyll` 本体に `livereload` として組込まれたみたいなので，こっちを使うことにした．
+`jekyll serve`
 
 ## スマホでのテスト
 [Connect to a locally built Jekyll Server using mobile devices in the LAN](https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan)
@@ -30,6 +30,9 @@
 4. スマホから `192.168.1.10:4000` にアクセス (ポート番号は `jekyll serve` の出力を見て確認)
 
 ## deploy
+以下は古い情報．
+`https://ms.u-tokyo.ac.jp/~swaka/` に手動でアップロードしてたときの方法．
+
 - local は `_site/`
 - sftp 接続した remote は `public_html/`
 
@@ -71,6 +74,6 @@
     - [avillafiorita/jekyll-datapage_gen: Generate one page per yaml record in Jekyll sites.](https://github.com/avillafiorita/jekyll-datapage_gen)
 
 # TODO
-- デプロイ方法をどうにかしたい．
-    - 自動化したい
-    - 重いPDFをいちいち upload するのは無駄
+- Github Actions でのキャッシュが上手くいかない．
+  `sassc` が悪いっぽい？
+  (参考: [sassc-rubyのissue](https://github.com/sass/sassc-ruby/issues/146))
