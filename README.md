@@ -1,6 +1,6 @@
 # 概要
 - [https://shwaka.github.io](https://shwaka.github.io) のソースコード．
-- このリポジトリ(`shwaka/homepage`) に push すれば，
+- このリポジトリ(`shwaka/homepage`) に (`jekyll/` 以下の変更を含む) push をすれば，
   build や deploy などは Github Actions が勝手にやってくれる．
   (deploy 先: [https://github.com/shwaka/shwaka.github.io](https://github.com/shwaka/shwaka.github.io))
 - ~~[Jekyll](https://jekyllrb.com/) を使っているので，サーバーにアップロードする前にローカルでビルドする必要がある．~~
