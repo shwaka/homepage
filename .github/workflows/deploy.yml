@@ -1,8 +1,10 @@
 on:
   push:
     branches: [ master ]
+    paths: [ 'jekyll/**' ]
   pull_request:
     branches: [ master ]
+    paths: [ 'jekyll/**' ]
 
 jobs:
   deploy:
