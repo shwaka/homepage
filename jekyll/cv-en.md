@@ -16,8 +16,7 @@ layout: mylayout
 
 {:.list-header}
 ### Current position:
-- Project researcher at Graduate School of Mathematical Sciences,
-the University of Tokyo
+- [Research Fellow of Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/e-pd/index.html){:target="_blank"}
 {:#current-position}
 
 ## Education
@@ -36,3 +35,8 @@ the University of Tokyo
   guest researcher at Stockholm University
 - Jan. 2020 -- Mar. 2020: Project researcher at
   [Graduate School of Mathematical Sciences, The University of Tokyo](https://www.ms.u-tokyo.ac.jp/index.html){:target="_blank"}
+- Since Apr. 2020:
+  [Research Fellow of Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/e-pd/index.html){:target="_blank"}
+
+## Awards
+- Mar. 2020: Dean's Award (Doctor Course), Graduate School of Mathematical Sciences, the University of Tokyo

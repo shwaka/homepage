@@ -14,8 +14,7 @@ layout: mylayout
 
 {:.list-header}
 ### Current position:
-- [東京大学大学院 数理科学研究科](http://www.ms.u-tokyo.ac.jp/index-j.html){:target="_blank"}
-  特任研究員
+- [日本学術振興会 特別研究員 PD](https://www.jsps.go.jp/j-pd/){:target="_blank"}
 {:#current-position}
 
 ## 学歴
@@ -39,3 +38,8 @@ layout: mylayout
 - 2020年1月--2020年3月
   [東京大学大学院 数理科学研究科](http://www.ms.u-tokyo.ac.jp/index-j.html){:target="_blank"}
   特任研究員
+- 2020年3月--現在
+  [日本学術振興会 特別研究員 PD](https://www.jsps.go.jp/j-pd/){:target="_blank"}
+
+## 受賞歴
+- 2020年3月: 東京大学大学院数理科学研究科 博士課程 研究科長賞
