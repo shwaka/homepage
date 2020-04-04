@@ -11,21 +11,24 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-      # - name: Cache bundle directory
-      #   # https://blog.freks.jp/github-action-cache/
-      #   # なんか sassc の cache がうまくいかないっぽい:
-      #   # https://github.com/sass/sassc-ruby/issues/146#issuecomment-533005515
-      #   uses: actions/cache@v1
-      #   with:
-      #     path: vendor/bundle
-      #     key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-      #     restore-keys: ${{ runner.os }}-gem-
+      - name: Cache bundle directory
+        # https://blog.freks.jp/github-action-cache/
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-gem-
       - name: Set up Ruby 2.6
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6.x
       - name: Install bundler
         run: gem install bundler
+      - name: Bundle config for cache
+        # https://github.com/sass/sassc-ruby/issues/146#issuecomment-533005515
+        run: |
+          bundle config specific_platform x86_64-linux
+          bundle config --local build.sassc --disable-march-tune-native
       - name: Bundle install
         run: |
           bundle config path vendor/bundle
