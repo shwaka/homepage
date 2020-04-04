@@ -175,3 +175,11 @@
     conference: トポロジーシンポジウム
     url: http://www.math.akita-u.ac.jp/ts2019/
     venue: 秋田市・にぎわい交流館AU（あう）
+- base:
+    date: 2020-03-04
+    lang: en
+  en:
+    title: Differential forms in rational homotopy theory
+    conference: Building-up Differential Homotopy Theory 2020
+    url: https://www2.math.kyushu-u.ac.jp/~iwase/BDHT2/Home.html
+    venue: Shinshu University
