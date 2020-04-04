@@ -15,9 +15,9 @@ jobs:
         # https://blog.freks.jp/github-action-cache/
         uses: actions/cache@v1
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: ${{ runner.os }}-gem-
+          path: jekyll/vendor/bundle
+          key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-bundle-
       - name: Set up Ruby 2.6
         uses: actions/setup-ruby@v1
         with:
