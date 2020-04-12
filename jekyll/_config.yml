@@ -35,6 +35,7 @@ defaults:
       type: tests
     values:
       backref: list-of-tests
+      backref_lang: ja
       layout: mylayout
 sass:
   style: compressed

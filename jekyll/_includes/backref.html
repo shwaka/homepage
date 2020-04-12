@@ -10,7 +10,12 @@
     {% assign backref = layout.backref %}
   {% endif %}
   {% if backref %}
-    {% assign backpage = backref | refer %}
+    {% assign backpage_lang = page.backref_lang %}
+    {% if page.backref_lang %}
+      {% assign backpage = backref | refer: true, "lang", backpage_lang %}
+    {% else %}
+      {% assign backpage = backref | refer: true %}
+    {% endif %}
     {% if backpage %}
       {{ backpage | refer_link: nil, "<< " }}
     {% else %}
