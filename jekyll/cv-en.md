@@ -14,9 +14,10 @@ layout: mylayout
 | Birthplace:  | Kanagawa, Japan           |
 | Nationality: | Japan                     |
 
+{% assign current_position = site.data.cv.current_position[page.lang] %}
 {:.list-header}
 ### Current position:
-- [Research Fellow of Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/e-pd/index.html){:target="_blank"}
+- [{{ current_position.name }}]({{ current_position.url }}){:target="_blank"}
 {:#current-position}
 
 ## Education

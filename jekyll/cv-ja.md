@@ -12,9 +12,10 @@ layout: mylayout
 | 出身地: | 神奈川県                  |
 | 国籍:   | 日本                      |
 
+{% assign current_position = site.data.cv.current_position[page.lang] %}
 {:.list-header}
 ### Current position:
-- [日本学術振興会 特別研究員 PD](https://www.jsps.go.jp/j-pd/){:target="_blank"}
+- [{{ current_position.name }}]({{ current_position.url }}){:target="_blank"}
 {:#current-position}
 
 ## 学歴
