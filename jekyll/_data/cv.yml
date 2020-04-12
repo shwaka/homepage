@@ -13,3 +13,11 @@ current_position:
     name: 日本学術振興会 特別研究員 PD
     url: https://www.jsps.go.jp/j-pd/
     address: 〒390-8621 長野県松本市旭3-1-1 信州大学理学部
+awards:
+  - date: 2020-03-23
+    title:
+      en: >
+        Dean's Award (Doctor Course),
+        Graduate School of Mathematical Sciences,
+        the University of Tokyo
+      ja: 東京大学大学院数理科学研究科 博士課程 研究科長賞

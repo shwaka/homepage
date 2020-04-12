@@ -39,5 +39,19 @@ layout: mylayout
 - Since Apr. 2020:
   [Research Fellow of Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/e-pd/index.html){:target="_blank"}
 
-## Awards
-- Mar. 2020: Dean's Award (Doctor Course), Graduate School of Mathematical Sciences, the University of Tokyo
+{% if page.lang == "en" %}
+  {% assign awards_section = "Awards" %}
+  {% assign date_format = "%b. %Y" %}
+{% elsif page.lang == "ja" %}
+  {% assign awards_section = "受賞歴" %}
+  {% assign date_format = "%Y年%-m月" %}
+{% endif %}
+## {{ awards_section }}
+<ul>
+  {% for award in site.data.cv.awards %}
+    <li>
+      {{ award.date | date: date_format -}}:
+      {{ award.title[page.lang] }}
+    </li>
+  {% endfor %}
+</ul>

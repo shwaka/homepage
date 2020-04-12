@@ -1,4 +1,5 @@
 ---
+magiccomment: "-*- engine: liquid -*-"
 title: 履歴書
 lang: ja
 ref: cv
@@ -42,5 +43,20 @@ layout: mylayout
 - 2020年3月--現在
   [日本学術振興会 特別研究員 PD](https://www.jsps.go.jp/j-pd/){:target="_blank"}
 
-## 受賞歴
-- 2020年3月: 東京大学大学院数理科学研究科 博士課程 研究科長賞
+
+{% if page.lang == "en" %}
+  {% assign awards_section = "Awards" %}
+  {% assign date_format = "%b. %Y" %}
+{% elsif page.lang == "ja" %}
+  {% assign awards_section = "受賞歴" %}
+  {% assign date_format = "%Y年%-m月" %}
+{% endif %}
+## {{ awards_section }}
+<ul>
+  {% for award in site.data.cv.awards %}
+    <li>
+      {{ award.date | date: date_format -}}:
+      {{ award.title[page.lang] }}
+    </li>
+  {% endfor %}
+</ul>
