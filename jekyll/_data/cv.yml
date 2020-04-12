@@ -5,7 +5,7 @@ current_position:
     <<: *current_position_base
     name: Research Fellow of Japan Society for the Promotion of Science
     url: https://www.jsps.go.jp/english/e-pd/index.html
-    address: |
+    address: >
       Faculty of Science, Shinshu University,
       3-1-1 Asahi, Matsumoto, Nagano, 390-8621, Japan
   ja:
