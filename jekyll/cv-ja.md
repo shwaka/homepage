@@ -6,18 +6,15 @@ ref: cv
 layout: mylayout
 ---
 
-{:#cv}
-| 名前:   | 若月 駿                   |
-| Name:   | Shun Wakatsuki            |
-| Email:  | swaka[AT]ms.u-tokyo.ac.jp |
-| 出身地: | 神奈川県                  |
-| 国籍:   | 日本                      |
-
 {% assign current_position = site.data.cv.current_position[page.lang] %}
-{:.list-header}
-### Current position:
-- [{{ current_position.name }}]({{ current_position.url }}){:target="_blank"}
-{:#current-position}
+
+{:#cv}
+| 名前:   | 若月 駿                                             |
+| Name:   | Shun Wakatsuki                                      |
+| Email:  | {{ current_position.email }}                        |
+| 出身地: | 神奈川県                                            |
+| 国籍:   | 日本                                                |
+| 所属:   | [{{ current_position.name }}]({{ current_position.url }}){:target="_blank"} |
 
 ## 学歴
 - 2010年3月 開成高等学校卒
