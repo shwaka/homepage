@@ -7,7 +7,9 @@ def insert_anchor_icon(page)
   end
   html_str = page.output
   doc = Nokogiri::HTML.parse(html_str, nil, "utf-8")
-  doc.css('a[target="_blank"]').each do |a|
+  doc.css('a[href^="http"], a[target="_blank"]').each do |a|
+    # add target="_blank" to external links (whose href starts from "http")
+    a.set_attribute('target', "_blank")
     # create <use> tag
     use = Nokogiri::XML::Node.new("use", a)
     baseurl = page.site.config["baseurl"]
