@@ -2,6 +2,8 @@ baseurl: ""
 # url: https://www.ms.u-tokyo.ac.jp/~swaka
 host: 0.0.0.0
 livereload: true
+exclude:
+  - _plugins  # _plugins/ 変更時に livereload を発動させない (そもそもプラグインは再読み込みされない)
 timezone: Asia/Tokyo
 plugins:
   - jekyll-toc
