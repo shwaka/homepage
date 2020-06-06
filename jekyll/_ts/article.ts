@@ -74,6 +74,7 @@ interface ArticleProceedingsObject {
   year: string;
   journal: string;
   "journal-url": string;
+  "journal-page": string;
 }
 
 function isArticleProceedingsObject(arg: unknown): arg is ArticleProceedingsObject {
@@ -82,7 +83,8 @@ function isArticleProceedingsObject(arg: unknown): arg is ArticleProceedingsObje
     hasPropertyOfType(arg, "title", "string") &&
     hasPropertyOfType(arg, "year", "number") &&
     hasPropertyOfType(arg, "journal", "string") &&
-    hasPropertyOfType(arg, "journal-url", "string");
+    hasPropertyOfType(arg, "journal-url", "string") &&
+    hasPropertyOfType(arg, "journal-page", "string");
 }
 
 export type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticlePublishedObject | ArticleProceedingsObject;
@@ -128,7 +130,8 @@ class Article extends Work<ArticleKey>{
                                      this.data["article-url"]));
     } else if (this.data.type == ArticleType.proceedings) {
       journal = this.document.createElement("span");
-      journal.appendChild(makeAnchor(this.window, this.data.journal, this.data["journal-url"]));
+      const journal_str = `${this.data.journal}, ${this.data["journal-page"]}`
+      journal.appendChild(makeAnchor(this.window, journal_str, this.data["journal-url"]));
     }
     // year
     const year = this.document.createElement("span");
