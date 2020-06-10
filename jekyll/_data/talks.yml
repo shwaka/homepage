@@ -183,3 +183,11 @@
     conference: Building-up Differential Homotopy Theory 2020
     url: https://www2.math.kyushu-u.ac.jp/~iwase/BDHT2/Home.html
     venue: Shinshu University
+- base:
+    date: 2020-06-17
+    lang: ja
+  ja:
+    title: Vanishing of some cup products on mapping spaces from spheres
+    conference: 東工大トポロジーセミナー
+    url: https://sites.google.com/view/titech-topology/home
+    venue: 東京工業大学
