@@ -1,7 +1,7 @@
 on:
   push:
     branches: [ master ]
-    paths: [ 'jekyll/**' ]
+    paths: [ 'jekyll/**', '.github/workflows/deploy.yml' ]
   pull_request:
     branches: [ master ]
     paths: [ 'jekyll/**' ]
