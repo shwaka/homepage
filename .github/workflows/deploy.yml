@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Checkout submodule
-        # comment to run the workflow
         run: |
           git submodule init
           git submodule update
