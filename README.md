@@ -3,6 +3,7 @@
 - このリポジトリ(`shwaka/homepage`) に (`jekyll/` 以下の変更を含む) push をすれば，
   build や deploy などは Github Actions が勝手にやってくれる．
   (deploy 先: [https://github.com/shwaka/shwaka.github.io](https://github.com/shwaka/shwaka.github.io))
+- ノートなどの重いファイルは，git submodule として [shwaka/homepage_resources](https://github.com/shwaka/homepage_resources) に分離してある．
 - ~~[Jekyll](https://jekyllrb.com/) を使っているので，サーバーにアップロードする前にローカルでビルドする必要がある．~~
 
 # install
@@ -74,6 +75,3 @@
     - [avillafiorita/jekyll-datapage_gen: Generate one page per yaml record in Jekyll sites.](https://github.com/avillafiorita/jekyll-datapage_gen)
 
 # TODO
-- Github Actions でのキャッシュが上手くいかない．
-  `sassc` が悪いっぽい？
-  (参考: [sassc-rubyのissue](https://github.com/sass/sassc-ruby/issues/146))
