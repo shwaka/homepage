@@ -3,5 +3,4 @@ _site/
 .jekyll-cache/
 .tsbuild/
 node_modules/
-package-lock.json
 .log/
