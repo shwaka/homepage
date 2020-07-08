@@ -11,11 +11,11 @@ layout: mylayout
 また，あまり他人に見せることを想定していません．
 
 ## 日本語のページ
-{% include_relative list-of-pages.html lang="ja" %}
+{% include_relative _list-of-pages.html lang="ja" %}
 
 ## 英語のページ
-{% include_relative list-of-pages.html lang="en" %}
+{% include_relative _list-of-pages.html lang="en" %}
 
 ## その他の言語か言語未指定のページ
 
-{% include_relative list-of-pages.html lang=nil %}
+{% include_relative _list-of-pages.html lang=nil %}

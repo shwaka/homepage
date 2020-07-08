@@ -10,7 +10,7 @@ args: lang
     {% assign page_list = site.pages | where: "lang", include.lang %}
     {% for pg in page_list %}
       <li>
-        {% include_relative link-in-list-of-pages.html pg=pg%}
+        {% include_relative _link-in-list-of-pages.html pg=pg%}
       </li>
     {% endfor %}
   {% else %}
@@ -29,7 +29,7 @@ args: lang
       {% endfor %}
       {% unless lang_matched %}
         <li>
-          {% include_relative link-in-list-of-pages.html pg=pg%}
+          {% include_relative _link-in-list-of-pages.html pg=pg%}
         </li>
       {% endunless %}
     {% endfor %}

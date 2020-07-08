@@ -12,4 +12,4 @@ Jekyll にブログ機能があったからとりあえず作ってみたけど�
 - 2016-2017年の3つの記事は，過去に Qiita に書いたものを転載したもの．
 
 ## 投稿一覧
-{% include_relative list-of-posts.html %}
+{% include_relative _list-of-posts.html %}
