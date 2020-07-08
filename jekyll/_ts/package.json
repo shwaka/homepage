@@ -1,6 +1,12 @@
 {
   "name": "researchlist",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Create a list of research results in the format of HTML or TeX",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shwaka/homepage.git"
+  },
+  "license": "MIT",
   "dependencies": {
     "jsdom": "^15.1.1",
     "@types/jsdom": "^12.2.4"
