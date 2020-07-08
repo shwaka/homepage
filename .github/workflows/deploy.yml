@@ -41,7 +41,9 @@ jobs:
         run: bundle exec htmlproofer ./_site --empty-alt-ignore --url-ignore "$url_ignore"
         working-directory: ./jekyll
         env:
-          url_ignore: '/^hoge.*/,/refer_filter.rb$/'
+          url_ignore: '/^hoge.*/,/refer_filter.rb$/,/www\.intlpress\.com/'
+          # ↑以下のページが，何故か github actions 上でだけ time out する
+          # https://www.intlpress.com/site/pub/pages/journals/items/hha/content/vols/0022/0001/a019/
       - name: Deploy to shwaka/shwaka.github.io
         uses: peaceiris/actions-gh-pages@v3
         with:
