@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+      - name: Checkout submodule
+        run: |
+          git submodule init
+          git submodule update
       - name: Cache bundle directory
         # https://blog.freks.jp/github-action-cache/
         uses: actions/cache@v1
