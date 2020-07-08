@@ -1,0 +1,3 @@
+[submodule "jekyll/resources"]
+	path = jekyll/resources
+	url = git@github.com:shwaka/homepage_resources
