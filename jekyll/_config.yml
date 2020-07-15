@@ -73,3 +73,5 @@ typescript:
       data:
         title: "Research"
         lang: en
+linkrc:
+  resource_dir: resources

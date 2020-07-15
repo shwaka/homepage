@@ -13,6 +13,7 @@ gem 'kramdown-zotica', git: 'https://github.com/shwaka/kramdown-zotica.git'
 gem 'zotica', git: 'https://github.com/Ziphil/ZenithalMathWeb.git'
 gem 'jekyll-refer', git: 'https://github.com/shwaka/jekyll-refer.git'
 gem 'html-proofer'
+gem 'pdf-reader'
 
 
 # group :jekyll_plugins do
