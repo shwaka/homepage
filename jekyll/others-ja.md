@@ -13,6 +13,8 @@ layout: mylayout
   信州春の学校 第4回 勉強会
 - {% linkrc notes/RationalHomotopyTheory_seminar.pdf %}
   2015年7月，身内でのセミナー
+- {% linkrc notes/ConditionallyConvergentSpectralSequences.pdf %}
+  2020年，身内でのセミナー
 
 ## このサイトについて
 このサイトは [Jekyll](https://jekyllrb.com/){:target="_blank"} 製で，
