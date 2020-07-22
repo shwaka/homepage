@@ -1,3 +1,5 @@
+![.github/workflows/deploy.yml](https://github.com/shwaka/homepage/workflows/.github/workflows/deploy.yml/badge.svg)
+
 # 概要
 - [https://shwaka.github.io](https://shwaka.github.io) のソースコード．
 - このリポジトリ(`shwaka/homepage`) に (`jekyll/` 以下の変更を含む) push をすれば，
