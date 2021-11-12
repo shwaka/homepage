@@ -26,7 +26,8 @@
   ja:
     title: Description and triviality of the loop products and coproducts for rational Gorenstein spaces
     conference: リーマン面に関連する位相幾何学
-    url: https://www.ms.u-tokyo.ac.jp/~tado/riemann_surface16.html
+    # url: https://www.ms.u-tokyo.ac.jp/~tado/riemann_surface16.html # broken link
+    url: https://sites.google.com/view/ytadokoro/Topological_Studies_around_Riemann_Surfaces/2016
     venue: 東京大学
 - base:
     date: 2016-09-15
@@ -107,7 +108,7 @@
   en:
     title: Coproducts in brane topology on rational Gorenstein spaces
     conference: Mapping Spaces in Algebraic Topology
-    url: https://www.math.kyoto-u.ac.jp/~kishi/conference/kyoto2018/top
+    # url: https://www.math.kyoto-u.ac.jp/~kishi/conference/kyoto2018/top # broken link
     venue: Kyoto University
 - base:
     date: 2018-09-25
