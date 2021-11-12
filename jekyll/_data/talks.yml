@@ -190,4 +190,28 @@
     title: Vanishing of some cup products on mapping spaces from spheres
     conference: 東工大トポロジーセミナー
     url: https://sites.google.com/view/titech-topology/home
-    venue: 東京工業大学
+    venue: Zoom
+- base:
+    date: 2021-07-16
+    lang: ja
+  ja:
+    title: Vanishing of some cup products on mapping spaces from spheres
+    conference: 信州・京都・九大トポロジーセミナー
+    url: http://math.shinshu-u.ac.jp/~topology/seminar/
+    venue: Zoom
+- base:
+    date: 2021-11-07
+    lang: ja
+  ja:
+    title: A reduction of the string bracket to the loop product
+    conference: ホモトピー論シンポジウム2021
+    url: https://sites.google.com/view/homotopytheorysymposium2021/home
+    venue: Zoom
+- base:
+    date: 2021-11-10
+    lang: en
+  en:
+    title: BV exactness and string brackets
+    conference: Purdue Topology Seminar
+    url: https://sites.google.com/view/purduetopologyseminar
+    venue: Zoom
