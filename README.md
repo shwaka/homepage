@@ -16,21 +16,21 @@
 
 # build, test
 ## build
-`jekyll/` ディレクトリで `jekyll build`
+`jekyll/` ディレクトリで `bundle exec jekyll build`
 
 - このとき自動的に `jekyll/_ts/` で `npm install` される．
   特に `tsc` や `browserify` がインストールされる
 
 ## test
-`jekyll serve`
+`bundle exec jekyll serve`
 
 ## スマホでのテスト
 [Connect to a locally built Jekyll Server using mobile devices in the LAN](https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan)
 ローカルネットワークを使うので，wifi環境下で行う．
 1. `--host=0.0.0.0` オプションをつけるか， `_config.yml` 内に `host: 0.0.0.0` と記述
 2. `hostname -I` で ip アドレスを調べる (`192.168.1.10` みたいなローカルなアドレスが出るはず？)
-3. `jekyll (live)serve`
-4. スマホから `192.168.1.10:4000` にアクセス (ポート番号は `jekyll serve` の出力を見て確認)
+3. `bundle exec jekyll (live)serve`
+4. スマホから `192.168.1.10:4000` にアクセス (ポート番号は `bundle exec jekyll serve` の出力を見て確認)
 
 ## deploy
 以下は古い情報．
