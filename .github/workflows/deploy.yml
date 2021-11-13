@@ -51,7 +51,7 @@ jobs:
       - name: Deploy to shwaka/shwaka.github.io
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
           external_repository: shwaka/shwaka.github.io
           publish_dir: ./jekyll/_site
           publish_branch: master
