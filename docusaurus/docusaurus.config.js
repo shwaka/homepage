@@ -49,6 +49,7 @@ const config = {
         //   src: 'img/logo.svg',
         // },
         items: [
+          {to: 'research', label: 'Research', position: 'left'},
           // {
           //   type: 'doc',
           //   docId: 'intro',
