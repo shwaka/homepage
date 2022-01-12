@@ -61,6 +61,10 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
+          {
+            type: 'localeDropdown',
+            position: 'left',
+          },
         ],
       },
       footer: {
@@ -113,6 +117,15 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+
+  plugins: [
+    "./plugins/my-plugin.js",
+  ],
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'ja'],
+  },
 };
 
 module.exports = config;
