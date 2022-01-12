@@ -64,7 +64,7 @@ const config = {
           // },
           {
             type: 'localeDropdown',
-            position: 'left',
+            position: 'right',
           },
         ],
       },
