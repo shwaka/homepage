@@ -49,6 +49,7 @@ const config = {
         //   src: 'img/logo.svg',
         // },
         items: [
+          {to: 'cv', label: 'CV', position: 'left'},
           {to: 'research', label: 'Research', position: 'left'},
           // {
           //   type: 'doc',
