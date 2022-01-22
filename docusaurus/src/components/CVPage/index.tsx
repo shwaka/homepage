@@ -1,5 +1,7 @@
 import React from "react"
-import { LocaleDispatcher } from "./LocaleDispatcher"
+import { LocaleDispatcher } from "@site/src/components/LocaleDispatcher"
+import styles from "./styles.module.css"
+import { cv } from "@data/cv"
 
 function CVPageEn(): JSX.Element {
   return (
@@ -18,6 +20,14 @@ function CVPageEn(): JSX.Element {
 function CVPageJa(): JSX.Element {
   return (
     <>
+      <dl className={styles.cvdl}>
+        <dt>名前</dt><dd>若月 駿</dd>
+        <dt>Name</dt><dd>Shun Wakatsuki</dd>
+        <dt>Email</dt><dd>{cv.currentPosition.ja.email}</dd>
+        <dt>出身地</dt><dd>神奈川県</dd>
+        <dt>国籍</dt><dd>日本</dd>
+        <dt>所属</dt><dd>{cv.currentPosition.ja.name.text}</dd>
+      </dl>
       <h2>学歴</h2>
       <ul>
         <li>2010年3月 開成高等学校卒</li>

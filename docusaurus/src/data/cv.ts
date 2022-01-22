@@ -42,7 +42,7 @@ export const cv: CV = {
     },
     ja: {
       email: email,
-      name: md("てすと [日本学術振興会 特別研究員 PD](https://www.jsps.go.jp/j-pd/) ほげ"),
+      name: md("[日本学術振興会 特別研究員 PD](https://www.jsps.go.jp/j-pd/)"),
       url: "https://www.jsps.go.jp/j-pd/",
       address: "〒390-8621 長野県松本市旭3-1-1 信州大学理学部"
     }
