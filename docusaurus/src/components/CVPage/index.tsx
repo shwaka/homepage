@@ -2,6 +2,7 @@ import React from "react"
 import { LocaleDispatcher } from "@site/src/components/LocaleDispatcher"
 import styles from "./styles.module.css"
 import { cv } from "@data/cv"
+import { HtmlFromMarkdown } from "@site/src/components/HtmlFromMarkdown"
 
 function CVPageEn(): JSX.Element {
   return (
@@ -26,7 +27,7 @@ function CVPageJa(): JSX.Element {
         <dt>Email</dt><dd>{cv.currentPosition.ja.email}</dd>
         <dt>出身地</dt><dd>神奈川県</dd>
         <dt>国籍</dt><dd>日本</dd>
-        <dt>所属</dt><dd>{cv.currentPosition.ja.name.text}</dd>
+        <dt>所属</dt><dd><HtmlFromMarkdown markdown={cv.currentPosition.ja.name}/></dd>
       </dl>
       <h2>学歴</h2>
       <ul>
