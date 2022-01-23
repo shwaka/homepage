@@ -22,8 +22,8 @@ export function getLi(article: ArticleObject, index: number): JSX.Element {
       return (
         <li key={index}>
           {article.title},&ensp;
-          <a href={article["journal-url"]}>
-            {article.journal},&ensp;{article["journal-page"]}
+          <a href={article.journalUrl}>
+            {article.journal},&ensp;{article.journalPage}
           </a>,&ensp;
           <a href={getArxivUrl(article.arxiv)} target="_blank">
             {article.arxiv}

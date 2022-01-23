@@ -2,28 +2,28 @@ interface ArticlePreprintObject {
   type: "preprint";
   title: string;
   arxiv: string;
-  "year-preprint": number;
+  yearPreprint: number;
 }
 
 interface ArticleToappearObject {
   type: "toappear";
   title: string;
   arxiv: string;
-  "year-preprint": number;
+  yearPreprint: number;
   journal: string;
-  "journal-url": string;
+  journalUrl: string;
 }
 
 interface ArticlePublishedObject {
   type: "published";
   title: string;
   arxiv: string;
-  "year-preprint": number;
+  yearPreprint: number;
   journal: string;
-  "journal-url": string;
-  "journal-page": string;
-  "article-url": string;
-  "year-published": number;
+  journalUrl: string;
+  journalPage: string;
+  articleUrl: string;
+  yearPublished: number;
 }
 
 interface ArticleProceedingsObject {
@@ -31,8 +31,8 @@ interface ArticleProceedingsObject {
   title: string;
   year: string;
   journal: string;
-  "journal-url": string;
-  "journal-page": string;
+  journalUrl: string;
+  journalPage: string;
 }
 
 export type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticlePublishedObject | ArticleProceedingsObject;
@@ -42,17 +42,17 @@ export const articles: ArticleObject[] = [
     type: "preprint",
     title: "Description and triviality of the loop products and coproducts for rational Gorenstein spaces",
     arxiv: "1612.03563",
-    "year-preprint": 2016,
+    yearPreprint: 2016,
   },
   {
     type: "published",
     title: "Coproducts in brane topology",
     arxiv: "1802.04973",
     journal: "Algebr. Geom. Topol.",  // Algebraic and Geometric Topology
-    "journal-url": "https://msp.org/agt/about/journal/about.html",
-    "year-preprint": 2018,
-    "journal-page": "19(6):2961--2988",
-    "article-url": "https://msp.org/agt/2019/19-6/p08.xhtml",
-    "year-published": 2019,
+    journalUrl: "https://msp.org/agt/about/journal/about.html",
+    yearPreprint: 2018,
+    journalPage: "19(6):2961--2988",
+    articleUrl: "https://msp.org/agt/2019/19-6/p08.xhtml",
+    yearPublished: 2019,
   },
 ]
