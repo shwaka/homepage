@@ -1,10 +1,10 @@
-import React from "react"
-import { micromark } from "micromark"
 import { Markdown } from "@data/cv"
+import { micromark } from "micromark"
+import React from "react"
 
 function removeP(html: string): string {
   return html.replace(/^<p>/, "")
-             .replace(/<\/p>$/, "")
+    .replace(/<\/p>$/, "")
 }
 
 export function HtmlFromMarkdown(props: { markdown: Markdown }): JSX.Element {

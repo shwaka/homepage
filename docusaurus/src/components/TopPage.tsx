@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react"
 import { cv } from "@data/cv"
 import { useLocale } from "@data/locale"
+import React from "react"
 
 export function TopPage(): JSX.Element {
   const locale = useLocale()

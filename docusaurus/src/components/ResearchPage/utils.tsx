@@ -1,5 +1,5 @@
-import React from "react"
 import { ArticleObject } from "@data/articles"
+import React from "react"
 
 function getArxivUrl(arxivId: string): string {
   return `https://arxiv.org/abs/${arxivId}`
@@ -11,7 +11,7 @@ export function getLi(article: ArticleObject, index: number): JSX.Element {
       return (
         <li key={index}>
           {article.title},&ensp;
-          <a href={getArxivUrl(article.arxiv)} target="_blank">
+          <a href={getArxivUrl(article.arxiv)} target="_blank" rel="noreferrer">
             {article.arxiv}
           </a>
         </li>
@@ -25,7 +25,7 @@ export function getLi(article: ArticleObject, index: number): JSX.Element {
           <a href={article.journalUrl}>
             {article.journal},&ensp;{article.journalPage}
           </a>,&ensp;
-          <a href={getArxivUrl(article.arxiv)} target="_blank">
+          <a href={getArxivUrl(article.arxiv)} target="_blank" rel="noreferrer">
             {article.arxiv}
           </a>
         </li>

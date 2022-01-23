@@ -1,8 +1,8 @@
-import React from "react"
-import { LocaleDispatcher } from "@site/src/components/LocaleDispatcher"
-import styles from "./styles.module.css"
 import { cv } from "@data/cv"
 import { HtmlFromMarkdown } from "@site/src/components/HtmlFromMarkdown"
+import { LocaleDispatcher } from "@site/src/components/LocaleDispatcher"
+import React from "react"
+import styles from "./styles.module.css"
 
 function CVPageEn(): JSX.Element {
   return (
