@@ -1,11 +1,11 @@
-interface ArticlePreprintObject {
+export interface ArticlePreprintObject {
   type: "preprint";
   title: string;
   arxiv: string;
   yearPreprint: number;
 }
 
-interface ArticleToappearObject {
+export interface ArticleToappearObject {
   type: "toappear";
   title: string;
   arxiv: string;
@@ -14,7 +14,7 @@ interface ArticleToappearObject {
   journalUrl: string;
 }
 
-interface ArticlePublishedObject {
+export interface ArticlePublishedObject {
   type: "published";
   title: string;
   arxiv: string;
@@ -26,7 +26,7 @@ interface ArticlePublishedObject {
   yearPublished: number;
 }
 
-interface ArticleProceedingsObject {
+export interface ArticleProceedingsObject {
   type: "proceedings";
   title: string;
   year: string;
