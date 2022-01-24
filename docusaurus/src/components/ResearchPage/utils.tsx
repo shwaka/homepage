@@ -17,7 +17,7 @@ function getJournalLink(article: ArticleToappearObject | ArticlePublishedObject)
     case "toappear":
       throw new Error("Not implemented")
     case "published":
-      return `[${article.journal}, ${article.journalPage}](${article.journalUrl})`
+      return `[${article.journal}, ${article.journalPage}](${article.articleUrl})`
   }
 }
 
