@@ -15,7 +15,7 @@ function getArxivLink(article: ArticlePreprintObject | ArticleToappearObject | A
 function getJournalLink(article: ArticleToappearObject | ArticlePublishedObject): string {
   switch (article.type) {
     case "toappear":
-      throw new Error("Not implemented")
+      return `to appear in [${article.journal}](${article.journalUrl})`
     case "published":
       return `[${article.journal}, ${article.journalPage}](${article.articleUrl})`
   }
@@ -27,7 +27,6 @@ function getMarkdown(article: ArticleObject): Markdown {
       return md(`${article.title}, ${getArxivLink(article)}`)
     }
     case "toappear":
-      throw new Error("Not implemented")
     case "published": {
       return md(`${article.title}, ${getJournalLink(article)}, ${getArxivLink(article)}`)
     }
