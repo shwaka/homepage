@@ -55,4 +55,27 @@ export const articles: ArticleObject[] = [
     articleUrl: "https://msp.org/agt/2019/19-6/p08.xhtml",
     yearPublished: 2019,
   },
+  {
+    type: "published",
+    title: "Nontrivial example of the composition of the brane product and coproduct on Gorenstein spaces",
+    arxiv: "1902.10936",
+    journal: "Homology Homotopy Appl.", // Homology, Homotopy and Applications
+    journalUrl: "https://intlpress.com/site/pub/pages/journals/items/hha/_home/_main/index.html",
+    yearPreprint: 2019,
+    journalPage: "22:333--341",
+    articleUrl: "https://www.intlpress.com/site/pub/pages/journals/items/hha/content/vols/0022/0001/a019/",
+    yearPublished: 2020,
+  },
+  {
+    title: "New construction of the brane coproduct and vanishing of cup products on sphere spaces",
+    arxiv: "1905.00644",
+    yearPreprint: 2019,
+    type: "preprint",
+  },
+  {
+    title: "A reduction of the string bracket to the loop product",
+    arxiv: "2109.10536",
+    yearPreprint: 2021,
+    type: "preprint",
+  },
 ]
