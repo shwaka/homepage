@@ -1,4 +1,4 @@
-import { ArticleObject, ArticlePreprintObject, ArticlePublishedObject, ArticleToappearObject } from "@data/articles"
+import { ArticleObject, ArticlePreprintObject, ArticleProceedingsObject, ArticlePublishedObject, ArticleToappearObject } from "@data/articles"
 import { Markdown, md } from "@data/cv"
 import React from "react"
 import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
@@ -12,12 +12,14 @@ function getArxivLink(article: ArticlePreprintObject | ArticleToappearObject | A
   return `[${article.arxiv}](${arxivUrl})`
 }
 
-function getJournalLink(article: ArticleToappearObject | ArticlePublishedObject): string {
+function getJournalLink(article: ArticleToappearObject | ArticlePublishedObject | ArticleProceedingsObject): string {
   switch (article.type) {
     case "toappear":
       return `to appear in [${article.journal}](${article.journalUrl})`
     case "published":
       return `[${article.journal}, ${article.journalPage}](${article.articleUrl})`
+    case "proceedings":
+      return `[${article.journal}, ${article.journalPage}](${article.journalUrl})`
   }
 }
 
@@ -31,7 +33,7 @@ function getMarkdown(article: ArticleObject): Markdown {
       return md(`${article.title}, ${getJournalLink(article)}, ${getArxivLink(article)}`)
     }
     case "proceedings":
-      throw new Error("Not implemented")
+      return md(`${article.title}, ${getJournalLink(article)}, ${article.year}`)
   }
 }
 

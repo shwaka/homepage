@@ -29,7 +29,7 @@ export interface ArticlePublishedObject {
 export interface ArticleProceedingsObject {
   type: "proceedings";
   title: string;
-  year: string;
+  year: number;
   journal: string;
   journalUrl: string;
   journalPage: string;
@@ -44,6 +44,22 @@ export const articles: ArticleObject[] = [
     arxiv: "1612.03563",
     yearPreprint: 2016,
   },
+  {
+    type: "proceedings",
+    title: "String topology on rational Gorenstein spaces",
+    journal: "京都大学数理解析研究所講究録 No.2060 「変換群を核とする代数的位相幾何学」",
+    journalPage: "9-14",
+    journalUrl: "http://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/2060.html",
+    year: 2017,
+  },
+  // {
+  //   type: "proceedings",
+  //   title: "結晶のgrowthについて",
+  //   journal: "数理科学実践研究レター",
+  //   journalPage: "2018-21",
+  //   journalUrl: "https://www.ms.u-tokyo.ac.jp/lmsr/2018/",
+  //   year: 2018,
+  // },
   {
     type: "published",
     title: "Coproducts in brane topology",
