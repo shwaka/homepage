@@ -1,0 +1,13 @@
+.cvdl {
+  display: flex;
+  flex-wrap: wrap;
+
+  dt {
+    width: 30%;
+  }
+
+  dd {
+    width: 70%;
+    margin-inline-start: 0px;
+  }
+}

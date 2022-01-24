@@ -2,7 +2,7 @@ import { cv } from "@data/cv"
 import { HtmlFromMarkdown } from "@site/src/components/HtmlFromMarkdown"
 import { LocaleDispatcher } from "@site/src/components/LocaleDispatcher"
 import React from "react"
-import styles from "./styles.module.css"
+import styles from "./styles.module.scss"
 
 function CVPageEn(): JSX.Element {
   return (
