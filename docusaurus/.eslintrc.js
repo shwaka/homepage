@@ -18,6 +18,10 @@ module.exports = {
     "ecmaVersion": 13,
     "sourceType": "module"
   },
+  // `npm run eslint` だと .eslintrc.js とかは含まれないけど，
+  // emacs から eslint を実行すると含まれてしまうので，
+  // ignorePatterns を使って除外しておく
+  "ignorePatterns": [".eslintrc.js", "docusaurus.config.js"],
   "plugins": [
     "react",
     "react-hooks",
