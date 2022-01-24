@@ -1,36 +1,33 @@
 import { ArticleObject } from "@data/articles"
+import { Markdown, md } from "@data/cv"
 import React from "react"
+import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
 
 function getArxivUrl(arxivId: string): string {
   return `https://arxiv.org/abs/${arxivId}`
 }
 
-export function getLi(article: ArticleObject, index: number): JSX.Element {
+function getMarkdown(article: ArticleObject): Markdown {
   switch (article.type) {
-    case "preprint":
-      return (
-        <li key={index}>
-          {article.title},&ensp;
-          <a href={getArxivUrl(article.arxiv)} target="_blank" rel="noreferrer">
-            {article.arxiv}
-          </a>
-        </li>
-      )
+    case "preprint": {
+      const arxivUrl = getArxivUrl(article.arxiv)
+      return md(`${article.title}, [${article.arxiv}](${arxivUrl})`)
+    }
     case "toappear":
       throw new Error("Not implemented")
-    case "published":
-      return (
-        <li key={index}>
-          {article.title},&ensp;
-          <a href={article.journalUrl}>
-            {article.journal},&ensp;{article.journalPage}
-          </a>,&ensp;
-          <a href={getArxivUrl(article.arxiv)} target="_blank" rel="noreferrer">
-            {article.arxiv}
-          </a>
-        </li>
-      )
+    case "published": {
+      const arxivUrl = getArxivUrl(article.arxiv)
+      return md(`${article.title}, [${article.journal}, ${article.journalPage}](${article.journalUrl}), [${article.arxiv}](${arxivUrl})`)
+    }
     case "proceedings":
       throw new Error("Not implemented")
   }
+}
+
+export function getLi(article: ArticleObject, index: number): JSX.Element {
+  return (
+    <li key={index}>
+      <HtmlFromMarkdown markdown={getMarkdown(article)}/>
+    </li>
+  )
 }
