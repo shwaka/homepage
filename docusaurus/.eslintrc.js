@@ -52,16 +52,28 @@ const config = {
       "error",
       "double"
     ],
-    "semi": [
-      "error",
-      "never"
-    ],
+    "semi": "off", // typescript-eslint を使う
     "@typescript-eslint/explicit-function-return-type": [
       2,
       { "allowExpressions": true }
     ],
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/no-unused-vars": "off", // provided by "unused-imports"
+    "@typescript-eslint/semi": ["error", "never"],
+    "@typescript-eslint/member-delimiter-style": [
+      // interface とかの中で semicolon とかを使うかどうか
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": true,
+        },
+        "singleline": {
+          "delimiter": "comma",
+          "requireLast": false,
+        }
+      }
+    ],
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",
