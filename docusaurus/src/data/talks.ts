@@ -1,4 +1,5 @@
 import dayjs, { Dayjs } from "dayjs"
+import { Locale } from "./locale"
 
 export type TalkLang = "en" | "ja"
 
@@ -14,11 +15,7 @@ export interface TalkInfo {
   url?: string
 }
 
-export interface TalkObject {
-  base: TalkBaseInfo
-  en?: TalkInfo
-  ja?: TalkInfo
-}
+export type TalkObject = { base: TalkBaseInfo } & { [K in Locale]?: TalkInfo }
 
 export const talks: TalkObject[] = [
   // {
