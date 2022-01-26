@@ -8,16 +8,16 @@ export interface TalkBaseInfo {
 }
 
 export interface TalkInfo {
-  title: string;
-  conference: string;
-  venue: string;
-  url?: string;
+  title: string
+  conference: string
+  venue: string
+  url?: string
 }
 
 export interface TalkObject {
-  base: TalkBaseInfo;
-  en?: TalkInfo;
-  ja?: TalkInfo;
+  base: TalkBaseInfo
+  en?: TalkInfo
+  ja?: TalkInfo
 }
 
 export const talks: TalkObject[] = [

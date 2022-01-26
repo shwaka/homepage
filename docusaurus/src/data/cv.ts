@@ -16,20 +16,20 @@ export function md(markdownText: string): Markdown {
 }
 
 export type CurrentPosition = {
-  email: string,
-  name: Markdown,
-  url: string,
-  address: string,
+  email: string
+  name: Markdown
+  url: string
+  address: string
 }
 
 export type Award = {
-  date: Dayjs,
+  date: Dayjs
   title: { [K in Locale]: string }
 }
 
 export type CV = {
-  currentPosition: { [K in Locale]: CurrentPosition },
-  awards: Award[],
+  currentPosition: { [K in Locale]: CurrentPosition }
+  awards: Award[]
 }
 
 export const cv: CV = {

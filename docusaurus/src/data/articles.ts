@@ -1,41 +1,41 @@
 export interface ArticlePreprintObject {
-  type: "preprint";
-  title: string;
-  arxiv: string;
-  yearPreprint: number;
+  type: "preprint"
+  title: string
+  arxiv: string
+  yearPreprint: number
 }
 
 export interface ArticleToappearObject {
-  type: "toappear";
-  title: string;
-  arxiv: string;
-  yearPreprint: number;
-  journal: string;
-  journalUrl: string;
+  type: "toappear"
+  title: string
+  arxiv: string
+  yearPreprint: number
+  journal: string
+  journalUrl: string
 }
 
 export interface ArticlePublishedObject {
-  type: "published";
-  title: string;
-  arxiv: string;
-  yearPreprint: number;
-  journal: string;
-  journalUrl: string;
-  journalPage: string;
-  articleUrl: string;
-  yearPublished: number;
+  type: "published"
+  title: string
+  arxiv: string
+  yearPreprint: number
+  journal: string
+  journalUrl: string
+  journalPage: string
+  articleUrl: string
+  yearPublished: number
 }
 
 export interface ArticleProceedingsObject {
-  type: "proceedings";
-  title: string;
-  year: number;
-  journal: string;
-  journalUrl: string;
-  journalPage: string;
+  type: "proceedings"
+  title: string
+  year: number
+  journal: string
+  journalUrl: string
+  journalPage: string
 }
 
-export type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticlePublishedObject | ArticleProceedingsObject;
+export type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticlePublishedObject | ArticleProceedingsObject
 
 export const articles: ArticleObject[] = [
   {
