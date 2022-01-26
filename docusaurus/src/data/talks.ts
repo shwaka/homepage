@@ -1,6 +1,26 @@
 import dayjs, { Dayjs } from "dayjs"
 
-export const talks = [
+export type TalkLang = "en" | "ja"
+
+export interface TalkBaseInfo {
+  date: Dayjs
+  lang: TalkLang
+}
+
+export interface TalkInfo {
+  title: string;
+  conference: string;
+  venue: string;
+  url?: string;
+}
+
+export interface TalkObject {
+  base: TalkBaseInfo;
+  en?: TalkInfo;
+  ja?: TalkInfo;
+}
+
+export const talks: TalkObject[] = [
   // {
   //   base: {
   //     date: dayjs("2014-12-13"),
