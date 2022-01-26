@@ -26,11 +26,13 @@ function getJournalLink(article: ArticleToappearObject | ArticlePublishedObject 
 function getMarkdown(article: ArticleObject): Markdown {
   switch (article.type) {
     case "preprint": {
-      return md(`${article.title}, ${getArxivLink(article)}`)
+      return md(`${article.title}, ${getArxivLink(article)}, ${article.yearPreprint}`)
     }
-    case "toappear":
-    case "published": {
+    case "toappear": {
       return md(`${article.title}, ${getJournalLink(article)}, ${getArxivLink(article)}`)
+    }
+    case "published": {
+      return md(`${article.title}, ${getJournalLink(article)}, ${article.yearPublished} (arXiv: ${getArxivLink(article)})`)
     }
     case "proceedings":
       return md(`${article.title}, ${getJournalLink(article)}, ${article.year}`)
