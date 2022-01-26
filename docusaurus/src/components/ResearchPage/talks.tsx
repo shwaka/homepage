@@ -1,6 +1,10 @@
 import { Locale, locales } from "@data/locale"
 import { TalkObject, TalkInfo } from "@data/talks"
 import { md, Markdown } from "@data/util"
+import dayjs, { Dayjs } from "dayjs"
+import localizedFormat from "dayjs/plugin/localizedFormat"
+import "dayjs/locale/ja"
+import "dayjs/locale/en"
 import React from "react"
 import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
 
@@ -23,9 +27,15 @@ function getConferenceLink(talkInfo: TalkInfo): string {
   }
 }
 
+function formatDate(date: Dayjs, locale: Locale): string {
+  dayjs.extend(localizedFormat)
+  return date.locale(locale).format("LL")
+}
+
 function getMarkdown(talk: TalkObject, locale: Locale): Markdown {
   const talkInfo: TalkInfo = getTalkInfo(talk, locale)
-  return md(`${talkInfo.title}, ${getConferenceLink(talkInfo)}, ${talkInfo.venue}, ${talk.base.date}`)
+  const date: string = formatDate(talk.base.date, locale)
+  return md(`${talkInfo.title}, ${getConferenceLink(talkInfo)}, ${talkInfo.venue}, ${date}`)
 }
 
 export function getTalkLi(talk: TalkObject, index: number, locale: Locale): JSX.Element {
