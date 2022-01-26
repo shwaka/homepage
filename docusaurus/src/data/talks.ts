@@ -1,7 +1,9 @@
+import dayjs, { Dayjs } from "dayjs"
+
 export const talks = [
   // {
   //   base: {
-  //     date: "2014-12-13T00:00:00.000Z",
+  //     date: dayjs("2014-12-13"),
   //     lang: "ja"
   //   },
   //   ja: {
@@ -12,7 +14,7 @@ export const talks = [
   // },
   {
     base: {
-      date: "2015-11-23T00:00:00.000Z",
+      date: dayjs("2015-11-23"),
       lang: "ja"
     },
     ja: {
@@ -24,7 +26,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2015-12-12T00:00:00.000Z",
+      date: dayjs("2015-12-12"),
       lang: "ja"
     },
     ja: {
@@ -35,7 +37,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2016-09-06T00:00:00.000Z",
+      date: dayjs("2016-09-06"),
       lang: "ja"
     },
     ja: {
@@ -48,7 +50,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2016-09-15T00:00:00.000Z",
+      date: dayjs("2016-09-15"),
       lang: "ja"
     },
     ja: {
@@ -66,7 +68,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2016-10-30T00:00:00.000Z",
+      date: dayjs("2016-10-30"),
       lang: "ja"
     },
     ja: {
@@ -78,7 +80,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2016-11-30T00:00:00.000Z",
+      date: dayjs("2016-11-30"),
       lang: "ja"
     },
     ja: {
@@ -90,7 +92,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2017-03-24T00:00:00.000Z",
+      date: dayjs("2017-03-24"),
       lang: "ja"
     },
     ja: {
@@ -108,7 +110,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2017-05-22T00:00:00.000Z",
+      date: dayjs("2017-05-22"),
       lang: "ja"
     },
     ja: {
@@ -120,7 +122,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2017-07-06T00:00:00.000Z",
+      date: dayjs("2017-07-06"),
       lang: "en"
     },
     en: {
@@ -132,7 +134,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2017-11-24T00:00:00.000Z",
+      date: dayjs("2017-11-24"),
       lang: "ja"
     },
     ja: {
@@ -144,7 +146,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2017-12-09T00:00:00.000Z",
+      date: dayjs("2017-12-09"),
       lang: "ja"
     },
     ja: {
@@ -155,7 +157,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2018-08-30T00:00:00.000Z",
+      date: dayjs("2018-08-30"),
       lang: "en"
     },
     en: {
@@ -167,7 +169,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2018-09-25T00:00:00.000Z",
+      date: dayjs("2018-09-25"),
       lang: "en"
     },
     en: {
@@ -179,7 +181,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2018-11-04T00:00:00.000Z",
+      date: dayjs("2018-11-04"),
       lang: "ja"
     },
     ja: {
@@ -191,7 +193,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2019-03-06T00:00:00.000Z",
+      date: dayjs("2019-03-06"),
       lang: "en"
     },
     en: {
@@ -203,7 +205,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2019-03-17T00:00:00.000Z",
+      date: dayjs("2019-03-17"),
       lang: "ja"
     },
     ja: {
@@ -221,7 +223,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2019-06-05T00:00:00.000Z",
+      date: dayjs("2019-06-05"),
       lang: "ja"
     },
     ja: {
@@ -233,7 +235,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2019-07-02T00:00:00.000Z",
+      date: dayjs("2019-07-02"),
       lang: "ja"
     },
     ja: {
@@ -251,7 +253,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2019-08-08T00:00:00.000Z",
+      date: dayjs("2019-08-08"),
       lang: "ja"
     },
     ja: {
@@ -263,7 +265,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2020-03-04T00:00:00.000Z",
+      date: dayjs("2020-03-04"),
       lang: "en"
     },
     en: {
@@ -275,7 +277,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2020-06-17T00:00:00.000Z",
+      date: dayjs("2020-06-17"),
       lang: "ja"
     },
     ja: {
@@ -287,7 +289,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2021-07-16T00:00:00.000Z",
+      date: dayjs("2021-07-16"),
       lang: "ja"
     },
     ja: {
@@ -299,7 +301,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2021-11-07T00:00:00.000Z",
+      date: dayjs("2021-11-07"),
       lang: "ja"
     },
     ja: {
@@ -311,7 +313,7 @@ export const talks = [
   },
   {
     base: {
-      date: "2021-11-10T00:00:00.000Z",
+      date: dayjs("2021-11-10"),
       lang: "en"
     },
     en: {
