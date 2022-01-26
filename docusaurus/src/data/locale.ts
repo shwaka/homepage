@@ -1,6 +1,7 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext"
 
-export type Locale = "en" | "ja"
+export const locales = ["en", "ja"] as const
+export type Locale = (typeof locales)[number]
 
 export function useLocale(): Locale {
   // https://docusaurus.io/docs/docusaurus-core#useDocusaurusContext
