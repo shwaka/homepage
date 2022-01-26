@@ -37,7 +37,7 @@ function getMarkdown(article: ArticleObject): Markdown {
   }
 }
 
-export function getLi(article: ArticleObject, index: number): JSX.Element {
+export function getArticleLi(article: ArticleObject, index: number): JSX.Element {
   return (
     <li key={index}>
       <HtmlFromMarkdown markdown={getMarkdown(article)}/>
