@@ -1,5 +1,5 @@
-import { md, Markdown } from "@data/cv"
 import { TalkObject } from "@data/talks"
+import { md, Markdown } from "@data/util"
 import React from "react"
 import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
 

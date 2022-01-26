@@ -1,5 +1,5 @@
 import { ArticleObject, ArticlePreprintObject, ArticleProceedingsObject, ArticlePublishedObject, ArticleToappearObject } from "@data/articles"
-import { Markdown, md } from "@data/cv"
+import { Markdown, md } from "@data/util"
 import React from "react"
 import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
 

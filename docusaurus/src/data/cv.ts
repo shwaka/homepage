@@ -1,19 +1,8 @@
 import dayjs, { Dayjs } from "dayjs"
 import { Locale } from "./locale"
+import { md, Markdown } from "./util"
 
 const email = "swaka[AT]shinshu-u.ac.jp"
-
-export interface Markdown {
-  markdown: "markdown"
-  text: string
-}
-
-export function md(markdownText: string): Markdown {
-  return {
-    markdown: "markdown",
-    text: markdownText,
-  }
-}
 
 export type CurrentPosition = {
   email: string
