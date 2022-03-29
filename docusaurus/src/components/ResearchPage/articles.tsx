@@ -39,10 +39,34 @@ function getMarkdown(article: ArticleObject): Markdown {
   }
 }
 
-export function getArticleLi(article: ArticleObject, index: number): JSX.Element {
+
+interface ArticleLiProps {
+  article: ArticleObject
+}
+function ArticleLi({article}: ArticleLiProps): JSX.Element {
   return (
-    <li key={index}>
+    <li>
       <HtmlFromMarkdown markdown={getMarkdown(article)}/>
     </li>
+  )
+}
+
+interface ArticleListProps {
+  articles: ArticleObject[]
+}
+
+export function ArticleUl({articles}: ArticleListProps): JSX.Element {
+  return (
+    <ul>
+      {articles.map((article, index) => <ArticleLi article={article} key={index}/>)}
+    </ul>
+  )
+}
+
+export function ArticleOl({articles}: ArticleListProps): JSX.Element {
+  return (
+    <ol>
+      {articles.map((article, index) => <ArticleLi article={article} key={index}/>)}
+    </ol>
   )
 }
