@@ -8,13 +8,21 @@ import { useSelector } from "./useSelector"
 
 const ListFormat = ["ol", "ul", "table", "tex"] as const
 type ListFormat = (typeof ListFormat)[number]
-
 function listFormatToString(listFormat: ListFormat): string {
   switch (listFormat) {
     case "ol": return "ordered list"
     case "ul": return "unordered list"
     case "table": return "table"
     case "tex": return "TeX (itemize)"
+  }
+}
+
+const SortOrder = ["newToOld", "oldToNew"] as const
+type SortOrder = (typeof SortOrder)[number]
+function sortOrderToString(sortOrder: SortOrder): string {
+  switch (sortOrder) {
+    case "newToOld": return "new→old"
+    case "oldToNew": return "old→new"
   }
 }
 
@@ -33,11 +41,12 @@ function ArticleList({listFormat, articles}: ArticleListProps): JSX.Element {
 
 export function ResearchPage(): JSX.Element {
   const locale: Locale = useLocale()
-  // const [currentListFormat, setListFormat] = useState<ListFormat>("ol")
-  const [listFormat, listFormatSelector] = useSelector<ListFormat>(ListFormat, "ol", listFormatToString)
+  const [listFormat, listFormatSelector] = useSelector(ListFormat, "ol", listFormatToString)
+  const [sortOrder, sortOrderSelector] = useSelector(SortOrder, "newToOld", sortOrderToString)
   return (
     <>
       {listFormatSelector}
+      {sortOrderSelector}
       <h2>Articles</h2>
       <ArticleList listFormat={listFormat} articles={articles}/>
       <h2>Talks</h2>
