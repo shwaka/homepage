@@ -39,16 +39,24 @@ function ArticleList({listFormat, articles}: ArticleListProps): JSX.Element {
   }
 }
 
+function sortArticleObjects(articles: ArticleObject[], sortOrder: SortOrder): ArticleObject[] {
+  switch (sortOrder) {
+    case "newToOld": return articles.slice().reverse()
+    case "oldToNew": return articles.slice()
+  }
+}
+
 export function ResearchPage(): JSX.Element {
   const locale: Locale = useLocale()
   const [listFormat, listFormatSelector] = useSelector(ListFormat, "ol", listFormatToString)
   const [sortOrder, sortOrderSelector] = useSelector(SortOrder, "newToOld", sortOrderToString)
+  const sortedArticles = sortArticleObjects(articles, sortOrder)
   return (
     <>
       {listFormatSelector}
       {sortOrderSelector}
       <h2>Articles</h2>
-      <ArticleList listFormat={listFormat} articles={articles}/>
+      <ArticleList listFormat={listFormat} articles={sortedArticles}/>
       <h2>Talks</h2>
       <ul>
         {talks.map((talk, index) => getTalkLi(talk, index, locale))}
