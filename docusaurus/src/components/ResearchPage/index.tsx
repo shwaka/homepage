@@ -28,11 +28,12 @@ function sortOrderToString(sortOrder: SortOrder): string {
 
 interface ArticleListProps {
   listFormat: ListFormat
+  reversed: boolean
   articles: ArticleObject[]
 }
-function ArticleList({listFormat, articles}: ArticleListProps): JSX.Element {
+function ArticleList({listFormat, reversed, articles}: ArticleListProps): JSX.Element {
   switch (listFormat) {
-    case "ol": return <ArticleOl articles={articles}/>
+    case "ol": return <ArticleOl articles={articles} reversed={reversed}/>
     case "ul": return <ArticleUl articles={articles}/>
     case "table": throw new Error("Not implemented")
     case "tex": throw new Error("Not implemented")
@@ -56,7 +57,7 @@ export function ResearchPage(): JSX.Element {
       {listFormatSelector}
       {sortOrderSelector}
       <h2>Articles</h2>
-      <ArticleList listFormat={listFormat} articles={sortedArticles}/>
+      <ArticleList listFormat={listFormat} reversed={sortOrder === "oldToNew"} articles={sortedArticles}/>
       <h2>Talks</h2>
       <ul>
         {talks.map((talk, index) => getTalkLi(talk, index, locale))}

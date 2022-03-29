@@ -51,11 +51,10 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
   )
 }
 
-interface ArticleListProps {
+interface ArticleUlProps {
   articles: ArticleObject[]
 }
-
-export function ArticleUl({articles}: ArticleListProps): JSX.Element {
+export function ArticleUl({articles}: ArticleUlProps): JSX.Element {
   return (
     <ul>
       {articles.map((article, index) => <ArticleLi article={article} key={index}/>)}
@@ -63,9 +62,13 @@ export function ArticleUl({articles}: ArticleListProps): JSX.Element {
   )
 }
 
-export function ArticleOl({articles}: ArticleListProps): JSX.Element {
+interface ArticleOlProps {
+  articles: ArticleObject[]
+  reversed: boolean
+}
+export function ArticleOl({articles, reversed}: ArticleOlProps): JSX.Element {
   return (
-    <ol>
+    <ol reversed={reversed}>
       {articles.map((article, index) => <ArticleLi article={article} key={index}/>)}
     </ol>
   )
