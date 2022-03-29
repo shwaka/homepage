@@ -1,12 +1,22 @@
 import { ArticleObject, articles } from "@data/articles"
 import { Locale, useLocale } from "@data/locale"
 import { talks } from "@data/talks"
-import React, { useState } from "react"
+import React from "react"
 import { ArticleOl, ArticleUl } from "./articles"
 import { getTalkLi } from "./talks"
+import { useSelector } from "./useSelector"
 
 const ListFormat = ["ol", "ul", "table", "tex"] as const
 type ListFormat = (typeof ListFormat)[number]
+
+function listFormatToString(listFormat: ListFormat): string {
+  switch (listFormat) {
+    case "ol": return "ordered list"
+    case "ul": return "unordered list"
+    case "table": return "table"
+    case "tex": return "TeX (itemize)"
+  }
+}
 
 interface ArticleListProps {
   listFormat: ListFormat
@@ -21,32 +31,15 @@ function ArticleList({listFormat, articles}: ArticleListProps): JSX.Element {
   }
 }
 
-interface ListFormatLabelProps {
-  listFormat: ListFormat
-  setListFormat: (listFormat: ListFormat) => void
-  currentListFormat: ListFormat
-}
-function ListFormatLabel({listFormat, setListFormat, currentListFormat}: ListFormatLabelProps): JSX.Element {
-  return (
-    <label>
-      <input type="radio" name="listFormat" value={listFormat}
-             onChange={() => setListFormat(listFormat)}
-             checked={listFormat === currentListFormat}/>
-      <span>{listFormat}</span>
-    </label>
-  )
-}
-
 export function ResearchPage(): JSX.Element {
   const locale: Locale = useLocale()
-  const [currentListFormat, setListFormat] = useState<ListFormat>("ol")
+  // const [currentListFormat, setListFormat] = useState<ListFormat>("ol")
+  const [listFormat, listFormatSelector] = useSelector<ListFormat>(ListFormat, "ol", listFormatToString)
   return (
     <>
-      <div>
-        {ListFormat.map(listFormat => <ListFormatLabel listFormat={listFormat} setListFormat={setListFormat} currentListFormat={currentListFormat} key={listFormat}/>)}
-      </div>
+      {listFormatSelector}
       <h2>Articles</h2>
-      <ArticleList listFormat={currentListFormat} articles={articles}/>
+      <ArticleList listFormat={listFormat} articles={articles}/>
       <h2>Talks</h2>
       <ul>
         {talks.map((talk, index) => getTalkLi(talk, index, locale))}
