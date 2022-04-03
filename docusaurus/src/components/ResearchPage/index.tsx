@@ -46,7 +46,6 @@ interface TalkListProps {
   listFormat: ListFormat
   reversed: boolean
   talks: TalkObject[]
-  locale: Locale
 }
 function TalkList({listFormat, reversed, talks}: TalkListProps): JSX.Element {
   switch (listFormat) {
@@ -86,6 +85,16 @@ export function ResearchPage(): JSX.Element {
     description: "The header for the list of proceedings",
     id: "research.article.header.proceedings",
   })
+  const talkEnglishHeader = translate({
+    message: "Talks in English",
+    description: "The header for the list of talks in English",
+    id: "research.talk.header.english"
+  })
+  const talkJapaneseHeader = translate({
+    message: "Talks in Japanese",
+    description: "The header for the list of talks in Japanese",
+    id: "research.talk.header.japanese"
+  })
   const reversed = (sortOrder === "newToOld")
   return (
     <>
@@ -101,9 +110,14 @@ export function ResearchPage(): JSX.Element {
         listFormat={listFormat} reversed={reversed} showArxiv={false}
         articles={sortedArticles.filter(article => article.type === "proceedings")}/>
       <h2>Talks</h2>
+      <h3>{talkEnglishHeader}</h3>
       <TalkList
         listFormat={listFormat} reversed={reversed}
-        talks={sortedTalks}/>
+        talks={sortedTalks.filter(talk => talk.base.lang === "en")}/>
+      <h3>{talkJapaneseHeader}</h3>
+      <TalkList
+        listFormat={listFormat} reversed={reversed}
+        talks={sortedTalks.filter(talk => talk.base.lang === "ja")}/>
     </>
   )
 }
