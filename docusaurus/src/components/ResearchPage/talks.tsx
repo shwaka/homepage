@@ -8,6 +8,7 @@ import "dayjs/locale/en"
 import React from "react"
 import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
 import { ExtLink } from "../util"
+import { translate } from "@docusaurus/Translate"
 
 function getTalkInfo(talk: TalkObject, locale: Locale): TalkInfo {
   const localeList: Locale[] = [locale].concat(locales) // 現在の locale を優先的に表示する
@@ -68,5 +69,68 @@ export function TalkOl({talks, locale, reversed}: TalkOlProps): JSX.Element {
     <ol reversed={reversed}>
       {talks.map((talk, index) => <TalkLi talk={talk} locale={locale} key={index}/>)}
     </ol>
+  )
+}
+
+interface TalkTrProps {
+  talk: TalkObject
+  locale: Locale
+}
+function TalkTr({talk, locale}: TalkTrProps): JSX.Element {
+  const talkInfo = getTalkInfo(talk, locale)
+  const date: string = formatDate(talk.base.date, locale)
+  return (
+    <tr>
+      <td>{talkInfo.title}</td>
+      <td>{talkInfo.conference}</td>
+      <td>{talkInfo.venue}</td>
+      <td>{date}</td>
+    </tr>
+  )
+}
+
+interface TalkTableProps {
+  talks: TalkObject[]
+  locale: Locale
+}
+export function TalkTable({talks, locale}: TalkTableProps): JSX.Element {
+  const titleHeader = translate({
+    message: "Title",
+    description: "The header for the talk title in the talk table",
+    id: "research.talk.table.header.title"
+  })
+  const conferenceNameHeader = translate({
+    message: "Conference",
+    description: "The header for the conference name in the talk table",
+    id: "research.talk.table.header.conferenceName"
+  })
+  const venueHeader = translate({
+    message: "Venue",
+    description: "The header for the venue in the talk table",
+    id: "research.talk.table.header.venue"
+  })
+  const dateHeader = translate({
+    message: "Date",
+    description: "The header for the date in the talk table",
+    id: "research.talk.table.header.date"
+  })
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>{titleHeader}</th>
+          <th>{conferenceNameHeader}</th>
+          <th>{venueHeader}</th>
+          <th>{dateHeader}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {talks.map(talk =>
+          <TalkTr
+            talk={talk} locale={locale}
+            key={talk.base.date.toString()}/>
+        )}
+      </tbody>
+    </table>
   )
 }
