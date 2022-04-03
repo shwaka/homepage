@@ -3,7 +3,7 @@ import { Locale, useLocale } from "@data/locale"
 import { talks } from "@data/talks"
 import { translate } from "@docusaurus/Translate"
 import React from "react"
-import { ArticleOl, ArticleTable, ArticleUl } from "./articles"
+import { ArticleItemize, ArticleOl, ArticleTable, ArticleUl } from "./articles"
 import { getTalkLi } from "./talks"
 import { useSelector } from "./useSelector"
 
@@ -38,7 +38,7 @@ function ArticleList({listFormat, reversed, articles, showArxiv}: ArticleListPro
     case "ol": return <ArticleOl articles={articles} reversed={reversed}/>
     case "ul": return <ArticleUl articles={articles}/>
     case "table": return <ArticleTable articles={articles} showArxiv={showArxiv}/>
-    case "tex": throw new Error("Not implemented")
+    case "tex": return <ArticleItemize articles={articles}/>
   }
 }
 
