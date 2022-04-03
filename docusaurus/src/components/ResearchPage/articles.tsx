@@ -1,8 +1,6 @@
-import { ArticleObject, ArticlePreprintObject, ArticleProceedingsObject, ArticlePublishedObject, ArticleToappearObject } from "@data/articles"
-import { Markdown, md } from "@data/util"
+import { ArticleObject } from "@data/articles"
 import { translate } from "@docusaurus/Translate"
 import React from "react"
-import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
 import { ExtLink } from "../util"
 import styles from "./styles.module.scss"
 

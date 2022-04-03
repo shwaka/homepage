@@ -1,14 +1,12 @@
 import { Locale, locales, useLocale } from "@data/locale"
 import { TalkObject, TalkInfo } from "@data/talks"
-import { md, Markdown } from "@data/util"
+import { translate } from "@docusaurus/Translate"
 import dayjs, { Dayjs } from "dayjs"
 import localizedFormat from "dayjs/plugin/localizedFormat"
 import "dayjs/locale/ja"
 import "dayjs/locale/en"
 import React from "react"
-import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
 import { ExtLink } from "../util"
-import { translate } from "@docusaurus/Translate"
 import styles from "./styles.module.scss"
 
 function getTalkInfo(talk: TalkObject, locale: Locale): TalkInfo {

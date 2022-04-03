@@ -1,10 +1,9 @@
 import { ArticleObject, articles } from "@data/articles"
-import { Locale, useLocale } from "@data/locale"
 import { TalkObject, talks } from "@data/talks"
 import { translate } from "@docusaurus/Translate"
 import React from "react"
 import { ArticleItemize, ArticleOl, ArticleTable, ArticleUl } from "./articles"
-import { getTalkLi, TalkItemize, TalkOl, TalkTable, TalkUl } from "./talks"
+import { TalkItemize, TalkOl, TalkTable, TalkUl } from "./talks"
 import { useSelector } from "./useSelector"
 
 const ListFormat = ["ol", "ul", "table", "tex"] as const
