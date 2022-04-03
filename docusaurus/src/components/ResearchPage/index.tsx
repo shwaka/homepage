@@ -64,6 +64,7 @@ export function ResearchPage(): JSX.Element {
     description: "The header for the list of proceedings",
     id: "research.article.header.proceedings",
   })
+  const reversed = (sortOrder === "newToOld")
   return (
     <>
       {listFormatSelector}
@@ -71,11 +72,11 @@ export function ResearchPage(): JSX.Element {
       <h2>Articles</h2>
       <h3>{articlePreprintHeader}</h3>
       <ArticleList
-        listFormat={listFormat} reversed={sortOrder === "oldToNew"} showArxiv={true}
+        listFormat={listFormat} reversed={reversed} showArxiv={true}
         articles={sortedArticles.filter(article => article.type !== "proceedings")}/>
       <h3>{proceedingsHeader}</h3>
       <ArticleList
-        listFormat={listFormat} reversed={sortOrder === "oldToNew"} showArxiv={false}
+        listFormat={listFormat} reversed={reversed} showArxiv={false}
         articles={sortedArticles.filter(article => article.type === "proceedings")}/>
       <h2>Talks</h2>
       <ul>
