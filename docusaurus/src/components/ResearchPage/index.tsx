@@ -2,7 +2,7 @@ import { ArticleObject, articles } from "@data/articles"
 import { Locale, useLocale } from "@data/locale"
 import { talks } from "@data/talks"
 import React from "react"
-import { ArticleOl, ArticleUl } from "./articles"
+import { ArticleOl, ArticleTable, ArticleUl } from "./articles"
 import { getTalkLi } from "./talks"
 import { useSelector } from "./useSelector"
 
@@ -35,7 +35,7 @@ function ArticleList({listFormat, reversed, articles}: ArticleListProps): JSX.El
   switch (listFormat) {
     case "ol": return <ArticleOl articles={articles} reversed={reversed}/>
     case "ul": return <ArticleUl articles={articles}/>
-    case "table": throw new Error("Not implemented")
+    case "table": return <ArticleTable articles={articles}/>
     case "tex": throw new Error("Not implemented")
   }
 }
@@ -49,7 +49,7 @@ function sortArticleObjects(articles: ArticleObject[], sortOrder: SortOrder): Ar
 
 export function ResearchPage(): JSX.Element {
   const locale: Locale = useLocale()
-  const [listFormat, listFormatSelector] = useSelector(ListFormat, "ol", listFormatToString)
+  const [listFormat, listFormatSelector] = useSelector(ListFormat, "table", listFormatToString)
   const [sortOrder, sortOrderSelector] = useSelector(SortOrder, "newToOld", sortOrderToString)
   const sortedArticles = sortArticleObjects(articles, sortOrder)
   return (

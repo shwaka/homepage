@@ -73,3 +73,42 @@ export function ArticleOl({articles, reversed}: ArticleOlProps): JSX.Element {
     </ol>
   )
 }
+
+interface ArticleTrProps {
+  article: ArticleObject
+}
+function ArticleTr({article}: ArticleTrProps): JSX.Element {
+  const journal = ("journal" in article) ?
+                  <a href={article.journalUrl} target="_blank">{article.journal}</a> :
+                  ""
+  const arxiv = ("arxiv" in article) ?
+                <a href={`https://arxiv.org/abs/${article.arxiv}`} target="_blank">
+                  {article.arxiv}
+                </a> :
+                "no arxiv"
+  return (
+    <tr>
+      <td>{article.title}</td>
+      <td>{journal}</td>
+      <td>
+        {arxiv}
+      </td>
+    </tr>
+  )
+}
+
+interface ArticleTableProps {
+  articles: ArticleObject[]
+}
+export function ArticleTable({articles}: ArticleTableProps): JSX.Element {
+  return (
+    <table>
+      <tr>
+        <th>タイトル</th>
+        <th>雑誌</th>
+        <th>arXiv</th>
+      </tr>
+      {articles.map(article => <ArticleTr article={article} key={article.title}/>)}
+    </table>
+  )
+}
