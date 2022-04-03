@@ -28,5 +28,17 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 }
 
 body.wide-mdx .container {
+  // Research で幅を広げる
+  // max-width はともかく，--ifm-col-width を設定するのは若干ハック感があるような気もする
   max-width: none;
+  div.col--8 {
+    // markdown 本体が表示される領域
+    // default value: --ifm-col-width: calc(8 / 12 * 100%);
+    --ifm-col-width: calc(10 / 12 * 100%);
+  }
+  div.col--2 {
+    // markdown で目次が表示される領域
+    // Research では目次が表示されないので，0% にする
+    --ifm-col-width: 0%;
+  }
 }
