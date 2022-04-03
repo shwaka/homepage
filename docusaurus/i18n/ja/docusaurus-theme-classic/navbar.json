@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "Shun Wakatsuki",
+    "description": "The title in the navbar"
+  },
+  "item.label.CV": {
+    "message": "CV",
+    "description": "Navbar item with label CV"
+  },
+  "item.label.Research": {
+    "message": "Research",
+    "description": "Navbar item with label Research"
+  }
+}

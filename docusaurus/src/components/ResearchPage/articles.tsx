@@ -1,5 +1,6 @@
 import { ArticleObject, ArticlePreprintObject, ArticleProceedingsObject, ArticlePublishedObject, ArticleToappearObject } from "@data/articles"
 import { Markdown, md } from "@data/util"
+import { translate } from "@docusaurus/Translate"
 import React from "react"
 import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
 
@@ -101,11 +102,21 @@ interface ArticleTableProps {
   articles: ArticleObject[]
 }
 export function ArticleTable({articles}: ArticleTableProps): JSX.Element {
+  const titleHeader = translate({
+    message: "Title",
+    description: "The header for the article title in the article table",
+    id: "research.article.title",
+  })
+  const journalHeader = translate({
+    message: "Journal",
+    description: "The header for the journal in the article table",
+    id: "research.article.journal",
+  })
   return (
     <table>
       <tr>
-        <th>タイトル</th>
-        <th>雑誌</th>
+        <th>{titleHeader}</th>
+        <th>{journalHeader}</th>
         <th>arXiv</th>
       </tr>
       {articles.map(article => <ArticleTr article={article} key={article.title}/>)}
