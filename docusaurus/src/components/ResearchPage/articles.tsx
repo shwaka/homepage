@@ -114,12 +114,18 @@ export function ArticleTable({articles, showArxiv}: ArticleTableProps): JSX.Elem
   })
   return (
     <table>
-      <tr>
-        <th>{titleHeader}</th>
-        <th>{journalHeader}</th>
-        {showArxiv ? <th>arXiv</th> : null}
-      </tr>
-      {articles.map(article => <ArticleTr article={article} key={article.title} showArxiv={showArxiv}/>)}
+      <thead>
+        <tr>
+          <th>{titleHeader}</th>
+          <th>{journalHeader}</th>
+          {showArxiv ? <th>arXiv</th> : null}
+        </tr>
+      </thead>
+      <tbody>
+        {articles.map(article =>
+          <ArticleTr article={article} key={article.title} showArxiv={showArxiv}/>
+        )}
+      </tbody>
     </table>
   )
 }
