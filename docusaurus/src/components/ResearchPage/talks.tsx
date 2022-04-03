@@ -26,6 +26,14 @@ function formatDate(date: Dayjs, locale: Locale): string {
   return date.locale(locale).format("LL")
 }
 
+function ConferenceLink({talkInfo}: {talkInfo: TalkInfo}): JSX.Element {
+  if (talkInfo.url !== undefined) {
+    return <ExtLink href={talkInfo.url} text={talkInfo.conference}/>
+  } else {
+    return <span>{talkInfo.conference}</span>
+  }
+}
+
 
 interface TalkLiProps {
   talk: TalkObject
@@ -38,9 +46,7 @@ function TalkLi({talk, locale}: TalkLiProps): JSX.Element {
   return (
     <li>
       {talkInfo.title} {comma}
-      {talkInfo.url !== undefined
-        ? <ExtLink href={talkInfo.url} text={talkInfo.conference}/>
-        : talkInfo.conference} {comma}
+      <ConferenceLink talkInfo={talkInfo}/> {comma}
       {talkInfo.venue} {comma}
       {date}
     </li>
@@ -82,7 +88,7 @@ function TalkTr({talk, locale}: TalkTrProps): JSX.Element {
   return (
     <tr>
       <td>{talkInfo.title}</td>
-      <td>{talkInfo.conference}</td>
+      <td><ConferenceLink talkInfo={talkInfo}/></td>
       <td>{talkInfo.venue}</td>
       <td>{date}</td>
     </tr>
