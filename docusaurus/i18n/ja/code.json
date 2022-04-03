@@ -195,12 +195,20 @@
     "message": "タグ",
     "description": "The title of the tag list page"
   },
-  "research.article.title": {
+  "research.article.table.header.title": {
     "message": "タイトル",
     "description": "The header for the article title in the article table"
   },
-  "research.article.journal": {
-    "message": "Journal",
+  "research.article.table.header.journal": {
+    "message": "雑誌",
     "description": "The header for the journal in the article table"
+  },
+  "research.article.header.articlePreprint": {
+    "message": "論文・プレプリント",
+    "description": "The header for the list of papers and preprints"
+  },
+  "research.article.header.proceedings": {
+    "message": "その他",
+    "description": "The header for the list of proceedings"
   }
 }

@@ -77,8 +77,9 @@ export function ArticleOl({articles, reversed}: ArticleOlProps): JSX.Element {
 
 interface ArticleTrProps {
   article: ArticleObject
+  showArxiv: boolean
 }
-function ArticleTr({article}: ArticleTrProps): JSX.Element {
+function ArticleTr({article, showArxiv}: ArticleTrProps): JSX.Element {
   const journal = ("journal" in article)
     ? <a href={article.journalUrl} target="_blank" rel="noreferrer">{article.journal}</a>
     : ""
@@ -86,40 +87,39 @@ function ArticleTr({article}: ArticleTrProps): JSX.Element {
     ? <a href={`https://arxiv.org/abs/${article.arxiv}`} target="_blank" rel="noreferrer">
       {article.arxiv}
     </a>
-    : "no arxiv"
+    : "-"
   return (
     <tr>
       <td>{article.title}</td>
       <td>{journal}</td>
-      <td>
-        {arxiv}
-      </td>
+      {showArxiv ? <td>{arxiv}</td> : null}
     </tr>
   )
 }
 
 interface ArticleTableProps {
   articles: ArticleObject[]
+  showArxiv: boolean
 }
-export function ArticleTable({articles}: ArticleTableProps): JSX.Element {
+export function ArticleTable({articles, showArxiv}: ArticleTableProps): JSX.Element {
   const titleHeader = translate({
     message: "Title",
     description: "The header for the article title in the article table",
-    id: "research.article.title",
+    id: "research.article.table.header.title",
   })
   const journalHeader = translate({
     message: "Journal",
     description: "The header for the journal in the article table",
-    id: "research.article.journal",
+    id: "research.article.table.header.journal",
   })
   return (
     <table>
       <tr>
         <th>{titleHeader}</th>
         <th>{journalHeader}</th>
-        <th>arXiv</th>
+        {showArxiv ? <th>arXiv</th> : null}
       </tr>
-      {articles.map(article => <ArticleTr article={article} key={article.title}/>)}
+      {articles.map(article => <ArticleTr article={article} key={article.title} showArxiv={showArxiv}/>)}
     </table>
   )
 }

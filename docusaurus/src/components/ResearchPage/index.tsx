@@ -1,6 +1,7 @@
 import { ArticleObject, articles } from "@data/articles"
 import { Locale, useLocale } from "@data/locale"
 import { talks } from "@data/talks"
+import { translate } from "@docusaurus/Translate"
 import React from "react"
 import { ArticleOl, ArticleTable, ArticleUl } from "./articles"
 import { getTalkLi } from "./talks"
@@ -30,12 +31,13 @@ interface ArticleListProps {
   listFormat: ListFormat
   reversed: boolean
   articles: ArticleObject[]
+  showArxiv: boolean
 }
-function ArticleList({listFormat, reversed, articles}: ArticleListProps): JSX.Element {
+function ArticleList({listFormat, reversed, articles, showArxiv}: ArticleListProps): JSX.Element {
   switch (listFormat) {
     case "ol": return <ArticleOl articles={articles} reversed={reversed}/>
     case "ul": return <ArticleUl articles={articles}/>
-    case "table": return <ArticleTable articles={articles}/>
+    case "table": return <ArticleTable articles={articles} showArxiv={showArxiv}/>
     case "tex": throw new Error("Not implemented")
   }
 }
@@ -52,12 +54,29 @@ export function ResearchPage(): JSX.Element {
   const [listFormat, listFormatSelector] = useSelector(ListFormat, "table", listFormatToString)
   const [sortOrder, sortOrderSelector] = useSelector(SortOrder, "newToOld", sortOrderToString)
   const sortedArticles = sortArticleObjects(articles, sortOrder)
+  const articlePreprintHeader = translate({
+    message: "Papers and preprints",
+    description: "The header for the list of papers and preprints",
+    id: "research.article.header.articlePreprint",
+  })
+  const proceedingsHeader = translate({
+    message: "Proceedings",
+    description: "The header for the list of proceedings",
+    id: "research.article.header.proceedings",
+  })
   return (
     <>
       {listFormatSelector}
       {sortOrderSelector}
       <h2>Articles</h2>
-      <ArticleList listFormat={listFormat} reversed={sortOrder === "oldToNew"} articles={sortedArticles}/>
+      <h3>{articlePreprintHeader}</h3>
+      <ArticleList
+        listFormat={listFormat} reversed={sortOrder === "oldToNew"} showArxiv={true}
+        articles={sortedArticles.filter(article => article.type !== "proceedings")}/>
+      <h3>{proceedingsHeader}</h3>
+      <ArticleList
+        listFormat={listFormat} reversed={sortOrder === "oldToNew"} showArxiv={false}
+        articles={sortedArticles.filter(article => article.type === "proceedings")}/>
       <h2>Talks</h2>
       <ul>
         {talks.map((talk, index) => getTalkLi(talk, index, locale))}
