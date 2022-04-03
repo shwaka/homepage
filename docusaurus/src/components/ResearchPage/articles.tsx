@@ -78,14 +78,14 @@ interface ArticleTrProps {
   article: ArticleObject
 }
 function ArticleTr({article}: ArticleTrProps): JSX.Element {
-  const journal = ("journal" in article) ?
-                  <a href={article.journalUrl} target="_blank">{article.journal}</a> :
-                  ""
-  const arxiv = ("arxiv" in article) ?
-                <a href={`https://arxiv.org/abs/${article.arxiv}`} target="_blank">
-                  {article.arxiv}
-                </a> :
-                "no arxiv"
+  const journal = ("journal" in article)
+    ? <a href={article.journalUrl} target="_blank" rel="noreferrer">{article.journal}</a>
+    : ""
+  const arxiv = ("arxiv" in article)
+    ? <a href={`https://arxiv.org/abs/${article.arxiv}`} target="_blank" rel="noreferrer">
+      {article.arxiv}
+    </a>
+    : "no arxiv"
   return (
     <tr>
       <td>{article.title}</td>
