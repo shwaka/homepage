@@ -7,6 +7,7 @@ import "dayjs/locale/ja"
 import "dayjs/locale/en"
 import React from "react"
 import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
+import { ExtLink } from "../util"
 
 function getTalkInfo(talk: TalkObject, locale: Locale): TalkInfo {
   const localeList: Locale[] = [locale].concat(locales) // 現在の locale を優先的に表示する
@@ -43,9 +44,18 @@ interface TalkLiProps {
   locale: Locale
 }
 function TalkLi({talk, locale}: TalkLiProps): JSX.Element {
+  const talkInfo: TalkInfo = getTalkInfo(talk, locale)
+  const date: string = formatDate(talk.base.date, locale)
+  const comma = ", " // 空白を残すために文字列に含めた
+  // <HtmlFromMarkdown markdown={getMarkdown(talk, locale)}/>
   return (
     <li>
-      <HtmlFromMarkdown markdown={getMarkdown(talk, locale)}/>
+      {talkInfo.title} {comma}
+      {talkInfo.url !== undefined
+        ? <ExtLink href={talkInfo.url} text={talkInfo.conference}/>
+        : talkInfo.conference} {comma}
+      {talkInfo.venue} {comma}
+      {date}
     </li>
   )
 }
