@@ -4,6 +4,7 @@ import { translate } from "@docusaurus/Translate"
 import React from "react"
 import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
 import { ExtLink } from "../util"
+import styles from "./styles.module.scss"
 
 function getArxivUrl(arxivId: string): string {
   return `https://arxiv.org/abs/${arxivId}`
@@ -111,7 +112,7 @@ export function ArticleTable({articles, showArxiv}: ArticleTableProps): JSX.Elem
     id: "research.article.table.header.journal",
   })
   return (
-    <table>
+    <table className={styles.article}>
       <thead>
         <tr>
           <th>{titleHeader}</th>

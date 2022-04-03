@@ -9,6 +9,7 @@ import React from "react"
 import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
 import { ExtLink } from "../util"
 import { translate } from "@docusaurus/Translate"
+import styles from "./styles.module.scss"
 
 function getTalkInfo(talk: TalkObject, locale: Locale): TalkInfo {
   const localeList: Locale[] = [locale].concat(locales) // 現在の locale を優先的に表示する
@@ -118,7 +119,7 @@ export function TalkTable({talks}: TalkTableProps): JSX.Element {
     id: "research.talk.table.header.date"
   })
   return (
-    <table>
+    <table className={styles.talk}>
       <thead>
         <tr>
           <th>{titleHeader}</th>

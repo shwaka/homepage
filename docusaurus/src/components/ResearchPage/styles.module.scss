@@ -1,0 +1,6 @@
+table.article, table.talk {
+  th, td {
+    // override defaults from docusaurus
+    padding: 0px 5px;
+  }
+}
