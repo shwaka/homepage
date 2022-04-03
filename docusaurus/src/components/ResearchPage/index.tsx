@@ -48,12 +48,12 @@ interface TalkListProps {
   talks: TalkObject[]
   locale: Locale
 }
-function TalkList({listFormat, reversed, talks, locale}: TalkListProps): JSX.Element {
+function TalkList({listFormat, reversed, talks}: TalkListProps): JSX.Element {
   switch (listFormat) {
-    case "ol": return <TalkOl talks={talks} locale={locale} reversed={reversed}/>
-    case "ul": return <TalkUl talks={talks} locale={locale}/>
-    case "table": return <TalkTable talks={talks} locale={locale}/>
-    case "tex": return <TalkItemize talks={talks} locale={locale}/>
+    case "ol": return <TalkOl talks={talks} reversed={reversed}/>
+    case "ul": return <TalkUl talks={talks}/>
+    case "table": return <TalkTable talks={talks}/>
+    case "tex": return <TalkItemize talks={talks}/>
   }
 }
 
@@ -72,7 +72,6 @@ function sortTalkObjects(articles: TalkObject[], sortOrder: SortOrder): TalkObje
 }
 
 export function ResearchPage(): JSX.Element {
-  const locale: Locale = useLocale()
   const [listFormat, listFormatSelector] = useSelector(ListFormat, "ul", listFormatToString)
   const [sortOrder, sortOrderSelector] = useSelector(SortOrder, "newToOld", sortOrderToString)
   const sortedArticles = sortArticleObjects(articles, sortOrder)
@@ -103,7 +102,7 @@ export function ResearchPage(): JSX.Element {
         articles={sortedArticles.filter(article => article.type === "proceedings")}/>
       <h2>Talks</h2>
       <TalkList
-        listFormat={listFormat} reversed={reversed} locale={locale}
+        listFormat={listFormat} reversed={reversed}
         talks={sortedTalks}/>
     </>
   )

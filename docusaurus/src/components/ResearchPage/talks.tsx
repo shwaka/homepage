@@ -1,4 +1,4 @@
-import { Locale, locales } from "@data/locale"
+import { Locale, locales, useLocale } from "@data/locale"
 import { TalkObject, TalkInfo } from "@data/talks"
 import { md, Markdown } from "@data/util"
 import dayjs, { Dayjs } from "dayjs"
@@ -37,9 +37,9 @@ function ConferenceLink({talkInfo}: {talkInfo: TalkInfo}): JSX.Element {
 
 interface TalkLiProps {
   talk: TalkObject
-  locale: Locale
 }
-function TalkLi({talk, locale}: TalkLiProps): JSX.Element {
+function TalkLi({talk}: TalkLiProps): JSX.Element {
+  const locale = useLocale()
   const talkInfo: TalkInfo = getTalkInfo(talk, locale)
   const date: string = formatDate(talk.base.date, locale)
   const comma = ", " // 空白を残すために文字列に含めた
@@ -55,34 +55,32 @@ function TalkLi({talk, locale}: TalkLiProps): JSX.Element {
 
 interface TalkUlProps {
   talks: TalkObject[]
-  locale: Locale
 }
-export function TalkUl({talks, locale}: TalkUlProps): JSX.Element {
+export function TalkUl({talks}: TalkUlProps): JSX.Element {
   return (
     <ul>
-      {talks.map((talk, index) => <TalkLi talk={talk} locale={locale} key={index}/>)}
+      {talks.map((talk, index) => <TalkLi talk={talk} key={index}/>)}
     </ul>
   )
 }
 
 interface TalkOlProps {
   talks: TalkObject[]
-  locale: Locale
   reversed: boolean
 }
-export function TalkOl({talks, locale, reversed}: TalkOlProps): JSX.Element {
+export function TalkOl({talks, reversed}: TalkOlProps): JSX.Element {
   return (
     <ol reversed={reversed}>
-      {talks.map((talk, index) => <TalkLi talk={talk} locale={locale} key={index}/>)}
+      {talks.map((talk, index) => <TalkLi talk={talk} key={index}/>)}
     </ol>
   )
 }
 
 interface TalkTrProps {
   talk: TalkObject
-  locale: Locale
 }
-function TalkTr({talk, locale}: TalkTrProps): JSX.Element {
+function TalkTr({talk}: TalkTrProps): JSX.Element {
+  const locale = useLocale()
   const talkInfo = getTalkInfo(talk, locale)
   const date: string = formatDate(talk.base.date, locale)
   return (
@@ -97,9 +95,8 @@ function TalkTr({talk, locale}: TalkTrProps): JSX.Element {
 
 interface TalkTableProps {
   talks: TalkObject[]
-  locale: Locale
 }
-export function TalkTable({talks, locale}: TalkTableProps): JSX.Element {
+export function TalkTable({talks}: TalkTableProps): JSX.Element {
   const titleHeader = translate({
     message: "Title",
     description: "The header for the talk title in the talk table",
@@ -133,7 +130,7 @@ export function TalkTable({talks, locale}: TalkTableProps): JSX.Element {
       <tbody>
         {talks.map(talk =>
           <TalkTr
-            talk={talk} locale={locale}
+            talk={talk}
             key={talk.base.date.toString()}/>
         )}
       </tbody>
@@ -152,9 +149,9 @@ function getItem(talk: TalkObject, locale: Locale): string {
 
 interface TalkItemizeProps {
   talks: TalkObject[]
-  locale: Locale
 }
-export function TalkItemize({talks, locale}: TalkItemizeProps): JSX.Element {
+export function TalkItemize({talks}: TalkItemizeProps): JSX.Element {
+  const locale = useLocale()
   const items = talks.map(talk => getItem(talk, locale))
   return (
     <pre>
