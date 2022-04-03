@@ -1,10 +1,10 @@
 import { ArticleObject, articles } from "@data/articles"
 import { Locale, useLocale } from "@data/locale"
-import { talks } from "@data/talks"
+import { TalkObject, talks } from "@data/talks"
 import { translate } from "@docusaurus/Translate"
 import React from "react"
 import { ArticleItemize, ArticleOl, ArticleTable, ArticleUl } from "./articles"
-import { getTalkLi } from "./talks"
+import { getTalkLi, TalkUl } from "./talks"
 import { useSelector } from "./useSelector"
 
 const ListFormat = ["ol", "ul", "table", "tex"] as const
@@ -42,7 +42,29 @@ function ArticleList({listFormat, reversed, articles, showArxiv}: ArticleListPro
   }
 }
 
+interface TalkListProps {
+  listFormat: ListFormat
+  reversed: boolean
+  talks: TalkObject[]
+  locale: Locale
+}
+function TalkList({listFormat, reversed, talks, locale}: TalkListProps): JSX.Element {
+  switch (listFormat) {
+    case "ol": throw new Error("not impl")
+    case "ul": return <TalkUl talks={talks} locale={locale}/>
+    case "table": throw new Error("not impl")
+    case "tex": throw new Error("not impl")
+  }
+}
+
 function sortArticleObjects(articles: ArticleObject[], sortOrder: SortOrder): ArticleObject[] {
+  switch (sortOrder) {
+    case "newToOld": return articles.slice().reverse()
+    case "oldToNew": return articles.slice()
+  }
+}
+
+function sortTalkObjects(articles: TalkObject[], sortOrder: SortOrder): TalkObject[] {
   switch (sortOrder) {
     case "newToOld": return articles.slice().reverse()
     case "oldToNew": return articles.slice()
@@ -51,9 +73,10 @@ function sortArticleObjects(articles: ArticleObject[], sortOrder: SortOrder): Ar
 
 export function ResearchPage(): JSX.Element {
   const locale: Locale = useLocale()
-  const [listFormat, listFormatSelector] = useSelector(ListFormat, "table", listFormatToString)
+  const [listFormat, listFormatSelector] = useSelector(ListFormat, "ul", listFormatToString)
   const [sortOrder, sortOrderSelector] = useSelector(SortOrder, "newToOld", sortOrderToString)
   const sortedArticles = sortArticleObjects(articles, sortOrder)
+  const sortedTalks = sortTalkObjects(talks, sortOrder)
   const articlePreprintHeader = translate({
     message: "Papers and preprints",
     description: "The header for the list of papers and preprints",
@@ -79,9 +102,9 @@ export function ResearchPage(): JSX.Element {
         listFormat={listFormat} reversed={reversed} showArxiv={false}
         articles={sortedArticles.filter(article => article.type === "proceedings")}/>
       <h2>Talks</h2>
-      <ul>
-        {talks.map((talk, index) => getTalkLi(talk, index, locale))}
-      </ul>
+      <TalkList
+        listFormat={listFormat} reversed={reversed} locale={locale}
+        talks={sortedTalks}/>
     </>
   )
 }

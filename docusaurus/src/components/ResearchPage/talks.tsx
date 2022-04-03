@@ -45,3 +45,15 @@ export function getTalkLi(talk: TalkObject, index: number, locale: Locale): JSX.
     </li>
   )
 }
+
+interface TalkUlProps {
+  talks: TalkObject[]
+  locale: Locale
+}
+export function TalkUl({talks, locale}: TalkUlProps): JSX.Element {
+  return (
+    <ul>
+      {talks.map((talk, index) => getTalkLi(talk, index, locale))}
+    </ul>
+  )
+}
