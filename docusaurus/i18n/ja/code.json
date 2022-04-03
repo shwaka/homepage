@@ -226,5 +226,13 @@
   "research.talk.table.header.date": {
     "message": "日付",
     "description": "The header for the date in the talk table"
+  },
+  "research.talk.header.english": {
+    "message": "国際研究集会",
+    "description": "The header for the list of talks in English"
+  },
+  "research.talk.header.japanese": {
+    "message": "国内研究集会",
+    "description": "The header for the list of talks in Japanese"
   }
 }

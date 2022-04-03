@@ -4,11 +4,11 @@
     "description": "The title in the navbar"
   },
   "item.label.CV": {
-    "message": "CV",
+    "message": "履歴書",
     "description": "Navbar item with label CV"
   },
   "item.label.Research": {
-    "message": "Research",
+    "message": "研究",
     "description": "Navbar item with label Research"
   }
 }
