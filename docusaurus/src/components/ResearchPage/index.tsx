@@ -4,7 +4,7 @@ import { TalkObject, talks } from "@data/talks"
 import { translate } from "@docusaurus/Translate"
 import React from "react"
 import { ArticleItemize, ArticleOl, ArticleTable, ArticleUl } from "./articles"
-import { getTalkLi, TalkUl } from "./talks"
+import { getTalkLi, TalkOl, TalkUl } from "./talks"
 import { useSelector } from "./useSelector"
 
 const ListFormat = ["ol", "ul", "table", "tex"] as const
@@ -50,7 +50,7 @@ interface TalkListProps {
 }
 function TalkList({listFormat, reversed, talks, locale}: TalkListProps): JSX.Element {
   switch (listFormat) {
-    case "ol": throw new Error("not impl")
+    case "ol": return <TalkOl talks={talks} locale={locale} reversed={reversed}/>
     case "ul": return <TalkUl talks={talks} locale={locale}/>
     case "table": throw new Error("not impl")
     case "tex": throw new Error("not impl")

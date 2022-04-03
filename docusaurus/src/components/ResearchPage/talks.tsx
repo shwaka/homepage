@@ -38,9 +38,13 @@ function getMarkdown(talk: TalkObject, locale: Locale): Markdown {
   return md(`${talkInfo.title}, ${getConferenceLink(talkInfo)}, ${talkInfo.venue}, ${date}`)
 }
 
-export function getTalkLi(talk: TalkObject, index: number, locale: Locale): JSX.Element {
+interface TalkLiProps {
+  talk: TalkObject
+  locale: Locale
+}
+function TalkLi({talk, locale}: TalkLiProps): JSX.Element {
   return (
-    <li key={index}>
+    <li>
       <HtmlFromMarkdown markdown={getMarkdown(talk, locale)}/>
     </li>
   )
@@ -53,7 +57,20 @@ interface TalkUlProps {
 export function TalkUl({talks, locale}: TalkUlProps): JSX.Element {
   return (
     <ul>
-      {talks.map((talk, index) => getTalkLi(talk, index, locale))}
+      {talks.map((talk, index) => <TalkLi talk={talk} locale={locale} key={index}/>)}
     </ul>
+  )
+}
+
+interface TalkOlProps {
+  talks: TalkObject[]
+  locale: Locale
+  reversed: boolean
+}
+export function TalkOl({talks, locale, reversed}: TalkOlProps): JSX.Element {
+  return (
+    <ol reversed={reversed}>
+      {talks.map((talk, index) => <TalkLi talk={talk} locale={locale} key={index}/>)}
+    </ol>
   )
 }
