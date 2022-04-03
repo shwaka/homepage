@@ -20,24 +20,11 @@ function getTalkInfo(talk: TalkObject, locale: Locale): TalkInfo {
   throw new Error("Invalid data!")
 }
 
-function getConferenceLink(talkInfo: TalkInfo): string {
-  if (talkInfo.url !== undefined) {
-    return `[${talkInfo.conference}](${talkInfo.url})`
-  } else {
-    return talkInfo.conference
-  }
-}
-
 function formatDate(date: Dayjs, locale: Locale): string {
   dayjs.extend(localizedFormat)
   return date.locale(locale).format("LL")
 }
 
-function getMarkdown(talk: TalkObject, locale: Locale): Markdown {
-  const talkInfo: TalkInfo = getTalkInfo(talk, locale)
-  const date: string = formatDate(talk.base.date, locale)
-  return md(`${talkInfo.title}, ${getConferenceLink(talkInfo)}, ${talkInfo.venue}, ${date}`)
-}
 
 interface TalkLiProps {
   talk: TalkObject
@@ -47,7 +34,6 @@ function TalkLi({talk, locale}: TalkLiProps): JSX.Element {
   const talkInfo: TalkInfo = getTalkInfo(talk, locale)
   const date: string = formatDate(talk.base.date, locale)
   const comma = ", " // 空白を残すために文字列に含めた
-  // <HtmlFromMarkdown markdown={getMarkdown(talk, locale)}/>
   return (
     <li>
       {talkInfo.title} {comma}

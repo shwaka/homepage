@@ -13,7 +13,6 @@ interface ArticleLiProps {
   article: ArticleObject
 }
 function ArticleLi({article}: ArticleLiProps): JSX.Element {
-  // <HtmlFromMarkdown markdown={getMarkdown(article)}/>
   const comma = ", " // 空白を残すために文字列に含めた
   switch (article.type) {
     case "preprint": return (
