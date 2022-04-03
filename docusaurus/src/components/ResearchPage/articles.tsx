@@ -3,53 +3,54 @@ import { Markdown, md } from "@data/util"
 import { translate } from "@docusaurus/Translate"
 import React from "react"
 import { HtmlFromMarkdown } from "../HtmlFromMarkdown"
+import { ExtLink } from "../util"
 
 function getArxivUrl(arxivId: string): string {
   return `https://arxiv.org/abs/${arxivId}`
 }
 
-function getArxivLink(article: ArticlePreprintObject | ArticleToappearObject | ArticlePublishedObject): string {
-  const arxivUrl = getArxivUrl(article.arxiv)
-  return `[${article.arxiv}](${arxivUrl})`
-}
-
-function getJournalLink(article: ArticleToappearObject | ArticlePublishedObject | ArticleProceedingsObject): string {
-  switch (article.type) {
-    case "toappear":
-      return `to appear in [${article.journal}](${article.journalUrl})`
-    case "published":
-      return `[${article.journal}, ${article.journalPage}](${article.articleUrl})`
-    case "proceedings":
-      return `[${article.journal}, ${article.journalPage}](${article.journalUrl})`
-  }
-}
-
-function getMarkdown(article: ArticleObject): Markdown {
-  switch (article.type) {
-    case "preprint": {
-      return md(`${article.title}, ${getArxivLink(article)}, ${article.yearPreprint}`)
-    }
-    case "toappear": {
-      return md(`${article.title}, ${getJournalLink(article)}, ${getArxivLink(article)}`)
-    }
-    case "published": {
-      return md(`${article.title}, ${getJournalLink(article)}, ${article.yearPublished} (arXiv: ${getArxivLink(article)})`)
-    }
-    case "proceedings":
-      return md(`${article.title}, ${getJournalLink(article)}, ${article.year}`)
-  }
-}
-
-
 interface ArticleLiProps {
   article: ArticleObject
 }
 function ArticleLi({article}: ArticleLiProps): JSX.Element {
-  return (
-    <li>
-      <HtmlFromMarkdown markdown={getMarkdown(article)}/>
-    </li>
-  )
+  // <HtmlFromMarkdown markdown={getMarkdown(article)}/>
+  const comma = ", " // 空白を残すために文字列に含めた
+  switch (article.type) {
+    case "preprint": return (
+      <li>
+        {`${article.title}`} {comma}
+        <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/> {comma}
+        {article.yearPreprint}
+      </li>
+    )
+    case "toappear": return (
+      <li>
+        {`${article.title}`} {comma}
+        to appear in
+        <ExtLink href={article.journalUrl} text={article.journal}/> {comma}
+        <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/>
+      </li>
+    )
+    case "published": return (
+      <li>
+        {`${article.title}`} {comma}
+        <ExtLink
+          href={article.articleUrl}
+          text={`${article.journal}, ${article.journalPage}`}/> {comma}
+        {`${article.yearPublished} (arXiv: `}
+        <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/>
+        {")"}
+      </li>
+    )
+    case "proceedings": return (
+      <li>
+        {`${article.title}`} {comma}
+        <ExtLink
+          href={article.journalUrl}
+          text={`${article.journal}, ${article.journalPage}`}/> {comma}
+      </li>
+    )
+  }
 }
 
 interface ArticleUlProps {
@@ -81,12 +82,10 @@ interface ArticleTrProps {
 }
 function ArticleTr({article, showArxiv}: ArticleTrProps): JSX.Element {
   const journal = ("journal" in article)
-    ? <a href={article.journalUrl} target="_blank" rel="noreferrer">{article.journal}</a>
+    ? <ExtLink href={article.journalUrl} text={article.journal}/>
     : ""
   const arxiv = ("arxiv" in article)
-    ? <a href={`https://arxiv.org/abs/${article.arxiv}`} target="_blank" rel="noreferrer">
-      {article.arxiv}
-    </a>
+    ? <ExtLink href={`https://arxiv.org/abs/${article.arxiv}`} text={article.arxiv}/>
     : "-"
   return (
     <tr>
