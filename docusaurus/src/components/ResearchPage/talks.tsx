@@ -140,3 +140,25 @@ export function TalkTable({talks, locale}: TalkTableProps): JSX.Element {
     </table>
   )
 }
+
+function getItem(talk: TalkObject, locale: Locale): string {
+  const talkInfo = getTalkInfo(talk, locale)
+  const title: string = talkInfo.title
+  const conference: string = talkInfo.conference
+  const venue: string = talkInfo.venue
+  const date: string = formatDate(talk.base.date, locale)
+  return `  \\item ${title}, ${conference}, ${venue}, ${date}`
+}
+
+interface TalkItemizeProps {
+  talks: TalkObject[]
+  locale: Locale
+}
+export function TalkItemize({talks, locale}: TalkItemizeProps): JSX.Element {
+  const items = talks.map(talk => getItem(talk, locale))
+  return (
+    <pre>
+      {"\\begin{itemize}\n" + items.join("\n") + "\n\\end{itemize}"}
+    </pre>
+  )
+}
