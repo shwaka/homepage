@@ -210,5 +210,21 @@
   "research.article.header.proceedings": {
     "message": "その他",
     "description": "The header for the list of proceedings"
+  },
+  "research.talk.table.header.title": {
+    "message": "講演タイトル",
+    "description": "The header for the talk title in the talk table"
+  },
+  "research.talk.table.header.conferenceName": {
+    "message": "研究集会名",
+    "description": "The header for the conference name in the talk table"
+  },
+  "research.talk.table.header.venue": {
+    "message": "会場",
+    "description": "The header for the venue in the talk table"
+  },
+  "research.talk.table.header.date": {
+    "message": "日付",
+    "description": "The header for the date in the talk table"
   }
 }
