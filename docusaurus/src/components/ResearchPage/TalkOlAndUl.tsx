@@ -1,7 +1,7 @@
 import { useLocale } from "@data/locale"
 import { TalkObject, TalkInfo } from "@data/talks"
 import React from "react"
-import { formatDate } from "../util"
+import { formatMonth } from "../util"
 import { ConferenceLink, getTalkInfo } from "./talkUtil"
 
 interface TalkLiProps {
@@ -10,7 +10,7 @@ interface TalkLiProps {
 function TalkLi({talk}: TalkLiProps): JSX.Element {
   const locale = useLocale()
   const talkInfo: TalkInfo = getTalkInfo(talk, locale)
-  const date: string = formatDate(talk.base.date, locale)
+  const date: string = formatMonth(talk.base.date, locale)
   const comma = ", " // 空白を残すために文字列に含めた
   return (
     <li>

@@ -21,3 +21,10 @@ export function formatDate(date: Dayjs, locale: Locale): string {
   dayjs.extend(localizedFormat)
   return date.locale(locale).format("LL")
 }
+
+export function formatMonth(date: Dayjs, locale: Locale): string {
+  switch (locale) {
+    case "en": return date.format("MMM. YYYY")
+    case "ja": return date.format("YYYY年MM月")
+  }
+}

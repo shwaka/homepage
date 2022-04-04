@@ -4,7 +4,7 @@ import { translate } from "@docusaurus/Translate"
 import "dayjs/locale/ja"
 import "dayjs/locale/en"
 import React from "react"
-import { formatDate } from "../util"
+import { formatMonth } from "../util"
 import styles from "./styles.module.scss"
 import { ConferenceLink, getTalkInfo } from "./talkUtil"
 
@@ -14,7 +14,7 @@ interface TalkTrProps {
 function TalkTr({talk}: TalkTrProps): JSX.Element {
   const locale = useLocale()
   const talkInfo = getTalkInfo(talk, locale)
-  const date: string = formatDate(talk.base.date, locale)
+  const date: string = formatMonth(talk.base.date, locale)
   return (
     <tr>
       <td>{talkInfo.title}</td>

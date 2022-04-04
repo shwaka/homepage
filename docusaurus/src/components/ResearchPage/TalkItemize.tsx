@@ -1,7 +1,7 @@
 import { Locale, useLocale } from "@data/locale"
 import { TalkObject } from "@data/talks"
 import React from "react"
-import { formatDate } from "../util"
+import { formatMonth } from "../util"
 import { getTalkInfo } from "./talkUtil"
 
 
@@ -10,7 +10,7 @@ function getItem(talk: TalkObject, locale: Locale): string {
   const title: string = talkInfo.title
   const conference: string = talkInfo.conference
   const venue: string = talkInfo.venue
-  const date: string = formatDate(talk.base.date, locale)
+  const date: string = formatMonth(talk.base.date, locale)
   return `  \\item ${title}, ${conference}, ${venue}, ${date}`
 }
 
