@@ -52,7 +52,7 @@ const config = {
           {to: 'cv', label: 'CV', position: 'left'},
           {to: 'research', label: 'Research', position: 'left'},
           {to: 'software', label: 'Software', position: 'left'},
-          {to: 'others', label: 'Others', position: 'left'},
+          {to: 'others', label: 'Others', position: 'left', className: 'en-hidden'},
           // {
           //   type: 'doc',
           //   docId: 'intro',

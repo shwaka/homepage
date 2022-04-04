@@ -42,3 +42,10 @@ body.wide-mdx .container {
     --ifm-col-width: 0%;
   }
 }
+
+html[lang='ja'] .ja-hidden {
+  display: none;
+}
+html[lang='en'] .en-hidden {
+  display: none;
+}
