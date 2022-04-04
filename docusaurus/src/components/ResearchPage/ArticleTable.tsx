@@ -1,7 +1,7 @@
 import { ArticleObject, Wakatsuki } from "@data/articles"
+import Link from "@docusaurus/Link"
 import { translate } from "@docusaurus/Translate"
 import React from "react"
-import { ExtLink } from "../util"
 import styles from "./styles.module.scss"
 
 
@@ -15,10 +15,10 @@ function ArticleTr({article, showArxiv}: ArticleTrProps): JSX.Element {
     .map(author => author.shortName)
     .join(", ")
   const journal = ("journal" in article)
-    ? <ExtLink href={article.journalUrl} text={article.journal}/>
+    ? <Link to={article.journalUrl}>{article.journal}</Link>
     : ""
   const arxiv = ("arxiv" in article)
-    ? <ExtLink href={`https://arxiv.org/abs/${article.arxiv}`} text={article.arxiv}/>
+    ? <Link to={`https://arxiv.org/abs/${article.arxiv}`}>{article.arxiv}</Link>
     : "-"
   return (
     <tr>

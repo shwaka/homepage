@@ -1,6 +1,6 @@
 import { ArticleObject, Author, Wakatsuki } from "@data/articles"
+import Link from "@docusaurus/Link"
 import React from "react"
-import { ExtLink } from "../util"
 
 function getArxivUrl(arxivId: string): string {
   return `https://arxiv.org/abs/${arxivId}`
@@ -26,7 +26,7 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
       <li>
         {getCoauthor(article.authors)}
         {`${article.title}`}{comma}
-        <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/>{comma}
+        <Link to={getArxivUrl(article.arxiv)}>{article.arxiv}</Link>{comma}
         {article.yearPreprint}
       </li>
     )
@@ -35,19 +35,19 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
         {getCoauthor(article.authors)}
         {`${article.title}`}{comma}
         to appear in
-        <ExtLink href={article.journalUrl} text={article.journal}/>{comma}
-        <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/>
+        <Link to={article.journalUrl}>{article.journal}</Link>{comma}
+        <Link to={getArxivUrl(article.arxiv)}>{article.arxiv}</Link>
       </li>
     )
     case "published": return (
       <li>
         {getCoauthor(article.authors)}
         {`${article.title}`}{comma}
-        <ExtLink
-          href={article.articleUrl}
-          text={`${article.journal}, ${article.journalPage}`}/>{comma}
+        <Link to={article.articleUrl}>
+          {`${article.journal}, ${article.journalPage}`}
+        </Link>{comma}
         {`${article.yearPublished} (arXiv: `}
-        <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/>
+        <Link to={getArxivUrl(article.arxiv)}>{article.arxiv}</Link>
         {")"}
       </li>
     )
@@ -55,9 +55,9 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
       <li>
         {getCoauthor(article.authors)}
         {`${article.title}`}{comma}
-        <ExtLink
-          href={article.journalUrl}
-          text={`${article.journal}, ${article.journalPage}`}/>{comma}
+        <Link to={article.journalUrl}>
+          {`${article.journal}, ${article.journalPage}`}
+        </Link>{comma}
       </li>
     )
   }

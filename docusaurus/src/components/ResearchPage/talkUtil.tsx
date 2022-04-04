@@ -1,7 +1,7 @@
 import { Locale, locales } from "@data/locale"
 import { TalkObject, TalkInfo } from "@data/talks"
+import Link from "@docusaurus/Link"
 import React from "react"
-import { ExtLink } from "../util"
 
 export function getTalkInfo(talk: TalkObject, locale: Locale): TalkInfo {
   const localeList: Locale[] = [locale].concat(locales) // 現在の locale を優先的に表示する
@@ -16,7 +16,7 @@ export function getTalkInfo(talk: TalkObject, locale: Locale): TalkInfo {
 
 export function ConferenceLink({talkInfo}: {talkInfo: TalkInfo}): JSX.Element {
   if (talkInfo.url !== undefined) {
-    return <ExtLink href={talkInfo.url} text={talkInfo.conference}/>
+    return <Link to={talkInfo.url}>{talkInfo.conference}</Link>
   } else {
     return <span>{talkInfo.conference}</span>
   }
