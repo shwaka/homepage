@@ -8,7 +8,7 @@ import { ArticleTable } from "./ArticleTable"
 import { TalkItemize } from "./TalkItemize"
 import { TalkOl, TalkUl } from "./TalkOlAndUl"
 import { TalkTable } from "./TalkTable"
-import { useSelector } from "./useSelector"
+import { Selector, useSelector } from "./useSelector"
 
 const ListFormat = ["ol", "ul", "table", "tex"] as const
 type ListFormat = (typeof ListFormat)[number]
@@ -74,8 +74,8 @@ function sortTalkObjects(articles: TalkObject[], sortOrder: SortOrder): TalkObje
 }
 
 export function ResearchPage(): JSX.Element {
-  const [listFormat, listFormatSelector] = useSelector(ListFormat, "ul", listFormatToString)
-  const [sortOrder, sortOrderSelector] = useSelector(SortOrder, "newToOld", sortOrderToString)
+  const [listFormat, listFormatSelectorProps] = useSelector(ListFormat, "ul", listFormatToString)
+  const [sortOrder, sortOrderSelectorProps] = useSelector(SortOrder, "newToOld", sortOrderToString)
   const sortedArticles = sortArticleObjects(articles, sortOrder)
   const sortedTalks = sortTalkObjects(talks, sortOrder)
   const articlePreprintHeader = translate({
@@ -101,8 +101,8 @@ export function ResearchPage(): JSX.Element {
   const reversed = (sortOrder === "newToOld")
   return (
     <>
-      {listFormatSelector}
-      {sortOrderSelector}
+      <Selector {...listFormatSelectorProps}/>
+      <Selector {...sortOrderSelectorProps}/>
       <h2>Articles</h2>
       <h3>{articlePreprintHeader}</h3>
       <ArticleList

@@ -1,31 +1,40 @@
 import React, { useState } from "react"
 
-interface SelectorLabelProps<T> {
+export interface SelectorProps<T> {
   name: string
-  valueToSelect: T
+  values: readonly T[]
+  valueToString: (value: T) => string
   currentValue: T
   setValue: (value: T) => void
-  valueToString: (value: T) => string
 }
-function SelectorLabel<T>({name, valueToSelect, currentValue, setValue, valueToString}: SelectorLabelProps<T>): JSX.Element {
+export function Selector<T>({name, values, valueToString, currentValue, setValue}: SelectorProps<T>): JSX.Element {
   return (
-    <label>
-      <input type="radio" name={name} value={valueToString(valueToSelect)}
-        onChange={() => setValue(valueToSelect)}
-        checked={valueToSelect === currentValue}/>
-      <span>{valueToString(valueToSelect)}</span>
-    </label>
+    <div>
+      {values.map(value => (
+        <label key={valueToString(value)}>
+          <input
+            type="radio" name={name}
+            value={valueToString(value)}
+            onChange={() => setValue(value)}
+            checked={value === currentValue}/>
+          <span>{valueToString(value)}</span>
+        </label>
+      ))}
+    </div>
   )
 }
 
-export function useSelector<T>(values: readonly T[], initialValue: T, valueToString: (value: T) => string): [T, JSX.Element] {
+export function useSelector<T>(values: readonly T[], initialValue: T, valueToString: (value: T) => string): [T, SelectorProps<T>] {
+  // https://dev.to/droopytersen/new-react-hooks-pattern-return-a-component-31bh を参考にした
   const names = values.map(valueToString).join(", ")
   const name = `[${names}]`
   const [currentValue, setCurrentValue] = useState<T>(initialValue)
-  const div = (
-    <div>
-      {values.map(value => <SelectorLabel name={name} valueToSelect={value} currentValue={currentValue} setValue={setCurrentValue} valueToString={valueToString} key={valueToString(value)}/>)}
-    </div>
-  )
-  return [currentValue, div]
+  const props: SelectorProps<T> = {
+    name: name,
+    values: values,
+    valueToString: valueToString,
+    currentValue: currentValue,
+    setValue: setCurrentValue,
+  }
+  return [currentValue, props]
 }
