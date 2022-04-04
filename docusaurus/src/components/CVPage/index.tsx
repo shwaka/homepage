@@ -2,6 +2,7 @@ import { cv } from "@data/cv"
 import { HtmlFromMarkdown } from "@site/src/components/HtmlFromMarkdown"
 import { LocaleDispatcher } from "@site/src/components/LocaleDispatcher"
 import React from "react"
+import { Fellowships } from "./Fellowships"
 import styles from "./styles.module.scss"
 
 function CVPageEn(): JSX.Element {
@@ -14,6 +15,8 @@ function CVPageEn(): JSX.Element {
         <li>Mar. 2016: M.S. in Mathematical Sciences, the University of Tokyo</li>
         <li>Sep. 2019: Ph.D. in Mathematical Sciences, the University of Tokyo</li>
       </ul>
+      <h2>Fellowships</h2>
+      <Fellowships/>
     </>
   )
 }
@@ -41,6 +44,8 @@ function CVPageJa(): JSX.Element {
           </ul>
         </li>
       </ul>
+      <h2>職歴</h2>
+      <Fellowships/>
     </>
   )
 }

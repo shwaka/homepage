@@ -1,7 +1,8 @@
 import { useLocale } from "@data/locale"
 import { TalkObject, TalkInfo } from "@data/talks"
 import React from "react"
-import { ConferenceLink, formatDate, getTalkInfo } from "./talkUtil"
+import { formatDate } from "../util"
+import { ConferenceLink, getTalkInfo } from "./talkUtil"
 
 interface TalkLiProps {
   talk: TalkObject

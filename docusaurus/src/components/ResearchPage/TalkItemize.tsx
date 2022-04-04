@@ -1,7 +1,8 @@
 import { Locale, useLocale } from "@data/locale"
 import { TalkObject } from "@data/talks"
 import React from "react"
-import { formatDate, getTalkInfo } from "./talkUtil"
+import { formatDate } from "../util"
+import { getTalkInfo } from "./talkUtil"
 
 
 function getItem(talk: TalkObject, locale: Locale): string {

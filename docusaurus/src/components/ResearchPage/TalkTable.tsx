@@ -4,8 +4,9 @@ import { translate } from "@docusaurus/Translate"
 import "dayjs/locale/ja"
 import "dayjs/locale/en"
 import React from "react"
+import { formatDate } from "../util"
 import styles from "./styles.module.scss"
-import { ConferenceLink, formatDate, getTalkInfo } from "./talkUtil"
+import { ConferenceLink, getTalkInfo } from "./talkUtil"
 
 interface TalkTrProps {
   talk: TalkObject

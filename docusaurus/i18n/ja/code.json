@@ -238,5 +238,9 @@
   "research.article.table.header.coauthor": {
     "message": "共著者",
     "description": "The header for the name of coauthors in the article table"
+  },
+  "cv.fellowship.now": {
+    "message": "現在",
+    "description": "The text for the 'to' property of the current position"
   }
 }
