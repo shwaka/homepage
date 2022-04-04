@@ -13,9 +13,9 @@ function TalkLi({talk}: TalkLiProps): JSX.Element {
   const comma = ", " // 空白を残すために文字列に含めた
   return (
     <li>
-      {talkInfo.title} {comma}
-      <ConferenceLink talkInfo={talkInfo}/> {comma}
-      {talkInfo.venue} {comma}
+      {talkInfo.title}{comma}
+      <ConferenceLink talkInfo={talkInfo}/>{comma}
+      {talkInfo.venue}{comma}
       {date}
     </li>
   )

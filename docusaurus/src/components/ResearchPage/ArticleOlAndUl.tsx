@@ -25,27 +25,27 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
     case "preprint": return (
       <li>
         {getCoauthor(article.authors)}
-        {`${article.title}`} {comma}
-        <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/> {comma}
+        {`${article.title}`}{comma}
+        <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/>{comma}
         {article.yearPreprint}
       </li>
     )
     case "toappear": return (
       <li>
         {getCoauthor(article.authors)}
-        {`${article.title}`} {comma}
+        {`${article.title}`}{comma}
         to appear in
-        <ExtLink href={article.journalUrl} text={article.journal}/> {comma}
+        <ExtLink href={article.journalUrl} text={article.journal}/>{comma}
         <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/>
       </li>
     )
     case "published": return (
       <li>
         {getCoauthor(article.authors)}
-        {`${article.title}`} {comma}
+        {`${article.title}`}{comma}
         <ExtLink
           href={article.articleUrl}
-          text={`${article.journal}, ${article.journalPage}`}/> {comma}
+          text={`${article.journal}, ${article.journalPage}`}/>{comma}
         {`${article.yearPublished} (arXiv: `}
         <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/>
         {")"}
@@ -54,10 +54,10 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
     case "proceedings": return (
       <li>
         {getCoauthor(article.authors)}
-        {`${article.title}`} {comma}
+        {`${article.title}`}{comma}
         <ExtLink
           href={article.journalUrl}
-          text={`${article.journal}, ${article.journalPage}`}/> {comma}
+          text={`${article.journal}, ${article.journalPage}`}/>{comma}
       </li>
     )
   }
