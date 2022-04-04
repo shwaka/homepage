@@ -47,7 +47,7 @@ export interface ArticleProceedingsObject {
 
 export type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticlePublishedObject | ArticleProceedingsObject
 
-const Wakatsuki: Author = {
+export const Wakatsuki: Author = {
   longName: "Shun Wakatsuki",
   shortName: "S. Wakatsuki",
   jaName: "若月駿",

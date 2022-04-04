@@ -234,5 +234,9 @@
   "research.talk.header.japanese": {
     "message": "国内研究集会",
     "description": "The header for the list of talks in Japanese"
+  },
+  "research.article.table.header.coauthor": {
+    "message": "共著者",
+    "description": "The header for the name of coauthors in the article table"
   }
 }

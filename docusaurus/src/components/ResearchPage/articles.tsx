@@ -1,4 +1,4 @@
-import { ArticleObject } from "@data/articles"
+import { ArticleObject, Author, Wakatsuki } from "@data/articles"
 import { translate } from "@docusaurus/Translate"
 import React from "react"
 import { ExtLink } from "../util"
@@ -6,6 +6,16 @@ import styles from "./styles.module.scss"
 
 function getArxivUrl(arxivId: string): string {
   return `https://arxiv.org/abs/${arxivId}`
+}
+
+function getCoauthor(authors: Author[]): string {
+  const filteredAuthors = authors.filter(author => author !== Wakatsuki)
+  if (filteredAuthors.length === 0) {
+    return ""
+  } else {
+    const authorsString = filteredAuthors.map(author => author.shortName).join(", ")
+    return `(with ${authorsString}) `
+  }
 }
 
 interface ArticleLiProps {
@@ -16,6 +26,7 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
   switch (article.type) {
     case "preprint": return (
       <li>
+        {getCoauthor(article.authors)}
         {`${article.title}`} {comma}
         <ExtLink href={getArxivUrl(article.arxiv)} text={article.arxiv}/> {comma}
         {article.yearPreprint}
@@ -23,6 +34,7 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
     )
     case "toappear": return (
       <li>
+        {getCoauthor(article.authors)}
         {`${article.title}`} {comma}
         to appear in
         <ExtLink href={article.journalUrl} text={article.journal}/> {comma}
@@ -31,6 +43,7 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
     )
     case "published": return (
       <li>
+        {getCoauthor(article.authors)}
         {`${article.title}`} {comma}
         <ExtLink
           href={article.articleUrl}
@@ -42,6 +55,7 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
     )
     case "proceedings": return (
       <li>
+        {getCoauthor(article.authors)}
         {`${article.title}`} {comma}
         <ExtLink
           href={article.journalUrl}
@@ -79,6 +93,10 @@ interface ArticleTrProps {
   showArxiv: boolean
 }
 function ArticleTr({article, showArxiv}: ArticleTrProps): JSX.Element {
+  const coauthor = article
+    .authors.filter(author => author !== Wakatsuki)
+    .map(author => author.shortName)
+    .join(", ")
   const journal = ("journal" in article)
     ? <ExtLink href={article.journalUrl} text={article.journal}/>
     : ""
@@ -87,6 +105,7 @@ function ArticleTr({article, showArxiv}: ArticleTrProps): JSX.Element {
     : "-"
   return (
     <tr>
+      <td>{coauthor}</td>
       <td>{article.title}</td>
       <td>{journal}</td>
       {showArxiv ? <td>{arxiv}</td> : null}
@@ -99,6 +118,11 @@ interface ArticleTableProps {
   showArxiv: boolean
 }
 export function ArticleTable({articles, showArxiv}: ArticleTableProps): JSX.Element {
+  const coauthorHeader = translate({
+    message: "Coauthor",
+    description: "The header for the name of coauthors in the article table",
+    id: "research.article.table.header.coauthor",
+  })
   const titleHeader = translate({
     message: "Title",
     description: "The header for the article title in the article table",
@@ -113,6 +137,7 @@ export function ArticleTable({articles, showArxiv}: ArticleTableProps): JSX.Elem
     <table className={styles.article}>
       <thead>
         <tr>
+          <th>{coauthorHeader}</th>
           <th>{titleHeader}</th>
           <th>{journalHeader}</th>
           {showArxiv ? <th>arXiv</th> : null}
