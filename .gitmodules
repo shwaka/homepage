@@ -1,3 +1,6 @@
 [submodule "jekyll/resources"]
 	path = jekyll/resources
 	url = https://github.com/shwaka/homepage_resources
+[submodule "docusaurus/static/heavy"]
+	path = docusaurus/static/heavy
+	url = https://github.com/shwaka/homepage_resources
