@@ -339,5 +339,23 @@ export const talks: TalkObject[] = [
       url: "https://sites.google.com/view/purduetopologyseminar",
       venue: "Zoom"
     }
+  },
+  {
+    base: {
+      date: dayjs("2022-02-21"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Koszulity in topology",
+      conference: "Winter School on Koszul Algebra and Koszul Duality",
+      url: "https://ryokanda.net/conferences/koszul2021/?lang=ja",
+      venue: "大阪市立大学, Zoom"
+    },
+    en: {
+      title: "Koszulity in topology",
+      conference: "Winter School on Koszul Algebra and Koszul Duality",
+      url: "https://ryokanda.net/conferences/koszul2021/",
+      venue: "Osaka City University, Zoom"
+    }
   }
 ]
