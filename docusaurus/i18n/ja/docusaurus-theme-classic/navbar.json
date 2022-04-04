@@ -14,5 +14,9 @@
   "item.label.Software": {
     "message": "ソフトウェア",
     "description": "Navbar item with label Software"
+  },
+  "item.label.Others": {
+    "message": "その他",
+    "description": "Navbar item with label Others"
   }
 }
