@@ -51,6 +51,7 @@ const config = {
         items: [
           {to: 'cv', label: 'CV', position: 'left'},
           {to: 'research', label: 'Research', position: 'left'},
+          {to: 'software', label: 'Software', position: 'left'},
           // {
           //   type: 'doc',
           //   docId: 'intro',

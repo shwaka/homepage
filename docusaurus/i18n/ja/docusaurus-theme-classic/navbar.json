@@ -10,5 +10,9 @@
   "item.label.Research": {
     "message": "研究",
     "description": "Navbar item with label Research"
+  },
+  "item.label.Software": {
+    "message": "ソフトウェア",
+    "description": "Navbar item with label Software"
   }
 }
