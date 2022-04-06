@@ -28,8 +28,10 @@ jobs:
       - name: Build site
         run: npm run build
         working-directory: docusaurus
-      - name: Upload
+      - name: Deploy to shwaka/shwaka.github.io
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          external_repository: shwaka/shwaka.github.io
           publish_dir: docusaurus/build
+          publish_branch: master
