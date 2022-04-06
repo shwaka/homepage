@@ -242,5 +242,17 @@
   "cv.fellowship.now": {
     "message": "現在",
     "description": "The text for the 'to' property of the current position"
+  },
+  "cv.header.education": {
+    "message": "学歴",
+    "description": "The header for education"
+  },
+  "cv.header.fellowships": {
+    "message": "職歴",
+    "description": "The header for fellowships"
+  },
+  "cv.header.awards": {
+    "message": "受賞歴",
+    "description": "The header for awards"
   }
 }
