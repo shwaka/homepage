@@ -1,38 +1,9 @@
 import { translate } from "@docusaurus/Translate"
-import { LocaleDispatcher } from "@site/src/components/LocaleDispatcher"
 import React from "react"
 import { Awards } from "./Awards"
 import { Education } from "./Education"
 import { Fellowships } from "./Fellowships"
 import { Profile } from "./Profile"
-
-function CVPageEn(): JSX.Element {
-  return (
-    <>
-      <Profile/>
-      <h2>Education</h2>
-      <Education/>
-      <h2>Fellowships</h2>
-      <Fellowships/>
-      <h2>Awards</h2>
-      <Awards/>
-    </>
-  )
-}
-
-function CVPageJa(): JSX.Element {
-  return (
-    <>
-      <Profile/>
-      <h2>学歴</h2>
-      <Education/>
-      <h2>職歴</h2>
-      <Fellowships/>
-      <h2>受賞歴</h2>
-      <Awards/>
-    </>
-  )
-}
 
 export function CVPage(): JSX.Element {
   const educationHeader = translate({
