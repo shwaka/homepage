@@ -2,12 +2,22 @@ import { cv } from "@data/cv"
 import { HtmlFromMarkdown } from "@site/src/components/HtmlFromMarkdown"
 import { LocaleDispatcher } from "@site/src/components/LocaleDispatcher"
 import React from "react"
+import { Awards } from "./Awards"
 import { Fellowships } from "./Fellowships"
 import styles from "./styles.module.scss"
 
 function CVPageEn(): JSX.Element {
   return (
     <>
+      <dl className={styles.cvdl}>
+        <dt>Given Name</dt><dd>Shun</dd>
+        <dt>Family Name</dt><dd>Wakatsuki</dd>
+        <dt>Name in Japanese</dt><dd>若月駿</dd>
+        <dt>Email</dt><dd>{cv.currentPosition.en.email}</dd>
+        <dt>Birthplace</dt><dd>Kanagawa, Japan</dd>
+        <dt>Nationality</dt><dd>Japan</dd>
+        <dt>Current Position</dt><dd><HtmlFromMarkdown markdown={cv.currentPosition.en.name}/></dd>
+      </dl>
       <h2>Education</h2>
       <ul>
         <li>Mar. 2010: Kaisei Senior High School, Tokyo, Japan</li>
@@ -17,6 +27,8 @@ function CVPageEn(): JSX.Element {
       </ul>
       <h2>Fellowships</h2>
       <Fellowships/>
+      <h2>Awards</h2>
+      <Awards/>
     </>
   )
 }
@@ -46,6 +58,8 @@ function CVPageJa(): JSX.Element {
       </ul>
       <h2>職歴</h2>
       <Fellowships/>
+      <h2>受賞歴</h2>
+      <Awards/>
     </>
   )
 }
