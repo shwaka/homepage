@@ -1,6 +1,7 @@
 import { cv } from "@data/cv"
 import { useLocale } from "@data/locale"
 import React from "react"
+import { HtmlFromMarkdown } from "./HtmlFromMarkdown"
 
 export function TopPage(): JSX.Element {
   const locale = useLocale()
@@ -9,6 +10,7 @@ export function TopPage(): JSX.Element {
     <>
       <h1>Shun Wakatsuki</h1>
       <ul>
+        <li><HtmlFromMarkdown markdown={currentPosition.name}/></li>
         <li>email: {currentPosition.email}</li>
         <li>address: {currentPosition.address}</li>
       </ul>
