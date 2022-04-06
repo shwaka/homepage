@@ -57,19 +57,29 @@ html[lang='en'] .en-hidden {
 // 当初は !important を使っていたけど，詳細度の調節の方がまだマシな気がしたので変えた．
 $docusaurus-mobile-max-width: 996px;
 @media screen and (min-width: 600px) and (max-width: $docusaurus-mobile-max-width) {
-  .navbar__item {
-    // ここは !important をつけない方が良い．
-    // !important をつけると，.en-hidden なども上書きしてしまう．
-    // !important をつけなければ，.en-hidden などの方が優先される．
-    // html[lang='en']がある分詳細度(specificity)が高いので．
+  .navbar .navbar__item {
+    // 通常の navbar item の表示設定
+    // - ここは !important をつけない方が良い．
+    //   + !important をつけると，.en-hidden なども上書きしてしまう．
+    //   + !important をつけなければ，.en-hidden などの方が優先される．
+    //     html[lang='en']がある分詳細度(specificity)が高いので．
+    // - 当初は .navbar はつけてなかったけど，後からつけた
+    //   + npm start だと .navbar をつけなくても infima 内の指定より優先されていた．
+    //     (参考: node_modules/infima/dist/css/default/default.css)
+    //   + npm run build && npm run serve だと，.navbar をつけないとダメだった．
+    //     最適化などにより CSS の読み込み順序が変わった…？
     display: inline-block;
   }
-  // 詳細度を上げるために div をつけた．
-  // !important をつけるよりはマシなはず…
-  div.toggle_node_modules-\@docusaurus-theme-classic-lib-next-theme-Navbar-styles-module {
-    // node_modules/@docusaurus/theme-classic/lib-next/theme/Navbar/styles.module.css
-    // 上記のCSSファイル内の .toggle { display: none; } が該当個所．
-    // CSS modules で生成されたクラス名なので直接指定するのは良くなさそう…(だけど，他の方法は？)
-    display: block;
-  }
+  // div.toggle_node_modules-\@docusaurus-theme-classic-lib-next-theme-Navbar-styles-module {
+  //   // ページ右上にある light/dark を選ぶボタンの表示設定
+  //   // - 詳細度を上げるために div をつけた．
+  //   //   !important をつけるよりはマシなはず…
+  //   // - 上書きしたいのは，下記の CSS 内にある .toggle { display: none; }
+  //   //   node_modules/@docusaurus/theme-classic/lib-next/theme/Navbar/styles.module.css
+  //   // - CSS modules で生成されたクラス名なので直接指定するのは良くなさそう…
+  //   //   + npm start ではこれで動いていた
+  //   //   + npm run build && npm run serve したら動かなくなった．
+  //   //     クラス名が簡略化されて toggle_iYfV のようになってしまったため．
+  //   display: block;
+  // }
 }
