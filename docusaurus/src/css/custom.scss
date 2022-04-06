@@ -53,16 +53,23 @@ html[lang='en'] .en-hidden {
 // PC画面の半分の横幅くらいだったら navbar は普通に表示してほしい．
 // "996px" は docusaurus や infima にハードコードされている．
 // media query では CSS 変数が使えないので，これを動的に指定するのは無理そう．
-// なので，苦肉の策として !important で無理矢理上書きすることにした．
+// なので，苦肉の策として無理矢理上書きすることにした．
+// 当初は !important を使っていたけど，詳細度の調節の方がまだマシな気がしたので変えた．
 $docusaurus-mobile-max-width: 996px;
 @media screen and (min-width: 600px) and (max-width: $docusaurus-mobile-max-width) {
   .navbar__item {
-    display: inline-block !important;
+    // ここは !important をつけない方が良い．
+    // !important をつけると，.en-hidden なども上書きしてしまう．
+    // !important をつけなければ，.en-hidden などの方が優先される．
+    // html[lang='en']がある分詳細度(specificity)が高いので．
+    display: inline-block;
   }
-  .toggle_node_modules-\@docusaurus-theme-classic-lib-next-theme-Navbar-styles-module {
+  // 詳細度を上げるために div をつけた．
+  // !important をつけるよりはマシなはず…
+  div.toggle_node_modules-\@docusaurus-theme-classic-lib-next-theme-Navbar-styles-module {
     // node_modules/@docusaurus/theme-classic/lib-next/theme/Navbar/styles.module.css
     // 上記のCSSファイル内の .toggle { display: none; } が該当個所．
     // CSS modules で生成されたクラス名なので直接指定するのは良くなさそう…(だけど，他の方法は？)
-    display: block !important;
+    display: block;
   }
 }
