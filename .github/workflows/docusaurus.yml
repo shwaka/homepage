@@ -31,7 +31,8 @@ jobs:
       - name: Deploy to shwaka/shwaka.github.io
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # external_repository は secrets.GITHUB_TOKEN じゃ駄目
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
           external_repository: shwaka/shwaka.github.io
           publish_dir: docusaurus/build
           publish_branch: master
