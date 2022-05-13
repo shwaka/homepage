@@ -357,5 +357,17 @@ export const talks: TalkObject[] = [
       url: "https://ryokanda.net/conferences/koszul2021/",
       venue: "Osaka City University, Zoom"
     }
-  }
+  },
+  {
+    base: {
+      date: dayjs("2022-05-09"),
+      lang: "ja"
+    },
+    ja: {
+      title: "BV exactness and string bracket",
+      conference: "大阪大学幾何セミナー",
+      url: "http://www4.math.sci.osaka-u.ac.jp/sembbs2/poster.cgi?id=918",
+      venue: "大阪大学"
+    },
+  },
 ]
