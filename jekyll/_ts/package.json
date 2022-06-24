@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "@types/jsdom": "^12.2.4"
   },
   "devDependencies": {
