@@ -73,13 +73,13 @@ export const talks: TalkObject[] = [
     ja: {
       title: "String topology on rational Gorenstein spaces",
       conference: "日本数学会 秋季総合分科会",
-      url: "http://mathsoc.jp/meeting/kansai16sept/",
+      url: "http://www.mathsoc.jp/meeting/kansai16sept/",
       venue: "関西大学"
     },
     en: {
       title: "String topology on rational Gorenstein spaces",
       conference: "MSJ Autumn Meeting 2016",
-      url: "http://mathsoc.jp/en/meeting/kansai16sept/",
+      url: "http://www.mathsoc.jp/en/meeting/kansai16sept/",
       venue: "Kansai University"
     }
   },
@@ -115,13 +115,13 @@ export const talks: TalkObject[] = [
     ja: {
       title: "Sullivan 代数の semi-pure 性について",
       conference: "日本数学会 2017年度年会",
-      url: "https://mathsoc.jp/meeting/tmu17mar/",
+      url: "https://www.mathsoc.jp/meeting/tmu17mar/",
       venue: "首都大学東京"
     },
     en: {
       title: "Sullivan 代数の semi-pure 性について",
       conference: "MSJ Spring Meeting 2017",
-      url: "https://mathsoc.jp/en/meeting/tmu17mar/",
+      url: "https://www.mathsoc.jp/en/meeting/tmu17mar/",
       venue: "Tokyo Metropolitan University"
     }
   },
@@ -228,13 +228,13 @@ export const talks: TalkObject[] = [
     ja: {
       title: "Generalization of the loop coproduct",
       conference: "日本数学会・2019年度年会",
-      url: "http://mathsoc.jp/meeting/titech19mar/",
+      url: "http://www.mathsoc.jp/meeting/titech19mar/",
       venue: "東京工業大学"
     },
     en: {
       title: "Generalization of the loop coproduct",
       conference: "MSJ Spring Meeting 2019",
-      url: "http://mathsoc.jp/en/meeting/titech19mar/",
+      url: "http://www.mathsoc.jp/en/meeting/titech19mar/",
       venue: "Tokyo Institute of Technology"
     }
   },
