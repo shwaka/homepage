@@ -370,4 +370,46 @@ export const talks: TalkObject[] = [
       venue: "大阪大学"
     },
   },
+  {
+    base: {
+      date: dayjs("2022-07-30"),
+      lang: "ja"
+    },
+    ja: {
+      title: "BV exactness and string brackets",
+      conference: "ホモトピー沖縄2022",
+      url: "https://sites.google.com/view/homotopy-okinawa-2022/",
+      venue: "琉球大学"
+    },
+  },
+  {
+    base: {
+      date: dayjs("2022-09-13"),
+      lang: "ja"
+    },
+    ja: {
+      title: "BV exactness and string brackets",
+      conference: "日本数学会・2022年度秋季総合分科会",
+      url: "http://www.mathsoc.jp/meeting/hokudai22sept/",
+      venue: "北海道大学"
+    },
+    en: {
+      title: "BV exactness and string brackets",
+      conference: "MSJ Autumn Meeting 2022",
+      url: "https://www.mathsoc.jp/en/meeting/hokudai22sept/",
+      venue: "Hokkaido University"
+    }
+  },
+  {
+    base: {
+      date: dayjs("2022-08-30"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Algebraic structures on the cohomology of the free loop spaces",
+      conference: "第69回 幾何学シンポジウム",
+      url: "https://www.mathsoc.jp/~geometry/symp_schedule/geometry_symposium_2022.html",
+      venue: "東京理科大学"
+    },
+  },
 ]
