@@ -384,6 +384,18 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
+      date: dayjs("2022-08-30"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Algebraic structures on the cohomology of the free loop spaces",
+      conference: "第69回 幾何学シンポジウム",
+      url: "https://www.mathsoc.jp/~geometry/symp_schedule/geometry_symposium_2022.html",
+      venue: "東京理科大学"
+    },
+  },
+  {
+    base: {
       date: dayjs("2022-09-13"),
       lang: "ja"
     },
@@ -399,17 +411,5 @@ export const talks: TalkObject[] = [
       url: "https://www.mathsoc.jp/en/meeting/hokudai22sept/",
       venue: "Hokkaido University"
     }
-  },
-  {
-    base: {
-      date: dayjs("2022-08-30"),
-      lang: "ja"
-    },
-    ja: {
-      title: "Algebraic structures on the cohomology of the free loop spaces",
-      conference: "第69回 幾何学シンポジウム",
-      url: "https://www.mathsoc.jp/~geometry/symp_schedule/geometry_symposium_2022.html",
-      venue: "東京理科大学"
-    },
   },
 ]
