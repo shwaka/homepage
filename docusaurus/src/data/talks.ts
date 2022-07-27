@@ -72,8 +72,8 @@ export const talks: TalkObject[] = [
     },
     ja: {
       title: "String topology on rational Gorenstein spaces",
-      conference: "日本数学会 秋季総合分科会",
-      url: "http://www.mathsoc.jp/meeting/kansai16sept/",
+      conference: "日本数学会 2016年度秋季総合分科会",
+      url: "http://www.mathsoc.jp/activity/meeting/kansai16sept/",
       venue: "関西大学"
     },
     en: {
@@ -115,7 +115,7 @@ export const talks: TalkObject[] = [
     ja: {
       title: "Sullivan 代数の semi-pure 性について",
       conference: "日本数学会 2017年度年会",
-      url: "https://www.mathsoc.jp/meeting/tmu17mar/",
+      url: "https://www.mathsoc.jp/activity/meeting/tmu17mar/",
       venue: "首都大学東京"
     },
     en: {
@@ -228,7 +228,7 @@ export const talks: TalkObject[] = [
     ja: {
       title: "Generalization of the loop coproduct",
       conference: "日本数学会・2019年度年会",
-      url: "http://www.mathsoc.jp/meeting/titech19mar/",
+      url: "http://www.mathsoc.jp/activity/meeting/titech19mar/",
       venue: "東京工業大学"
     },
     en: {
@@ -402,7 +402,7 @@ export const talks: TalkObject[] = [
     ja: {
       title: "BV exactness and string brackets",
       conference: "日本数学会・2022年度秋季総合分科会",
-      url: "http://www.mathsoc.jp/meeting/hokudai22sept/",
+      url: "https://www.mathsoc.jp/activity/meeting/hokudai22sept/",
       venue: "北海道大学"
     },
     en: {
