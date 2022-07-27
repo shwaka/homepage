@@ -143,5 +143,19 @@ export const articles: ArticleObject[] = [
     yearPreprint: 2022,
     type: "preprint",
     authors: [Matsushita, Wakatsuki],
-  }
+  },
+  {
+    title: "Cartan calculi on the free loop spaces",
+    arxiv: "2207.05941",
+    yearPreprint: 2022,
+    type: "preprint",
+    authors: [Kuribayashi, Naito, Wakatsuki, Yamaguchi],
+  },
+  {
+    title: "Independence complexes of (n×6)-grid graphs",
+    arxiv: "2207.10363",
+    yearPreprint: 2022,
+    type: "preprint",
+    authors: [Matsushita, Wakatsuki],
+  },
 ]
