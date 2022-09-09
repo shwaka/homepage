@@ -70,8 +70,8 @@ export const cv: CV = {
       }
     },
     {
-      from: dayjs("2019-09-01"),
-      to: dayjs("2020-01-31"),
+      from: dayjs("2019-10-02"),
+      to: dayjs("2020-01-10"),
       "title": {
         en: md("JSPS Overseas Challenge Program for Young Researchers, [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html), guest researcher at Stockholm University"),
         ja: md("[日本学術振興会](https://www.jsps.go.jp/index.html) 若手研究者海外挑戦プログラムにて，Stockholm 大学に滞在")
