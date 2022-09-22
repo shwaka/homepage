@@ -424,4 +424,16 @@ export const talks: TalkObject[] = [
       venue: "Osaka University"
     }
   },
+  {
+    base: {
+      date: dayjs("2022-09-13"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Computations in rational homotopy theory",
+      conference: "トポロジーとコンピュータ2022",
+      url: "https://sites.google.com/view/topocom2022/",
+      venue: "広島大学"
+    },
+  },
 ]
