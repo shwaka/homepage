@@ -412,4 +412,16 @@ export const talks: TalkObject[] = [
       venue: "Hokkaido University"
     }
   },
+  {
+    base: {
+      date: dayjs("2022-09-21"),
+      lang: "en"
+    },
+    en: {
+      title: "BV exactness and the S^1-equivariant cohomology of free loop spaces",
+      conference: "Workshop on complex geometry in Osaka 2022",
+      url: "https://sites.google.com/site/hisashikasuyamath/workshop-on-complex-geometry",
+      venue: "Osaka University"
+    }
+  },
 ]
