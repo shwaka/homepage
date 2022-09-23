@@ -426,7 +426,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2022-09-13"),
+      date: dayjs("2022-10-23"),
       lang: "ja"
     },
     ja: {
