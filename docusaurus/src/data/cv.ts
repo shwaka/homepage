@@ -2,7 +2,7 @@ import dayjs, { Dayjs } from "dayjs"
 import { Locale } from "./locale"
 import { md, Markdown } from "./util"
 
-const email = "swaka[AT]shinshu-u.ac.jp"
+const email = "shun.wakatsuki[AT]math.nagoya-u.ac.jp"
 
 export type CurrentPosition = {
   email: string
@@ -32,15 +32,15 @@ export const cv: CV = {
   currentPosition: {
     en: {
       email: email,
-      name: md("[Research Fellow of Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/e-pd/index.html)"),
-      url: "https://www.jsps.go.jp/english/e-pd/index.html",
-      address: "Faculty of Science, Shinshu University, 3-1-1 Asahi, Matsumoto, Nagano, 390-8621, Japan",
+      name: md("Project Assistant Professor at [Graduate School of Mathematics, Nagoya University](https://www.math.nagoya-u.ac.jp/en/index.html)"),
+      url: "https://www.math.nagoya-u.ac.jp/en/index.html",
+      address: "A-349, Graduate School of Science, Nagoya University, Furo-cho, Chikusa-ku, Nagoya, 464-8601, Japan",
     },
     ja: {
       email: email,
-      name: md("[日本学術振興会 特別研究員 PD](https://www.jsps.go.jp/j-pd/)"),
-      url: "https://www.jsps.go.jp/j-pd/",
-      address: "〒390-8621 長野県松本市旭3-1-1 信州大学理学部"
+      name: md("[名古屋大学大学院 多元数理科学研究科](https://www.math.nagoya-u.ac.jp/) 特任助教"),
+      url: "https://www.math.nagoya-u.ac.jp/",
+      address: "〒464-8602 愛知県名古屋市千種区不老町 名古屋大学 理学部A館349号室"
     }
   },
   awards: [
@@ -87,11 +87,19 @@ export const cv: CV = {
     },
     {
       from: dayjs("2020-04-01"),
-      to: "now",
+      to: dayjs("2022-10-15"),
       "title": {
         en: md("[Research Fellow of Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/e-pd/index.html)"),
         ja: md("[日本学術振興会 特別研究員 PD](https://www.jsps.go.jp/j-pd/)")
       }
-    }
+    },
+    {
+      from: dayjs("2022-10-16"),
+      to: "now",
+      "title": {
+        en: md("Project Assistant Professor at [Graduate School of Mathematics, Nagoya University](https://www.math.nagoya-u.ac.jp/en/index.html)"),
+        ja: md("[名古屋大学大学院 多元数理科学研究科](https://www.math.nagoya-u.ac.jp/) 特任助教"),
+      }
+    },
   ]
 }
