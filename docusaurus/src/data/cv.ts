@@ -32,7 +32,7 @@ export const cv: CV = {
   currentPosition: {
     en: {
       email: email,
-      name: md("Project Assistant Professor at [Graduate School of Mathematics, Nagoya University](https://www.math.nagoya-u.ac.jp/en/index.html)"),
+      name: md("Designated Assistant Professor at [Graduate School of Mathematics, Nagoya University](https://www.math.nagoya-u.ac.jp/en/index.html)"),
       url: "https://www.math.nagoya-u.ac.jp/en/index.html",
       address: "A-349, Graduate School of Science, Nagoya University, Furo-cho, Chikusa-ku, Nagoya, 464-8601, Japan",
     },
@@ -97,7 +97,7 @@ export const cv: CV = {
       from: dayjs("2022-10-16"),
       to: "now",
       "title": {
-        en: md("Project Assistant Professor at [Graduate School of Mathematics, Nagoya University](https://www.math.nagoya-u.ac.jp/en/index.html)"),
+        en: md("Designated Assistant Professor at [Graduate School of Mathematics, Nagoya University](https://www.math.nagoya-u.ac.jp/en/index.html)"),
         ja: md("[名古屋大学大学院 多元数理科学研究科](https://www.math.nagoya-u.ac.jp/) 特任助教"),
       }
     },
