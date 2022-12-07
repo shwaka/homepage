@@ -448,16 +448,16 @@ export const talks: TalkObject[] = [
       venue: "Zoom"
     },
   },
-  // {
-  //   base: {
-  //     date: dayjs("2022-11-29"),
-  //     lang: "ja"
-  //   },
-  //   ja: {
-  //     title: "TBA",
-  //     conference: "微分トポロジーセミナー",
-  //     url: "https://www.math.kyoto-u.ac.jp/ja/event/seminar/5001",
-  //     venue: "京都大学"
-  //   },
-  // },
+  {
+    base: {
+      date: dayjs("2022-11-29"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Cartan calculi on the free loop spaces",
+      conference: "微分トポロジーセミナー",
+      url: "https://www.math.kyoto-u.ac.jp/ja/event/seminar/5001",
+      venue: "京都大学"
+    },
+  },
 ]
