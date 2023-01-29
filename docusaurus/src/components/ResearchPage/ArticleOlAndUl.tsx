@@ -34,7 +34,7 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
       <li>
         {getCoauthor(article.authors)}
         {`${article.title}`}{comma}
-        to appear in
+        {"to appear in "}
         <Link to={article.journalUrl}>{article.journal}</Link>{comma}
         <Link to={getArxivUrl(article.arxiv)}>{article.arxiv}</Link>
       </li>
