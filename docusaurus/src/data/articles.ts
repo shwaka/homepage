@@ -155,7 +155,9 @@ export const articles: ArticleObject[] = [
     title: "Independence complexes of (n×6)-grid graphs",
     arxiv: "2207.10363",
     yearPreprint: 2022,
-    type: "preprint",
+    type: "toappear",
     authors: [Matsushita, Wakatsuki],
+    journal: "Homology Homotopy Appl.", // Homology, Homotopy and Applications
+    journalUrl: "https://intlpress.com/site/pub/pages/journals/items/hha/_home/_main/index.html",
   },
 ]
