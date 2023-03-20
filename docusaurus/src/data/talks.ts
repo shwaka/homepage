@@ -478,4 +478,16 @@ export const talks: TalkObject[] = [
       venue: "Chuo University"
     }
   },
+  {
+    base: {
+      date: dayjs("2023-03-22"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Rational homotopy theory and the cohomology of free loop spaces",
+      conference: "第10回(非)可換代数とトポロジー",
+      url: "http://marine.shinshu-u.ac.jp/~kuri/ALGEBRA_TOPOLOGY/schedule2022.html",
+      venue: "信州大学"
+    },
+  },
 ]
