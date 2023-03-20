@@ -460,4 +460,22 @@ export const talks: TalkObject[] = [
       venue: "京都大学"
     },
   },
+  {
+    base: {
+      date: dayjs("2023-03-15"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Independence complexes of grid graphs",
+      conference: "日本数学会・2023年度年会",
+      url: "https://www.mathsoc.jp/activity/meeting/chuo23mar/",
+      venue: "中央大学"
+    },
+    en: {
+      title: "Independence complexes of grid graphs",
+      conference: "MSJ Spring Meeting 2023",
+      url: "https://www.mathsoc.jp/en/meeting/chuo23mar/",
+      venue: "Chuo University"
+    }
+  },
 ]
