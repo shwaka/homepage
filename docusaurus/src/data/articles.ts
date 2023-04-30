@@ -141,8 +141,10 @@ export const articles: ArticleObject[] = [
     title: "Independence complexes of (n×4) and (n×5)-grid graphs",
     arxiv: "2203.16391",
     yearPreprint: 2022,
-    type: "preprint",
+    type: "toappear",
     authors: [Matsushita, Wakatsuki],
+    journal: "Topology Appl.", // Topology and its Applications
+    journalUrl: "https://www.sciencedirect.com/journal/topology-and-its-applications",
   },
   {
     title: "Cartan calculi on the free loop spaces",
