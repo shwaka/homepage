@@ -490,4 +490,16 @@ export const talks: TalkObject[] = [
       venue: "信州大学"
     },
   },
+  {
+    base: {
+      date: dayjs("2023-09-08"),
+      lang: "en"
+    },
+    en: {
+      title: "String topology from the viewpoint of algebraic topology",
+      conference: "Shenzhen–Nagoya Workshop on Quantum Science 2023",
+      url: "https://shenzhen-nagoya.github.io/2023/",
+      venue: "Hybrid (Nagoya University and Zoom)"
+    }
+  },
 ]
