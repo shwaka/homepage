@@ -502,4 +502,16 @@ export const talks: TalkObject[] = [
       venue: "Hybrid (Nagoya University and Zoom)"
     }
   },
+  {
+    base: {
+      date: dayjs("2023-11-19"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Computations in rational homotopy theory and string topology",
+      conference: "多様体と写像空間の代数トポロジー",
+      url: "https://www2.math.kyushu-u.ac.jp/~tsutaya/2023okayama.html",
+      venue: "オルガビル(岡山市)"
+    }
+  }
 ]
