@@ -513,5 +513,17 @@ export const talks: TalkObject[] = [
       url: "https://www2.math.kyushu-u.ac.jp/~tsutaya/2023okayama.html",
       venue: "オルガビル(岡山市)"
     }
-  }
+  },
+  {
+    base: {
+      date: dayjs("2023-11-28"),
+      lang: "en",
+    },
+    en: {
+      title: "Rational homotopy theory and computation of cohomology",
+      conference: "Seminar in Mathematical and Theoretical Physics Unit (Shinobu Hikami)",
+      url: "https://groups.oist.jp/mtpu/event/rational-homotopy-theory-and-computation-cohomology",
+      venue: "OIST"
+    }
+  },
 ]
