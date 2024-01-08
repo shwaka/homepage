@@ -526,4 +526,16 @@ export const talks: TalkObject[] = [
       venue: "OIST"
     }
   },
+  {
+    base: {
+      date: dayjs("2023-12-27"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Computations in rational homotopy theory and string topology",
+      conference: "高知ホモトピー論談話会 2023",
+      url: "https://sites.google.com/view/kochihomotopy2023/",
+      venue: "高知工科大学"
+    }
+  },
 ]
