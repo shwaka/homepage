@@ -167,4 +167,11 @@ export const articles: ArticleObject[] = [
     journal: "Homology Homotopy Appl.", // Homology, Homotopy and Applications
     journalUrl: "https://intlpress.com/site/pub/pages/journals/items/hha/_home/_main/index.html",
   },
+  {
+    title: "Dominance complexes, neighborhood complexes and combinatorial Alexander duals",
+    arxiv: "2312.02639",
+    yearPreprint: 2023,
+    type: "preprint",
+    authors: [Matsushita, Wakatsuki],
+  },
 ]
