@@ -139,10 +139,13 @@ export const articles: ArticleObject[] = [
     title: "A reduction of the string bracket to the loop product",
     arxiv: "2109.10536",
     yearPreprint: 2021,
-    type: "toappear",
+    type: "published",
     authors: [Kuribayashi, Naito, Wakatsuki, Yamaguchi],
     journal: "Algebr. Geom. Topol.",  // Algebraic and Geometric Topology
     journalUrl: "https://msp.org/agt/about/journal/about.html",
+    journalPage: "24 (2024) 2619–2654",
+    articleUrl: "https://msp.org/agt/2024/24-5/p07.xhtml",
+    yearPublished: 2024,
   },
   {
     title: "Independence complexes of (n×4) and (n×5)-grid graphs",
