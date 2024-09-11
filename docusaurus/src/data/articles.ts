@@ -72,6 +72,11 @@ const Matsushita: Author = {
   shortName: "T. Matsushita",
   jaName: "松下尚弘",
 }
+const Asao: Author = {
+  longName: "Yasuhiko Asao",
+  shortName: "Y. Asao",
+  jaName: "浅尾泰彦",
+}
 
 export const articles: ArticleObject[] = [
   {
@@ -181,5 +186,12 @@ export const articles: ArticleObject[] = [
     yearPreprint: 2023,
     type: "preprint",
     authors: [Matsushita, Wakatsuki],
+  },
+  {
+    title: "Minimal projective resolution and magnitude homology of geodetic metric spaces",
+    arxiv: "2408.12147",
+    yearPreprint: 2024,
+    type: "preprint",
+    authors: [Asao, Wakatsuki],
   },
 ]
