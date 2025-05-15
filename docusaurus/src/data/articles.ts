@@ -196,6 +196,15 @@ export const articles: ArticleObject[] = [
     yearPublished: 2025,
   },
   {
+    type: "proceedings",
+    title: "BV exactness and computation of the $S^1$-equivariant cohomology of free loop spaces",
+    journal: "京都大学数理解析研究所講究録 No.2303 「変換群論とその進展」",
+    journalPage: "-",
+    journalUrl: "https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/2303.html",
+    year: 2024,
+    authors: [Wakatsuki],
+  },
+  {
     title: "Minimal projective resolution and magnitude homology of geodetic metric spaces",
     arxiv: "2408.12147",
     yearPreprint: 2024,
