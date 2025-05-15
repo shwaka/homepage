@@ -538,4 +538,64 @@ export const talks: TalkObject[] = [
       venue: "高知工科大学"
     }
   },
+  {
+    base: {
+      date: dayjs("2024-3-12"),
+      lang: "en",
+    },
+    en: {
+      title: "BV exactness and computation in rational homotopy theory",
+      conference: "Seminar at Malaga University",
+      // url: "https://groups.oist.jp/mtpu/event/rational-homotopy-theory-and-computation-cohomology",
+      venue: "Malaga University (Spain)"
+    }
+  },
+  {
+    base: {
+      date: dayjs("2024-5-22"),
+      lang: "ja"
+    },
+    ja: {
+      title: "BV exactness and computation of the S^1-equivariant cohomology of free loop spaces",
+      conference: "変換群論とその進展",
+      url: "https://sites.google.com/view/rims-transformation-groups24/",
+      venue: "京都大学 数理解析研究所"
+    }
+  },
+  {
+    base: {
+      date: dayjs("2024-6-29"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Computation of the magnitude homology as a derived functor",
+      conference: "ホモトピー論シンポジウム2024",
+      url: "https://sites.google.com/view/homotopy-theory-symposium-2024",
+      venue: "沖縄県立博物館・美術館（おきみゅー）"
+    }
+  },
+  {
+    base: {
+      date: dayjs("2024-12-10"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Computation of the magnitude homology as a derived functor",
+      conference: "トポロジー火曜セミナー",
+      url: "https://park.itc.u-tokyo.ac.jp/MSF/topology/TuesdaySeminar/topology24_2.html",
+      venue: "東京大学"
+    }
+  },
+  {
+    base: {
+      date: dayjs("2025-1-9"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Computation of the magnitude homology as a derived functor",
+      conference: "Magnitude 2024",
+      url: "https://sites.google.com/fukuoka-u.ac.jp/magnitude-2024",
+      venue: "九州大学 西新プラザ"
+    }
+  },
 ]
