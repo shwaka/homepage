@@ -187,14 +187,21 @@ export const articles: ArticleObject[] = [
     title: "Dominance complexes, neighborhood complexes and combinatorial Alexander duals",
     arxiv: "2312.02639",
     yearPreprint: 2023,
-    type: "preprint",
+    type: "published",
     authors: [Matsushita, Wakatsuki],
+    journal: "J. Comb. Theory, Ser. A", // Journal of Combinatorial Theory. Series A
+    journalUrl: "https://www.sciencedirect.com/journal/journal-of-combinatorial-theory-series-a/issues",
+    journalPage: "211, Article ID 105978",
+    articleUrl: "https://www.sciencedirect.com/science/article/pii/S0097316524001171",
+    yearPublished: 2025,
   },
   {
     title: "Minimal projective resolution and magnitude homology of geodetic metric spaces",
     arxiv: "2408.12147",
     yearPreprint: 2024,
-    type: "preprint",
+    type: "toappear",
     authors: [Asao, Wakatsuki],
+    journal: "Homology Homotopy Appl.", // Homology, Homotopy and Applications
+    journalUrl: "https://intlpress.com/site/pub/pages/journals/items/hha/_home/_main/index.html",
   },
 ]
