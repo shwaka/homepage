@@ -204,4 +204,11 @@ export const articles: ArticleObject[] = [
     journal: "Homology Homotopy Appl.", // Homology, Homotopy and Applications
     journalUrl: "https://intlpress.com/site/pub/pages/journals/items/hha/_home/_main/index.html",
   },
+  {
+    title: "Algebraic interleavings of spaces over the classifying space of the circle",
+    arxiv: "2501.09257",
+    yearPreprint: 2025,
+    type: "preprint",
+    authors: [Kuribayashi, Naito, Wakatsuki, Yamaguchi],
+  },
 ]
