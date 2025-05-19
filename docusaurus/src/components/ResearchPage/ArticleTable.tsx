@@ -1,22 +1,46 @@
 import { ArticleObject, Wakatsuki } from "@data/articles"
 import Link from "@docusaurus/Link"
 import { translate } from "@docusaurus/Translate"
-import React from "react"
+import React, { ReactNode } from "react"
 import styles from "./styles.module.scss"
 
+interface JournalProps {
+  article: ArticleObject
+}
+
+function Journal({ article }: JournalProps): ReactNode {
+  switch (article.type) {
+    case "preprint":
+      return "-"
+    case "toappear":
+      return (
+        <span>
+          {"to appear in "}
+          <Link to={article.journalUrl}>
+            {article.journal}
+          </Link>
+        </span>
+      )
+    case "published":
+      return (<Link to={article.articleUrl}>{article.journal}</Link>)
+    case "proceedings":
+      return (<Link to={article.journalUrl}>{article.journal}</Link>)
+  }
+}
 
 interface ArticleTrProps {
   article: ArticleObject
   showArxiv: boolean
 }
+
 function ArticleTr({article, showArxiv}: ArticleTrProps): JSX.Element {
   const coauthor = article
     .authors.filter(author => author !== Wakatsuki)
     .map(author => author.shortName)
     .join(", ")
-  const journal = ("journal" in article)
-    ? <Link to={article.journalUrl}>{article.journal}</Link>
-    : ""
+  // const journal = ("journal" in article)
+  //   ? <Link to={article.journalUrl}>{article.journal}</Link>
+  //   : ""
   const arxiv = ("arxiv" in article)
     ? <Link to={`https://arxiv.org/abs/${article.arxiv}`}>{article.arxiv}</Link>
     : "-"
@@ -24,7 +48,7 @@ function ArticleTr({article, showArxiv}: ArticleTrProps): JSX.Element {
     <tr>
       <td>{coauthor}</td>
       <td>{article.title}</td>
-      <td>{journal}</td>
+      <td><Journal article={article}/></td>
       {showArxiv ? <td>{arxiv}</td> : null}
     </tr>
   )
