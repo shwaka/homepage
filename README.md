@@ -2,29 +2,37 @@
 
 # 概要
 - [https://shwaka.github.io](https://shwaka.github.io) のソースコード．
-- このリポジトリ(`shwaka/homepage`) に (`jekyll/` 以下の変更を含む) push をすれば，
+- このリポジトリ(`shwaka/homepage`) に push をすれば，
   build や deploy などは Github Actions が勝手にやってくれる．
   (deploy 先: [https://github.com/shwaka/shwaka.github.io](https://github.com/shwaka/shwaka.github.io))
 - ノートなどの重いファイルは，git submodule として [shwaka/homepage_resources](https://github.com/shwaka/homepage_resources) に分離してある．
-- ~~[Jekyll](https://jekyllrb.com/) を使っているので，サーバーにアップロードする前にローカルでビルドする必要がある．~~
 
-# install
+# docusaurus
+## build
+```bash
+cd docusaurus
+npm install
+npm start
+```
+
+# jekyll (古い情報)
+## install
 - 必要なツールをインストール
     - ruby 関連: `ruby`, `gem`, `bundler`
     - js 関連: `node`, `npm`
 - `jekyll/` ディレクトリで `bundle install` で必要な gem をインストール
 
-# build, test
-## build
+## build, test
+### build
 `jekyll/` ディレクトリで `bundle exec jekyll build`
 
 - このとき自動的に `jekyll/_ts/` で `npm install` される．
   特に `tsc` や `browserify` がインストールされる
 
-## test
+### test
 `bundle exec jekyll serve`
 
-## スマホでのテスト
+### スマホでのテスト
 [Connect to a locally built Jekyll Server using mobile devices in the LAN](https://stackoverflow.com/questions/16608466/connect-to-a-locally-built-jekyll-server-using-mobile-devices-in-the-lan)
 ローカルネットワークを使うので，wifi環境下で行う．
 1. `--host=0.0.0.0` オプションをつけるか， `_config.yml` 内に `host: 0.0.0.0` と記述
@@ -32,7 +40,7 @@
 3. `bundle exec jekyll (live)serve`
 4. スマホから `192.168.1.10:4000` にアクセス (ポート番号は `bundle exec jekyll serve` の出力を見て確認)
 
-## deploy
+### deploy
 以下は古い情報．
 `https://ms.u-tokyo.ac.jp/~swaka/` に手動でアップロードしてたときの方法．
 
@@ -42,13 +50,13 @@
 にそれぞれ移動した状態で， `put -r .` すれば上書きとかも上手くいく．
 ただし，「全てのファイル」をアップロードするので無駄が多い．
 
-## 注意点
+### 注意点
 - (要調査) `jekyll serve` で生成したサイトをそのままアップロードしても平気？
   (`livereload` あたりが気になる)
   駄目ならアップロード前に改めて `jekyll build` する
 - サイト内のリンクを書く際は，必ず `{{ site.baseurl }}/hoge.html` みたいにする
 
-# References
+## References
 全部列挙はさすがにできないので，主なもののみ
 
 - [Jekyll公式](https://jekyllrb.com/docs/)
@@ -75,5 +83,3 @@
     - [Outputting Markdown from Jekyll using hooks](https://humanwhocodes.com/blog/2019/04/jekyll-hooks-output-markdown/)
     - [jekyllプラグインの作り方 ジェネレータ編 -- ぺけみさお](https://www.xmisao.com/2013/08/06/how-to-make-a-jekyll-plugin.html)
     - [avillafiorita/jekyll-datapage_gen: Generate one page per yaml record in Jekyll sites.](https://github.com/avillafiorita/jekyll-datapage_gen)
-
-# TODO
