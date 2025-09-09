@@ -598,4 +598,16 @@ export const talks: TalkObject[] = [
       venue: "九州大学 西新プラザ"
     }
   },
+  {
+    base: {
+      date: dayjs("2025-9-8"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Minimal projective resolution and magnitude homology of geodetic metric space",
+      conference: "第５７回環論および表現論シンポジウム",
+      url: "https://ring-theory-japan.com/ring/kan/57ringsymp.html",
+      venue: "岡山理科大学"
+    }
+  },
 ]
