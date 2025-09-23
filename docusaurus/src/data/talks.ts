@@ -610,4 +610,22 @@ export const talks: TalkObject[] = [
       venue: "岡山理科大学"
     }
   },
+  {
+    base: {
+      date: dayjs("2025-09-17"),
+      lang: "ja"
+    },
+    ja: {
+      title: "Minimal projective resolution and magnitude homology of geodetic metric spaces",
+      conference: "日本数学会・2025年度秋季総合分科会",
+      url: "https://www.mathsoc.jp/activity/meeting/nagoya25sept/index.html",
+      venue: "名古屋大学"
+    },
+    en: {
+      title: "Minimal projective resolution and magnitude homology of geodetic metric spaces",
+      conference: "MSJ Autumn Meeting 2025",
+      url: "https://www.mathsoc.jp/en/meeting/nagoya25sept/index.html",
+      venue: "Nagoya University"
+    }
+  },
 ]
