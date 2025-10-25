@@ -628,4 +628,16 @@ export const talks: TalkObject[] = [
       venue: "Nagoya University"
     }
   },
+  {
+    base: {
+      date: dayjs("2025-10-26"),
+      lang: "ja"
+    },
+    ja: {
+      title: "On homotopy types of the classifying spaces of finite monoids",
+      conference: "ホモトピー論シンポジウム2025",
+      url: "https://sites.google.com/view/homotopy-theory-symposium-2025/%E3%83%9B%E3%83%BC%E3%83%A0",
+      venue: "信州大学"
+    }
+  },
 ]
