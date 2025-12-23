@@ -640,4 +640,28 @@ export const talks: TalkObject[] = [
       venue: "信州大学"
     }
   },
+  {
+    base: {
+      date: dayjs("2025-11-21"),
+      lang: "ja"
+    },
+    ja: {
+      title: "極小射影分解とマグニチュードホモロジー",
+      conference: "横国大幾何トポロジーセミナー",
+      url: "https://geometry.ynu.ac.jp/abstract_20251121_wakatsuki.html",
+      venue: "横浜国立大学"
+    }
+  },
+  {
+    base: {
+      date: dayjs("2025-12-23"),
+      lang: "ja"
+    },
+    ja: {
+      title: "マグニチュードホモロジーと多元環の表現論",
+      conference: "Magnitude 2025",
+      url: "https://sites.google.com/view/magnitude-2025/",
+      venue: "大阪大学"
+    }
+  },
 ]
