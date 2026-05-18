@@ -220,4 +220,11 @@ export const articles: ArticleObject[] = [
     type: "preprint",
     authors: [Kuribayashi, Naito, Wakatsuki, Yamaguchi],
   },
+  {
+    title: "A distance between maps via interleavings of relative Sullivan algebras",
+    arxiv: "2604.06800",
+    yearPreprint: 2026,
+    type: "preprint",
+    authors: [Kuribayashi, Naito, Wakatsuki, Yamaguchi],
+  },
 ]
