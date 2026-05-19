@@ -13,7 +13,7 @@ jobs:
   deploy:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - name: Checkout submodule
         run: |
           git submodule init
@@ -30,7 +30,7 @@ jobs:
         run: npm run build
         working-directory: docusaurus
       - name: Deploy to shwaka/shwaka.github.io
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           # external_repository は secrets.GITHUB_TOKEN じゃ駄目
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
