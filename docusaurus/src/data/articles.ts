@@ -77,6 +77,11 @@ const Asao: Author = {
   shortName: "Y. Asao",
   jaName: "浅尾泰彦",
 }
+const Sekizuka: Author = {
+  longName: "Kengo Sekizuka",
+  shortName: "K. Sekizuka",
+  jaName: "関塚賢悟",
+}
 
 export const articles: ArticleObject[] = [
   {
@@ -228,6 +233,6 @@ export const articles: ArticleObject[] = [
     arxiv: "2604.06800",
     yearPreprint: 2026,
     type: "preprint",
-    authors: [Kuribayashi, Naito, Wakatsuki, Yamaguchi],
+    authors: [Kuribayashi, Naito, Sekizuka, Wakatsuki, Yamaguchi],
   },
 ]
