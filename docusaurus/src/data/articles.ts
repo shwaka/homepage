@@ -208,10 +208,13 @@ export const articles: ArticleObject[] = [
     title: "Minimal projective resolution and magnitude homology of geodetic metric spaces",
     arxiv: "2408.12147",
     yearPreprint: 2024,
-    type: "toappear",
+    type: "published",
     authors: [Asao, Wakatsuki],
     journal: "Homology Homotopy Appl.", // Homology, Homotopy and Applications
     journalUrl: "https://intlpress.com/site/pub/pages/journals/items/hha/_home/_main/index.html",
+    journalPage: "28, No. 2, 123-154",
+    articleUrl: "https://link.intlpress.com/JDetail/2057103251891281921",
+    yearPublished: 2026,
   },
   {
     title: "Algebraic interleavings of spaces over the classifying space of the circle",
