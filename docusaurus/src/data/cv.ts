@@ -1,6 +1,6 @@
-import dayjs, { Dayjs } from "dayjs"
+import { Temporal } from "@js-temporal/polyfill"
 import { Locale } from "./locale"
-import { md, Markdown } from "./util"
+import { md, Markdown, parseDate } from "./util"
 
 const email = "shun.wakatsuki[AT]math.nagoya-u.ac.jp"
 
@@ -12,13 +12,13 @@ export type CurrentPosition = {
 }
 
 export type Award = {
-  date: Dayjs
+  date: Temporal.PlainDate
   title: { [K in Locale]: string }
 }
 
 export type Fellowship = {
-  from: Dayjs
-  to: Dayjs | string
+  from: Temporal.PlainDate
+  to: Temporal.PlainDate | string
   title: { [K in Locale]: Markdown}
 }
 
@@ -45,7 +45,7 @@ export const cv: CV = {
   },
   awards: [
     {
-      date: dayjs("2020-03-23"),
+      date: parseDate("2020-03-23"),
       title: {
         en: "Dean's Award (Doctor Course), Graduate School of Mathematical Sciences, the University of Tokyo",
         ja: "東京大学大学院数理科学研究科 博士課程 研究科長賞",
@@ -54,47 +54,47 @@ export const cv: CV = {
   ],
   fellowships: [
     {
-      from: dayjs("2014-10-01"),
-      to: dayjs("2019-09-13"),
+      from: parseDate("2014-10-01"),
+      to: parseDate("2019-09-13"),
       "title": {
         en: md("FMSP course student, [Leading Graduate Course for Frontiers of Mathematical Sciences and Physics](http://fmsp.ms.u-tokyo.ac.jp/index_e.html)"),
         ja: md("[FMSP](http://fmsp.ms.u-tokyo.ac.jp/index.html) コース生")
       }
     },
     {
-      from: dayjs("2016-04-01"),
-      to: dayjs("2019-03-31"),
+      from: parseDate("2016-04-01"),
+      to: parseDate("2019-03-31"),
       "title": {
         en: md("JSPS Research Fellow (DC1), [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html)"),
         ja: md("[日本学術振興会](https://www.jsps.go.jp/index.html) 特別研究員 (DC1)")
       }
     },
     {
-      from: dayjs("2019-10-02"),
-      to: dayjs("2020-01-10"),
+      from: parseDate("2019-10-02"),
+      to: parseDate("2020-01-10"),
       "title": {
         en: md("Visiting researcher at Stockholm University, JSPS Overseas Challenge Program for Young Researchers, [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html)"),
         ja: md("Stockholm大学, Visiting researcher ([日本学術振興会](https://www.jsps.go.jp/index.html) 若手研究者海外挑戦プログラム)")
       }
     },
     {
-      from: dayjs("2020-01-16"),
-      to: dayjs("2020-03-31"),
+      from: parseDate("2020-01-16"),
+      to: parseDate("2020-03-31"),
       "title": {
         en: md("Project researcher at [Graduate School of Mathematical Sciences, The University of Tokyo](https://www.ms.u-tokyo.ac.jp/index.html)"),
         ja: md("[東京大学大学院 数理科学研究科](http://www.ms.u-tokyo.ac.jp/index-j.html) 特任研究員")
       }
     },
     {
-      from: dayjs("2020-04-01"),
-      to: dayjs("2022-10-15"),
+      from: parseDate("2020-04-01"),
+      to: parseDate("2022-10-15"),
       "title": {
         en: md("[Research Fellow of Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/e-pd/index.html)"),
         ja: md("[日本学術振興会 特別研究員 PD](https://www.jsps.go.jp/j-pd/)")
       }
     },
     {
-      from: dayjs("2022-10-16"),
+      from: parseDate("2022-10-16"),
       to: "now",
       "title": {
         en: md("Designated Assistant Professor at [Graduate School of Mathematics, Nagoya University](https://www.math.nagoya-u.ac.jp/en/index.html)"),

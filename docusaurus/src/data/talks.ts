@@ -1,10 +1,11 @@
-import dayjs, { Dayjs } from "dayjs"
+import { Temporal } from "@js-temporal/polyfill"
 import { Locale } from "./locale"
+import { parseDate } from "./util"
 
 export type TalkLang = "en" | "ja"
 
 export interface TalkBaseInfo {
-  date: Dayjs
+  date: Temporal.PlainDate
   lang: TalkLang
 }
 
@@ -20,7 +21,7 @@ export type TalkObject = { base: TalkBaseInfo } & { [K in Locale]?: TalkInfo }
 export const talks: TalkObject[] = [
   // {
   //   base: {
-  //     date: dayjs("2014-12-13"),
+  //     date: parseDate("2014-12-13"),
   //     lang: "ja"
   //   },
   //   ja: {
@@ -31,7 +32,7 @@ export const talks: TalkObject[] = [
   // },
   {
     base: {
-      date: dayjs("2015-11-23"),
+      date: parseDate("2015-11-23"),
       lang: "ja"
     },
     ja: {
@@ -43,7 +44,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2015-12-12"),
+      date: parseDate("2015-12-12"),
       lang: "ja"
     },
     ja: {
@@ -54,7 +55,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2016-09-06"),
+      date: parseDate("2016-09-06"),
       lang: "ja"
     },
     ja: {
@@ -67,7 +68,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2016-09-15"),
+      date: parseDate("2016-09-15"),
       lang: "ja"
     },
     ja: {
@@ -85,7 +86,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2016-10-30"),
+      date: parseDate("2016-10-30"),
       lang: "ja"
     },
     ja: {
@@ -97,7 +98,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2016-11-30"),
+      date: parseDate("2016-11-30"),
       lang: "ja"
     },
     ja: {
@@ -109,7 +110,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2017-03-24"),
+      date: parseDate("2017-03-24"),
       lang: "ja"
     },
     ja: {
@@ -127,7 +128,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2017-05-22"),
+      date: parseDate("2017-05-22"),
       lang: "ja"
     },
     ja: {
@@ -139,7 +140,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2017-07-06"),
+      date: parseDate("2017-07-06"),
       lang: "en"
     },
     en: {
@@ -151,7 +152,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2017-11-24"),
+      date: parseDate("2017-11-24"),
       lang: "ja"
     },
     ja: {
@@ -163,7 +164,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2017-12-09"),
+      date: parseDate("2017-12-09"),
       lang: "ja"
     },
     ja: {
@@ -174,7 +175,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2018-08-30"),
+      date: parseDate("2018-08-30"),
       lang: "en"
     },
     en: {
@@ -186,7 +187,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2018-09-25"),
+      date: parseDate("2018-09-25"),
       lang: "en"
     },
     en: {
@@ -198,7 +199,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2018-11-04"),
+      date: parseDate("2018-11-04"),
       lang: "ja"
     },
     ja: {
@@ -210,7 +211,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2019-03-06"),
+      date: parseDate("2019-03-06"),
       lang: "en"
     },
     en: {
@@ -222,7 +223,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2019-03-17"),
+      date: parseDate("2019-03-17"),
       lang: "ja"
     },
     ja: {
@@ -240,7 +241,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2019-06-05"),
+      date: parseDate("2019-06-05"),
       lang: "ja"
     },
     ja: {
@@ -252,7 +253,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2019-07-02"),
+      date: parseDate("2019-07-02"),
       lang: "ja"
     },
     ja: {
@@ -270,7 +271,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2019-08-08"),
+      date: parseDate("2019-08-08"),
       lang: "ja"
     },
     ja: {
@@ -282,7 +283,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2020-03-04"),
+      date: parseDate("2020-03-04"),
       lang: "en"
     },
     en: {
@@ -294,7 +295,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2020-06-17"),
+      date: parseDate("2020-06-17"),
       lang: "ja"
     },
     ja: {
@@ -306,7 +307,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2021-07-16"),
+      date: parseDate("2021-07-16"),
       lang: "ja"
     },
     ja: {
@@ -318,7 +319,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2021-11-07"),
+      date: parseDate("2021-11-07"),
       lang: "ja"
     },
     ja: {
@@ -330,7 +331,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2021-11-10"),
+      date: parseDate("2021-11-10"),
       lang: "en"
     },
     en: {
@@ -342,7 +343,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2022-02-21"),
+      date: parseDate("2022-02-21"),
       lang: "ja"
     },
     ja: {
@@ -360,7 +361,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2022-05-09"),
+      date: parseDate("2022-05-09"),
       lang: "ja"
     },
     ja: {
@@ -372,7 +373,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2022-07-30"),
+      date: parseDate("2022-07-30"),
       lang: "ja"
     },
     ja: {
@@ -384,7 +385,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2022-08-30"),
+      date: parseDate("2022-08-30"),
       lang: "ja"
     },
     ja: {
@@ -396,7 +397,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2022-09-13"),
+      date: parseDate("2022-09-13"),
       lang: "ja"
     },
     ja: {
@@ -414,7 +415,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2022-09-21"),
+      date: parseDate("2022-09-21"),
       lang: "en"
     },
     en: {
@@ -426,7 +427,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2022-10-23"),
+      date: parseDate("2022-10-23"),
       lang: "ja"
     },
     ja: {
@@ -438,7 +439,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2022-11-05"),
+      date: parseDate("2022-11-05"),
       lang: "ja"
     },
     ja: {
@@ -450,7 +451,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2022-11-29"),
+      date: parseDate("2022-11-29"),
       lang: "ja"
     },
     ja: {
@@ -462,7 +463,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2023-03-15"),
+      date: parseDate("2023-03-15"),
       lang: "ja"
     },
     ja: {
@@ -480,7 +481,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2023-03-22"),
+      date: parseDate("2023-03-22"),
       lang: "ja"
     },
     ja: {
@@ -492,7 +493,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2023-09-08"),
+      date: parseDate("2023-09-08"),
       lang: "en"
     },
     en: {
@@ -504,7 +505,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2023-11-19"),
+      date: parseDate("2023-11-19"),
       lang: "ja"
     },
     ja: {
@@ -516,7 +517,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2023-11-28"),
+      date: parseDate("2023-11-28"),
       lang: "en",
     },
     en: {
@@ -528,7 +529,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2023-12-27"),
+      date: parseDate("2023-12-27"),
       lang: "ja"
     },
     ja: {
@@ -540,7 +541,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2024-3-12"),
+      date: parseDate("2024-03-12"),
       lang: "en",
     },
     en: {
@@ -552,7 +553,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2024-5-22"),
+      date: parseDate("2024-05-22"),
       lang: "ja"
     },
     ja: {
@@ -564,7 +565,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2024-6-29"),
+      date: parseDate("2024-06-29"),
       lang: "ja"
     },
     ja: {
@@ -576,7 +577,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2024-12-10"),
+      date: parseDate("2024-12-10"),
       lang: "ja"
     },
     ja: {
@@ -588,7 +589,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2025-1-9"),
+      date: parseDate("2025-01-09"),
       lang: "ja"
     },
     ja: {
@@ -600,7 +601,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2025-9-8"),
+      date: parseDate("2025-09-08"),
       lang: "ja"
     },
     ja: {
@@ -612,7 +613,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2025-09-17"),
+      date: parseDate("2025-09-17"),
       lang: "ja"
     },
     ja: {
@@ -630,7 +631,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2025-10-26"),
+      date: parseDate("2025-10-26"),
       lang: "ja"
     },
     ja: {
@@ -642,7 +643,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2025-11-21"),
+      date: parseDate("2025-11-21"),
       lang: "ja"
     },
     ja: {
@@ -654,7 +655,7 @@ export const talks: TalkObject[] = [
   },
   {
     base: {
-      date: dayjs("2025-12-23"),
+      date: parseDate("2025-12-23"),
       lang: "ja"
     },
     ja: {
