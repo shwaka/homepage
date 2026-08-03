@@ -179,8 +179,8 @@ export const articles: ArticleObject[] = [
     journalUrl: "https://www.sciencedirect.com/journal/journal-of-pure-and-applied-algebra",
     journalPage: "228, No. 11, Article ID 107708, 39 p.",
     articleUrl: "https://www.sciencedirect.com/science/article/pii/S0022404924001051",
-    yearPublished: 2023,
-    datePublished: null, // 調べたけど分からず
+    yearPublished: 2024,
+    datePublished: "2024-11", // 日付はなさそう？
   },
   {
     title: "Independence complexes of (n×6)-grid graphs",
@@ -206,7 +206,7 @@ export const articles: ArticleObject[] = [
     journalPage: "211, Article ID 105978",
     articleUrl: "https://www.sciencedirect.com/science/article/pii/S0097316524001171",
     yearPublished: 2025,
-    datePublished: null, // 調べたけど分からず
+    datePublished: "2025-04", // 日付はなさそう？
   },
   {
     type: "proceedings",
