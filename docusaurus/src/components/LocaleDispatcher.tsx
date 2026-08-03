@@ -1,6 +1,6 @@
 import { Locale, useLocale } from "@data/locale"
 import Link from "@docusaurus/Link"
-import { useAlternatePageUtils } from "@docusaurus/theme-common"
+import { useAlternatePageUtils } from "@docusaurus/theme-common/internal"
 import React, { ReactNode } from "react"
 
 type LocaleDispatcherProps = {
