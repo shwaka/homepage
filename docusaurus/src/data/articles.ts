@@ -228,7 +228,7 @@ export const articles: ArticleObject[] = [
     journalPage: "28, No. 2, 123-154",
     articleUrl: "https://link.intlpress.com/JDetail/2057103251891281921",
     yearPublished: 2026,
-    datePublished: "2026-0520",
+    datePublished: "2026-05-20",
   },
   {
     title: "Algebraic interleavings of spaces over the classifying space of the circle",
