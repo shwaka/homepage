@@ -1,4 +1,4 @@
-import { Markdown } from "@data/cv"
+import { Markdown } from "@data/util"
 import { micromark } from "micromark"
 import React from "react"
 
