@@ -13,5 +13,7 @@
       "DOM",
       "ES2021.Intl", // for @js-temporal
     ],
-  }
+  },
+  "include": ["src", "plugins", "docusaurus.config.js", "sidebars.js", "scss.d.ts"],
+  "exclude": ["build", ".docusaurus", "node_modules"]
 }
