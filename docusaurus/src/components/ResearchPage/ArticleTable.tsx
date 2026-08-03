@@ -1,7 +1,9 @@
-import { ArticleObject, Wakatsuki } from "@data/articles"
+import React, { type ReactElement } from "react"
+
+import { type ArticleObject, Wakatsuki } from "@data/articles"
 import Link from "@docusaurus/Link"
 import { translate } from "@docusaurus/Translate"
-import React, { ReactElement } from "react"
+
 import styles from "./styles.module.scss"
 
 interface JournalProps {
@@ -11,7 +13,7 @@ interface JournalProps {
 function Journal({ article }: JournalProps): ReactElement {
   switch (article.type) {
     case "preprint":
-      return (<span>{"-"}</span>)
+      return (<span>-</span>)
     case "toappear":
       return (
         <span>
@@ -33,10 +35,10 @@ interface ArticleTrProps {
   showArxiv: boolean
 }
 
-function ArticleTr({article, showArxiv}: ArticleTrProps): JSX.Element {
+function ArticleTr({ article, showArxiv }: ArticleTrProps): JSX.Element {
   const coauthor = article
-    .authors.filter(author => author !== Wakatsuki)
-    .map(author => author.shortName)
+    .authors.filter((author) => author !== Wakatsuki)
+    .map((author) => author.shortName)
     .join(", ")
   // const journal = ("journal" in article)
   //   ? <Link to={article.journalUrl}>{article.journal}</Link>
@@ -48,7 +50,7 @@ function ArticleTr({article, showArxiv}: ArticleTrProps): JSX.Element {
     <tr>
       <td>{coauthor}</td>
       <td>{article.title}</td>
-      <td><Journal article={article}/></td>
+      <td><Journal article={article} /></td>
       {showArxiv ? <td>{arxiv}</td> : null}
     </tr>
   )
@@ -58,7 +60,7 @@ interface ArticleTableProps {
   articles: ArticleObject[]
   showArxiv: boolean
 }
-export function ArticleTable({articles, showArxiv}: ArticleTableProps): JSX.Element {
+export function ArticleTable({ articles, showArxiv }: ArticleTableProps): JSX.Element {
   const coauthorHeader = translate({
     message: "Coauthor",
     description: "The header for the name of coauthors in the article table",
@@ -85,8 +87,8 @@ export function ArticleTable({articles, showArxiv}: ArticleTableProps): JSX.Elem
         </tr>
       </thead>
       <tbody>
-        {articles.map(article =>
-          <ArticleTr article={article} key={article.title} showArxiv={showArxiv}/>
+        {articles.map((article) =>
+          <ArticleTr article={article} key={article.title} showArxiv={showArxiv} />
         )}
       </tbody>
     </table>

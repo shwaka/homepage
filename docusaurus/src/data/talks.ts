@@ -1,5 +1,6 @@
-import { Temporal } from "@js-temporal/polyfill"
-import { Locale } from "./locale"
+import { type Temporal } from "@js-temporal/polyfill"
+
+import { type Locale } from "./locale"
 import { parseDate } from "./util"
 
 export type TalkLang = "en" | "ja"

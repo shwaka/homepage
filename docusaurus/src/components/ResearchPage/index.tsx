@@ -1,7 +1,9 @@
-import { ArticleObject, articles } from "@data/articles"
-import { TalkObject, talks } from "@data/talks"
-import { translate } from "@docusaurus/Translate"
 import React from "react"
+
+import { type ArticleObject, articles } from "@data/articles"
+import { type TalkObject, talks } from "@data/talks"
+import { translate } from "@docusaurus/Translate"
+
 import { ArticleItemize } from "./ArticleItemize"
 import { ArticleOl, ArticleUl } from "./ArticleOlAndUl"
 import { ArticleTable } from "./ArticleTable"
@@ -36,12 +38,12 @@ interface ArticleListProps {
   articles: ArticleObject[]
   showArxiv: boolean
 }
-function ArticleList({listFormat, reversed, articles, showArxiv}: ArticleListProps): JSX.Element {
+function ArticleList({ listFormat, reversed, articles, showArxiv }: ArticleListProps): JSX.Element {
   switch (listFormat) {
-    case "ol": return <ArticleOl articles={articles} reversed={reversed}/>
-    case "ul": return <ArticleUl articles={articles}/>
-    case "table": return <ArticleTable articles={articles} showArxiv={showArxiv}/>
-    case "tex": return <ArticleItemize articles={articles}/>
+    case "ol": return <ArticleOl articles={articles} reversed={reversed} />
+    case "ul": return <ArticleUl articles={articles} />
+    case "table": return <ArticleTable articles={articles} showArxiv={showArxiv} />
+    case "tex": return <ArticleItemize articles={articles} />
   }
 }
 
@@ -50,12 +52,12 @@ interface TalkListProps {
   reversed: boolean
   talks: TalkObject[]
 }
-function TalkList({listFormat, reversed, talks}: TalkListProps): JSX.Element {
+function TalkList({ listFormat, reversed, talks }: TalkListProps): JSX.Element {
   switch (listFormat) {
-    case "ol": return <TalkOl talks={talks} reversed={reversed}/>
-    case "ul": return <TalkUl talks={talks}/>
-    case "table": return <TalkTable talks={talks}/>
-    case "tex": return <TalkItemize talks={talks}/>
+    case "ol": return <TalkOl talks={talks} reversed={reversed} />
+    case "ul": return <TalkUl talks={talks} />
+    case "table": return <TalkTable talks={talks} />
+    case "tex": return <TalkItemize talks={talks} />
   }
 }
 
@@ -100,27 +102,31 @@ export function ResearchPage(): JSX.Element {
   })
   const reversed = (sortOrder === "newToOld")
   return (
-    <>
-      <Selector {...listFormatSelectorProps}/>
-      <Selector {...sortOrderSelectorProps}/>
+    <React.Fragment>
+      <Selector {...listFormatSelectorProps} />
+      <Selector {...sortOrderSelectorProps} />
       <h2>Articles</h2>
       <h3>{articlePreprintHeader}</h3>
       <ArticleList
         listFormat={listFormat} reversed={reversed} showArxiv={true}
-        articles={sortedArticles.filter(article => article.type !== "proceedings")}/>
+        articles={sortedArticles.filter((article) => article.type !== "proceedings")}
+      />
       <h3>{proceedingsHeader}</h3>
       <ArticleList
         listFormat={listFormat} reversed={reversed} showArxiv={false}
-        articles={sortedArticles.filter(article => article.type === "proceedings")}/>
+        articles={sortedArticles.filter((article) => article.type === "proceedings")}
+      />
       <h2>Talks</h2>
       <h3>{talkEnglishHeader}</h3>
       <TalkList
         listFormat={listFormat} reversed={reversed}
-        talks={sortedTalks.filter(talk => talk.base.lang === "en")}/>
+        talks={sortedTalks.filter((talk) => talk.base.lang === "en")}
+      />
       <h3>{talkJapaneseHeader}</h3>
       <TalkList
         listFormat={listFormat} reversed={reversed}
-        talks={sortedTalks.filter(talk => talk.base.lang === "ja")}/>
-    </>
+        talks={sortedTalks.filter((talk) => talk.base.lang === "ja")}
+      />
+    </React.Fragment>
   )
 }

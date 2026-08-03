@@ -1,5 +1,6 @@
-import { useLocale } from "@data/locale"
 import React from "react"
+
+import { useLocale } from "@data/locale"
 
 export function Education(): JSX.Element {
   const locale = useLocale()

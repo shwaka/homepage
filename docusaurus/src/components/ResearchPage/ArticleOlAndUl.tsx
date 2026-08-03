@@ -1,17 +1,18 @@
-import { ArticleObject, Author, Wakatsuki } from "@data/articles"
-import Link from "@docusaurus/Link"
 import React from "react"
+
+import { type ArticleObject, type Author, Wakatsuki } from "@data/articles"
+import Link from "@docusaurus/Link"
 
 function getArxivUrl(arxivId: string): string {
   return `https://arxiv.org/abs/${arxivId}`
 }
 
 function getCoauthor(authors: Author[]): string {
-  const filteredAuthors = authors.filter(author => author !== Wakatsuki)
+  const filteredAuthors = authors.filter((author) => author !== Wakatsuki)
   if (filteredAuthors.length === 0) {
     return ""
   } else {
-    const authorsString = filteredAuthors.map(author => author.shortName).join(", ")
+    const authorsString = filteredAuthors.map((author) => author.shortName).join(", ")
     return `(with ${authorsString}) `
   }
 }
@@ -19,7 +20,7 @@ function getCoauthor(authors: Author[]): string {
 interface ArticleLiProps {
   article: ArticleObject
 }
-function ArticleLi({article}: ArticleLiProps): JSX.Element {
+function ArticleLi({ article }: ArticleLiProps): JSX.Element {
   const comma = ", " // 空白を残すために文字列に含めた
   switch (article.type) {
     case "preprint": return (
@@ -48,7 +49,7 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
         </Link>{comma}
         {`${article.yearPublished} (arXiv: `}
         <Link to={getArxivUrl(article.arxiv)}>{article.arxiv}</Link>
-        {")"}
+        )
       </li>
     )
     case "proceedings": return (
@@ -66,10 +67,10 @@ function ArticleLi({article}: ArticleLiProps): JSX.Element {
 interface ArticleUlProps {
   articles: ArticleObject[]
 }
-export function ArticleUl({articles}: ArticleUlProps): JSX.Element {
+export function ArticleUl({ articles }: ArticleUlProps): JSX.Element {
   return (
     <ul>
-      {articles.map((article, index) => <ArticleLi article={article} key={index}/>)}
+      {articles.map((article, index) => <ArticleLi article={article} key={index} />)}
     </ul>
   )
 }
@@ -78,10 +79,10 @@ interface ArticleOlProps {
   articles: ArticleObject[]
   reversed: boolean
 }
-export function ArticleOl({articles, reversed}: ArticleOlProps): JSX.Element {
+export function ArticleOl({ articles, reversed }: ArticleOlProps): JSX.Element {
   return (
     <ol reversed={reversed}>
-      {articles.map((article, index) => <ArticleLi article={article} key={index}/>)}
+      {articles.map((article, index) => <ArticleLi article={article} key={index} />)}
     </ol>
   )
 }

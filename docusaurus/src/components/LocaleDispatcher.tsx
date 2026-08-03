@@ -1,7 +1,8 @@
-import { Locale, useLocale } from "@data/locale"
+import React, { type ReactNode } from "react"
+
+import { type Locale, useLocale } from "@data/locale"
 import Link from "@docusaurus/Link"
 import { useAlternatePageUtils } from "@docusaurus/theme-common/internal"
-import React, { ReactNode } from "react"
 
 type LocaleDispatcherProps = {
   [K in Locale]: ReactNode
@@ -9,7 +10,7 @@ type LocaleDispatcherProps = {
 
 export function LocaleDispatcher(props: LocaleDispatcherProps): JSX.Element {
   const locale: Locale = useLocale()
-  return <>{props[locale]}</>
+  return <React.Fragment>{props[locale]}</React.Fragment>
 }
 
 function LinkToLocale(props: { locale: Locale, children: ReactNode }): JSX.Element {
@@ -25,7 +26,8 @@ export function EnglishOnly(props: { children: ReactNode }): JSX.Element {
   return (
     <LocaleDispatcher
       en={props.children}
-      ja={<div>このページは<LinkToLocale locale="en">英語版</LinkToLocale>でのみ提供されています．</div>} />
+      ja={<div>このページは<LinkToLocale locale="en">英語版</LinkToLocale>でのみ提供されています．</div>}
+    />
   )
 }
 
@@ -33,6 +35,7 @@ export function JapaneseOnly(props: { children: ReactNode }): JSX.Element {
   return (
     <LocaleDispatcher
       en={<div>This page is provided only in <LinkToLocale locale="ja">Japanese version</LinkToLocale>.</div>}
-      ja={props.children} />
+      ja={props.children}
+    />
   )
 }

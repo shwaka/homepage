@@ -1,5 +1,7 @@
-import { translate } from "@docusaurus/Translate"
 import React from "react"
+
+import { translate } from "@docusaurus/Translate"
+
 import { Awards } from "./Awards"
 import { Education } from "./Education"
 import { Fellowships } from "./Fellowships"
@@ -22,14 +24,14 @@ export function CVPage(): JSX.Element {
     id: "cv.header.awards",
   })
   return (
-    <>
-      <Profile/>
+    <React.Fragment>
+      <Profile />
       <h2>{educationHeader}</h2>
-      <Education/>
+      <Education />
       <h2>{fellowshipsHeader}</h2>
-      <Fellowships/>
+      <Fellowships />
       <h2>{awardsHeader}</h2>
-      <Awards/>
-    </>
+      <Awards />
+    </React.Fragment>
   )
 }

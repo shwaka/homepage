@@ -1,13 +1,15 @@
-import { useLocale } from "@data/locale"
-import { TalkObject, TalkInfo } from "@data/talks"
 import React from "react"
+
+import { useLocale } from "@data/locale"
+import { type TalkObject, type TalkInfo } from "@data/talks"
+
 import { formatMonth } from "../util"
 import { ConferenceLink, getTalkInfo } from "./talkUtil"
 
 interface TalkLiProps {
   talk: TalkObject
 }
-function TalkLi({talk}: TalkLiProps): JSX.Element {
+function TalkLi({ talk }: TalkLiProps): JSX.Element {
   const locale = useLocale()
   const talkInfo: TalkInfo = getTalkInfo(talk, locale)
   const date: string = formatMonth(talk.base.date, locale)
@@ -15,7 +17,7 @@ function TalkLi({talk}: TalkLiProps): JSX.Element {
   return (
     <li>
       {talkInfo.title}{comma}
-      <ConferenceLink talkInfo={talkInfo}/>{comma}
+      <ConferenceLink talkInfo={talkInfo} />{comma}
       {talkInfo.venue}{comma}
       {date}
     </li>
@@ -25,10 +27,10 @@ function TalkLi({talk}: TalkLiProps): JSX.Element {
 interface TalkUlProps {
   talks: TalkObject[]
 }
-export function TalkUl({talks}: TalkUlProps): JSX.Element {
+export function TalkUl({ talks }: TalkUlProps): JSX.Element {
   return (
     <ul>
-      {talks.map((talk, index) => <TalkLi talk={talk} key={index}/>)}
+      {talks.map((talk, index) => <TalkLi talk={talk} key={index} />)}
     </ul>
   )
 }
@@ -37,10 +39,10 @@ interface TalkOlProps {
   talks: TalkObject[]
   reversed: boolean
 }
-export function TalkOl({talks, reversed}: TalkOlProps): JSX.Element {
+export function TalkOl({ talks, reversed }: TalkOlProps): JSX.Element {
   return (
     <ol reversed={reversed}>
-      {talks.map((talk, index) => <TalkLi talk={talk} key={index}/>)}
+      {talks.map((talk, index) => <TalkLi talk={talk} key={index} />)}
     </ol>
   )
 }

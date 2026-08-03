@@ -1,5 +1,6 @@
-import { ArticleObject } from "@data/articles"
 import React from "react"
+
+import { type ArticleObject } from "@data/articles"
 
 function getItem(article: ArticleObject): string {
   let latexCode = `  \\item ${article.title}`
@@ -20,7 +21,7 @@ function getItem(article: ArticleObject): string {
   // year
   if (article.type === "preprint" || article.type === "toappear") {
     latexCode += `, ${article.yearPreprint}`
-  } else if (article.type === "published"){
+  } else if (article.type === "published") {
     latexCode += `, ${article.yearPublished}`
   } else {
     latexCode += `, ${article.year}`
@@ -31,7 +32,7 @@ function getItem(article: ArticleObject): string {
 interface ArticleItemizeProps {
   articles: ArticleObject[]
 }
-export function ArticleItemize({articles}: ArticleItemizeProps): JSX.Element {
+export function ArticleItemize({ articles }: ArticleItemizeProps): JSX.Element {
   const items = articles.map(getItem)
   return (
     <pre>

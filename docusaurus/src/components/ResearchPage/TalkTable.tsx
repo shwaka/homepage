@@ -1,7 +1,9 @@
-import { useLocale } from "@data/locale"
-import { TalkObject } from "@data/talks"
-import { translate } from "@docusaurus/Translate"
 import React from "react"
+
+import { useLocale } from "@data/locale"
+import { type TalkObject } from "@data/talks"
+import { translate } from "@docusaurus/Translate"
+
 import { formatMonth } from "../util"
 import styles from "./styles.module.scss"
 import { ConferenceLink, getTalkInfo } from "./talkUtil"
@@ -9,14 +11,14 @@ import { ConferenceLink, getTalkInfo } from "./talkUtil"
 interface TalkTrProps {
   talk: TalkObject
 }
-function TalkTr({talk}: TalkTrProps): JSX.Element {
+function TalkTr({ talk }: TalkTrProps): JSX.Element {
   const locale = useLocale()
   const talkInfo = getTalkInfo(talk, locale)
   const date: string = formatMonth(talk.base.date, locale)
   return (
     <tr>
       <td>{talkInfo.title}</td>
-      <td><ConferenceLink talkInfo={talkInfo}/></td>
+      <td><ConferenceLink talkInfo={talkInfo} /></td>
       <td>{talkInfo.venue}</td>
       <td>{date}</td>
     </tr>
@@ -26,7 +28,7 @@ function TalkTr({talk}: TalkTrProps): JSX.Element {
 interface TalkTableProps {
   talks: TalkObject[]
 }
-export function TalkTable({talks}: TalkTableProps): JSX.Element {
+export function TalkTable({ talks }: TalkTableProps): JSX.Element {
   const titleHeader = translate({
     message: "Title",
     description: "The header for the talk title in the talk table",
@@ -58,10 +60,12 @@ export function TalkTable({talks}: TalkTableProps): JSX.Element {
         </tr>
       </thead>
       <tbody>
-        {talks.map(talk =>
+        {talks.map((talk) => (
           <TalkTr
             talk={talk}
-            key={talk.base.date.toString()}/>
+            key={talk.base.date.toString()}
+          />
+        )
         )}
       </tbody>
     </table>

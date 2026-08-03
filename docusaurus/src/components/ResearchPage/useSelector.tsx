@@ -7,16 +7,17 @@ export interface SelectorProps<T> {
   currentValue: T
   setValue: (value: T) => void
 }
-export function Selector<T>({name, values, valueToString, currentValue, setValue}: SelectorProps<T>): JSX.Element {
+export function Selector<T>({ name, values, valueToString, currentValue, setValue }: SelectorProps<T>): JSX.Element {
   return (
     <div>
-      {values.map(value => (
+      {values.map((value) => (
         <label key={valueToString(value)}>
           <input
             type="radio" name={name}
             value={valueToString(value)}
             onChange={() => setValue(value)}
-            checked={value === currentValue}/>
+            checked={value === currentValue}
+          />
           <span>{valueToString(value)}</span>
         </label>
       ))}

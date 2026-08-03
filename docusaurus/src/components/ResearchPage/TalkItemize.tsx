@@ -1,9 +1,10 @@
-import { Locale, useLocale } from "@data/locale"
-import { TalkObject } from "@data/talks"
 import React from "react"
+
+import { type Locale, useLocale } from "@data/locale"
+import { type TalkObject } from "@data/talks"
+
 import { formatMonth } from "../util"
 import { getTalkInfo } from "./talkUtil"
-
 
 function getItem(talk: TalkObject, locale: Locale): string {
   const talkInfo = getTalkInfo(talk, locale)
@@ -17,9 +18,9 @@ function getItem(talk: TalkObject, locale: Locale): string {
 interface TalkItemizeProps {
   talks: TalkObject[]
 }
-export function TalkItemize({talks}: TalkItemizeProps): JSX.Element {
+export function TalkItemize({ talks }: TalkItemizeProps): JSX.Element {
   const locale = useLocale()
-  const items = talks.map(talk => getItem(talk, locale))
+  const items = talks.map((talk) => getItem(talk, locale))
   return (
     <pre>
       {"\\begin{itemize}\n" + items.join("\n") + "\n\\end{itemize}"}

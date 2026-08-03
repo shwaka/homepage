@@ -1,6 +1,7 @@
-import { Temporal } from "@js-temporal/polyfill"
-import { Locale } from "./locale"
-import { md, Markdown, parseDate } from "./util"
+import { type Temporal } from "@js-temporal/polyfill"
+
+import { type Locale } from "./locale"
+import { md, type Markdown, parseDate } from "./util"
 
 const email = "shun.wakatsuki[AT]math.nagoya-u.ac.jp"
 
@@ -19,7 +20,7 @@ export type Award = {
 export type Fellowship = {
   from: Temporal.PlainDate
   to: Temporal.PlainDate | string
-  title: { [K in Locale]: Markdown}
+  title: { [K in Locale]: Markdown }
 }
 
 export type CV = {
@@ -56,7 +57,7 @@ export const cv: CV = {
     {
       from: parseDate("2014-10-01"),
       to: parseDate("2019-09-13"),
-      "title": {
+      title: {
         en: md("FMSP course student, [Leading Graduate Course for Frontiers of Mathematical Sciences and Physics](http://fmsp.ms.u-tokyo.ac.jp/index_e.html)"),
         ja: md("[FMSP](http://fmsp.ms.u-tokyo.ac.jp/index.html) コース生")
       }
@@ -64,7 +65,7 @@ export const cv: CV = {
     {
       from: parseDate("2016-04-01"),
       to: parseDate("2019-03-31"),
-      "title": {
+      title: {
         en: md("JSPS Research Fellow (DC1), [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html)"),
         ja: md("[日本学術振興会](https://www.jsps.go.jp/index.html) 特別研究員 (DC1)")
       }
@@ -72,7 +73,7 @@ export const cv: CV = {
     {
       from: parseDate("2019-10-02"),
       to: parseDate("2020-01-10"),
-      "title": {
+      title: {
         en: md("Visiting researcher at Stockholm University, JSPS Overseas Challenge Program for Young Researchers, [Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/index.html)"),
         ja: md("Stockholm大学, Visiting researcher ([日本学術振興会](https://www.jsps.go.jp/index.html) 若手研究者海外挑戦プログラム)")
       }
@@ -80,7 +81,7 @@ export const cv: CV = {
     {
       from: parseDate("2020-01-16"),
       to: parseDate("2020-03-31"),
-      "title": {
+      title: {
         en: md("Project researcher at [Graduate School of Mathematical Sciences, The University of Tokyo](https://www.ms.u-tokyo.ac.jp/index.html)"),
         ja: md("[東京大学大学院 数理科学研究科](http://www.ms.u-tokyo.ac.jp/index-j.html) 特任研究員")
       }
@@ -88,7 +89,7 @@ export const cv: CV = {
     {
       from: parseDate("2020-04-01"),
       to: parseDate("2022-10-15"),
-      "title": {
+      title: {
         en: md("[Research Fellow of Japan Society for the Promotion of Science](https://www.jsps.go.jp/english/e-pd/index.html)"),
         ja: md("[日本学術振興会 特別研究員 PD](https://www.jsps.go.jp/j-pd/)")
       }
@@ -96,7 +97,7 @@ export const cv: CV = {
     {
       from: parseDate("2022-10-16"),
       to: "now",
-      "title": {
+      title: {
         en: md("Designated Assistant Professor at [Graduate School of Mathematics, Nagoya University](https://www.math.nagoya-u.ac.jp/en/index.html)"),
         ja: md("[名古屋大学大学院 多元数理科学研究科](https://www.math.nagoya-u.ac.jp/) 特任助教"),
       }

@@ -1,7 +1,9 @@
+import React from "react"
+
 import { cv } from "@data/cv"
 import { useLocale } from "@data/locale"
 import { HtmlFromMarkdown } from "@site/src/components/HtmlFromMarkdown"
-import React from "react"
+
 import styles from "./styles.module.scss"
 
 function useProfile(): [string, string | JSX.Element][] {
@@ -15,7 +17,7 @@ function useProfile(): [string, string | JSX.Element][] {
         ["Email", cv.currentPosition.en.email],
         ["Birthplace", "Kanagawa, Japan"],
         ["Nationality", "Japan"],
-        ["Current Position", <HtmlFromMarkdown markdown={cv.currentPosition.en.name} key="current pos"/>],
+        ["Current Position", <HtmlFromMarkdown markdown={cv.currentPosition.en.name} key="current pos" />],
       ]
     }
     case "ja": {
@@ -25,7 +27,7 @@ function useProfile(): [string, string | JSX.Element][] {
         ["Email", cv.currentPosition.ja.email],
         ["出身地", "神奈川県"],
         ["国籍", "日本"],
-        ["所属", <HtmlFromMarkdown markdown={cv.currentPosition.ja.name} key="current pos"/>],
+        ["所属", <HtmlFromMarkdown markdown={cv.currentPosition.ja.name} key="current pos" />],
       ]
     }
   }
@@ -35,11 +37,12 @@ export function Profile(): JSX.Element {
   const profile = useProfile()
   return (
     <dl className={styles.cvdl}>
-      {profile.map(([key, value]) =>
+      {profile.map(([key, value]) => (
         <React.Fragment key={key}>
           <dt>{key}</dt>
           <dd>{value}</dd>
         </React.Fragment>
+      )
       )}
     </dl>
   )

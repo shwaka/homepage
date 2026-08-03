@@ -119,7 +119,7 @@ export const articles: ArticleObject[] = [
     type: "published",
     title: "Coproducts in brane topology",
     arxiv: "1802.04973",
-    journal: "Algebr. Geom. Topol.",  // Algebraic and Geometric Topology
+    journal: "Algebr. Geom. Topol.", // Algebraic and Geometric Topology
     journalUrl: "https://msp.org/agt/about/journal/about.html",
     yearPreprint: 2018,
     journalPage: "19(6):2961--2988",
@@ -154,7 +154,7 @@ export const articles: ArticleObject[] = [
     yearPreprint: 2021,
     type: "published",
     authors: [Kuribayashi, Naito, Wakatsuki, Yamaguchi],
-    journal: "Algebr. Geom. Topol.",  // Algebraic and Geometric Topology
+    journal: "Algebr. Geom. Topol.", // Algebraic and Geometric Topology
     journalUrl: "https://msp.org/agt/about/journal/about.html",
     journalPage: "24 (2024) 2619–2654",
     articleUrl: "https://msp.org/agt/2024/24-5/p07.xhtml",

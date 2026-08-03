@@ -1,5 +1,5 @@
-import { Locale } from "@data/locale"
-import { Temporal } from "@js-temporal/polyfill"
+import { type Locale } from "@data/locale"
+import { type Temporal } from "@js-temporal/polyfill"
 
 export function formatDate(
   date: Temporal.PlainDate,
