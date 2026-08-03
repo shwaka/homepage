@@ -15,9 +15,15 @@ export function formatMonth(
   date: Temporal.PlainYearMonth,
   locale: Locale,
 ): string {
-  return date.toLocaleString(locale, {
-    calendar: date.calendarId,
-    year: "numeric",
-    month: "short",
-  })
+  switch (locale) {
+    case "en": {
+      const month = date.toLocaleString(locale, {
+        calendar: date.calendarId,
+        month: "short",
+      })
+      return `${month} ${date.year}`
+    }
+    case "ja":
+      return `${date.year}年${date.month}月`
+  }
 }
