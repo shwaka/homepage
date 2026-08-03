@@ -1,10 +1,11 @@
 import React, { type ReactElement } from "react"
 
-import { type ArticleObject, Wakatsuki } from "@data/articles"
+import { type ArticleObject, Wakatsuki, Author } from "@data/articles"
 import Link from "@docusaurus/Link"
 import { translate } from "@docusaurus/Translate"
 
 import styles from "./styles.module.scss"
+import { Locale, useLocale } from "@data/locale"
 
 interface JournalProps {
   article: ArticleObject
@@ -30,16 +31,33 @@ function Journal({ article }: JournalProps): ReactElement {
   }
 }
 
+function formatAuthorName(author: Author, locale: Locale): string {
+  switch (locale) {
+    case "en":
+      return author.shortName
+    case "ja":
+      return author.jaName
+        ? author.jaName.family
+        : author.shortName
+  }
+}
+
+function getCoauthorString(article: ArticleObject, locale: Locale): string {
+  return article
+    .authors
+    .filter((author) => author !== Wakatsuki)
+    .map((author) => formatAuthorName(author, locale))
+    .join(", ")
+}
+
 interface ArticleTrProps {
   article: ArticleObject
   showArxiv: boolean
 }
 
 function ArticleTr({ article, showArxiv }: ArticleTrProps): JSX.Element {
-  const coauthor = article
-    .authors.filter((author) => author !== Wakatsuki)
-    .map((author) => author.shortName)
-    .join(", ")
+  const locale: Locale = useLocale()
+  const coauthor = getCoauthorString(article, locale)
   // const journal = ("journal" in article)
   //   ? <Link to={article.journalUrl}>{article.journal}</Link>
   //   : ""
