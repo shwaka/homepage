@@ -12,7 +12,7 @@ export function formatDate(
 }
 
 export function formatMonth(
-  date: Temporal.PlainYearMonth,
+  date: Temporal.PlainYearMonth | Temporal.PlainDate,
   locale: Locale,
 ): string {
   switch (locale) {

@@ -12,7 +12,7 @@ interface TalkTrProps {
 function TalkTr({talk}: TalkTrProps): JSX.Element {
   const locale = useLocale()
   const talkInfo = getTalkInfo(talk, locale)
-  const date: string = formatMonth(talk.base.date.toPlainYearMonth(), locale)
+  const date: string = formatMonth(talk.base.date, locale)
   return (
     <tr>
       <td>{talkInfo.title}</td>
