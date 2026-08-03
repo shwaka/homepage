@@ -12,9 +12,14 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc",
-    "eslint": "eslint src --ext .ts,.tsx",
-    "eslint:fix": "eslint src --ext .ts,.tsx --fix"
+    "tsc": "tsc -b",
+    "tsc-watch": "tsc -b --watch",
+    "eslint": "eslint src",
+    "eslint:fix": "eslint src --fix",
+    "eslint:onsave": "eslint --config eslint-onsave.config.js --fix",
+    "eslint:watch": "chokidar 'src/**/*' --initial --command 'clear && npm run eslint'",
+    "lc": "npm run eslint",
+    "lf": "npm run eslint:fix"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",
