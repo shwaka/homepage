@@ -1,3 +1,4 @@
+// @ts-check
 import tseslint from "typescript-eslint"
 import { eslintConfigShwakaReact } from "@shwaka/eslint-config-shwaka"
 
