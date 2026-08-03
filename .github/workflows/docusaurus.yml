@@ -26,6 +26,8 @@ jobs:
       #     cache-dependency-path: docusaurus/package-lock.json
       - run: npm ci
         working-directory: docusaurus
+        env:
+          NODE_AUTH_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - name: Build site
         run: npm run build
         working-directory: docusaurus
