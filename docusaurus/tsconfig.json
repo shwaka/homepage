@@ -8,6 +8,10 @@
       "@data": ["src/data"],
       "@data/*": ["src/data/*"],
       "@site/*": ["*"]
-    }
+    },
+    "lib": [
+      "DOM",
+      "ES2021.Intl", // for @js-temporal
+    ],
   }
 }
