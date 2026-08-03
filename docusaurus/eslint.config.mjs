@@ -1,5 +1,5 @@
 import tseslint from "typescript-eslint"
-import { eslintConfigShwakaReact } from "eslint-config-shwaka"
+import { eslintConfigShwakaReact } from "@shwaka/eslint-config-shwaka"
 
 export default tseslint.config([
   ...eslintConfigShwakaReact,
