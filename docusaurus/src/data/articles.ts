@@ -1,7 +1,12 @@
+export interface JapaneseName {
+  family: string
+  given: string
+}
+
 export interface Author {
   longName: string
   shortName: string
-  jaName?: string
+  jaName?: JapaneseName
 }
 
 export interface ArticlePreprintObject {
@@ -51,37 +56,37 @@ export type ArticleObject = ArticlePreprintObject | ArticleToappearObject | Arti
 export const Wakatsuki: Author = {
   longName: "Shun Wakatsuki",
   shortName: "S. Wakatsuki",
-  jaName: "若月駿",
+  jaName: { family: "若月", given: "駿" },
 }
 const Kuribayashi: Author = {
   longName: "Katsuhiko Kuribayashi",
   shortName: "K. Kuribayashi",
-  jaName: "栗林勝彦"
+  jaName: { family: "栗林", given: "勝彦" },
 }
 const Naito: Author = {
   longName: "Takahito Naito",
   shortName: "T. Naito",
-  jaName: "内藤貴仁",
+  jaName: { family: "内藤", given: "貴仁" },
 }
 const Yamaguchi: Author = {
   longName: "Toshihiro Yamaguchi",
   shortName: "T. Yamaguchi",
-  jaName: "山口俊博",
+  jaName: { family: "山口", given: "俊博" },
 }
 const Matsushita: Author = {
   longName: "Takahiro Matsushita",
   shortName: "T. Matsushita",
-  jaName: "松下尚弘",
+  jaName: { family: "松下", given: "尚弘" },
 }
 const Asao: Author = {
   longName: "Yasuhiko Asao",
   shortName: "Y. Asao",
-  jaName: "浅尾泰彦",
+  jaName: { family: "浅尾", given: "泰彦" },
 }
 const Sekizuka: Author = {
   longName: "Kengo Sekizuka",
   shortName: "K. Sekizuka",
-  jaName: "関塚賢悟",
+  jaName: { family: "関塚", given: "賢悟" },
 }
 
 export const articles: ArticleObject[] = [
