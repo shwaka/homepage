@@ -15,6 +15,14 @@ npm install
 npm start
 ```
 
+## メンテナンスメモ
+- `docusaurus/src/components/LocaleDispatcher.tsx` では，
+  `useAlternatePageUtils` を `@docusaurus/theme-common/internal` から import している．
+  これは Docusaurus 本体の locale dropdown 実装に合わせて，
+  現在のページに対応する別 locale の URL を生成するため．
+- `internal` API への依存なので，Docusaurus をアップデートするときや，
+  locale URL 生成用の public API が提供されたときには見直す．
+
 # jekyll (古い情報)
 ## install
 - 必要なツールをインストール
