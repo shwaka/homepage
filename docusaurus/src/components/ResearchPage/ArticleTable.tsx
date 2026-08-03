@@ -1,17 +1,17 @@
 import { ArticleObject, Wakatsuki } from "@data/articles"
 import Link from "@docusaurus/Link"
 import { translate } from "@docusaurus/Translate"
-import React, { ReactNode } from "react"
+import React, { ReactElement } from "react"
 import styles from "./styles.module.scss"
 
 interface JournalProps {
   article: ArticleObject
 }
 
-function Journal({ article }: JournalProps): ReactNode {
+function Journal({ article }: JournalProps): ReactElement {
   switch (article.type) {
     case "preprint":
-      return "-"
+      return (<span>{"-"}</span>)
     case "toappear":
       return (
         <span>
