@@ -32,6 +32,7 @@ export interface ArticlePublishedObject {
   journalPage: string
   articleUrl: string
   yearPublished: number
+  datePublished: string | null
   authors: Author[]
 }
 
@@ -119,6 +120,7 @@ export const articles: ArticleObject[] = [
     journalPage: "19(6):2961--2988",
     articleUrl: "https://msp.org/agt/2019/19-6/p08.xhtml",
     yearPublished: 2019,
+    datePublished: "2019-10-20",
     authors: [Wakatsuki],
   },
   {
@@ -131,6 +133,7 @@ export const articles: ArticleObject[] = [
     journalPage: "22:333--341",
     articleUrl: "https://www.intlpress.com/site/pub/pages/journals/items/hha/content/vols/0022/0001/a019/",
     yearPublished: 2020,
+    datePublished: "2020-01-08",
     authors: [Wakatsuki],
   },
   {
@@ -151,6 +154,7 @@ export const articles: ArticleObject[] = [
     journalPage: "24 (2024) 2619–2654",
     articleUrl: "https://msp.org/agt/2024/24-5/p07.xhtml",
     yearPublished: 2024,
+    datePublished: "2024-08-19",
   },
   {
     title: "Independence complexes of (n×4) and (n×5)-grid graphs",
@@ -163,6 +167,7 @@ export const articles: ArticleObject[] = [
     journalPage: "334, Article ID 108541, 18 p.",
     articleUrl: "https://doi.org/10.1016/j.topol.2023.108541",
     yearPublished: 2023,
+    datePublished: "2023-07-01",
   },
   {
     title: "Cartan calculi on the free loop spaces",
@@ -175,6 +180,7 @@ export const articles: ArticleObject[] = [
     journalPage: "228, No. 11, Article ID 107708, 39 p.",
     articleUrl: "https://www.sciencedirect.com/science/article/pii/S0022404924001051",
     yearPublished: 2023,
+    datePublished: null, // 調べたけど分からず
   },
   {
     title: "Independence complexes of (n×6)-grid graphs",
@@ -187,6 +193,7 @@ export const articles: ArticleObject[] = [
     journalPage: "26, No. 1, 15-27",
     articleUrl: "https://www.intlpress.com/site/pub/pages/journals/items/hha/content/vols/0026/0001/a002/",
     yearPublished: 2024,
+    datePublished: "2024-01-24",
   },
   {
     title: "Dominance complexes, neighborhood complexes and combinatorial Alexander duals",
@@ -199,6 +206,7 @@ export const articles: ArticleObject[] = [
     journalPage: "211, Article ID 105978",
     articleUrl: "https://www.sciencedirect.com/science/article/pii/S0097316524001171",
     yearPublished: 2025,
+    datePublished: null, // 調べたけど分からず
   },
   {
     type: "proceedings",
@@ -220,6 +228,7 @@ export const articles: ArticleObject[] = [
     journalPage: "28, No. 2, 123-154",
     articleUrl: "https://link.intlpress.com/JDetail/2057103251891281921",
     yearPublished: 2026,
+    datePublished: "2026-0520",
   },
   {
     title: "Algebraic interleavings of spaces over the classifying space of the circle",
