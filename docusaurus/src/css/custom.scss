@@ -27,19 +27,24 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-body.wide-mdx .container {
-  // Research で幅を広げる
-  // max-width はともかく，--ifm-col-width を設定するのは若干ハック感があるような気もする
-  max-width: none;
-  div.col--8 {
-    // markdown 本体が表示される領域
-    // default value: --ifm-col-width: calc(8 / 12 * 100%);
-    --ifm-col-width: calc(10 / 12 * 100%);
-  }
-  div.col--2 {
-    // markdown で目次が表示される領域
-    // Research では目次が表示されないので，0% にする
-    --ifm-col-width: 0%;
+// Docusaurus/Infima は 996px 以下で .col の幅を 100% にする．
+// wide-mdx の --ifm-col-width 上書きがそれより優先されるとモバイル表示が狭くなるので，
+// research 用の横幅調整はデスクトップ幅だけに限定する．
+@media screen and (min-width: 997px) {
+  body.wide-mdx .container {
+    // Research で幅を広げる
+    // max-width はともかく，--ifm-col-width を設定するのは若干ハック感があるような気もする
+    max-width: none;
+    div.col--8 {
+      // markdown 本体が表示される領域
+      // default value: --ifm-col-width: calc(8 / 12 * 100%);
+      --ifm-col-width: calc(10 / 12 * 100%);
+    }
+    div.col--2 {
+      // markdown で目次が表示される領域
+      // Research では目次が表示されないので，0% にする
+      --ifm-col-width: 0%;
+    }
   }
 }
 
