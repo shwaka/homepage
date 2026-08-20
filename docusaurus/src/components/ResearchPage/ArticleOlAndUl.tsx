@@ -36,7 +36,7 @@ function ArticleLi({ article }: ArticleLiProps): JSX.Element {
         {getCoauthor(article.authors)}
         {`${article.title}`}{comma}
         {"to appear in "}
-        <Link to={article.journalUrl}>{article.journal}</Link>{comma}
+        <Link to={article.journal.url}>{article.journal.abbrevName}</Link>{comma}
         <Link to={getArxivUrl(article.arxiv)}>{article.arxiv}</Link>
       </li>
     )
@@ -45,7 +45,7 @@ function ArticleLi({ article }: ArticleLiProps): JSX.Element {
         {getCoauthor(article.authors)}
         {`${article.title}`}{comma}
         <Link to={article.articleUrl}>
-          {`${article.journal}, ${article.journalPage}`}
+          {`${article.journal.abbrevName}, ${article.journalPage}`}
         </Link>{comma}
         {`${article.yearPublished} (arXiv: `}
         <Link to={getArxivUrl(article.arxiv)}>{article.arxiv}</Link>
@@ -57,7 +57,7 @@ function ArticleLi({ article }: ArticleLiProps): JSX.Element {
         {getCoauthor(article.authors)}
         {`${article.title}`}{comma}
         <Link to={article.articleUrl}>
-          {`${article.journal}, ${article.journalPage}`}
+          {`${article.journal.abbrevName}, ${article.journalPage}`}
         </Link>{comma}
       </li>
     )

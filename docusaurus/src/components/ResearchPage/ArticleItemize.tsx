@@ -6,11 +6,11 @@ function getItem(article: ArticleObject): string {
   let latexCode = `  \\item ${article.title}`
   // journal
   if (article.type == "toappear") {
-    latexCode += `, to appear in ${article.journal}`
+    latexCode += `, to appear in ${article.journal.abbrevName}`
   } else if (article.type == "published") {
-    latexCode += `, ${article.journal}, ${article.journalPage}`
+    latexCode += `, ${article.journal.abbrevName}, ${article.journalPage}`
   } else if (article.type == "proceedings") {
-    latexCode += `, ${article.journal}`
+    latexCode += `, ${article.journal.abbrevName}`
   }
   // arxiv
   if (article.type == "toappear") {

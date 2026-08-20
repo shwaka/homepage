@@ -19,15 +19,15 @@ function Journal({ article }: JournalProps): ReactElement {
       return (
         <span>
           {"to appear in "}
-          <Link to={article.journalUrl}>
-            {article.journal}
+          <Link to={article.journal.url}>
+            {article.journal.abbrevName}
           </Link>
         </span>
       )
     case "published":
-      return (<Link to={article.articleUrl}>{article.journal}</Link>)
+      return (<Link to={article.articleUrl}>{article.journal.abbrevName}</Link>)
     case "proceedings":
-      return (<Link to={article.articleUrl}>{article.journal}</Link>)
+      return (<Link to={article.articleUrl}>{article.journal.abbrevName}</Link>)
   }
 }
 
