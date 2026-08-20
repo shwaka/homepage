@@ -27,7 +27,7 @@ function Journal({ article }: JournalProps): ReactElement {
     case "published":
       return (<Link to={article.articleUrl}>{article.journal}</Link>)
     case "proceedings":
-      return (<Link to={article.journalUrl}>{article.journal}</Link>)
+      return (<Link to={article.articleUrl}>{article.journal}</Link>)
   }
 }
 

@@ -40,6 +40,7 @@ export interface ArticleProceedingsObject {
   journal: string
   journalUrl: string
   journalPage: string
+  articleUrl: string
   authors: Author[]
 }
 
@@ -56,9 +57,10 @@ export const articles: ArticleObject[] = [
   {
     type: "proceedings",
     title: "String topology on rational Gorenstein spaces",
-    journal: "京都大学数理解析研究所講究録 No.2060 「変換群を核とする代数的位相幾何学」",
-    journalPage: "9-14",
-    journalUrl: "http://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/2060.html",
+    journal: "京都大学数理解析研究所講究録",
+    journalPage: "No.2060 「変換群を核とする代数的位相幾何学」 9-14",
+    journalUrl: "https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/kokyuroku.html",
+    articleUrl: "http://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/2060.html",
     year: 2017,
     authors: [Wakatsuki],
   },
@@ -172,9 +174,10 @@ export const articles: ArticleObject[] = [
   {
     type: "proceedings",
     title: "BV exactness and computation of the $S^1$-equivariant cohomology of free loop spaces",
-    journal: "京都大学数理解析研究所講究録 No.2303 「変換群論とその進展」",
-    journalPage: "-",
-    journalUrl: "https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/2303.html",
+    journal: "京都大学数理解析研究所講究録",
+    journalPage: "No.2303 「変換群論とその進展」",
+    journalUrl: "https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/kokyuroku.html",
+    articleUrl: "https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/2303.html",
     year: 2024,
     authors: [Wakatsuki],
   },

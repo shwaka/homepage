@@ -56,7 +56,7 @@ function ArticleLi({ article }: ArticleLiProps): JSX.Element {
       <li>
         {getCoauthor(article.authors)}
         {`${article.title}`}{comma}
-        <Link to={article.journalUrl}>
+        <Link to={article.articleUrl}>
           {`${article.journal}, ${article.journalPage}`}
         </Link>{comma}
       </li>
