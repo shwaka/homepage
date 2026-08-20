@@ -1,13 +1,5 @@
-export interface JapaneseName {
-  family: string
-  given: string
-}
-
-export interface Author {
-  longName: string
-  shortName: string
-  jaName?: JapaneseName
-}
+import { type Author, Wakatsuki, Kuribayashi, Naito, Yamaguchi, Matsushita, Asao, Sekizuka } from "./Author"
+export { Wakatsuki, type Author }
 
 export interface ArticlePreprintObject {
   type: "preprint"
@@ -52,42 +44,6 @@ export interface ArticleProceedingsObject {
 }
 
 export type ArticleObject = ArticlePreprintObject | ArticleToappearObject | ArticlePublishedObject | ArticleProceedingsObject
-
-export const Wakatsuki: Author = {
-  longName: "Shun Wakatsuki",
-  shortName: "S. Wakatsuki",
-  jaName: { family: "若月", given: "駿" },
-}
-const Kuribayashi: Author = {
-  longName: "Katsuhiko Kuribayashi",
-  shortName: "K. Kuribayashi",
-  jaName: { family: "栗林", given: "勝彦" },
-}
-const Naito: Author = {
-  longName: "Takahito Naito",
-  shortName: "T. Naito",
-  jaName: { family: "内藤", given: "貴仁" },
-}
-const Yamaguchi: Author = {
-  longName: "Toshihiro Yamaguchi",
-  shortName: "T. Yamaguchi",
-  jaName: { family: "山口", given: "俊博" },
-}
-const Matsushita: Author = {
-  longName: "Takahiro Matsushita",
-  shortName: "T. Matsushita",
-  jaName: { family: "松下", given: "尚弘" },
-}
-const Asao: Author = {
-  longName: "Yasuhiko Asao",
-  shortName: "Y. Asao",
-  jaName: { family: "浅尾", given: "泰彦" },
-}
-const Sekizuka: Author = {
-  longName: "Kengo Sekizuka",
-  shortName: "K. Sekizuka",
-  jaName: { family: "関塚", given: "賢悟" },
-}
 
 export const articles: ArticleObject[] = [
   {

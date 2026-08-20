@@ -1,11 +1,11 @@
 import React, { type ReactElement } from "react"
 
-import { type ArticleObject, Wakatsuki, Author } from "@data/articles"
+import { type ArticleObject, Wakatsuki, type Author } from "@data/articles"
+import { type Locale, useLocale } from "@data/locale"
 import Link from "@docusaurus/Link"
 import { translate } from "@docusaurus/Translate"
 
 import styles from "./styles.module.scss"
-import { Locale, useLocale } from "@data/locale"
 
 interface JournalProps {
   article: ArticleObject
