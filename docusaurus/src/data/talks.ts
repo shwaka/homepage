@@ -338,7 +338,8 @@ export const talks: TalkObject[] = [
     en: {
       title: "BV exactness and string brackets",
       conference: "Purdue Topology Seminar",
-      url: "https://sites.google.com/view/purduetopologyseminar",
+      // url: "https://sites.google.com/view/purduetopologyseminar",
+      url: "https://www.math.purdue.edu/calendar/seminars/topology/past-talks.html#fall21",
       venue: "Zoom"
     }
   },
