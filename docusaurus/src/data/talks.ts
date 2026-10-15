@@ -667,4 +667,16 @@ export const talks: TalkObject[] = [
       venue: "大阪大学"
     }
   },
+  {
+    base: {
+      date: parseDate("2026-10-29"),
+      lang: "ja"
+    },
+    ja: {
+      title: "On higher BV exactness",
+      conference: "信州トポロジーセミナー",
+      url: "https://sites.google.com/view/shinshu-topology-seminar/home?authuser=0",
+      venue: "信州大学"
+    }
+  },
 ]
