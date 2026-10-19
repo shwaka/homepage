@@ -23,6 +23,11 @@ npm start
 - `internal` API への依存なので，Docusaurus をアップデートするときや，
   locale URL 生成用の public API が提供されたときには見直す．
 
+## submodule
+`shwaka/homepage_resources` を更新した際は，次の作業をこのリポジトリで行う．
+1. ルートで `git submodule update --remote docusaurus/static/heavy` を実行
+2. `git add` と `git commit` を実行
+
 # jekyll (古い情報)
 ## install
 - 必要なツールをインストール
