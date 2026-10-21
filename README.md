@@ -31,7 +31,7 @@ npm start
 別PCで普通に `pull` すると， `git diff` で `53ee868b2d9b..4ff8e732521b` のようなdiffが表示されてしまう．その対処は以下のいずれか．
 - 後から `git submodule update --init --recursive` を実行
 - `pull` する際に `git pull --recurse-submodules` としておく
-- 以下のようにして `.gitconfig` に設定を書く
+- 以下のようにして `.git/config` に設定を書く (下記コマンドだとリポジトリ固有の設定ファイルに書かれる)
   ```bash
   git config submodule.recurse true
   git config push.recurseSubmodules check # 意図しないpushを防ぐ
